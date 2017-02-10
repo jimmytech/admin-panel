@@ -1,0 +1,9 @@
+{
+	"node": true,
+    "esversion": 6,
+	"globals": {
+        "localStorage": false,
+        "app": false
+    },
+  	"predef": ["angular"]
+}
