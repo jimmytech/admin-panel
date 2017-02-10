@@ -1,0 +1,7 @@
+# Dependency directories
+node_modules
+
+# bower components
+public/assets/libs/bower_components/
+bower_components/
+

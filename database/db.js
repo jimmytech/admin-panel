@@ -1,13 +1,23 @@
-var mongoose = require('mongoose');
-// var dbUrl = 'mongodb://jimmy:jimmy@ds137267.mlab.com:37267/heroku_h9gm5fkw';
-var dbUrl = 'mongodb://localhost/blog';
+const mongoose = require('mongoose'),
+    path = require('path'),
+    config = require(path.resolve(`./config/env/${process.env.NODE_ENV}`));
+
+
+let splited = config.db.URL.split("/");
+let db = splited[splited.length -1];
 
 mongoose.set('debug', true);
 
-mongoose.connect(dbUrl);
-mongoose.connection.on('connected', ()=> {
-	console.log("Database connected successfully");
+mongoose.connect(config.db.URL);
+
+mongoose.connection.on('connected', (err, result) => {
+    console.log(`Successfully connected to DB: ${db}`);
 });
-mongoose.connection.on('error',()=> {
-	console.log("Database connection failed");
-})	
+
+mongoose.connection.on('error', (err) => {
+    console.log(`Failed to connect to DB: ${db}, ${err}`);
+});
+
+mongoose.connection.on('disconnected', (err) => {
+	console.log(`Default connection to DB: ${db} disconnected`)
+});

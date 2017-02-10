@@ -2,7 +2,8 @@
 
 module.exports = {
 	db: {
-		URL: "mongodb://localhost/fileStroage",
+		URL: "mongodb://localhost/blog",
+		// URL: "mongodb://jimmy:jimmy@ds137267.mlab.com:37267/heroku_h9gm5fkw",
 		options: {
 			user: '',
 			pass: ''
