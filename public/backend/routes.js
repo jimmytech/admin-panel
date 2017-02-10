@@ -150,11 +150,11 @@ app.config(['$routeProvider', function($routeProvider) {
             });
             $rootScope.$on('$routeChangeStart', function() {
                 if ($location.path() == '/admin/login') {
-                    $rootScope.adminLoginPage = true
+                    $rootScope.adminLoginPage = true;
                 } else {
-                    $rootScope.adminLoginPage = false
+                    $rootScope.adminLoginPage = false;
                 }
-            })            
+            });          
         }
     ]);
 

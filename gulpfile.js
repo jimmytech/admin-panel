@@ -31,9 +31,7 @@ var exitOnJshintError = map(function (file, cb) {
 
 gulp.task('jshint', ['minify-internal-javascript-admin'], () => {
     return gulp.src([
-           './app/controllers/*.js',
-           './public/angular/*.js',
-           './public/angular/controllers/*.js'
+           './public/backend/*.js',
         ])
         .pipe(jshint())
         .pipe(jshint.reporter(stylish))
