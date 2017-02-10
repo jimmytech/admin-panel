@@ -1,0 +1,104 @@
+<div class="content-wrapper" ng-init = "editpage()">
+   <section class="content-header">
+      <h1 style="margin-top: 60px;">
+         {{csmPageTittle}}
+      </h1>
+   </section>
+   <section class="content">
+      <div class="row">
+         <div class="col-md-11">
+            <div class="box box-info">
+               <div class="box-header with-border">
+                  <h3 class="box-title"></h3>
+               </div>
+               <form name="loginForm" ng-submit="loginForm.$valid && updatePage(selectedFile)" novalidate="" style="padding-left: 60px;width: 84%;">
+                  <md-input-container class="md-icon-float md-block">
+                     <label>Title</label>
+                     <input name="title" ng-model="page.title" required/>
+                     <div ng-messages="loginForm.title.$error" ng-show='loginForm.title.$dirty || loginForm.title.$invalid'>
+                        <div ng-message="required">This is required.</div>
+                     </div>
+                  </md-input-container>
+                  <md-input-container class="md-icon-float md-block">
+                     <label>Meta Title</label>
+                     <textarea name="meta_title" ng-model="page.meta_title" required/></textarea>
+                     <div ng-messages="loginForm.meta_title.$error" ng-show='loginForm.meta_title.$dirty || loginForm.meta_title.$invalid'>
+                        <div ng-message="required">This is required.</div>
+                     </div>
+                  </md-input-container> 
+                  <md-input-container class="md-icon-float md-block">
+                     <label>Meta Keywords</label>
+                     <textarea name="meta_keywords" ng-model="page.meta_keywords" required/></textarea>
+                     <div ng-messages="loginForm.meta_keywords.$error" ng-show='loginForm.meta_keywords.$dirty || loginForm.meta_keywords.$invalid'>
+                        <div ng-message="required">This is required.</div>
+                     </div>
+                  </md-input-container> 
+                  <md-input-container class="md-icon-float md-block">
+                     <label>Meta Description</label>
+                     <textarea name="meta_description"  ng-model="page.meta_description" required></textarea>
+                     <div ng-messages="loginForm.meta_description.$error" ng-show='loginForm.meta_description.$dirty || loginForm.meta_description.$invalid'>
+                        <div ng-message="required">This is required.</div>
+                     </div>
+                  </md-input-container>                                                    
+                  <md-input-container class="md-icon-float md-block">
+                     <label>Short Description</label>
+                     <textarea name="short_description"  ng-model="page.short_description" required></textarea>
+                     <div ng-messages="loginForm.short_description.$error" ng-show='loginForm.short_description.$dirty || loginForm.short_description.$invalid'>
+                        <div ng-message="required">This is required.</div>
+                     </div>
+                  </md-input-container>
+                  <md-input-container class="md-icon-float md-block">
+                     <label >Sort (Numbers Only)</label>
+                     <input name="sort" ng-model="page.sort" numbers-Only required/>
+                     <div ng-messages="loginForm.sort.$error" ng-show='loginForm.sort.$dirty || loginForm.sort.$invalid'>
+                        <div ng-message="required">This is required.</div>
+                     </div>
+                  </md-input-container>
+                  <label style="color: #9EA0BA;">Page Content</label>
+                  <div ckeditor="options" ng-model="page.content"></div>
+
+
+                  <md-input-container flex="100" style = "width: 100%; margin-top: 40px;">
+                     <label>Add In Top</label>
+                     <md-select name="favoriteColor" ng-model="page.top" required>
+                        <md-option value="1">Yes</md-option>
+                        <md-option value="0">No</md-option>
+                     </md-select>
+                     <div class="errors" ng-messages="adminProfileForm.favoriteColor.$error">
+                        <div ng-message="required">This is required.</div>
+                     </div>
+                  </md-input-container>
+                  <md-input-container flex="100" style = "width: 100%;">
+                     <label>Add In Bottom</label>
+                     <md-select name="favoriteColor" ng-model="page.bottom" required>
+                        <md-option value="1">Yes</md-option>
+                        <md-option value="0">No</md-option>
+                     </md-select>
+                     <div class="errors" ng-messages="adminProfileForm.favoriteColor.$error">
+                        <div ng-message="required">This is required.</div>
+                     </div>
+                  </md-input-container>
+                  <md-input-container flex="100" style = "width: 100%;">
+                     <label>Status</label>
+                     <md-select name="favoriteColor" ng-model="page.status" required>
+                        <md-option value="1">Active</md-option>
+                        <md-option value="0">In Active</md-option>
+                     </md-select>
+                     <div class="errors" ng-messages="adminProfileForm.favoriteColor.$error">
+                        <div ng-message="required">This is required.</div>
+                     </div>
+                  </md-input-container>
+                  <label style="color: #9EA0BA; margin-top: 20px">Image</label>
+                     <input 
+                     type="file" ngf-select ng-model="selectedFile" name="file" ngf-pattern="'image/*'" accept="image/*" ngf-max-size="20MB" />                              
+                  <div class="row" style="margin-left: 3px; ">
+                     <div class="col-xs-4 pull-right" style="margin-bottom: 30px;">
+                        <button type="submit" class="btn btn-primary btn-block">Submit</button>
+                     </div>
+                  </div>
+               </form>
+            </div>
+         </div>
+      </div>
+   </section>
+</div>

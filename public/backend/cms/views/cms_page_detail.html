@@ -1,0 +1,62 @@
+<div class="content-wrapper" style="height: 1500px;" ng-init = "viewDetail()" >
+   <section class="content-header">
+      <h1>
+         Update Profile Info  
+      </h1>
+   </section>
+   <section class="content">
+      <div class="row">
+         <div class="box-primary"> 
+       
+            <div class="box-body box-profile" style="margin-top: 110px;">
+            <div class="container">                 
+              <img src="{{page.image}}" class="img-responsive" alt="Cinque Terre" width="50%" height="236"> 
+            </div>             
+               <ul class="list-group list-group-unbordered">
+                  <li class="list-group-item">
+                     <b>Title: </b> {{page.title}} 
+                  </li>  
+                  <img ng-if = "img" style="width:400px; margin-top:60px;" ng-src= '/images/uploads/1483298232894cfb7ea341ba7.jpg ' >                
+                  <li class="list-group-item">
+                     <b>Meta Title: </b> {{page.meta_title}}
+                  </li>
+                  <li class="list-group-item">
+                     <b>Meta Keyword: </b> {{page.meta_keywords}}
+                  </li> 
+                  <li class="list-group-item">
+                     <b>Meta Description: </b> {{page.meta_description}}
+                  </li>  
+                  <li class="list-group-item">
+                     <b>Sort Description: </b> {{page.short_description}}
+                  </li> 
+                  <li class="list-group-item">
+                     <b>Sort: </b> {{page.sort}}
+                  </li>               
+                 
+                  <li class="list-group-item">
+                     <b>Page Content: </b> {{page.content}}
+                  </li>                  
+                 
+                 
+                  <li class="list-group-item">
+                     <b>In Top: </b>                      <span ng-if = "page.status=='1'" >Yes</span>
+                     <span ng-if = "page.status=='0'" >No</span>
+                  </li> 
+
+                  <li class="list-group-item">
+                     <b>In Bottom: </b>                      <span ng-if = "page.status=='1'" >Yes</span>
+                     <span ng-if = "page.status=='0'" >No</span>
+                  </li>          
+
+                  <li class="list-group-item">
+                     <b>Status: </b> 
+                     <span ng-if = "page.status=='1'" >Active</span>
+                     <span ng-if = "page.status=='0'" >In Active</span>
+                  </li>
+               </ul>
+            </div>
+         </div>
+      </div>
+</div>
+</section>
+</div>

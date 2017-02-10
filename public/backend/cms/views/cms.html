@@ -1,0 +1,63 @@
+<div class="content-wrapper" style="min-height: 916px;" ng-init="showPagesList()">
+   <section class="content-header">
+      <h1>
+         Manage CMS Pages
+      </h1>
+
+      <a href = "#/admin/pages/add-new-page"><button class="btn btn-block btn-default pull-right" style="margin-bottom: 20px; margin-top: 30px; width: 12%;" type="button">Add New</button></a>
+   </section>
+   <section class="content">
+      <div class="row">
+         <div class="col-xs-12" ng-if="(pages.length>0)">
+            <div class="box">
+               <div class="box-header">
+               </div>
+               <div class="box-body">
+                  <table class="table table-bordered table-hover">
+                     <thead>
+                        <tr>
+                           <th>Page Title</th>
+                           <th>In Top</th>
+                           <th>In Bottom</th>
+                           <th>Sort Order</th>
+                           <th>Status</th>
+                           <th>Action</th>
+                        </tr>
+                     </thead>
+                     <tbody>
+                        <tr ng-repeat="l in pages">
+                           <td>{{l.title}}{{l.image}}</td>
+                           <td>
+                           <p ng-if="l.top==1">Yes</p>
+                           <p ng-if="l.top==0" >No</p>
+                           </td>
+                           <td>
+                           <p ng-if="l.bottom==1">Yes</p>
+                           <p ng-if="l.bottom==0" >No</p>                        
+                           
+                           </td>
+                           <td>{{l.sort}}</td>
+                           <td>
+                           <p ng-if="l.status==1">Active</p>
+                           <p ng-if="l.status==0">In-Active</p>
+                           </td>
+                           <td><a href="#/admin/pages/{{l._id}}" class="btn btn-success btn-xs fa fa-pencil-square-o"> edit</a>
+                            &nbsp;&nbsp;&nbsp;
+                           <a ng-click = "viewDetailPage(l._id);" class="btn bg-orange margin btn-xs fa fa-eye"> view
+                           </a>                           
+                               &nbsp;&nbsp;&nbsp;<a ng-click = "deletePage(l._id, $index)" class="btn btn-danger btn-xs fa fa-trash-o"> Delete</a></td>
+                        </tr>
+                     </tbody>
+                  </table>
+               </div>
+            </div>
+         </div>
+         <div class="col-md-11" ng-if="(pages.length==0)">
+            <div class="callout callout-info">
+               <h4>Info!</h4>
+               <p>No page found in data table.</p>
+            </div>
+         </div>
+      </div>
+   </section>
+</div>

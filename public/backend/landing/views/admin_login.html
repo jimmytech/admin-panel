@@ -1,0 +1,44 @@
+<div class="login_main">
+   <div class="login_main_inner">
+      <div class="login-box logibshadow" style="margin:auto;">
+         <div class="login-logo">
+            <img src="assets/img/cherrydoor-admin-logo.png">
+         </div>
+         <div class="login-box-body">
+            <p class="login-box-msg text-left">Welcome to Cherrydoor! Login to start you session. </p>
+            <form name="loginForm" ng-submit="loginForm.$valid && adminLogin()" novalidate="">        
+               <md-input-container class="md-icon-float md-block">
+                  <label>Username</label>
+                  <input name="username" ng-model="loginInfo.email" required/>
+                  <div ng-messages="loginForm.username.$error" ng-show='loginForm.username.$dirty || loginForm.username.$invalid'>
+                     <div ng-message="required">This is required.</div>
+                  </div>
+               </md-input-container>
+               <md-input-container class="md-icon-float md-block">
+                  <label>Password</label>
+                  <input name="password" type="password" ng-model="loginInfo.password" required/>
+                  <div ng-messages="loginForm.password.$error" ng-show='loginForm.password.$dirty || loginForm.username.$invalid' '>
+                     <div ng-message="required">This is required.</div>
+                  </div>
+               </md-input-container>
+                  <div class="row">
+                  <div class="col-xs-6">
+                     <div class="icheck">
+                        <label><input type="checkbox"> Remember Me</label>
+                     </div>
+                  </div>   
+                     <div class="col-xs-6"><a class="pull-left">I forgot my password</a></div>
+                  </div>  
+                           
+               <div class="row">
+
+                  <div class="col-xs-12">
+                     <button type="submit" class="btn btn-primary btn-block">Sign In</button>
+                  </div>
+               </div>
+            </form>            
+         </div>
+      </div>
+   </div>
+</div>
+

@@ -1,0 +1,115 @@
+<div ng-init = "dashboardUpdate()">
+   <div class="content-wrapper" style="min-height: 700px;">
+      <section class="content-header">
+         <h1>
+            Dashboard 
+            <small>Control panel</small>
+         </h1>
+      </section>
+      <section class="welcometxtsection">
+        <div class="welcometxt">Welcome back jitendra, you were last login at Thursday, December 8, 2016 @ 08:17:36 AM</div>
+      </section>
+      <section class="content">
+         <div class="row">
+            <div class="col-lg-3 col-xs-6">
+               <div class="small-box bg-aqua">
+                  <div class="inner">
+                     <h3>150</h3>
+                     <p>Users</p>
+                  </div>
+                  <div class="icon">
+                     <i class="ion ion-bag"></i>
+                  </div>
+                  <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+               </div>
+            </div>
+            <div class="col-lg-3 col-xs-6">
+               <div class="small-box bg-red">
+                  <div class="inner">
+                     <h3>53</h3>
+                     <p>Deleted users</p>
+                  </div>
+                  <div class="icon">
+                     <i class="ion ion-stats-bars"></i>
+                  </div>
+                  <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+               </div>
+            </div>
+            <div class="col-lg-3 col-xs-6">
+               <div class="small-box bg-yellow">
+                  <div class="inner">
+                     <h3>44</h3>
+                     <p>Properties</p>
+                  </div>
+                  <div class="icon">
+                     <i class="ion ion-person-add"></i>
+                  </div>
+                  <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+               </div>
+            </div>
+            <div class="col-lg-3 col-xs-6">
+               <div class="small-box bg-green">
+                  <div class="inner">
+                     <h3>65</h3>
+                     <p>Sold Properties</p>
+                  </div>
+                  <div class="icon">
+                     <i class="ion ion-pie-graph"></i>
+                  </div>
+                  <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+               </div>
+            </div>
+            <data style="height: 500px;"></data>
+         </div>
+      </section>
+
+      <div class="row">
+        <section class="col-lg-8 connectedSortable">
+      <chart title="" xData="lineChartXData" yData="lineChartYData" xName="Month" yName="Hit" subtitle=""></chart>           
+        </section>
+        <section class="col-lg-4 connectedSortable">
+          <div class="box box-solid bg-light-blue-gradient">
+            <div class="box-header">
+              <div class="pull-right box-tools">
+                <button type="button" class="btn btn-primary btn-sm daterange pull-right" data-toggle="tooltip" title="Date range">
+                  <i class="fa fa-calendar"></i></button>
+                <button type="button" class="btn btn-primary btn-sm pull-right" data-widget="collapse" data-toggle="tooltip" title="Collapse" style="margin-right: 5px;">
+                  <i class="fa fa-minus"></i></button>
+              </div>
+             
+              <h3 class="box-title">
+                Users Status
+              </h3>
+            </div>
+            <div class="box-body">
+              <div id="world-map" style="height: 250px; width: 100%;"></div>
+            </div>
+            <div class="box-footer no-border">
+              <div class="row">
+                <div class="col-xs-4 text-center" style="border-right: 1px solid #f4f4f4">
+                  <div id="sparkline-1"></div>
+                  <div class="knob-label">Visitors</div>
+                </div>
+                <div class="col-xs-4 text-center" style="border-right: 1px solid #f4f4f4">
+                  <div id="sparkline-2"></div>
+                  <div class="knob-label">Online</div>
+                </div>
+                <div class="col-xs-4 text-center">
+                  <div id="sparkline-3"></div>
+                  <div class="knob-label">Exists</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>     
+   </div>
+  
+   <footer class="main-footer">
+      <div class="pull-right hidden-xs">
+      </div>
+      <strong>Copyright &copy; 2016-2017 <a href="http://almsaeedstudio.com">Cherrydoor</a>.</strong> All rights
+      reserved.
+   </footer>
+   <div class="control-sidebar-bg"></div>
+</div>

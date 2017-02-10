@@ -1,0 +1,35 @@
+<div class="content-wrapper" style="height: 700px;" ng-init = "adminProfileInfo()">
+   <section class="content-header">
+      <h1>
+         Update Profile Info
+      </h1>
+   </section>
+   <section class="content">
+      <div class="row">
+         <div class="box-primary">
+            <div class="box-body box-profile">
+               <p>
+                  <!-- <a > -->
+                  <img class="profile-user-img img-responsive img-circle" src="/assets/img/admin.png" alt="User profile picture">
+                  <!-- </a> -->
+               </p>
+               <h3 class="profile-username text-center">{{user.firstname}} {{user.lastname}}</h3>
+               <ul class="list-group list-group-unbordered">
+                 
+                  <li class="list-group-item">
+                     <b>Email: </b> {{user.email}}
+                  </li>
+                  <li class="list-group-item">
+                     <b>Address: </b>{{user.address}}
+                  </li>
+                  <li class="list-group-item">
+                     <b>Gander: </b> {{user.gander}}
+                  </li>
+               </ul>
+               <a href="#/admin/edit-profile" class="btn btn-primary btn-block"><b>Edit</b></a>        
+            </div>
+         </div>
+      </div>
+</div>
+</section>
+</div>

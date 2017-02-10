@@ -1,0 +1,108 @@
+      .btn-primary{background:#1E88E5;border-color:#1E88E5; }
+      .btn-primary:hover{background:#1068b5;border-color:#1068b5;}
+      a {
+          cursor: pointer;
+      }
+      .back-color {
+          background-color: #106AC3;
+      }
+      .md-accordion .expandCollapse {
+          width: 30px;
+          height: 30px;
+          position: relative;
+          font-size: 20px;
+          font-weight: bold;
+          cursor: pointer;
+          color: #fff;
+          display: block;
+          margin-top: -2px;
+          margin-left: -2px;
+          overflow: hidden;
+      }
+      .md-accordion .expandCollapse:active {
+          border: 0px;
+      }
+      .md-accordion .expandCollapse:before,
+      .md-accordion .expandCollapse:after {
+          width: 30px;
+          height: 30px;
+          display: block;
+          position: absolute;
+          top: 0;
+          left: 0;
+          line-height: 32px;
+          text-align: center;
+          -webkit-transition: .3s all ease-out;
+          transition: .3s all ease-out;
+      }
+      .md-accordion .expandCollapse:before {
+          opacity: 1 -webkit-transform: rotate(0deg);
+          transform: rotate(0deg);
+          content: "|";
+          margin-top: -3px;
+      }
+      .md-accordion .expandCollapse:after {
+          opacity: 1;
+          -webkit-transform: rotate(-90deg);
+          transform: rotate(-90deg);
+          content: "|";
+          margin-left: -3px;
+      }
+      .md-accordion .active:before {
+          opacity: 1;
+          -webkit-transform: rotate(90deg);
+          transform: rotate(90deg);
+          margin-left: 3px;
+          margin-top: 0px;
+      }
+      .md-accordion .dataContent {
+          background: #F2F2F2;
+          height: 0px;
+          overflow: hidden;
+          -webkit-transition: .3s all ease-out;
+          transition: .3s all ease-out;
+      }
+      .md-accordion .activeContent {
+          height: auto;
+          padding: 20px;
+          display: block;
+      }
+      .md-accordion md-toolbar {
+          cursor: pointer;
+          border-bottom: 1px solid rgb(63, 107, 181)
+      }
+      .padding {
+          padding: padding: 25px;
+      }
+      .pointer {
+          cursor: pointer;
+      }
+      .cursor-default {
+          cursor: default;
+      }
+      .delete {
+          color: #FF0000;
+      }
+      .active {
+          color: #4d834d;
+      }
+      .faq-question {
+          background-color: #D9DDEB;
+          padding: 15px;
+          font-size: 20px;
+          border-bottom: 1px solid #ffffff;
+      }
+      .marinherit{margin:6px 0px 6px -6px!important; padding-left: 0!important;}
+      .color-white{color: #fff;}
+      .login-logo{padding: 15px; margin-bottom: 0; border-bottom: 1px solid #ddd;}
+      .login_main{width: 100%; height: 100vh; background: #fff; display: table; }
+      .login_main .login-box-msg{padding: 0 0 15px 0; text-align: left; font-weight: 600; color: #333;}
+      .login_main_inner{display: table-cell; vertical-align: middle; }
+      .login_main label{font-weight: 600; color: #333;}
+      .logibshadow{ width: 400px; padding-bottom: 15px; box-shadow: 3px -1px 3px 0 rgba(0,0,0,.07), -10px 2px 15px 1px rgba(0,0,0,.06);
+-webkit-box-shadow: 3px -1px 3px 0 rgba(0,0,0,.07), -10px 2px 15px 1px rgba(0,0,0,.06);}
+      .topheader_icon{margin-right: 10px!important;}
+      .skin-blue .main-header .navbar{ background-color: #00c0ef;}
+      .skin-blue .main-header .logo{border-right: 1px solid #222d32; background: #222d32;}
+      .welcometxtsection{padding: 15px 15px 0 15px;}
+      .welcometxt{padding: 10px; color: #fff; background:#00a65a; }

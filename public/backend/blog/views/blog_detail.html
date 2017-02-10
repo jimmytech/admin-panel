@@ -1,0 +1,53 @@
+<div class="content-wrapper" style="height: 700px;" ng-init = "viewDetail()" >
+   <section class="content-header">
+      <h1>
+         Update Profile Info
+      </h1>
+   </section>
+   <section class="content">
+      <div class="row">
+         <div class="box-primary">
+            <div class="box-body box-profile" style="margin-top: 110px;">
+                        <div class="container">                 
+              <img src="{{page.image}}" class="img-responsive" alt="Cinque Terre" width="50%" height="236"> 
+            </div> 
+               <ul class="list-group list-group-unbordered">
+                  <li class="list-group-item">
+                     <b>Title: </b> {{page.title}}
+                  </li>                  
+                  <li class="list-group-item">
+                     <b>Meta Title: </b> {{page.meta_tittle}}
+                  </li>
+                  <li class="list-group-item">
+                     <b>Meta Content: </b> {{page.meta_content}}
+                  </li>
+                  <li class="list-group-item">
+                     <b>Sort Description: </b> {{page.short_description}}
+                  </li>                  
+                  <li class="list-group-item">
+                     <b>Sort: </b> {{page.sort}}
+                  </li>                  
+                  <li class="list-group-item">
+                     <b>Page Content: </b> {{page.body}}
+                  </li>                  
+                  <li class="list-group-item">
+                     <b>Meta Description: </b> {{page.meta_description}}
+                  </li>                  
+                  <li class="list-group-item">
+                     <b>Meta Keyword: </b> {{page.meta_keywords}}
+                  </li>                  
+                  <li class="list-group-item">
+                     <b>Type: </b> {{page.postType}}
+                  </li>                  
+                  <li class="list-group-item">
+                     <b>Status: </b> 
+                     <span ng-if = "page.status=='1'" >Active</span>
+                     <span ng-if = "page.status=='0'" >In Active</span>
+                  </li>
+               </ul>
+            </div>
+         </div>
+      </div>
+</div>
+</section>
+</div>
