@@ -3,7 +3,7 @@ var schema = mongoose.Schema;
 
 var storyBlogSchema = new schema({
     title: String,
-    type: String,
+    doc_type: String,
     meta_tittle: String,
     meta_content: String,
     meta_keyword: String,
@@ -11,15 +11,23 @@ var storyBlogSchema = new schema({
     meta_keywords: String,
     short_description: String,
     image: String,
-    // author: String,
+    author: String,
     body: String,
-    status: Number,
+    status: {
+        type: Boolean,
+        default: true
+    },    
     postType: String,
     sort: Number,
-    created: {
-        type: Date,
-        default: Date.now
+    trash: {
+        type: Boolean,
+        default: false
+    }
+}, {
+    timestamps: {
+        createdAt: 'created_at',
+        updatedAt: 'updated_at'      
     }
 });
 
-module.exports = mongoose.model('blogStoryModel', storyBlogSchema);
+module.exports = mongoose.model('blogModel', storyBlogSchema);

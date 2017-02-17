@@ -1,6 +1,7 @@
 'use strict';
-require('../models/user_model');
+require('../../models/user_model');
 const  mongoose = require('mongoose'),
+	path		= require('path'),
 	crypto = require('crypto'),
 	v8 = require('v8'),
 	userModel = mongoose.model('userModel');

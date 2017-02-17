@@ -1,80 +1,77 @@
-<div class="content-wrapper" ng-init = "postDataToEdit();">
+<div ng-init = "postInfo();">
    <section class="content-header">
       <h1>
          {{pageHeader}}
       </h1>
    </section>
-   <section class="content">
+   <section class="content paddingfotter">
       <div class="row">
-         <div class="col-md-11" style="margin-top: 100px;">
-            <div class="box box-info">
-               <div class="box-header with-border">
-                  <h3 class="box-title"></h3>
-               </div>
-               <form name="loginForm" ng-submit="loginForm.$valid && addUpdatePost(selectedFile)" novalidate="" style="padding-left: 60px;width: 84%;">
+         <div class="col-md-8 martop10">
+            <div class="box box-shadow">            
+               <form name="loginForm " class="labelform" ng-submit="loginForm.$valid && addUpdatePost(selectedFile)" novalidate="">
                   <md-input-container class="md-icon-float md-block">
-                     <label>Title</label>
+                     <label class="colorlabel">Title</label>
                      <input name="title" ng-model="page.title" required/>
                      <div ng-messages="loginForm.title.$error" ng-show='loginForm.title.$dirty || loginForm.title.$invalid'>
                         <div ng-message="required">This is required.</div>
                      </div>
                   </md-input-container>
                   <md-input-container class="md-icon-float md-block">
-                     <label>Meta Title</label>
+                     <label class="colorlabel">Meta Title</label>
                      <input name="meta_tittle" ng-model="page.meta_tittle" required/>
                      <div ng-messages="loginForm.meta_tittle.$error" ng-show='loginForm.meta_tittle.$dirty || loginForm.meta_tittle.$invalid'>
                         <div ng-message="required">This is required.</div>
                      </div>
                   </md-input-container>
                   <md-input-container class="md-icon-float md-block">
-                     <label>Meta Content</label>
+                     <label class="colorlabel">Meta Content</label>
                      <input name="meta_content" ng-model="page.meta_content" required/>
                      <div ng-messages="loginForm.meta_content.$error" ng-show='loginForm.meta_content.$dirty || loginForm.meta_content.$invalid'>
                         <div ng-message="required">This is required.</div>
                      </div>
                   </md-input-container>
                   <md-input-container class="md-icon-float md-block">
-                     <label>Short Description</label>
+                     <label class="colorlabel">Short Description</label>
                      <textarea name="short_description"  ng-model="page.short_description" required></textarea>
                      <div ng-messages="loginForm.short_description.$error" ng-show='loginForm.short_description.$dirty || loginForm.short_description.$invalid'>
                         <div ng-message="required">This is required.</div>
                      </div>
                   </md-input-container>
                   <md-input-container class="md-icon-float md-block">
-                     <label >Sort(Number Only)</label>
+                     <label class="colorlabel">Sort(Number Only)</label>
                      <input  name="sort" ng-model="page.sort" numbers-Only required/>
                      <div ng-messages="loginForm.sort.$error" ng-show='loginForm.sort.$dirty || loginForm.sort.$invalid'>
                         <div ng-message="required">This is required.</div>
                      </div>
                   </md-input-container>
-                  <label style="color: #9EA0BA;">Page Content*</label>
+                  <label class="colorlabel">Page Content*</label>
                   <div ckeditor="options" ng-model="page.body"></div>
                   <md-input-container class="md-icon-float md-block" style = "margin-top: 40px;">
-                     <label>Meta Description</label>
+                     <label class="colorlabel">Meta Description</label>
                      <textarea name="meta_description"  ng-model="page.meta_description" required></textarea>
                      <div ng-messages="loginForm.meta_description.$error" ng-show='loginForm.meta_description.$dirty || loginForm.meta_description.$invalid'>
                         <div ng-message="required">This is required.</div>
                      </div>
                   </md-input-container>
                   <md-input-container class="md-icon-float md-block">
-                     <label>Meta Keywords</label>
+                     <label class="colorlabel">Meta Keywords</label>
                      <textarea name="meta_keywords" ng-model="page.meta_keywords" required/></textarea>
                      <div ng-messages="loginForm.meta_keywords.$error" ng-show='loginForm.meta_keywords.$dirty || loginForm.meta_keywords.$invalid'>
                         <div ng-message="required">This is required.</div>
                      </div>
                   </md-input-container>
                   <md-input-container flex="100" style = "width: 100%;">
-                     <label>Type</label>
+                     <label class="colorlabel">Type</label>
                      <md-select name="favoriteColor" ng-model="page.postType" required>
                         <md-option value="Blog">Blog</md-option>
-                        <md-option value="Success Story">Success Story</md-option>
+                        <!-- <md-option value="Success Story">Success Story</md-option> -->
                      </md-select>
                      <div class="errors" ng-messages="adminProfileForm.favoriteColor.$error">
                         <div ng-message="required">This is required.</div>
                      </div>
                   </md-input-container>
                   <md-input-container flex="100" style = "width: 100%;">
-                     <label>Status</label>
+                     <label class="colorlabel">Status</label>
                      <md-select name="favoriteColor" ng-model="page.status" required>
                         <md-option value="1">Active</md-option>
                         <md-option value="0">In Active</md-option>
@@ -84,12 +81,12 @@
                      </div>
                   </md-input-container>
                   <div><span ng-show="loginForm.status.$invalid && loginForm.status.$dirty || loginForm.status.$invalid && loginForm.$submitted " style="color: #DE3300">This is required</span></div>
-                  <label style="color: #9EA0BA; margin-top: 20px">Image</label>
+                  <label style="margin-top: 20px" class="colorlabel">Image</label>
                   <input 
             type="file" ngf-select ng-model="selectedFile" name="file" ngf-pattern="'image/*'" accept="image/*" ngf-max-size="20MB" />                               
-                  <div class="row" style="margin-left: 3px; ">
-                     <div class="col-xs-4 pull-right" style="margin-bottom: 30px;">
-                        <button type="submit" class="btn btn-primary btn-block">Update</button>
+                  <div class="row">
+                     <div class="col-xs-12 pull-left" style="margin-top: 20px;">
+                        <button type="submit" class="btn btn-primary">Update</button>
                      </div>
                   </div>
                </form>

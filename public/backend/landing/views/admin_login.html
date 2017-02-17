@@ -5,7 +5,7 @@
             <img src="assets/img/cherrydoor-admin-logo.png">
          </div>
          <div class="login-box-body">
-            <p class="login-box-msg text-left">Welcome to Cherrydoor! Login to start you session. </p>
+            <p class="login-box-msg text-center">Login to start you session. </p>
             <form name="loginForm" ng-submit="loginForm.$valid && adminLogin()" novalidate="">        
                <md-input-container class="md-icon-float md-block">
                   <label>Username</label>
@@ -21,17 +21,15 @@
                      <div ng-message="required">This is required.</div>
                   </div>
                </md-input-container>
-                  <div class="row">
-                  <div class="col-xs-6">
+                  <div class="row margin-bot-10">
+                  <div class="col-sm-6">
                      <div class="icheck">
                         <label><input type="checkbox"> Remember Me</label>
                      </div>
                   </div>   
-                     <div class="col-xs-6"><a class="pull-left">I forgot my password</a></div>
-                  </div>  
-                           
+                     <div class="col-sm-6 pull-right forgot_admin"><a class="">I forgot my password</a></div>
+                  </div>                             
                <div class="row">
-
                   <div class="col-xs-12">
                      <button type="submit" class="btn btn-primary btn-block">Sign In</button>
                   </div>

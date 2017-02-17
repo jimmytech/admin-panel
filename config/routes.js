@@ -11,9 +11,9 @@ const express       = require('express'),
 
 /*read and load all controllers*/
 let ctrls = {};
-fs.readdirSync(path.resolve('./controllers')).forEach(file => {
+fs.readdirSync(path.resolve('./controllers/backend')).forEach(file => {
     let name = file.substr(0, file.indexOf('.'));
-    ctrls[name] = require(path.resolve(`./controllers/${name}`));
+    ctrls[name] = require(path.resolve(`./controllers/backend/${name}`));
 });
 
 /*routes authencation by using express routes*/
@@ -75,10 +75,11 @@ admin.post('/updateLibRecord', ctrls.admin_controller.updateLibRecord);
 
 
 /*post routes*/
-admin.post('/addUpdatePost', myFunction.saveImage(), ctrls.post_controller.addUpdatePost);
-admin.get('/post-data-to-edit', ctrls.post_controller.postDataToEdit);
-admin.get('/get-post-data', ctrls.post_controller.getPostData);
-admin.delete('/delete-post-data/:id', ctrls.post_controller.delete);
+admin.post('/add-update-post', myFunction.saveImage(), ctrls.post_controller.addUpdatePost);
+admin.get('/post-info', ctrls.post_controller.postInfo);
+admin.get('/posts-list', ctrls.post_controller.getPostsList);
+admin.get('/search-post', ctrls.post_controller.search);
+admin.delete('/delete-post/:id', ctrls.post_controller.deletePost);
 
 
 admin.post('/changePassword', ctrls.admin_controller.changePassword);

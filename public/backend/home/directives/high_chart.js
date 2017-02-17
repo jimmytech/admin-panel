@@ -6,7 +6,7 @@ app.directive('chart', function () {
         replace:true,
         scope: '=',
         link:function (scope, element, attrs) {
-            console.log('oo',attrs,scope[attrs.formatter])
+            // console.log('oo',attrs,scope[attrs.formatter])
             var opt = {
                 chart:{
                     renderTo:element[0],
@@ -36,7 +36,7 @@ app.directive('chart', function () {
                     title:{
                         text:attrs.yname
                     },
-                    tickInterval:(attrs.yinterval)?new Number(attrs.yinterval):null,
+                    tickInterval:(attrs.yinterval)? (attrs.yinterval):null,
                     max:attrs.ymax,
                     min: attrs.ymin
 //                    ,
@@ -50,7 +50,7 @@ app.directive('chart', function () {
                 },
                 tooltip:{
                     formatter:scope[attrs.formatter]||function () {
-                        return '<b>' + this.y + '</b>'
+                        return '<b>' + this.y + '</b>';
                     }
                 },
                 legend:{
@@ -67,7 +67,7 @@ app.directive('chart', function () {
                         data:[7.0, 6.9, 9.5, 14.5, 18.2, 21.5, 25.2, 26.5, 23.3, 18.3, 13.9, 9.6]
                     }
                 ]
-            }
+            };
 
 
             //Update when charts data changes
@@ -79,12 +79,12 @@ app.directive('chart', function () {
                     series:scope[attrs.ydata]
                 });
             }, function (news) {
-                console.log('ola')
+                // console.log('ola')
 //                if (!attrs) return;
-                news = JSON.parse(news)
+                news = JSON.parse(news);
                 if (!news.series)return;
-                angular.extend(opt,news)
-                console.log('opt.xAxis.title.text',opt)
+                angular.extend(opt,news);
+                // console.log('opt.xAxis.title.text',opt)
                 
 
 
@@ -92,6 +92,6 @@ app.directive('chart', function () {
                 var chart = new Highcharts.Chart(opt);
             });
         }
-    }
+    };
 
 });

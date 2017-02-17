@@ -1,48 +1,46 @@
-<div class="content-wrapper" style="height: 700px;" ng-init = "viewDetail()" >
-   <section class="content-header">
-      <h1>
-         Update Profile Info
-      </h1>
+   <section class="content-header" ng-init = "viewDetail()">
+      <h1>Blog Details</h1>
    </section>
-   <section class="content">
+   <section class="content paddingfotter">
       <div class="row">
-         <div class="box-primary">
-            <div class="box-body box-profile" style="margin-top: 110px;">
-                        <div class="container">                 
-              <img src="{{page.image}}" class="img-responsive" alt="Cinque Terre" width="50%" height="236"> 
-            </div> 
-               <ul class="list-group list-group-unbordered">
-                  <li class="list-group-item">
-                     <b>Title: </b> {{page.title}}
+         <div class="col-md-12 martop10 box-primary">
+            <div class="box-body box-profile">              
+               <ul class="list-unstyled viewlist_custom">
+                  <li>
+                      <img src="{{page.image}}" class="img-responsive" alt="Cinque Terre" width="50%" height="236"> 
+                      
+                  </li>  
+                  <li>
+                     <b>Title: </b> <p>{{page.title}}</p>
                   </li>                  
-                  <li class="list-group-item">
-                     <b>Meta Title: </b> {{page.meta_tittle}}
+                  <li>
+                     <b>Meta Title: </b> <p>{{page.meta_tittle}}</p>
                   </li>
-                  <li class="list-group-item">
-                     <b>Meta Content: </b> {{page.meta_content}}
+                  <li>
+                     <b>Meta Content: </b> <p>{{page.meta_content}}</p>
                   </li>
-                  <li class="list-group-item">
-                     <b>Sort Description: </b> {{page.short_description}}
+                  <li>
+                     <b>Sort Description: </b><p> {{page.short_description}}</p>
                   </li>                  
-                  <li class="list-group-item">
-                     <b>Sort: </b> {{page.sort}}
+                  <li>
+                     <b>Sort: </b> <p>{{page.sort}}</p>
                   </li>                  
-                  <li class="list-group-item">
-                     <b>Page Content: </b> {{page.body}}
+                  <li>
+                     <b>Page Content: </b> <p>{{content}}</p>
                   </li>                  
-                  <li class="list-group-item">
-                     <b>Meta Description: </b> {{page.meta_description}}
+                  <li>
+                     <b>Meta Description: </b> <p>{{page.meta_description}}</p>
                   </li>                  
-                  <li class="list-group-item">
-                     <b>Meta Keyword: </b> {{page.meta_keywords}}
+                  <li>
+                     <b>Meta Keyword: </b> <p>{{page.meta_keywords}}</p>
                   </li>                  
-                  <li class="list-group-item">
-                     <b>Type: </b> {{page.postType}}
+                  <li>
+                     <b>Type: </b> <p>{{page.postType}}</p>
                   </li>                  
-                  <li class="list-group-item">
+                  <li>
                      <b>Status: </b> 
-                     <span ng-if = "page.status=='1'" >Active</span>
-                     <span ng-if = "page.status=='0'" >In Active</span>
+                     <p><span ng-if = "page.status=='1'" >Active</span></p>
+                     <p><span ng-if = "page.status=='0'" >In Active</span></p>
                   </li>
                </ul>
             </div>
@@ -50,4 +48,3 @@
       </div>
 </div>
 </section>
-</div>

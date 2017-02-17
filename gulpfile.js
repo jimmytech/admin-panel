@@ -31,7 +31,12 @@ var exitOnJshintError = map(function (file, cb) {
 
 gulp.task('jshint', ['minify-internal-javascript-admin'], () => {
     return gulp.src([
+            'controllers/*/*.js',
            './public/backend/*.js',
+           './public/backend/*/*.js',
+           './public/backend/*/*/*.js',
+           './config/*.js',
+           './config/*/*.js',
         ])
         .pipe(jshint())
         .pipe(jshint.reporter(stylish))
@@ -44,6 +49,7 @@ gulp.task('minify-internal-javascript-admin', (cb) => {
             './public/backend/app.js',
             './public/backend/routes.js',
             './public/backend/factories/*.js',
+            './public/backend/values/*.js',
             './public/backend/includes/factories/*.js',
             './public/backend/landing/controllers/*.js',
             './public/backend/home/controllers/*.js',
@@ -73,12 +79,14 @@ gulp.task('minify-external-javascript-admin', (cb) => {
             './public/assets/libs/bower_components/angular-material/angular-material.min.js',
             './public/assets/libs/bower_components/angular-route/angular-route.min.js',
             './public/assets/libs/bower_components/bootstrap/dist/js/bootstrap.min.js',
+            './public/assets/libs/bower_components/angular-bootstrap/ui-bootstrap-tpls.min.js',
             './public/assets/libs/bower_components/angular-cookies/angular-cookies.min.js',
             './public/assets/libs/bower_components/angular-ckeditor/angular-ckeditor.min.js',
             './public/assets/libs/bower_components/angular-toasty/dist/angular-toasty.min.js',
             './public/assets/libs/bower_components/ng-dialog/js/ngDialog.min.js',
             './public/assets/libs/bower_components/ng-file-upload/ng-file-upload.min.js',
             './public/assets/libs/bower_components/ng-file-upload/ng-file-upload-shim.min.js',
+            './public/assets/libs/bower_components/angular-cookies/angular-cookies.min.js',
             './public/assets/libs/bower_components/AdminLTE/dist/js/app.min.js'
         ]),
         concat('admin_site.min.js'),

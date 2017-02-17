@@ -1,5 +1,5 @@
 <div ng-init = "dashboardUpdate()">
-   <div class="content-wrapper" style="min-height: 700px;">
+
       <section class="content-header">
          <h1>
             Dashboard 
@@ -9,10 +9,10 @@
       <section class="welcometxtsection">
         <div class="welcometxt">Welcome back jitendra, you were last login at Thursday, December 8, 2016 @ 08:17:36 AM</div>
       </section>
-      <section class="content">
+      <section class="content min-heightauto">
          <div class="row">
             <div class="col-lg-3 col-xs-6">
-               <div class="small-box bg-aqua">
+               <div class="small-box bg-orange">
                   <div class="inner">
                      <h3>150</h3>
                      <p>Users</p>
@@ -36,7 +36,7 @@
                </div>
             </div>
             <div class="col-lg-3 col-xs-6">
-               <div class="small-box bg-yellow">
+               <div class="small-box bg-purple">
                   <div class="inner">
                      <h3>44</h3>
                      <p>Properties</p>
@@ -64,46 +64,54 @@
       </section>
 
       <div class="row">
+      <div class="padrightleft15 clearfix">
         <section class="col-lg-8 connectedSortable">
       <chart title="" xData="lineChartXData" yData="lineChartYData" xName="Month" yName="Hit" subtitle=""></chart>           
         </section>
         <section class="col-lg-4 connectedSortable">
-          <div class="box box-solid bg-light-blue-gradient">
-            <div class="box-header">
-              <div class="pull-right box-tools">
-                <button type="button" class="btn btn-primary btn-sm daterange pull-right" data-toggle="tooltip" title="Date range">
-                  <i class="fa fa-calendar"></i></button>
-                <button type="button" class="btn btn-primary btn-sm pull-right" data-widget="collapse" data-toggle="tooltip" title="Collapse" style="margin-right: 5px;">
-                  <i class="fa fa-minus"></i></button>
-              </div>
-             
-              <h3 class="box-title">
-                Users Status
-              </h3>
-            </div>
+          <div class="box box-solid bg-aqua height250">            
             <div class="box-body">
-              <div id="world-map" style="height: 250px; width: 100%;"></div>
-            </div>
-            <div class="box-footer no-border">
-              <div class="row">
-                <div class="col-xs-4 text-center" style="border-right: 1px solid #f4f4f4">
-                  <div id="sparkline-1"></div>
-                  <div class="knob-label">Visitors</div>
-                </div>
-                <div class="col-xs-4 text-center" style="border-right: 1px solid #f4f4f4">
-                  <div id="sparkline-2"></div>
-                  <div class="knob-label">Online</div>
-                </div>
-                <div class="col-xs-4 text-center">
-                  <div id="sparkline-3"></div>
-                  <div class="knob-label">Exists</div>
-                </div>
+              <div class="box-header"> 
+                <h3 class="box-title color-white">Users Overview</h3>
               </div>
+              <table class="user_details_dash">
+                <tbody>
+                    <tr>
+                       <td>Active users</td>
+                       <td>43</td>
+                       <td><i class="md md-arrow-drop-up green-text"></i></td>
+                    </tr>
+                    <tr>
+                       <td>Inactive users</td>
+                       <td>4181</td>
+                       <td><i class="md md-arrow-drop-up green-text"></i></td>
+                    </tr>
+                    <tr>
+                       <td>Unverified users</td>
+                       <td>14000</td>
+                       <td><i class="md md-arrow-drop-down red-text"></i></td>
+                    </tr>
+                    <tr>
+                       <td>Deactivated users</td>
+                       <td>40</td>
+                       <td><i class="md md-arrow-drop-up green-text"></i></td>
+                    </tr>                        
+                    <tr>
+                       <td>Deleted users</td>
+                       <td>1489</td>
+                       <td><i class="md md-arrow-drop-up green-text"></i></td>
+                    </tr>
+                 </tbody>
+              </table>
+
             </div>
+             
           </div>
         </section>
+      </div>  
       </div>     
-   </div>
+
+
   
    <footer class="main-footer">
       <div class="pull-right hidden-xs">

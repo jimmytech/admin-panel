@@ -1,27 +1,33 @@
 <div class="content-wrapper" style="min-height: 916px;" ng-init="showFaqList()">
    <section class="content-header">
-      <h1>
-         Frequently Asked Questions
-      </h1>
-      <a href = "#/admin/faq/add-new-faq"><button class="btn btn-block btn-default pull-right" style="margin-bottom: 20px; margin-top: 30px; width: 12%;" type="button">Add New</button></a>
+      <h1 class="page_title">  FAQs  
+         <span><button class="btn btn-primary "type="button" ng-click = "addNewFaq()" >Add New</button></span>
+      </h1>       
    </section>
    <section class="content">
       <div class="row">
          <div class="col-xs-12">
-            <div style="padding: 8px;" class="comment-text faq-question" ng-repeat="data in faqData">
-            <div style="width: 80%; display: inline-block;">
-                {{$index+1}}). {{ data.question}}
-            </div>              
-               <div class="pull-right">
-                  <a href="#/admin/faq/{{data._id}}" class=" fa fa-pencil-square-o">
-                  </a>                        
-                  &nbsp;&nbsp;&nbsp;
-                  <a ng-click = "deleteFaq(data._id, $index);" class="fa fa-trash-o delete">
+            <div class="comment-text faq-question bg-white" ng-repeat="data in faqData">
+            <div class="row">
+               <div class="text-right faqaction col-md-2 pull-right">
+                  <a ng-click = "to('/admin/faq/', data._id)">
+                     <i class="material-icons edit">mode_edit</i>
+                  </a>                   
+                  <a ng-click = "to('/admin/faq/', data._id)">
+                     <i class="material-icons color-orange">remove_red_eye</i>
+                  </a> 
+                  <a ng-click = "deleteFaq(data._id, $index);">
+                     <i class="material-icons color-red">delete</i>
                   </a>
-                  &nbsp;&nbsp;&nbsp;
-                  <i title="Active" ng-if="data.status==1" class="fa fa-check-circle cursor-default active"></i>
-                  <i title="In Active" ng-if="data.status==0" class="fa fa-times-circle cursor-default"></i>                   
+                  
+                  <i title="Active" ng-if="data.status==1" class="material-icons active color-blue">done_all</i>
+                  <i title="In Active" ng-if="data.status==0" class="material-icons active">done_all</i>
+                                    
                </div>
+               <div class="col-md-10 faqtxt pull-right" >
+                   <span>{{$index+1}}.</span> {{ data.question}}
+               </div>
+            </div>   
             </div>
          </div>
          <div class="col-md-11" ng-if="(faqData.length==0)">

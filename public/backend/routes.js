@@ -3,7 +3,7 @@
 app.config(['$routeProvider', function($routeProvider) {
         $routeProvider
             .when('/', {
-                templateUrl: 'view/admin/home.html',
+                templateUrl: 'backend/landing/views/admin_login.html',
                 controller: 'homeController',
                 resolve: {
                     validate: notRequired
@@ -31,7 +31,7 @@ app.config(['$routeProvider', function($routeProvider) {
                     validate: required
                 }
             })
-            .when('/admin/post/:key', {
+            .when('/admin/post/:id', {
                 templateUrl: 'backend/blog/views/add_edit_blog.html',
                 controller: 'blogController',
                 resolve: {

@@ -1,32 +1,39 @@
-<div class="content-wrapper" style="height: 700px;" ng-init = "adminProfileInfo()">
+<div class="content-wrapper" style="min-height: 700px;" ng-init = "adminProfileInfo()">
    <section class="content-header">
       <h1>
-         Update Profile Info
+         <!-- Update Profile Info -->
       </h1>
    </section>
    <section class="content">
       <div class="row">
          <div class="box-primary">
             <div class="box-body box-profile">
-               <p>
-                  <!-- <a > -->
-                  <img class="profile-user-img img-responsive img-circle" src="/assets/img/admin.png" alt="User profile picture">
-                  <!-- </a> -->
-               </p>
+               <div class="profile_details box-shadow">   
+                  <md-button ng-click = "editProfilePage()" class="md-fab  md-primary md-mini pull-right edit_profile_btn" aria-label="Eat cake">
+                     <md-icon>mode_edit</md-icon>
+                  </md-button>         
+                  <img class="profile-user-img img-responsive img-circle martop40" src="/assets/img/admin.png" alt="User profile picture">               
                <h3 class="profile-username text-center">{{user.firstname}} {{user.lastname}}</h3>
-               <ul class="list-group list-group-unbordered">
+               <ul class="list-unstyled viewlist_custom profilelist_custom"" >
                  
-                  <li class="list-group-item">
-                     <b>Email: </b> {{user.email}}
+                  <li>
+                     <b>Email: </b> <p>{{user.email}}</p>
+                  </li>                  
+                  <li>
+                     <b>User Name: </b> <p>John123</p>
                   </li>
-                  <li class="list-group-item">
-                     <b>Address: </b>{{user.address}}
+                  <li>
+                     <b>Address: </b> <p>{{user.address}}</p>
                   </li>
-                  <li class="list-group-item">
-                     <b>Gander: </b> {{user.gander}}
+                  <li >
+                     <b>Gender: </b> <p>{{user.gander}}</p>
+                  </li>
+                  <li >
+                     <b>Role: </b> <p>Super Admin</p>
                   </li>
                </ul>
-               <a href="#/admin/edit-profile" class="btn btn-primary btn-block"><b>Edit</b></a>        
+               <!-- <a  ng-click = "editProfilePage();" class="btn btn-primary btn-block"><b>Edit</b></a>  -->
+               </div>       
             </div>
          </div>
       </div>

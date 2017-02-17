@@ -9,20 +9,25 @@ app.controller('faqController', ['toastyService', '$scope', '$location', '$rootS
         id: 1,
         name: 'Active'
     }, ];
-
+    $scope.addNewFaq = function (){
+        $location.path('/admin/faq/add-new-faq');
+    };
+    $scope.to = function(url, id) {
+        $location.path(url+id);
+    };
     $scope.showFaqList = function() {
-        $http.get('/admin/faqList').success(function(response) {
-            $scope.faqData = response.faq;
+        $http.get('/admin/faqList').then(function(response) {
+            $scope.faqData = response.data.faq;
             var i;
-            for (i = 0; i < response.faq.length; i++) {
+            for (i = 0; i < response.data.faq.length; i++) {
                 $scope.faqData[i].answer = angular.element($scope.faqData[i].answer).text().replace(/\s+/g, ' ');
             }
         });
     };
     $scope.deleteFaq = function(id, index) {
-        $http.get('/admin/deleteFaqData?id=' + id).success(function(response) {
-            toastyService.notification(response.success, response.msg);
-            if (response.success === true) {
+        $http.get('/admin/deleteFaqData?id=' + id).then(function(response) {
+            toastyService.notification(response.data.success, response.data.msg);
+            if (response.data.success === true) {
                 for (var i = 0; i < $scope.faqData.length; i++) {
                     if ($scope.faqData[i]._id == id) {
                         $scope.faqData.splice(i, 1);
@@ -35,9 +40,9 @@ app.controller('faqController', ['toastyService', '$scope', '$location', '$rootS
     $scope.insertUpdateFaq = function() {
         var text = angular.element($scope.faq.answer).text().replace(/[\s]/g, '');
         if (text) {
-            $http.post('/admin/insertUpdateFrequentlyAskedQuestion', $scope.faq).success(function(response) {
-                toastyService.notification(response.success, response.msg);
-                if (response.success) {
+            $http.post('/admin/insertUpdateFrequentlyAskedQuestion', $scope.faq).then(function(response) {
+                toastyService.notification(response.data.success, response.data.msg);
+                if (response.data.success) {
                     $location.path('/admin/faq');
                 }
             });
@@ -54,9 +59,9 @@ app.controller('faqController', ['toastyService', '$scope', '$location', '$rootS
         } else {
             $scope.faqPageTittle = "Edit FAQ";
             $scope.slugInput = true;
-            $http.get('/admin/getFaqToedit?id=' + id).success(function(response) {
-                if (response.success === true) {
-                    $scope.faq = response.faq;
+            $http.get('/admin/getFaqToedit?id=' + id).then(function(response) {
+                if (response.data.success === true) {
+                    $scope.faq = response.data.faq;
                 }
             });
         }

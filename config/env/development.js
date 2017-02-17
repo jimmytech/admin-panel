@@ -13,6 +13,7 @@ module.exports = {
 	server: {
 		PORT: 3000
 	},
+
 	admin: {
 		email: 'admin@gmail.com',
 		password: '123456'

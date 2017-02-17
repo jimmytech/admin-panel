@@ -1,7 +1,7 @@
 <header class="main-header" ng-init = "profileInfo()">
    <a class="logo">
-   <span class="logo-mini"><b>C</b></span>
-   <span class="logo-lg"><b>CherryDoor</b></span>
+   <span class="logo-mini"><b>A</b></span>
+   <span class="logo-lg"><b>Admin</b></span>
    </a>
    <nav class="navbar navbar-static-top">
       <a class="sidebar-toggle" data-toggle="offcanvas" role="button">
@@ -10,18 +10,18 @@
       <div class="navbar-custom-menu">
          <ul class="nav navbar-nav">
             <li class="dropdown user user-menu">
-               <a href="#/admin/profile" class="dropdown-toggle" data-toggle="dropdown">
+               <a ng-click = "profilePage();" class="dropdown-toggle" data-toggle="dropdown">
                   <img src="/assets/img/admin.png" class="user-image" alt="User Image">
                   <span class="hidden-xs">Admin</span>
                   <!-- <span class="hidden-xs">{{user.firstname}}</span> -->
                </a>
             </li>
-            <li>
+            <li class="positionrel">
                <md-menu md-position-mode="target-right target">
-                  <md-button aria-label="Sample Menu" class="md-icon-button marinherit" ng-click="$mdOpenMenu($event)">
+                  <md-button aria-label="Sample Menu" class="md-icon-button marinherit" ng-click="$mdMenu.open($event)">
                      <md-icon md-menu-origin class="material-icons color-white">keyboard_arrow_down</md-icon>
                   </md-button>
-                  <md-menu-content width="4" style = "margin-top: 42px;" >
+                  <md-menu-content width="4" class="topmenu_right">
                      <md-list-item ng-click = "profilePage();"> 
                         <md-icon class="topheader_icon">account_circle</md-icon> 
                         <p>Profile</p> 

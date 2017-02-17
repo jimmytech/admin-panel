@@ -1,10 +1,10 @@
 'use strict';
 
-require('../models/user_model');
-require('../models/cms_model');
-require('../models/testimonial_model');
-require('../models/faq_model');
-require('../models/library_model');
+require('../../models/user_model');
+require('../../models/cms_model');
+require('../../models/testimonial_model');
+require('../../models/faq_model');
+require('../../models/library_model');
 
 const crypto            = require('crypto'),
     path                = require('path'),
@@ -16,7 +16,7 @@ const crypto            = require('crypto'),
     faqModel            = mongoose.model('faqModel'),
     libraryModel        = mongoose.model('libraryModel'),
     key                 = require(path.resolve(`./config/env/${process.env.NODE_ENV}`)),
-    blogStoryModel      = require(path.resolve('./models/story_blog_model'));
+    blogStoryModel      = require(path.resolve('./models/blog_model'));
 
 
 exports.login = (req, res) => {

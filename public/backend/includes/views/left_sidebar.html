@@ -1,23 +1,23 @@
 <aside class="main-sidebar">
    <section class="sidebar">
       <ul class="sidebar-menu">
-         <li class="treeview"><a href="#/admin/dashboard"><i class="fa fa-dashboard"></i> <span>Dashboard</span></a>
+         <li class="treeview parent1" ng-click = "selectMainMenu($event); hideSubmenu(); toPage('/admin/dashboard');"><a> <i class="fa fa-dashboard "></i> <span>Dashboard</span></a>
          </li>
-         <li class="treeview"><a href="#/admin/posts"><i class="fa fa-rss"></i> <span>Blogs</span></a>
-         </li>         
-         <li class="treeview"><a href="#/admin/pages"><i class="fa fa-file-text"></i> <span>Pages</span></a>        
-          <li class="treeview"><a href="#/admin/faq"><i class="fa fa-question-circle"></i> <span>Faq</span></a>
+         <li class="treeview parent2" ng-click = "selectMainMenu($event); hideSubmenu(); toPage('/admin/posts');"><a><i class="fa fa-rss "></i> <span>Blogs</span></a>
          </li>
-         <li>
-            <a href="pages/widgets.html">
+         <li class="treeview parent3" ng-click = "selectMainMenu($event); hideSubmenu(); toPage('/admin/pages');"><a><i class="fa fa-file-text"></i> <span>Pages</span></a>        
+         <li class="treeview parent4" ng-click = "selectMainMenu($event); hideSubmenu(); toPage('/admin/faq');"><a><i class="fa fa-question-circle"></i> <span>Faq</span></a>
+         </li>
+         <li class="treeview parent5" ng-click = "selectMainMenu($event); hideSubmenu();">
+            <a ng-click = "toPage('/admin/dashboard');">
             <i class="fa fa-th"></i> <span>Widgets</span>
             <span class="pull-right-container">
             <small class="label pull-right bg-green">new</small>
             </span>
             </a>
          </li>
-         <li class="treeview active">
-            <a href="" >
+         <li ng-click = "selectMainMenu($event);" class="treeview parent6">
+            <a >
             <i class="fa fa-pie-chart"></i>
             <span>Charts</span>
             <span class="pull-right-container">
@@ -25,56 +25,13 @@
             </span>
             </a>
             <ul class="treeview-menu">
-               <li ><a  href="#/admin/profile"><i class="fa fa-circle-o"></i> ChartJS</a></li>
-               <li class="active"><a href="#/admin/profile"><i class="fa fa-circle-o"></i> Morris</a></li>
-               <li><a href="#/admin/profile"><i class="fa fa-circle-o"></i> Flot</a></li>
-               <li><a href="#/admin/profile"><i class="fa fa-circle-o"></i> Inline charts</a></li>
-            </ul>
-         </li>
-         <li>
-            <a href="pages/mailbox/mailbox.html">
-            <i class="fa fa-envelope"></i> <span>Mailbox</span>
-            <span class="pull-right-container">
-            <small class="label pull-right bg-yellow">12</small>
-            <small class="label pull-right bg-green">16</small>
-            <small class="label pull-right bg-red">5</small>
-            </span>
-            </a>
-         </li>
-         <li class="treeview">
-            <a href="">
-            <i class="fa fa-share"></i> <span>Multilevel</span>
-            <span class="pull-right-container">
-            <i class="fa fa-angle-left pull-right"></i>
-            </span>
-            </a>
-            <ul class="treeview-menu">
-               <li><a href=""><i class="fa fa-circle-o"></i> Level One</a></li>
-               <li>
-                  <a href=""><i class="fa fa-circle-o"></i> Level One
-                  <span class="pull-right-container">
-                  <i class="fa fa-angle-left pull-right"></i>
-                  </span>
-                  </a>
-                  <ul class="treeview-menu">
-                     <li><a href=""><i class="fa fa-circle-o"></i> Level Two</a></li>
-                     <li>
-                        <a href=""><i class="fa fa-circle-o"></i> Level Two
-                        <span class="pull-right-container">
-                        <i class="fa fa-angle-left pull-right"></i>
-                        </span>
-                        </a>
-                        <ul class="treeview-menu">
-                           <li><a href=""><i class="fa fa-circle-o"></i> Level Three</a></li>
-                           <li><a href=""><i class="fa fa-circle-o"></i> Level Three</a></li>
-                        </ul>
-                     </li>
-                  </ul>
+               <li class="usersSubmenu1" ng-click = "selectSubmenu($event); toPage('/admin/dashboard');"><a><i class="fa fa-circle-o"></i> ChartJS</a>
                </li>
-               <li><a href=""><i class="fa fa-circle-o"></i> Level One</a></li>
+               <li class="usersSubmenu2" ng-click = "selectSubmenu($event); toPage('/admin/dashboard');"><a><i class="fa fa-circle-o"></i> Flot</a></li>
+               <li class="usersSubmenu3" ng-click = "selectSubmenu($event); toPage('/admin/dashboard');"><a><i class="fa fa-circle-o"></i> Inline charts</a></li>
+               <li class="usersSubmenu4" ng-click = "selectSubmenu($event); toPage('/admin/dashboard');"><a><i class="fa fa-circle-o"></i> Morris</a></li>
             </ul>
          </li>
-         <li><a href="documentation/index.html"><i class="fa fa-book"></i> <span>Documentation</span></a></li>
       </ul>
    </section>
 </aside>

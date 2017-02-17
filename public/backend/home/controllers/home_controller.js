@@ -28,11 +28,7 @@ app.controller('homeController', ['Upload', '$routeParams', '$scope', '$rootScop
                 $scope.title = "Blog";
             }
         };
-        $scope.updateAdminProfile = function(user) {
-            $http.post('/admin//update-profile', user).success(function(response) {
-                toastyService.notification(response.success, response.msg);
-            });
-        };
+
 
         $scope.profileSectionMode = function(m) {
             if (m == 't') {
@@ -320,18 +316,7 @@ app.controller('homeController', ['Upload', '$routeParams', '$scope', '$rootScop
                 });
             }
         };
-        $scope.changePassword = function(p) {
-            var obj = {
-                password: p.cpassword
-            };
-            if (p.cpassword == p.password) {
-                $http.post('/admin/changePassword', obj).success(function(response) {
-                    toastyService.notification(response.success, response.msg);
-                });
-            } else {
-                toastyService.notification(false, "New password and confirm password is not equal.");
-            }
-        };
+
         /*start testimonial controller*/
         $scope.testimonialDataToEdit = function() {
             var id = $location.path().split("/").pop();

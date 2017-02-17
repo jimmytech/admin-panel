@@ -1,16 +1,20 @@
 app.controller('cmsController', ['Upload','$routeParams','toastyService', '$scope', '$location', '$rootScope', '$http', 
     function(Upload, $routeParams, toastyService, $scope, $location, $rootScope, $http) {
-
+        $scope.addNewPage = function (){
+            $location.path('/admin/pages/add-new-page');
+        };
         $scope.showPagesList = function() {
-            $http.get('/admin/get-cms-page').success(function(response) {
-                $scope.pages = response.pages;
+            $http.get('/admin/get-cms-page').then(function(response) {
+                $scope.pages = response.data.pages;
             });
         };
-
+        $scope.editCmsPage = function(url, id) {
+            $location.path(url+id);
+        };
         $scope.deletePage = function(id, index) {
-            $http.get('/admin/delete-cms-page?id=' + id).success(function(response) {
-                toastyService.notification(response.success, response.msg);
-                if (response.success === true) {
+            $http.get('/admin/delete-cms-page?id=' + id).then(function(response) {
+                toastyService.notification(response.data.success, response.data.msg);
+                if (response.data.success === true) {
                     for (var i = 0; i < $scope.pages.length; i++) {
                         if ($scope.pages[i]._id == id) {
                             $scope.pages.splice(i, 1);
@@ -27,8 +31,8 @@ app.controller('cmsController', ['Upload','$routeParams','toastyService', '$scop
                 $scope.csmPageTittle = "Add New Page";
             } else {
                 $scope.csmPageTittle = "Edit Page";
-                $http.get('/admin/cms-page-by-id?id=' + page).success(function(response) {
-                    $scope.page = response.page;
+                $http.get('/admin/cms-page-by-id?id=' + page).then(function(response) {
+                    $scope.page = response.data.page;
                 });
             }
         };
@@ -58,8 +62,8 @@ app.controller('cmsController', ['Upload','$routeParams','toastyService', '$scop
         }; 
 
         $scope.viewDetail = function(){
-            $http.get('/admin/cms-page-by-id?id=' + $routeParams.id).success(function(response) {
-                $scope.page = response.page;
+            $http.get('/admin/cms-page-by-id?id=' + $routeParams.id).then(function(response) {
+                $scope.page = response.data.page;
             });  
         };             
 

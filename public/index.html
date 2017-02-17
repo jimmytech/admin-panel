@@ -2,6 +2,9 @@
 <html ng-app="myApp">
    <head>
       <title>Admin</title>
+      <meta charset="utf-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
       <link rel="stylesheet" type="text/css" href="assets/css/backend/admin_site.min.css">
       <link rel="stylesheet" type="text/css" href="assets/css/backend/style.css">
       <!-- <link rel="stylesheet" type="text/css" href="assets/css/backend/admin_app.min.css"> -->
@@ -13,8 +16,11 @@
       </div>
       <div ng-if = "!headerAndSidebar" ng-controller = "includeController" ng-include="'backend/includes/views/header.html'">
       </div>
-      <div class="wrapper" style="background-color: #F1F1F1;" ng-view >
-      </div>
+<!--       <div class="wrapper" set-height style="background-color: #fff;" ng-view >
+      </div> -->
+      <div class="content-wrapper" set-height>
+         <div ng-view></div>
+      </div>      
       <toasty></toasty>
       <script type="text/javascript" src="assets/js/admin_site.min.js"></script>
       <script src="https://cdn.ckeditor.com/4.5.6/standard/ckeditor.js"></script>

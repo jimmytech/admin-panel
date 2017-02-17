@@ -2,7 +2,7 @@ app.factory('toastyService', ['toasty', function(toasty) {
 
     return {
         notification: function(status, msg) {
-            if (status == true) {
+            if (status === true) {
                 toasty.success({
                     title: "",
                     msg: msg,
@@ -12,7 +12,7 @@ app.factory('toastyService', ['toasty', function(toasty) {
                     html: true,
                     theme: "bootstrap"
                 });
-            } else if (status == false) {
+            } else if (status === false) {
                 toasty.error({
                     title: "",
                     msg: msg,

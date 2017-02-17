@@ -8,7 +8,7 @@ const express 		= require('express'),
 	bodyParser 		= require('body-parser'),
 	mongoose 		= require('mongoose'),
 	app 			= express(),
-	index 			= require(path.resolve('./controllers/index')),
+	index 			= require(path.resolve('./controllers/backend/index')),
 	config			= require(path.resolve(`./config/env/${process.env.NODE_ENV}`)),
 	server 			= require('http').createServer(app);
 

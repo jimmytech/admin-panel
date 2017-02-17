@@ -4,7 +4,7 @@
          Manage CMS Pages
       </h1>
 
-      <a href = "#/admin/pages/add-new-page"><button class="btn btn-block btn-default pull-right" style="margin-bottom: 20px; margin-top: 30px; width: 12%;" type="button">Add New</button></a>
+      <a ng-click = "addNewPage()"><button class="btn btn-block btn-default pull-right" style="margin-bottom: 20px; margin-top: 30px; width: 12%;" type="button">Add New</button></a>
    </section>
    <section class="content">
       <div class="row">
@@ -41,7 +41,7 @@
                            <p ng-if="l.status==1">Active</p>
                            <p ng-if="l.status==0">In-Active</p>
                            </td>
-                           <td><a href="#/admin/pages/{{l._id}}" class="btn btn-success btn-xs fa fa-pencil-square-o"> edit</a>
+                           <td><a ng-click = "editCmsPage('/admin/pages/', l._id)" class="btn btn-success btn-xs fa fa-pencil-square-o"> edit</a>
                             &nbsp;&nbsp;&nbsp;
                            <a ng-click = "viewDetailPage(l._id);" class="btn bg-orange margin btn-xs fa fa-eye"> view
                            </a>                           

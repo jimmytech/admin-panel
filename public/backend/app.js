@@ -6,10 +6,8 @@ var app = angular.module('myApp', [
     'ngMaterial',
     'ngMessages',
     'ckeditor',
+    'ui.bootstrap',
     'angular-toasty',
-    'ngFileUpload'
+    'ngFileUpload',
+    'ngCookies'
 ]);
-
-
-
-
