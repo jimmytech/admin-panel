@@ -1,0 +1,49 @@
+   <section class="content-header">
+      <h1>Faq Details</h1>
+   </section>
+   <section class="content paddingfotter">
+      <div class="row">
+         <div class="col-md-12 martop10 box-primary">
+            <div class="box-body box-profile">              
+               <ul class="list-unstyled viewlist_custom"> 
+                  <li>
+                     <b>Question: </b> <p>{{faq.question}}</p>
+                  </li>                   
+                   <li>
+                     <b>Slug: </b> <p>{{faq.slug}}</p>
+                  </li>                  
+                  <li>
+                     <b>Meta Title: </b> <p>{{faq.meta_title}}</p>
+                  </li>
+                  <li>
+                     <b>Meta Content: </b> <p>{{faq.meta_content}}</p>
+                  </li>
+                  <li>
+                     <b>Sort Description: </b><p> {{faq.short_description}}</p>
+                  </li>                  
+                  <li>
+                     <b>Sort: </b> <p>{{faq.sort}}</p>
+                  </li>                  
+                  <li>
+                     <b>Answer: </b> <p>{{answer}}</p>
+                  </li>                  
+                  <li>
+                     <b>Meta Description: </b> <p>{{faq.meta_description}}</p>
+                  </li>                  
+                  <li>
+                     <b>Meta Keyword: </b> <p>{{faq.meta_keywords}}</p>
+                  </li>                                     
+                  <li>
+                     <b>Created: </b> <p>{{faq.created | date :  "dd.MM.y"}}</p>
+                  </li>                  
+                  <li>
+                     <b>Status: </b> 
+                     <p><span ng-if = "faq.status" >Active</span></p>
+                     <p><span ng-if = "!faq.status" >In Active</span></p>
+                  </li>
+               </ul>
+            </div>
+         </div>
+      </div>
+</div>
+</section>

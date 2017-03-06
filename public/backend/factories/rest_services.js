@@ -8,11 +8,11 @@ app.factory('http', ['$http', function ($http) {
 		post: function(url, data){
 			return $http.post(url, data).then(function(response){
 				return {
-					result: response.data.result
+					result: response.data
 				};
 			}, function(response){
 				return {
-					error: response.data.error
+					error: response.data
 				};
 			});
 		},

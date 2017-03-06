@@ -1,9 +1,11 @@
 {
+	"browser" : true,
 	"node": true,
     "esversion": 6,
 	"globals": {
         "localStorage": false,
-        "app": false
+        "app": false,
+        "io": false
     },
   	"predef": ["angular"]
 }

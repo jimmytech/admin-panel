@@ -1,59 +1,88 @@
-<div class="content-wrapper" ng-init = "faqToedit()">
-   <!-- Content Header (Page header) -->
    <section class="content-header">
-      <h1 style="margin-top: 60px;">
-         {{faqPageTittle}} New FAQ
+      <h1>
+         {{pageHeader}}
       </h1>
    </section>
-   <!-- Main content -->
-   <section class="content">
+   <section class="content paddingfotter">
       <div class="row">
-         <div class="col-md-11">
-            <div class="box box-info">
-               <div class="box-header with-border">
-                  <h3 class="box-title"></h3>
-               </div>
-               <form name="faqform" ng-submit="insertUpdateFaq()" novalidate="" style="padding-left: 60px;width: 84%;">
+         <div class="col-md-8 martop10">
+            <div class="box box-shadow">            
+               <form name="loginForm " class="labelform" ng-submit="loginForm.$valid && insertUpdateFaq()" novalidate="">
                   <md-input-container class="md-icon-float md-block">
-                     <label>Question</label>
+                     <label class="colorlabel">Question</label>
                      <input name="title" ng-model="faq.question" required/>
+                     <div ng-messages="loginForm.title.$error" ng-show='loginForm.title.$dirty || loginForm.title.$invalid'>
+                        <div ng-message="required">This is required.</div>
+                     </div>
                   </md-input-container>
-                  <md-input-container class="md-icon-float md-block" ng-show ="slugInput" >
-                     <label>Slug</label>
-                     <input name="slug" ng-model="faq.slug" required/>
+                  <md-input-container ng-if = "slugInput" class="md-icon-float md-block">
+                     <label class="colorlabel">Slug</label>
+                     <input name="meta_tittle" ng-model="faq.slug" required/>
+                     <div ng-messages="loginForm.meta_tittle.$error" ng-show='loginForm.meta_tittle.$dirty || loginForm.meta_tittle.$invalid'>
+                        <div ng-message="required">This is required.</div>
+                     </div>
+                  </md-input-container>                  
+                  <md-input-container class="md-icon-float md-block">
+                     <label class="colorlabel">Meta Title</label>
+                     <input name="meta_tittle" ng-model="faq.meta_title" required/>
+                     <div ng-messages="loginForm.meta_tittle.$error" ng-show='loginForm.meta_tittle.$dirty || loginForm.meta_tittle.$invalid'>
+                        <div ng-message="required">This is required.</div>
+                     </div>
                   </md-input-container>
                   <md-input-container class="md-icon-float md-block">
-                     <label >Sort (Numbers Only)</label>
-                     <input name="sort" ng-model="faq.sort" numbers-Only required/>
+                     <label class="colorlabel">Meta Content</label>
+                     <input name="meta_content" ng-model="faq.meta_content" required/>
+                     <div ng-messages="loginForm.meta_content.$error" ng-show='loginForm.meta_content.$dirty || loginForm.meta_content.$invalid'>
+                        <div ng-message="required">This is required.</div>
+                     </div>
                   </md-input-container>
-<md-input-container class="md-icon-float md-block" >
-                     <label>Meta Title</label>
-                     <input name="meta_title" ng-model="faq.meta_title" required/>
-                  </md-input-container> 
+                  <md-input-container class="md-icon-float md-block">
+                     <label class="colorlabel">Meta Keywords</label>
+                     <textarea name="meta_keywords" ng-model="faq.meta_keywords" required/></textarea>
+                     <div ng-messages="loginForm.meta_keywords.$error" ng-show='loginForm.meta_keywords.$dirty || loginForm.meta_keywords.$invalid'>
+                        <div ng-message="required">This is required.</div>
+                     </div>
+                  </md-input-container>    
                   <md-input-container class="md-icon-float md-block" >
-                     <label>Meta Description</label>
-                     <input name="meta_title" ng-model="faq.meta_description" required/>
-                  </md-input-container>   
-                  <md-input-container class="md-icon-float md-block" >
-                     <label>Meta keyword</label>
-                     <input name="meta_title" ng-model="faq.meta_keywords" required/>
-                  </md-input-container>                  
-                  <label id="ckLabel" style="color: #9EA0BA; margin-top: 20px;">Answer*</label>
-                  <div ckeditor="options" ck-editor ng-model="faq.answer">             
-                  </div>
-                  <md-input-container flex="100" style = "width: 100%; margin-top: 50px;">
-                    <label>Status</label>
-                    <md-select name="favoriteColor" ng-model="faq.status" required>
-                      <md-option value="1">Active</md-option>
-                      <md-option value="0">In-Active</md-option>
-                    </md-select>
-                    <div class="errors" ng-messages="myForm.favoriteColor.$error">
-                      <div ng-message="required">Required</div>
-                    </div>
+                     <label class="colorlabel">Meta Description</label>
+                     <textarea name="meta_description"  ng-model="faq.meta_description" required></textarea>
+                     <div ng-messages="loginForm.meta_description.$error" ng-show='loginForm.meta_description.$dirty || loginForm.meta_description.$invalid'>
+                        <div ng-message="required">This is required.</div>
+                     </div>
+                  </md-input-container>                                
+                  <md-input-container class="md-icon-float md-block">
+                     <label class="colorlabel">Short Description</label>
+                     <textarea name="short_description"  ng-model="faq.short_description" required></textarea>
+                     <div ng-messages="loginForm.short_description.$error" ng-show='loginForm.short_description.$dirty || loginForm.short_description.$invalid'>
+                        <div ng-message="required">This is required.</div>
+                     </div>
                   </md-input-container>
-                  <div class="row" style="margin-left: 3px; ">
-                     <div class="col-xs-4 pull-right" >
-                        <button type="submit" class="btn btn-primary btn-block" style="margin: 30px 0px 30px 0px;">Submit</button>
+                  <md-input-container class="md-icon-float md-block">
+                     <label class="colorlabel">Sort(Number Only)</label>
+                     <input  name="sort" ng-model="faq.sort" numbers-Only required/>
+                     <div ng-messages="loginForm.sort.$error" ng-show='loginForm.sort.$dirty || loginForm.sort.$invalid'>
+                        <div ng-message="required">This is required.</div>
+                     </div>
+                  </md-input-container>
+                  <label class="colorlabel">Answer*</label>
+                  <div ckeditor="options" ng-model="faq.answer"></div>
+
+
+
+                  <md-input-container flex="100"  style = "width: 100%;">
+                     <label class="colorlabel">Status</label>
+                     <md-select name="favoriteColor" ng-model="faq.status" required>
+                        <md-option value="true">Active</md-option>
+                        <md-option value="false">In Active</md-option>
+                     </md-select>
+                     <div class="errors" ng-messages="adminProfileForm.favoriteColor.$error">
+                        <div ng-message="required">This is required.</div>
+                     </div>
+                  </md-input-container>
+                              
+                  <div class="row">
+                     <div class="col-xs-12 pull-left" style="margin-top: 20px;">
+                        <button type="submit" class="btn btn-primary">Update</button>
                      </div>
                   </div>
                </form>
@@ -61,4 +90,3 @@
          </div>
       </div>
    </section>
-</div>

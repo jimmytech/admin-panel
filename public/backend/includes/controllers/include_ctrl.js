@@ -1,15 +1,25 @@
-app.controller('includeController', ['$cookies', '$timeout',  'Upload', '$routeParams', '$scope', '$rootScope', '$location', '$http', 'toasty', 'toastyService',
+app.controller('includeController', ['socket', '$cookies', '$timeout',  'Upload', '$routeParams', '$scope', '$rootScope', '$location', 'http', 'toasty', 'toastyService',
     'ngDialog',
-    function($cookies, $timeout, Upload, $routeParams, $scope, $rootScope, $location, $http, toasty, toastyService, ngDialog) {
+    function(socket, $cookies, $timeout, Upload, $routeParams, $scope, $rootScope, $location, http, toasty, toastyService, ngDialog) {
+
+        socket.on('notification', function(data) {
+
+            console.log("This is socket response");
+            
+        }); 
 
         (function() {
             if (angular.isUndefined($cookies.get('clickedOn'))) {
                 $cookies.put('clickedOn', '.parent1');
             }
+            
             $timeout(function() {
                 angular.element(document.querySelector($cookies.get('clickedOn'))).addClass('active');
                 angular.element(document.querySelector($cookies.get('subMenu'))).addClass('active');
             }, 500);
+
+            getCount();
+
         }());
 
         $scope.selectMainMenu = function(event) {
@@ -60,6 +70,15 @@ app.controller('includeController', ['$cookies', '$timeout',  'Upload', '$routeP
 
         function selectMe(event) {
             $('.parent7').addClass('active');
+        }
+
+        function getCount () {
+            http.get('/admin/get-all-count').then(function(response){
+                var data = response.result;
+                for(var k in data){
+                    $scope[k] = data[k];
+                }                
+            });
         }
 
     }

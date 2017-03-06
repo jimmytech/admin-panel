@@ -3,32 +3,38 @@
 require('dotenv').config({silent: true});
 
 const express 		= require('express'),
-	path 			=require('path'),
-	http 			= require('http'),
+	helmet 			= require('helmet'),
+	path 			= require('path'),
 	bodyParser 		= require('body-parser'),
-	mongoose 		= require('mongoose'),
 	app 			= express(),
-	index 			= require(path.resolve('./controllers/backend/index')),
+	routes 			= require('./config/routes.js'),
+	index 			= require(path.resolve('./modules/backend/controllers/index')),
 	config			= require(path.resolve(`./config/env/${process.env.NODE_ENV}`)),
-	server 			= require('http').createServer(app);
-
-
-app.use(bodyParser.urlencoded({
-    extended: true
-}));
-
-app.use(bodyParser.json());
-
-app.use(express.static(__dirname + '/public'));
-var router = express.Router();
+	server 			= require('http').createServer(app),
+	io 				= require('socket.io')(server);
 
 
 
-require('./database/db.js');
-var routes = require('./config/routes.js');
+	app.use(helmet());
+	app.use(bodyParser.urlencoded({
+	    extended: true
+	}));
 
-// app.use('/', routes.router);
-app.use('/admin', routes.admin);
+	app.use(bodyParser.json());
+
+	app.use(express.static(__dirname + '/public'));
+
+	/*require database file*/
+	require('./database/db.js');
+
+
+	/*require socket.js file*/
+	require('./modules/socket/socket.js')(io);
+
+
+	app.use('/', routes.user);
+	app.use('/admin', routes.admin);
+
 
 // if(process.env.NODE_ENV === 'production'){
 // 	app.use((err, req, res, next) => {
@@ -68,6 +74,12 @@ app.use('/admin', routes.admin);
 // 		next();
 // 	});	
 // }
+
+
+
+
+
+
 server.listen(config.server.PORT , function(){	
 	index.adminAccount();	
   console.log('listening on', server.address().port);

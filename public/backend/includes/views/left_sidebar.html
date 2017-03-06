@@ -1,35 +1,55 @@
 <aside class="main-sidebar">
    <section class="sidebar">
       <ul class="sidebar-menu">
-         <li class="treeview parent1" ng-click = "selectMainMenu($event); hideSubmenu(); toPage('/admin/dashboard');"><a> <i class="fa fa-dashboard "></i> <span>Dashboard</span></a>
+         <li class="treeview parent0" ng-click = "selectMainMenu($event); hideSubmenu(); toPage('/admin/dashboard');"><a> <i class="fa fa-dashboard "></i> <span>Dashboard</span></a>
          </li>
-         <li class="treeview parent2" ng-click = "selectMainMenu($event); hideSubmenu(); toPage('/admin/posts');"><a><i class="fa fa-rss "></i> <span>Blogs</span></a>
-         </li>
-         <li class="treeview parent3" ng-click = "selectMainMenu($event); hideSubmenu(); toPage('/admin/pages');"><a><i class="fa fa-file-text"></i> <span>Pages</span></a>        
-         <li class="treeview parent4" ng-click = "selectMainMenu($event); hideSubmenu(); toPage('/admin/faq');"><a><i class="fa fa-question-circle"></i> <span>Faq</span></a>
-         </li>
-         <li class="treeview parent5" ng-click = "selectMainMenu($event); hideSubmenu();">
-            <a ng-click = "toPage('/admin/dashboard');">
-            <i class="fa fa-th"></i> <span>Widgets</span>
-            <span class="pull-right-container">
-            <small class="label pull-right bg-green">new</small>
+         <li class="treeview parent1" ng-click = "selectMainMenu($event); hideSubmenu(); toPage('/admin/Categories');"><a> <i class="fa fa-building-o "></i> <span>Categories</span>
+             <span class="pull-right-container">              
+              <small class="label pull-right bg-blue">{{totalCategory}}</small>
             </span>
-            </a>
+         </a>
+         </li>         
+         <li class="treeview parent2" ng-click = "selectMainMenu($event); hideSubmenu(); toPage('/admin/posts');"><a><i class="fa fa-rss "></i> <span>Blogs</span>
+             <span class="pull-right-container">              
+              <small class="label pull-right bg-blue">{{totalBlog}}</small>
+            </span>
+         </a>
+         </li>
+         <li class="treeview parent3" ng-click = "selectMainMenu($event); hideSubmenu(); toPage('/admin/pages');"><a><i class="fa fa-file-text"></i> <span>Pages</span>
+             <span class="pull-right-container">              
+              <small class="label pull-right bg-blue">{{totalPages}}</small>
+            </span>
+            </a>        
+         <li class="treeview parent4" ng-click = "selectMainMenu($event); hideSubmenu(); toPage('/admin/faq');"><a><i class="fa fa-question-circle"></i> <span>Faq</span>
+             <span class="pull-right-container">              
+              <small class="label pull-right bg-blue">{{totalFaq}}</small>
+            </span>
+         </a>
+         </li>         
+         <li class="treeview parent5" ng-click = "selectMainMenu($event); hideSubmenu();"><a><i class="fa fa-envelope"></i> <span>Email Templates</span></a>
          </li>
          <li ng-click = "selectMainMenu($event);" class="treeview parent6">
             <a >
             <i class="fa fa-pie-chart"></i>
-            <span>Charts</span>
+            <span>Users</span>
+            <span  class="pull-right-container right-15">
+              <span class="label label-primary pull-right">{{totalUser[0].count+totalUser[1].count}}</span>
+            </span>            
             <span class="pull-right-container">
             <i class="fa fa-angle-left pull-right"></i>
             </span>
             </a>
             <ul class="treeview-menu">
-               <li class="usersSubmenu1" ng-click = "selectSubmenu($event); toPage('/admin/dashboard');"><a><i class="fa fa-circle-o"></i> ChartJS</a>
+               <li class="usersSubmenu1" ng-click = "selectSubmenu($event); toPage('/admin/users/service-providers');"><a><i class="fa fa-circle-o"></i> Service Provider</a>
+              <span  class="pull-right-container">
+              <span class="label label-primary pull-right">{{totalUser[1].count}}</span>
+            </span> 
                </li>
-               <li class="usersSubmenu2" ng-click = "selectSubmenu($event); toPage('/admin/dashboard');"><a><i class="fa fa-circle-o"></i> Flot</a></li>
-               <li class="usersSubmenu3" ng-click = "selectSubmenu($event); toPage('/admin/dashboard');"><a><i class="fa fa-circle-o"></i> Inline charts</a></li>
-               <li class="usersSubmenu4" ng-click = "selectSubmenu($event); toPage('/admin/dashboard');"><a><i class="fa fa-circle-o"></i> Morris</a></li>
+               <li class="usersSubmenu2" ng-click = "selectSubmenu($event); toPage('/admin/users/customers');"><a><i class="fa fa-circle-o"></i> Customer</a>
+              <span  class="pull-right-container">
+              <span class="label label-primary pull-right">{{totalUser[0].count}}</span>
+            </span> 
+               </li>
             </ul>
          </li>
       </ul>

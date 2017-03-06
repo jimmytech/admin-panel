@@ -73,8 +73,8 @@
                   <md-input-container flex="100" style = "width: 100%;">
                      <label class="colorlabel">Status</label>
                      <md-select name="favoriteColor" ng-model="page.status" required>
-                        <md-option value="1">Active</md-option>
-                        <md-option value="0">In Active</md-option>
+                        <md-option value="true">Active</md-option>
+                        <md-option value="false">In Active</md-option>
                      </md-select>
                      <div class="errors" ng-messages="adminProfileForm.favoriteColor.$error">
                         <div ng-message="required">This is required.</div>

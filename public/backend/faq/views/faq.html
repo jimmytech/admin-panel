@@ -1,28 +1,36 @@
-<div class="content-wrapper" style="min-height: 916px;" ng-init="showFaqList()">
    <section class="content-header">
       <h1 class="page_title">  FAQs  
-         <span><button class="btn btn-primary "type="button" ng-click = "addNewFaq()" >Add New</button></span>
+         <span><button class="btn btn-primary "type="button" ng-click = "addNewFaq('/admin/faq/new')" >Add New</button></span>
       </h1>       
    </section>
    <section class="content">
       <div class="row">
          <div class="col-xs-12">
-            <div class="comment-text faq-question bg-white" ng-repeat="data in faqData">
+            <div class="comment-text faq-question bg-white" ng-repeat="data in faqList.faq">
             <div class="row">
                <div class="text-right faqaction col-md-2 pull-right">
                   <a ng-click = "to('/admin/faq/', data._id)">
-                     <i class="material-icons edit">mode_edit</i>
+                     <i class="material-icons edit">mode_edit
+                     <md-tooltip md-direction="bottom">Click to edit</md-tooltip>
+                     </i>
                   </a>                   
-                  <a ng-click = "to('/admin/faq/', data._id)">
-                     <i class="material-icons color-orange">remove_red_eye</i>
+                  <a ng-click = "to('/admin/view-faq/', data._id)">
+                     <i class="material-icons view">remove_red_eye
+                     <md-tooltip md-direction="bottom">Click to view</md-tooltip>
+                     </i>
                   </a> 
-                  <a ng-click = "deleteFaq(data._id, $index);">
-                     <i class="material-icons color-red">delete</i>
+                  <a ng-click = "moveToTrash(data._id, $index);">
+                     <i class="material-icons color-red">delete
+                     <md-tooltip md-direction="bottom">Click to delete</md-tooltip>
+                     </i>
                   </a>
                   
-                  <i title="Active" ng-if="data.status==1" class="material-icons active color-blue">done_all</i>
-                  <i title="In Active" ng-if="data.status==0" class="material-icons active">done_all</i>
-                                    
+                  <i ng-if="data.status==1" class="material-icons color-blue cursor-default">done_all
+                  <md-tooltip md-direction="bottom">Active</md-tooltip>
+                  </i>
+                  <i ng-if="data.status==0" class="material-icons info cursor-default">info
+                  <md-tooltip md-direction="bottom">Inactive</md-tooltip>
+                  </i>                                    
                </div>
                <div class="col-md-10 faqtxt pull-right" >
                    <span>{{$index+1}}.</span> {{ data.question}}
@@ -30,12 +38,6 @@
             </div>   
             </div>
          </div>
-         <div class="col-md-11" ng-if="(faqData.length==0)">
-            <div class="callout callout-info">
-               <h4>Info!</h4>
-               <p>No faq found in data table.</p>
-            </div>
-         </div>
+   <div ng-if = "!faqList.success" ng-include="'backend/includes/views/no-result.html'">         
       </div>
    </section>
-</div>

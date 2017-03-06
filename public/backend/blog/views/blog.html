@@ -1,53 +1,59 @@
-<section class="content-header" ng-init="paginationParameter(); getPostsList()">
-   <h1 class="page_title"> Blog  <span><button class="btn btn-primary "type="button" ng-click = "addPost('/admin/post/add-new')" >Add New</button></span></h1>
+<section class="content-header">
+   <h1 class="page_title"> Blog  <span><button class="btn btn-primary" type="button" ng-click = "addPost('/admin/edit-post/add-new')" >Add New</button></span></h1>
 </section>
 <section class="content">
    <div class="row" ng-if = "postResponse.table">
       <div class="col-xs-12">
          <div class="box">
-            <div class="box-header">
-               
-               <form name  = "searchForm" ng-submit = "search(searchFor)">
+            <div class="box-header">               
+               <form name  = "searchForm" ng-submit = "searchForm.$valid && search(searchFor)" novalidate="">
                <div class="input-group input-group-sm pull-right serch_div">
-                  <input ng-model = "searchFor" type="text" name="table_search" class="form-control pull-right" placeholder="Search">
+                  <input name="searchInput" ng-model = "searchFor" type="text" name="table_search" class="form-control pull-right" placeholder="Search" ng-change = "changeSearch(searchFor)" ng-model-options="{ debounce: 1000 }" required="">
                   <div class="input-group-btn">
                      <button type="submit" class="btn btn-default btn-flat"><i class="fa fa-search"></i></button>
                   </div>  
                   </div>                
-               </form>
-               
+               </form>               
             </div>
             <div class="box-body no-padding table-responsive">
                <table class="table table-hover table-custom">
                   <tbody>
                      <tr>
                         <th width="40%">Title 
-                           <a class="sort">
-                           <i class="fa fa-sort-alpha-asc" aria-hidden="true">
+                           <a class="sort" >
+                           <i ng-click = "sort(searchFor, 'title', $event)" ng-class = "titleIcon"  aria-hidden="true">
                            </i>
+                           <md-tooltip md-direction="top">Sort by title</md-tooltip>
                            </a>
-                        </th>                        
+                        </th>                                                                        
                         <th width="10%">Author 
                            <a class="sort">
-                           <i class="fa fa-sort-alpha-asc" aria-hidden="true">
+                           <i ng-click = "sort(searchFor, 'author',  $event)" ng-class = "authorIcon" aria-hidden="true">
                            </i>
+                           <md-tooltip md-direction="top">Sort by author</md-tooltip>
                            </a>
                         </th>
                         <th  width="10%">Order  
-                           <a class="sort">
-                           <i class="fa fa-sort-numeric-asc" aria-hidden="true">
-                           </i></a>
+                           <a class="sort" >
+                           <i ng-click = "sort(searchFor,
+                           'sort',  $event)" ng-class = "orderIcon" aria-hidden="true">
+                           </i>
+                           <md-tooltip md-direction="top">Sort by Order</md-tooltip>
+                           </a>
                         </th>
                         <th  width="10%">Type 
-                           <a class="sort">
-                           <i class="fa fa-sort-alpha-asc" aria-hidden="true">
+                           <a class="sort"  >
+                           <i ng-click = "sort(searchFor, 'type',  $event)" ng-class = "typeIcon" aria-hidden="true">
                            </i>
+                           <md-tooltip md-direction="top">Sort by type</md-tooltip>
                            </a>   
                         </th>
                         <th  width="10%">Status 
-                           <a class="sort">
-                           <i class="fa fa-sort-alpha-asc" aria-hidden="true">
+                           <a class="sort"  >
+                           <i ng-click = "sort(searchFor, 
+                           'status',  $event)" ng-class = "statusIcon" aria-hidden="true">
                            </i>
+                           <md-tooltip md-direction="top">Click to sort record</md-tooltip>
                            </a>
                         </th>
                         <th  width="20%">Action</th>
@@ -60,7 +66,7 @@
                            <md-tooltip md-direction = "bottom">Click on view to read more...</md-tooltip>
                            </span>
                         </td>
-                        <td>Jitendra </td>
+                        <td>{{l.author}} </td>
                         <td>{{l.sort}} </td>
                         <td>{{l.postType}}</td>
                         <td>
@@ -68,13 +74,13 @@
                            <span ng-if="l.status==0">In-Active</span>
                         </td>
                         <td>
-                           <a ng-click = "editBlogPage('/admin/post/', l._id)">
+                           <a ng-click = "editBlogPage('/admin/edit-post/', l._id)">
                               <md-tooltip md-direction="bottom">Click to edit</md-tooltip>
                               <i class="material-icons edit">mode_edit</i>
                            </a>
-                           <a ng-click = "postPreviewPage('/admin/view-post-info/', l._id);" >
+                           <a ng-click = "postPreviewPage('/admin/view-post/', l._id);" >
                               <md-tooltip md-direction="bottom">Click to view</md-tooltip>
-                              <i class="material-icons color-orange">remove_red_eye</i> 
+                              <i class="material-icons view">remove_red_eye</i> 
                            </a>
                            <a ng-click = "deletePost(l._id, $index, $event)">
                               <md-tooltip md-direction="bottom">Click to delete</md-tooltip>
@@ -92,7 +98,7 @@
             </div>
          </div>
          <div class="clearfix">
-            <ul uib-pagination ng-if="paging.count > paging.limit" previous-text="Previous" force-ellipses="forceEllipses" max-size="maxSize" items-per-page="paging.limit" total-items="paging.count" ng-model="paging.page" class="pagination pagination_theme pull-right" boundary-link-numbers="true" rotate="false" ng-change="getPostsList()">
+            <ul uib-pagination ng-if="paging.count > paging.limit" previous-text="Previous" force-ellipses="forceEllipses" max-size="maxSize" items-per-page="paging.limit" total-items="paging.count" ng-model="paging.page" class="pagination pagination_theme pull-right" boundary-link-numbers="true" rotate="false" ng-change="getMorePosts()">
             </ul>
          </div>
       </div>

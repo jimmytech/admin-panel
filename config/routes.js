@@ -3,18 +3,32 @@
 const express       = require('express'),
     path            = require('path'),
     fs              = require('fs'),
+    querystring     = require('querystring'),
     expressJWT      = require('express-jwt'),
-    myFunction      = require(path.resolve('utils/route')),
+    myFunction      = require(path.resolve('./modules/utils/route')),
     key             = require(path.resolve(`./config/env/${process.env.NODE_ENV}`)),
-    admin           = express.Router();
+    admin           = express.Router(),
+    user            = express.Router();
 
 
-/*read and load all controllers*/
+
+/*read and load admin controllers*/
+
 let ctrls = {};
-fs.readdirSync(path.resolve('./controllers/backend')).forEach(file => {
+fs.readdirSync(path.resolve('./modules/backend/controllers')).forEach(file => {
     let name = file.substr(0, file.indexOf('.'));
-    ctrls[name] = require(path.resolve(`./controllers/backend/${name}`));
+    ctrls[name] = require(path.resolve(`./modules/backend/controllers/${name}`));
 });
+
+
+/*read and load user controllers*/
+
+let userCtrls = {};
+fs.readdirSync(path.resolve('./modules/frontend/controllers')).forEach(file => {
+    let name = file.substr(0, file.indexOf('.'));
+    userCtrls[name] = require(path.resolve(`./modules/frontend/controllers/${name}`));
+});
+
 
 /*routes authencation by using express routes*/
 admin.use(expressJWT({
@@ -26,16 +40,20 @@ admin.use(expressJWT({
 }));
 
 
+user.get('/test-function', userCtrls.index.test);
+
+/*login route*/
 admin.post('/login', ctrls.admin_controller.login);
-admin.post('/changePassword', ctrls.admin_controller.changePassword);
+admin.get('/get-all-count', ctrls.admin_controller.getCount);
+
 
 /*CMS routes*/
 admin.post('/insert-update-page', myFunction.saveImage(), ctrls.cms_controller.insertUpdate);
 admin.get('/get-cms-page', ctrls.cms_controller.showPagesList);
 admin.get('/cms-page-by-id', ctrls.cms_controller.editpage);
-admin.get('/getTestimonialById', ctrls.admin_controller.testimonialDataToEdit);
 admin.get('/delete-cms-page', ctrls.cms_controller.deletePage);
 /*end*/
+
 
 
 /*testimonial routes*/
@@ -43,47 +61,59 @@ admin.post('/insert-update-testimonail', myFunction.saveImage(), ctrls.testimoni
 admin.get('/get-testimonial-data', ctrls.testimonial_controller.testimonialData);
 admin.post('/add-testimonial-category', ctrls.testimonial_controller.addTestimonialCategory);
 admin.get('/testimonialCategory', ctrls.testimonial_controller.testimonialCategory);
-admin.get('/deleteTestimonial', ctrls.admin_controller.deleteTestimonial);
 
-// /*end testimonial routes*/
+ /*end testimonial routes*/
 
+
+
+
+/*profile routes*/
 
 admin.post('/update-profile', ctrls.admin_controller.updateProfile);
 admin.get('/profile-info', ctrls.admin_controller.profileInfo);
-admin.post('/insertUpdateFrequentlyAskedQuestion', ctrls.admin_controller.insertUpdateFaq);
-admin.get('/faqList', ctrls.admin_controller.showFaqList);
-admin.get('/deleteFaqData', ctrls.admin_controller.deleteFaq);
-admin.get('/getFaqToedit', ctrls.admin_controller.faqToedit);
+admin.post('/changePassword', ctrls.admin_controller.changePassword);
 
-admin.post('/addLib', ctrls.admin_controller.addLibary);
-admin.get('/getlibraryFeatureData', ctrls.admin_controller.libraryFeatureList);
-admin.post('/addLibCat', ctrls.admin_controller.addLibaryCategory);
-admin.post('/addLibLab', ctrls.admin_controller.addLibaryLabel);
-admin.get('/deleteLibraryData', ctrls.admin_controller.removeLibraryData);
-admin.get('/updateLibraryData', ctrls.admin_controller.editAndSaveLibraryData);
-admin.get('/showSubCategory', ctrls.admin_controller.viewSubCategory);
-admin.post('/assignSubCat', ctrls.admin_controller.assignSubCategory);
-admin.post('/addSubCat', ctrls.admin_controller.addSubCategory);
-admin.get('/libDropDownList', ctrls.admin_controller.getLibDropDownList);
-admin.get('/libRecord', ctrls.admin_controller.libraryRecords);
-admin.post('/addUpdateLibCat', ctrls.admin_controller.addUpdateLibCat);
-admin.get('/libSubCatRecord', ctrls.admin_controller.librarySubCatRecord);
-admin.get('/libPostRecord', ctrls.admin_controller.libraryPostsRecord);
-admin.get('/getLibdataToEdit', ctrls.admin_controller.receiveLibDataToEdit);
-admin.post('/updateLibRecord', ctrls.admin_controller.updateLibRecord);
+/*end profile routes*/
 
 
 
-/*post routes*/
+
+/*FAQs routes*/
+
+admin.post('/insert-update-faq', ctrls.faq_controller.insertUpdateFaq);
+admin.get('/faq-list', ctrls.faq_controller.showFaqList);
+admin.get('/move-to-trash-faq', ctrls.faq_controller.trashFaq);
+admin.get('/faq-detail', ctrls.faq_controller.faqDetail);
+
+/*end FAQs routes*/
+
+
+
+
+
+
+
+
+/*blogs-post routes*/
+
 admin.post('/add-update-post', myFunction.saveImage(), ctrls.post_controller.addUpdatePost);
 admin.get('/post-info', ctrls.post_controller.postInfo);
 admin.get('/posts-list', ctrls.post_controller.getPostsList);
 admin.get('/search-post', ctrls.post_controller.search);
 admin.delete('/delete-post/:id', ctrls.post_controller.deletePost);
 
+/*end blog-post routes*/
 
-admin.post('/changePassword', ctrls.admin_controller.changePassword);
 
+/*category routes*/
+admin.get('/category-list', ctrls.category_controller.categortList);
+admin.post('/add-update-category', ctrls.category_controller.insertUpdateCategory);
+admin.get('/category-info/:id', ctrls.category_controller.categoryInfo);
+admin.delete('/delete-category/:id', ctrls.category_controller.deleteCategory);
+admin.get('/category-drop-down-list', ctrls.category_controller.dropDownList);
+
+/*end category routes*/
 module.exports = {
-    admin: admin
+    admin: admin,
+    user: user
 };

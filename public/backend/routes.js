@@ -19,6 +19,7 @@ app.config(['$routeProvider', function($routeProvider) {
             .when('/admin/dashboard', {
                 templateUrl: 'backend/home/views/admin_dashboard.html',
                 controller: 'homeController',
+                // reloadOnSearch: false,
                 resolve: {
                     validate: required
                 }
@@ -26,21 +27,22 @@ app.config(['$routeProvider', function($routeProvider) {
 
             .when('/admin/posts', {
                 templateUrl: 'backend/blog/views/blog.html',
+                reloadOnSearch: false,
                 controller: 'blogController',
                 resolve: {
                     validate: required
                 }
             })
-            .when('/admin/post/:id', {
+            .when('/admin/edit-post/:id', {
                 templateUrl: 'backend/blog/views/add_edit_blog.html',
-                controller: 'blogController',
+                controller: 'editBlogController',
                 resolve: {
                     validate: required
                 }
             })
-            .when('/admin/view-post-info/:id', {
+            .when('/admin/view-post/:id', {
                 templateUrl: 'backend/blog/views/blog_detail.html',
-                controller: 'blogController',
+                controller: 'previewBlogController',
                 resolve: {
                     validate: required
                 }
@@ -54,7 +56,7 @@ app.config(['$routeProvider', function($routeProvider) {
             })
             .when('/admin/pages/:page', {
                 templateUrl: 'backend/cms/views/add_edit_page.html',
-                controller: 'cmsController',
+                controller: 'addEditCmsController',
                 resolve: {
                     validate: required
                 }
@@ -97,7 +99,63 @@ app.config(['$routeProvider', function($routeProvider) {
             })
             .when('/admin/faq/:u', {
                 templateUrl: 'backend/faq/views/add_edit_faq.html',
-                controller: 'faqController',
+                controller: 'addEditFaqController',
+                resolve: {
+                    validate: required
+                }
+            })            
+            .when('/admin/view-faq/:u', {
+                templateUrl: 'backend/faq/views/faq_detail.html',
+                controller: 'addEditFaqController',
+                resolve: {
+                    validate: required
+                }
+            })            
+            .when('/admin/Categories', {
+                templateUrl: 'backend/Categories/views/categories.html',
+                controller: 'categoryController',
+                resolve: {
+                    validate: required
+                }
+            })            
+            .when('/admin/categories/new-category', {
+                templateUrl: 'backend/Categories/views/add_edit_category.html',
+                controller: 'addEditCategoryController',
+                resolve: {
+                    validate: required
+                }
+            })             
+            .when('/admin/category/:id', {
+                templateUrl: 'backend/Categories/views/add_edit_category.html',
+                controller: 'addEditCategoryController',
+                resolve: {
+                    validate: required
+                }
+            })               
+            .when('/admin/category/detail/:id', {
+                templateUrl: 'backend/Categories/views/preview_category.html',
+                controller: 'addEditCategoryController',
+                resolve: {
+                    validate: required
+                }
+            })            
+            .when('/admin/users/service-providers', {
+                templateUrl: 'backend/users/views/users.html',
+                controller: 'userController',
+                resolve: {
+                    validate: required
+                }
+            })            
+            .when('/admin/users/customers', {
+                templateUrl: 'backend/users/views/users.html',
+                controller: 'userController',
+                resolve: {
+                    validate: required
+                }
+            })            
+            .when('/admin/users/new', {
+                templateUrl: 'backend/users/views/new_user.html',
+                controller: 'userController',
                 resolve: {
                     validate: required
                 }
@@ -106,6 +164,7 @@ app.config(['$routeProvider', function($routeProvider) {
                 redirectTo: '/'
             });
     }])
+
     .config(['toastyConfigProvider', function(toastyConfigProvider) {
         toastyConfigProvider.setConfig({
             sound: true,
@@ -113,6 +172,7 @@ app.config(['$routeProvider', function($routeProvider) {
             position: 'top-right'
         });
     }])
+
     .config(['$httpProvider', function ($httpProvider) {
         $httpProvider.interceptors.push(['$q', function($q) {
                   return {
@@ -128,19 +188,24 @@ app.config(['$routeProvider', function($routeProvider) {
                        return response || $q.when(response);
                     }
                   };
-                }]);
+            }]);
     }])     
+
     .run(['$rootScope', '$location',
         function($rootScope, $location) {
+
             $rootScope.$on('$routeChangeSuccess', function() {
-                var path = $location.path();
-                if (path == '/admin/login') {
+
+                if ($location.path() == '/admin/login') {
                     $rootScope.headerAndSidebar = true;
                 } else {
                     $rootScope.headerAndSidebar = false;
                 }
+
             });
+
             $rootScope.$on('$routeChangeError', function(event, current, previous, rejection) {
+
                 if (rejection.authentication === true) {
                     $location.path('/admin/dashboard');
                 } else {
@@ -148,20 +213,36 @@ app.config(['$routeProvider', function($routeProvider) {
                 }
 
             });
+
+            $rootScope.$on('$locationChangeSuccess', function(event, current, previous) {
+                
+                var previousUrl = previous.substr(0, previous.indexOf('?'));
+                var currentUrl = current.substr(0, current.indexOf('?'));
+
+                if (previousUrl !== currentUrl && previousUrl.length > 0) {
+                    $location.search('');
+                }
+
+            });
+
             $rootScope.$on('$routeChangeStart', function() {
+
                 if ($location.path() == '/admin/login') {
                     $rootScope.adminLoginPage = true;
                 } else {
                     $rootScope.adminLoginPage = false;
                 }
-            });          
+
+            });
         }
     ]);
 
 
 var required = ['$q', function  ($q) {
+
     var deferred = $q.defer();
     var token = localStorage.getItem("token");
+
     if (token) {
         deferred.resolve();
     } else {
@@ -169,12 +250,16 @@ var required = ['$q', function  ($q) {
             authentication: false
         });
     }
+
     return deferred.promise;
+
 }];
 
 var notRequired = ['$q', function  ($q) {
+
     var deferred = $q.defer();
     var token = localStorage.getItem("token");
+
     if (token) {
         deferred.reject({
             authentication: true
@@ -182,5 +267,6 @@ var notRequired = ['$q', function  ($q) {
     } else {
         deferred.resolve();
     }
+
     return deferred.promise;
 }];

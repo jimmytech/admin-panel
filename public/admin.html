@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html ng-app="myAdminApp">
+   <head>
+      <title>Admin</title>
+
+      <!-- css files -->
+      <link rel="stylesheet" type="text/css" href="assets/css/backend/admin_site.min.css"> <link rel="stylesheet" type="text/css" href="assets/css/backend/admin_app.min.css">
+     
+      <!-- live css url -->
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css">
+      <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+   </head>
+   <body  class=" skin-blue sidebar-mini" >
+
+   <div ng-controller = "includeController" >   
+      <!-- left side panel -->
+      <div ng-if = "!headerAndSidebar" ng-include="'backend/includes/views/left_sidebar.html'">
+      </div>
+      <!-- header -->
+      <div ng-if = "!headerAndSidebar" ng-include="'backend/includes/views/header.html'">
+      </div>
+   </div>
+
+
+      <div class="content-wrapper" set-height>
+         <div ng-view></div>
+      </div>      
+
+      <!-- toast message -->
+      <toasty></toasty>
+
+      <!-- js files -->
+      <script type="text/javascript" src="assets/js/admin_site.min.js"></script>      
+      <script type="text/javascript" src="assets/js/admin_app.min.js"></script>
+
+      <!-- live js files -->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/1.7.3/socket.io.js"></script>
+      <script src="https://cdn.ckeditor.com/4.5.6/standard/ckeditor.js"></script>
+      <script src="http://code.highcharts.com/highcharts.js"></script>
+   </body>
+</html>

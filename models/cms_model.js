@@ -9,11 +9,16 @@ var cms = new schema({
 	meta_title: String,
 	meta_description: String,
 	meta_keywords: String,
+	meta_content: String,
 	top:Number,
 	bottom: Number,
 	slug: String,
 	status: Number,
 	sort: Number,
+	trash: {
+		type: Boolean,
+		default: false
+	},
 	created: {type: Date, default: Date.now}
 });
 

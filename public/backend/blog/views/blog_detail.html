@@ -1,4 +1,4 @@
-   <section class="content-header" ng-init = "viewDetail()">
+   <section class="content-header">
       <h1>Blog Details</h1>
    </section>
    <section class="content paddingfotter">
@@ -36,6 +36,9 @@
                   </li>                  
                   <li>
                      <b>Type: </b> <p>{{page.postType}}</p>
+                  </li>                    
+                  <li>
+                     <b>Created: </b> <p>{{page.created_at | date :  "dd.MM.y"}}</p>
                   </li>                  
                   <li>
                      <b>Status: </b> 

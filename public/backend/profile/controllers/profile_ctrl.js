@@ -1,6 +1,9 @@
-app.controller('profileController', ['Upload', '$routeParams', '$scope', '$rootScope', '$location', '$http', 'toasty', 'toastyService',
+app.controller('profileController', ['socket', 'Upload', '$routeParams', '$scope', '$rootScope', '$location', '$http', 'toasty', 'toastyService',
    
-    function(Upload, $routeParams, $scope, $rootScope, $location, $http, toasty, toastyService) {
+    function(socket, Upload, $routeParams, $scope, $rootScope, $location, $http, toasty, toastyService) {
+          
+       
+            
           $scope.editProfilePage = function (url) {
           	$location.path('/admin/edit-profile');
           };

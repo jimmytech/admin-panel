@@ -1,4 +1,6 @@
-app.directive('numbersOnly', function(){
+app
+
+.directive('numbersOnly', function(){
        return {
          require: 'ngModel',
          link: function(scope, element, attrs, modelCtrl) {
@@ -14,13 +16,26 @@ app.directive('numbersOnly', function(){
            });
          }
        };
-    });
+    })
 
-app.directive('setHeight', ['$window', function($window){
+.directive('setHeight', ['$window', function($window){
     return{
         restrict:'A',
         link: function(scope, element, attrs){
             element.css('min-height', ($window.innerHeight - 50) + 'px');
         }
     };
-}]);
+}])
+
+
+.directive( 'backButton', function() {
+    return {
+        restrict: 'A',
+        link: function( scope, element, attrs ) {
+            element.on( 'click', function () {
+                history.back();
+                scope.$apply();
+            });
+        }
+    };
+});
