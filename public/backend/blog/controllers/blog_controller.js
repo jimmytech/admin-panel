@@ -1,5 +1,5 @@
-app.controller('blogController', ['$timeout','paging', 'confirmationDialog', 'http', 'Upload', '$routeParams', 'toastyService', '$scope', '$location', '$rootScope', '$http',
-    function($timeout, paging, confirmationDialog, http, Upload, $routeParams, toastyService, $scope, $location, $rootScope, $http) {
+app.controller('blogController', ['sortIcon', '$timeout','paging', 'confirmationDialog', 'http', 'Upload', '$routeParams', 'toastyService', '$scope', '$location', '$rootScope', '$http',
+    function(sortIcon, $timeout, paging, confirmationDialog, http, Upload, $routeParams, toastyService, $scope, $location, $rootScope, $http) {
 
         (function(){
 
@@ -8,7 +8,6 @@ app.controller('blogController', ['$timeout','paging', 'confirmationDialog', 'ht
             getPostsList();
 
         }());
-
 
 
         /*set pagination parameter from values when blog.html will load*/

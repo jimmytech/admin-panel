@@ -9,7 +9,6 @@ var cms = new schema({
 	meta_title: String,
 	meta_description: String,
 	meta_keywords: String,
-	meta_content: String,
 	top:Number,
 	bottom: Number,
 	slug: String,
@@ -18,8 +17,12 @@ var cms = new schema({
 	trash: {
 		type: Boolean,
 		default: false
-	},
-	created: {type: Date, default: Date.now}
+	}
+}, {
+	timestamps: {
+        createdAt: 'created_at',
+        updatedAt: 'updated_at' 		
+	}
 });
 
 module.exports = mongoose.model('cmsModel', cms);

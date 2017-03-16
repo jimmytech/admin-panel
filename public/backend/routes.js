@@ -61,9 +61,9 @@ app.config(['$routeProvider', function($routeProvider) {
                     validate: required
                 }
             })
-            .when('/admin/page/detail/:id', {
+            .when('/admin/page/detail/:page', {
                 templateUrl: 'backend/cms/views/cms_page_detail.html',
-                controller: 'cmsController',
+                controller: 'addEditCmsController',
                 resolve: {
                     validate: required
                 }
@@ -141,6 +141,7 @@ app.config(['$routeProvider', function($routeProvider) {
             })            
             .when('/admin/users/service-providers', {
                 templateUrl: 'backend/users/views/users.html',
+                reloadOnSearch: false,
                 controller: 'userController',
                 resolve: {
                     validate: required
@@ -148,6 +149,7 @@ app.config(['$routeProvider', function($routeProvider) {
             })            
             .when('/admin/users/customers', {
                 templateUrl: 'backend/users/views/users.html',
+                reloadOnSearch: false,
                 controller: 'userController',
                 resolve: {
                     validate: required

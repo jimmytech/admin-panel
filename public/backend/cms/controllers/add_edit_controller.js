@@ -1,13 +1,13 @@
-app.controller('addEditCmsController', ['Upload','$routeParams','toastyService', '$scope', '$location', '$rootScope', '$http', 
-    function(Upload, $routeParams, toastyService, $scope, $location, $rootScope, $http) {
+app.controller('addEditCmsController', ['htmlToText', 'Upload','$routeParams','toastyService', '$scope', '$location', '$rootScope', '$http', 
+    function(htmlToText, Upload, $routeParams, toastyService, $scope, $location, $rootScope, $http) {
         
         (function(){
 
-            editpage();
+            pageInfo();
 
         }());
 
-        function editpage() {
+        function pageInfo() {
             var page = $routeParams.page;
             if (page == 'add-new-page') {
                 $scope.csmPageTittle = "Add New Page";
@@ -15,6 +15,7 @@ app.controller('addEditCmsController', ['Upload','$routeParams','toastyService',
                 $scope.csmPageTittle = "Edit Page";
                 $http.get('/admin/cms-page-by-id?id=' + page).then(function(response) {
                     $scope.page = response.data.page;
+                    $scope.page.content = htmlToText.convert($scope.page.content);
                 });
             }
         }

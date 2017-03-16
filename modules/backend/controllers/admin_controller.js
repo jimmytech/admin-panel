@@ -16,10 +16,9 @@ const crypto            = require('crypto'),
 
 
 exports.login = (req, res) => {
+
     adminModel.findOne({
-        email: req.body.email,
-        password: req.body.password,
-        role: "admin"
+        email: req.body.email
     }, {
         firstname: 1,
         lastname: 1,
@@ -33,12 +32,13 @@ exports.login = (req, res) => {
         if (err) {
             res.send(err);
         } else {
-            if (!user) {
+            if (!user || !user.matchPassword(req.body.password)) {
                 res.json({
                     message: 'Authentication failed',
                     success: false
                 });
             } else {
+
                 let auth = user.auth;
                 let miliseconds = JSON.stringify(+new Date(user.created));
                 let firstAuth = auth.slice(0, 9);
@@ -64,14 +64,17 @@ exports.login = (req, res) => {
 
 exports.profileInfo = (req, res) => {
     adminModel.findOne({
-        role: "admin"
+        email: "admin@admin.com"
     }, {
         firstname: 1,
         lastname: 1,
         email: 1,
+        role:1,
         address: 1,
-        gander: 1
+        gender: 1,
+        user_name:1
     }, function(err, result) {
+
         res.json({
             info: result
         });
@@ -79,7 +82,13 @@ exports.profileInfo = (req, res) => {
 };
 
 exports.updateProfile = (req, res) => {
-    adminModel.findOneAndUpdate({}, req.body, function(err, result) {
+   
+    adminModel.update({},
+    {
+        $set: req.body
+
+    }, function(err, result) {
+
         if (result) {
             res.json({
                 success: true,
@@ -95,48 +104,97 @@ exports.updateProfile = (req, res) => {
 };
 
 exports.changePassword = (req, res) => {
-    adminModel.findOneAndUpdate({}, req.body, function(err, result) {
-        if (result) {
-            res.json({
-                success: true,
-                msg: "Password Changed successfully"
-            });
-        } else {
-            res.json({
-                success: false,
-                msg: "Some errors occurred"
-            });
-        }
-    });
+
+    if (req.body.password && req.body.currentPassword) {
+
+        adminModel.findById(req.body._id, (err, user) => {
+
+            if (user && user.matchPassword(req.body.currentPassword)) {
+
+                adminModel.update({
+                    "_id": req.body._id
+                }, {
+                    "$set" : {
+                        "password": user.encryptPassword(req.body.password)
+                    }
+                }, (err, update) => {
+                    
+                    if (update) {
+
+                        res.json({
+                            success: true,
+                            msg: "Password Changed successfully"
+                        });   
+
+                    }else{
+
+                        res.json({
+                            success: false,
+                            msg: "Some errors occurred"
+                        }); 
+
+                    }
+                });
+
+
+
+            } else {
+
+                res.json({
+                    success: false,
+                    msg: "Current password is invalid"
+                });
+
+            }
+        });
+
+    } else {
+
+        res.json({
+            success: false,
+            msg: "Please provide password"
+        });
+
+    }
 };
 
 exports.getCount = (req, res) => {
+    
         async.parallel({
 
             totalBlog: (cb) => {
+
                 blogModel.count((err, count)=>{
                     cb(null, count);
                 });
+
             },
 
             totalCategory: (cb) => {
+
                 categoryModel.count((err, count) => {
                     cb(null, count);
                 });
+
             },
 
             totalPages: (cb) => {
+
                 cmsModel.count((err, count)=>{
                     cb(null, count);
-                });            
+                });
+
             },
 
             totalFaq: (cb) => {
+
                 faqModel.count((err, count)=>{
                     cb(null, count);
-                });            
+                });
+
             }, 
             totalUser: (cb) => {
+
                 userModel.aggregate([
                 {
                     "$group": {
@@ -145,51 +203,18 @@ exports.getCount = (req, res) => {
                     }
                 }], (err, result) => {
                      cb(null, result);
-                });            
+                }); 
+
             }, 
 
         }, (err, result) => {
+
             res.json({
                 result: result
             });
+
         }); 
 
 };
 
 
-
-// class Square {
-//     constructor(side) {
-//         this.side = side;
-//     }
-
-//     static sq(side){
-//         return (side*side);
-//     }
-// }
-
-// class Rectangle extends Square {
-
-//   constructor(height, width) {
-//     this.height = height;
-//     this.width = width;
-//   }
-  
-//   areaOfRectangle(){
-//     return (this.height*this.width);
-//   }
-
-//   static areaOfSquare(a){
-//     return super.sq(a);
-//   }
-
-//   static aor(w,h){
-//     return (w*h);
-//   }
-// }
-
-//var object = new Rectangle(5,8);
-//console.log(object.aor());
-//console.log(object.areaOfSquare());
-
- // console.log(Rectangle.areaOfSquare(8));

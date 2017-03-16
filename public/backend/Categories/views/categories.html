@@ -3,7 +3,7 @@
 </section>
 
 <section class="content">
-   <div class="row">
+   <div class="row" ng-if = "data.success">
    <!-- <div class="row" ng-if = "postResponse.table"> -->
       <div class="col-xs-12">
          <div class="box">
@@ -54,7 +54,7 @@
                         <th  width="20%">Action</th>
                      </tr>
 
-                     <tr ng-repeat="l in data.result | filter: searchFor ">
+                     <tr ng-repeat="l in result = (data.result | filter: searchFor) ">
                         <td>
                            {{l.title }}
 
@@ -85,21 +85,23 @@
                            </a>
                         </td>
                      </tr>
-                  <tr ng-if="postResponse.table && postResponse.search">
-                     <td colspan="6">
-                        <p style="margin-top: 50px; margin-bottom: 50px;" class="text-center"> Your search - <b>{{searchFor}}</b> - did not match any record</p>
-                     </td>
-                  </tr>                     
+                     <tr ng-if = "searchFor.length>0 && result==0" >
+                        <td colspan="6">
+                           <p style="margin-top: 50px; margin-bottom: 50px;" class="text-center"> Your search - <b>{{searchFor}}</b> - did not match any record</p>
+                        </td>
+                     </tr>                     
                   </tbody>
                </table>
             </div>
          </div>
-         <div class="clearfix">
+
+<!--          <div class="clearfix">
             <ul uib-pagination ng-if="paging.count > paging.limit" previous-text="Previous" force-ellipses="forceEllipses" max-size="maxSize" items-per-page="paging.limit" total-items="paging.count" ng-model="paging.page" class="pagination pagination_theme pull-right" boundary-link-numbers="true" rotate="false" ng-change="getMorePosts()">
             </ul>
-         </div>
+         </div> -->
+         
       </div>
    </div>
-   <!-- <div ng-if="!postResponse.success && !postResponse.search" ng-include="'backend/includes/views/no-result.html'"> -->
+   <div ng-if="!data.success || data.result == 0" ng-include="'backend/includes/views/no-result.html'">
    </div>
 </section>   

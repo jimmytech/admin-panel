@@ -3,13 +3,13 @@
 const path                  = require('path'),
     response                = require(path.resolve('./config/libs/response')),
     msg                     = require(path.resolve('./config/libs/message')),
-    get                     = require(path.resolve('./config/env/default')),
+    getDefault              = require(path.resolve('./config/env/default')),
     blogModel               = require(path.resolve('./models/blog_model'));
 
 
 exports.getPostsList = (req, res) => {
     let page = req.query.page;
-    let limit = get.pagingLimit;
+    let limit = getDefault.pagingLimit;
     let sortOn = req.query.sortOn;
     let sort = {};
 
@@ -31,7 +31,7 @@ exports.getPostsList = (req, res) => {
     }, {
         $project: {
             title:1,
-            sort:1,
+            order:1,
             postType:1,
             status:1,
             author:1
@@ -77,14 +77,12 @@ exports.getPostsList = (req, res) => {
 
 exports.search = (req, res) => {
     let search = req.query.searchFor.replace(/ /g, "|");
-    // let page = req.query.page;
-    let limit = get.pagingLimit;
+    let limit = getDefault.pagingLimit;
     let options = [{
-        $match: {
-            $and: [{
+        "$match": {
+            "$and": [{
                     trash: false
-                },
-                {
+                }, {
                     $or: [{
                             title: {
                                 $regex: search,

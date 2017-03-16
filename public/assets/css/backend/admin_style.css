@@ -5,15 +5,32 @@
 /*.content-wrapper{height: 100vh}*/
 .content-wrapper, .right-side{background: #fff;}
 .positionrel{position: relative;;}
+*{
+    outline: none;
+}
 a {
     cursor: pointer;
 }
 md-icon {
      cursor: pointer;
 }
+.frame{
+    background-color: #222;
+    margin-bottom: 50px!important;
+}
+.frame img {
+    margin: -10px auto;
+}
 .main-header .logo:hover{background-color:#222D32!important}
 .back-color {
     background-color: #106AC3;
+}
+
+.margin-left-145 {
+    margin-left: 145px;
+}
+.padding-left-5 {
+    padding-left: 5px;
 }
 .md-accordion .expandCollapse {
     width: 30px;
@@ -108,6 +125,20 @@ li li span.label {
     top: -22px;
     position: relative;
 }
+.left-side, .main-sidebar {
+    z-index: 10!important;
+}
+.display-none {
+    display: none;
+}
+
+.no-faq-match {
+    margin-top: 12%;
+}
+
+.gray {
+    background-color: rgb(185, 185, 185) !important;
+}
 .topmenu_right{margin-top: 40px;}
 .martop10{margin-top: 10px;}
 .martop40{margin-top: 40px;}
@@ -135,9 +166,10 @@ li li span.label {
 .serch_div{width: 260px;}
 .navbar .nav>li.dropdown >a:hover,.skin-blue .main-header .navbar .sidebar-toggle:hover {background: rgba(0,0,0,0)!important;color:#fff!important;}
 .nav .open>a, .nav .open>a:focus, .nav .open>a:hover{background: rgba(0,0,0,0)!important;color:#fff!important;}
-.noresultstxt{padding: 20px 15px; text-align: center;}
+.noresultstxt{padding: 125px 15px; text-align: center;}
 .noresultstxt h4{margin: 0 0 10px 0; font-size: 24px;}
 .noresultstxt p{padding:0 20px; }
+.noresultstxt p{padding:0 0px; }
 .min-heightauto{min-height: auto;}
 .box-shadow{box-shadow: 0 1px 1px rgba(0,0,0,0.1); padding: 20px 30px 20px;}
 .colorlabel{color: #444!important; font-weight: 400!important;}
@@ -153,7 +185,7 @@ md-select.md-default-theme .md-select-value.md-select-placeholder, md-select .md
 .viewlist_custom.profilelist_custom > li:last-child {border: 0;}
 .viewlist_custom.profilelist_custom > li p{margin-left: 280px; }
 .edit_profile_btn{position: absolute; right: 10px;}
-.change_passwor_div{width: 600px; position: relative; }
+.change_passwor_div{width: 600px; position: relative; margin: 5% auto}
 .paddingfotter{padding-bottom: 80px;}
 .bg-blue{position: relative;background-color: #00c0ef;box-shadow: 3px -1px 3px 0 rgba(0,0,0,.07), -10px 2px 15px 1px rgba(0,0,0,.06);-webkit-box-shadow: 3px -1px 3px 0 rgba(0,0,0,.07), -10px 2px 15px 1px rgba(0,0,0,.06);}
 .bg-white{background-color: #fff; border: 1px solid #ddd;}
@@ -161,7 +193,7 @@ md-select.md-default-theme .md-select-value.md-select-placeholder, md-select .md
 .user_details_dash tr td:first-child{padding-right: 15px;}
 .user_details_dash tr td{padding: 5px 10px;}
 .faq-question{margin-bottom: 10px;}
-.faqtxt{font-size: 17px; padding-left: 25px; position: relative;}
+.faqtxt{font-size: 17px; padding-left: 35px; position: relative;}
 .faqtxt span{position: absolute; left: 10px; top:0px;}
 .height250{height: 400px;}
 .color-green{color: #008d4c}
@@ -182,7 +214,8 @@ md-select.md-default-theme .md-select-value.md-select-placeholder, md-select .md
 .login_main{height: auto;}
 .pull-right.forgot_admin{float: left!important;}
 .pull-right.forgot_admin{text-align: left;}
-.noresultstxt p{padding:0 0px; }
+
+
 .box-shadow{box-shadow: 0 1px 1px rgba(0,0,0,0.1); padding: 20px 10px 20px;}
 .viewlist_custom > li b{ float: none;  margin-bottom:5px;}
 .viewlist_custom > li p{margin-left: 0px;}

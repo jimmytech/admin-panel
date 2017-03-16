@@ -40,23 +40,32 @@ admin.use(expressJWT({
 }));
 
 
-user.get('/test-function', userCtrls.index.test);
+// admin.get('/first', ctrls.index.first);
+// admin.get('/second', ctrls.index.second);
+// admin.get('/third', ctrls.index.third);
 
 /*login route*/
+
 admin.post('/login', ctrls.admin_controller.login);
 admin.get('/get-all-count', ctrls.admin_controller.getCount);
 
 
+admin.get('/user-list', ctrls.user_controller.userList);
+admin.get('/search-user', ctrls.user_controller.search);
+
 /*CMS routes*/
+
 admin.post('/insert-update-page', myFunction.saveImage(), ctrls.cms_controller.insertUpdate);
 admin.get('/get-cms-page', ctrls.cms_controller.showPagesList);
 admin.get('/cms-page-by-id', ctrls.cms_controller.editpage);
 admin.get('/delete-cms-page', ctrls.cms_controller.deletePage);
+
 /*end*/
 
 
 
 /*testimonial routes*/
+
 admin.post('/insert-update-testimonail', myFunction.saveImage(), ctrls.testimonial_controller.insertUpdateTestimonail);
 admin.get('/get-testimonial-data', ctrls.testimonial_controller.testimonialData);
 admin.post('/add-testimonial-category', ctrls.testimonial_controller.addTestimonialCategory);

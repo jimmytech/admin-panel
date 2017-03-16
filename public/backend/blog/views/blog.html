@@ -1,6 +1,11 @@
 <section class="content-header">
    <h1 class="page_title"> Blog  <span><button class="btn btn-primary" type="button" ng-click = "addPost('/admin/edit-post/add-new')" >Add New</button></span></h1>
 </section>
+
+<!-- <button ng-click = "first()">first</button>
+<button ng-click = "second()">second</button>
+<button ng-click = "third()">third</button> -->
+
 <section class="content">
    <div class="row" ng-if = "postResponse.table">
       <div class="col-xs-12">
@@ -36,7 +41,7 @@
                         <th  width="10%">Order  
                            <a class="sort" >
                            <i ng-click = "sort(searchFor,
-                           'sort',  $event)" ng-class = "orderIcon" aria-hidden="true">
+                           'order',  $event)" ng-class = "orderIcon" aria-hidden="true">
                            </i>
                            <md-tooltip md-direction="top">Sort by Order</md-tooltip>
                            </a>
@@ -67,7 +72,7 @@
                            </span>
                         </td>
                         <td>{{l.author}} </td>
-                        <td>{{l.sort}} </td>
+                        <td>{{l.order}} </td>
                         <td>{{l.postType}}</td>
                         <td>
                            <span ng-if="l.status==1">Active</span>

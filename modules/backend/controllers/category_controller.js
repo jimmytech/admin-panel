@@ -40,34 +40,91 @@ exports.categoryInfo = (req, res) => {
 
 };
 
+/*insert or update category*/
 
 exports.insertUpdateCategory = (req, res) => {
 
     let body = req.body;
     if (body._id) {
 
-        categoryModel.update({
-            "_id": body._id
-        }, {
-            $set: body
-        }, (err, result) => {
-            if (result.nModified == "1") {
-                res.json({
-                    success: true,
-                    msg: msg.updated
+        if (body.child == 'root') {
+
+            categoryModel.update({
+                "_id": body._id
+            }, {
+                $set: body
+            }, (err, result) => {
+                if (result.nModified == "1") {
+                    res.json({
+                        success: true,
+                        msg: msg.updated
+                    });
+                } else {
+                    res.json({
+                        success: false,
+                        msg: msg.someError
+                    });
+                }
+            });
+
+        } else {
+
+            categoryModel.findById(
+                body._id, {
+                    "sub_category": 1,
+                    "_id": 0
+                }, (err, result) => {
+                    if (result) {
+                        let subCategory = result.sub_category;
+                        let mainSubCategory = {
+                            title: body.title,
+                            description: body.description
+                        };
+                        if (subCategory.length > 0) {
+                            subCategory.push(mainSubCategory);
+                        } else {
+                            subCategory = [mainSubCategory];
+                        }
+                        categoryModel.update({
+                            "_id": body.child
+                        }, {
+                            $push: {
+                                sub_category: {
+                                    $each: subCategory
+                                }
+                            }
+                        }, (err, result) => {
+                            if (result.nModified == "1") {
+                                categoryModel.remove({
+                                    "_id": body._id
+                                }, (err, result) => {
+                                    if (result.result.n == "1") {
+                                        res.json({
+                                            success: true,
+                                            msg: msg.updated
+                                        });
+                                    } else {
+                                        res.json({
+                                            success: false,
+                                            msg: msg.someError
+                                        });
+                                    }
+                                });
+                            }
+                        });
+                    } else {
+                        res.json({
+                            success: false,
+                            msg: msg.someError
+                        });
+                    }
                 });
-            } else {
-                res.json({
-                    success: false,
-                    msg: msg.someError
-                });
-            }
-        });
+
+        }
 
     } else {
 
         if (body.child == 'root') {
-
             let data = new categoryModel(body);
             data.save((err, result) => {
                 if (result) {
@@ -83,7 +140,7 @@ exports.insertUpdateCategory = (req, res) => {
                 }
             });
 
-        } else{
+        } else {
 
             categoryModel.update({
                 "_id": body.child
@@ -104,10 +161,12 @@ exports.insertUpdateCategory = (req, res) => {
                     });
                 }
             });
+
         }
 
     }
 };
+
 
 exports.deleteCategory = (req, res) => {
 

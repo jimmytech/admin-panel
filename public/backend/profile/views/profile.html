@@ -1,4 +1,3 @@
-<div class="content-wrapper" style="min-height: 700px;" ng-init = "adminProfileInfo()">
    <section class="content-header">
       <h1>
          <!-- Update Profile Info -->
@@ -9,7 +8,7 @@
          <div class="box-primary">
             <div class="box-body box-profile">
                <div class="profile_details box-shadow">   
-                  <md-button ng-click = "editProfilePage()" class="md-fab  md-primary md-mini pull-right edit_profile_btn" aria-label="Eat cake">
+                  <md-button ng-click = "editProfilePage()" class="md-fab  md-default md-mini pull-right edit_profile_btn gray" aria-label="Eat cake">
                      <md-icon>mode_edit</md-icon>
                   </md-button>         
                   <img class="profile-user-img img-responsive img-circle martop40" src="/assets/img/admin.png" alt="User profile picture">               
@@ -20,13 +19,13 @@
                      <b>Email: </b> <p>{{user.email}}</p>
                   </li>                  
                   <li>
-                     <b>User Name: </b> <p>John123</p>
+                     <b>User Name: </b> <p>{{user.user_name}}</p>
                   </li>
                   <li>
                      <b>Address: </b> <p>{{user.address}}</p>
                   </li>
                   <li >
-                     <b>Gender: </b> <p>{{user.gander}}</p>
+                     <b>Gender: </b> <p>{{user.gender}}</p>
                   </li>
                   <li >
                      <b>Role: </b> <p>Super Admin</p>
@@ -37,6 +36,4 @@
             </div>
          </div>
       </div>
-</div>
 </section>
-</div>

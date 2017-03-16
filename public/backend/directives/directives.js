@@ -19,7 +19,7 @@ app
     })
 
 .directive('setHeight', ['$window', function($window){
-    return{
+    return {
         restrict:'A',
         link: function(scope, element, attrs){
             element.css('min-height', ($window.innerHeight - 50) + 'px');

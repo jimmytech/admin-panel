@@ -29,13 +29,7 @@
                         <div ng-message="required">This is required.</div>
                      </div>
                   </md-input-container>                  
-                  <md-input-container class="md-icon-float md-block">
-                     <label class="colorlabel">Meta Content</label>
-                     <input name="meta_content" ng-model="page.meta_content" required/>
-                     <div ng-messages="loginForm.meta_content.$error" ng-show='loginForm.meta_content.$dirty || loginForm.meta_content.$invalid'>
-                        <div ng-message="required">This is required.</div>
-                     </div>
-                  </md-input-container>
+
                   <md-input-container class="md-icon-float md-block" style = "margin-top: 40px;">
                      <label class="colorlabel">Meta Description</label>
                      <textarea name="meta_description"  ng-model="page.meta_description" required></textarea>

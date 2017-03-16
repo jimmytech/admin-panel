@@ -11,8 +11,6 @@ exports.showFaqList = (req, res) => {
     	trash: false
     }, {
         question: 1,
-        answer: 1,
-        slug: 1,
         status: 1
     }, (err, result) => {
         if (result.length > 0) {
@@ -30,6 +28,7 @@ exports.showFaqList = (req, res) => {
 };
 
 exports.insertUpdateFaq = (req, res) => {
+    
     let obj = req.body;
     if (!obj._id) {
         let url = req.body.question.replace(/\s+/g, '-').replace(/([~!@#$%^&*"()_+=`{}\[\]\|\\:;'<>,.\/?/\ \ ])+/g, '').replace(/\-\-+/g, '-').replace(/^-+/, '').replace(/-+$/, '').toLowerCase();

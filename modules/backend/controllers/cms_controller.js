@@ -6,7 +6,9 @@ const path                  = require('path'),
     cmsModel                = require(path.resolve('./models/cms_model'));
 
 
+
 exports.showPagesList = (req, res) => {
+    
     cmsModel.find({
         "trash": false
     }, {
@@ -15,27 +17,38 @@ exports.showPagesList = (req, res) => {
         bottom: 1,
         status: 1,
         sort: 1
-    }, function(err, result) {
+    }, {
+        sort: {
+            created_at: -1
+        }
+    }, (err, result) => {
+
         if (result.length < 1) {
             res.json({
-                success: false
+                success: false,
+                table: false
             });
         } else {
             res.json({
                 success: true,
+                table: true,
                 page: result
             });
         }
+
     });
+
 };
 
 exports.insertUpdate = (req, res) => {
+
     let obj  = req.body.pageInfo;
     if (req.files.length > 0) {
         let image = req.files[0].path;
         obj.image = image.substring(image.indexOf("/")+1);
     } 
     if (obj._id) {
+
         cmsModel.findOneAndUpdate({
             _id: obj._id
         }, obj, function(err, result) {
@@ -51,7 +64,9 @@ exports.insertUpdate = (req, res) => {
                 });
             }
         });
+
     } else {
+
         let page = new cmsModel(obj);
         page.save(function(err, result) {
             if (err || result.title !== obj.title) {
@@ -66,12 +81,14 @@ exports.insertUpdate = (req, res) => {
                 });
             }
         });
+
     }
 };
 
 
 
 exports.editpage = (req, res) => {
+
     cmsModel.findOne({
         _id: req.query.id
     }, (err, result) => {
@@ -87,6 +104,7 @@ exports.editpage = (req, res) => {
             });
         }
     });
+
 };
 
 exports.deletePage = (req, res) => {
@@ -96,8 +114,7 @@ exports.deletePage = (req, res) => {
         $set: {
             trash: true
         }
-    }, (err, result)=>{
-        console.log(result);
+    }, (err, result) => {
         if (result.nModified == 1) {
             res.json({
                 success: true,
@@ -111,41 +128,3 @@ exports.deletePage = (req, res) => {
         }
     });    
 };
-
-
-
-// function createRecord(){
-//         let obj = {
-//             title: "The repl module exports the repl.REPLServer class. While running, instances of repl.REPLServer will accept individual lines of user input, evaluate those according to a user-defined evaluation function, then output the result. Input and output may be from stdin and stdout, respectively, or may be connected to any Node.js stream.",
-//             short_description: "The repl module exports the repl.",
-//             content: "he repl module exports the repl.REPLServer class. While running, instances of repl.REPLServer will accept individual lines o",
-//             meta_title: "epl module exports the repl.REPLS",
-//             meta_description: "le exports the repl.REPLServer cla",
-//             meta_keywords: "le exports the repl.REPLServer cla",
-//             meta_content: "Instances of repl.REPLServer support au",
-//             top:1,
-//             bottom:1,
-//             slug: "The repl module exports the repl",
-//         };
-
-//         for(let i = 1; i<10000; i++){
-//          let page = new blogModel(obj);
-//         page.save(function(err, result) {
-//             console.log(err||result);
-//         });
-
-//         }
-// }
-
-
-
-
-
-
-
-
-// setInterval(() => {
-
-//     createRecord();
-
-// }, 5000);

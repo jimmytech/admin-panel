@@ -7,12 +7,10 @@
  		description: String,
  		slug: String,
  		order: Number,
- 		sub_category: [
- 			{title: String,
- 			description: String,
- 			order: Number 				
- 			}
- 		],
+ 		sub_category:[{ 		 			
+					title: String,
+ 		 			description: String		
+ 		 		}],
  		status: Boolean,
  		trash: {
  			type: Boolean,

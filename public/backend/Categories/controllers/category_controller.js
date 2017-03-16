@@ -24,7 +24,6 @@ app.controller('categoryController', ['toastyService', 'confirmationDialog', '$s
 		};
 
 		$scope.delete = function(id, index, event){
-			console.log(index);
 			confirmationDialog.confirm(event, function(result){
                 result.then(function(){
                     http.delete('/admin/delete-category/' + id).then(function(response) {

@@ -1,7 +1,7 @@
 'use strict';
 
-app.controller('userController', ['$scope', '$location', 'socket',
-	function ($scope, $location, socket) {	
+app.controller('userController', ['sortIcon', 'http', '$scope', '$location', 'socket', '$routeParams', 'paging',
+	function (sortIcon, http, $scope, $location, socket, $routeParams, paging) {	
 
 
 	// var socketObj = {'a': 1, 'b':2};
@@ -9,34 +9,86 @@ app.controller('userController', ['$scope', '$location', 'socket',
              
 	(function(){
 
-		var locationArray = $location.path().split('/');
-		var lastIndex = locationArray[locationArray.length-1];
+        $scope.paging = {page: 1};
+        $scope.forceEllipses = paging.forceEllipses;
+        $scope.maxSize = paging.maxSize;
+		pageHeading();
+		userList();
 
-		if (lastIndex == 'service-providers') {
+	})();
+
+
+	function pageHeading() {
+
+		var locationArray = $location.path().split('/');
+		$scope.lastIndex = locationArray[locationArray.length-1];
+
+		if ($scope.lastIndex == 'service-providers') {
 
 			$scope.userType = "Service Provider";
 
-		} else if (lastIndex == 'customers') {
+		} else if ($scope.lastIndex == 'customers') {
 
 			$scope.userType = "Customer";
 			
 		}
 
-		$scope.data  = [
-		{"firstname": "Jhon", "email": "jhon@gmail.com", "status": true}, 
-		{"firstname": "Rohan", "email": "Rohan@gmail.com", "status": false},
-		{"firstname": "Bill", "email": "Bill@gmail.com", "status": false},
-		{"firstname": "Milton", "email": "Milton@gmail.com", "status": true},
-		{"firstname": "Juri", "email": "Juri@gmail.com", "status": true},
-		{"firstname": "Jack", "email": "Jack@gmail.com", "status": true},
-		{"firstname": "Jitendra", "email": "Jitendra@gmail.com", "status": true},
-		{"firstname": "Node", "email": "Node@gmail.com", "status": true},
-		{"firstname": "Amit", "email": "Amit@gmail.com", "status": false},
-		{"firstname": "Sumit", "email": "Sumit@gmail.com", "status": false},
-		];
+	}
 
-	})();
 
+	function userList () {
+		var page = angular.isDefined($scope.paging) ? $scope.paging.page : 1;			
+		http.get('/admin/user-list?type='+$scope.lastIndex+"&page="+page).then(function(response){
+			$scope.data = response;
+			$scope.paging = response.paging;
+		});
+
+	}
+
+	function setPageNumberInUrl (n) {
+
+		var page = angular.isDefined(n) ? n : $scope.paging.page;
+		
+		$location.search("page", page);
+
+	} 
+
+	$scope.search = function() {
+
+		if (angular.isUndefined($scope.searchFor)) {	
+
+			$scope.paging = {page:1};
+			setPageNumberInUrl();	
+
+			userList();			
+
+		}else{
+
+			var page = angular.isDefined($scope.paging) ? $scope.paging.page : 1;
+			
+			http.get('/admin/search-user?user='+$scope.lastIndex+"&page="+page+"&search="+$scope.searchFor).then(function(response){
+				$scope.data = response;
+				$scope.paging = response.paging;
+			});	
+
+		}
+
+	};
+
+
+
+    $scope.getMoreRecord = function(){    
+
+    	if (angular.isDefined($scope.searchFor)) {
+    		$scope.search();
+    	}else{
+    		userList();   		
+    	}   
+    	setPageNumberInUrl();                   
+    	
+    };	
+
+     
 
 	$scope.addNew = function(url){
 		$location.path(url);
@@ -46,8 +98,11 @@ app.controller('userController', ['$scope', '$location', 'socket',
 		console.log($scope.user);
 	};
 
-	$scope.back = function(){
-		window.history.back();
+	$scope.sort = function(search, sortOn, event){
+		 
+		 var as_ds = sortIcon.set(event);  
+         var sortType = as_ds === 1 ? '' : "-"; 
+
 	};
 
 }]);

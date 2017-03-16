@@ -18,7 +18,7 @@ var storyBlogSchema = new schema({
         default: true
     },    
     postType: String,
-    sort: Number,
+    order: Number,
     trash: {
         type: Boolean,
         default: false

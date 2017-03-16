@@ -26,3 +26,28 @@ exports.adminAccount = (req, res)=>{
 	});
 };
 
+
+// exports.first = (req, res) => {
+	
+// 	setTimeout(()=>{
+// 		res.json({
+// 			success: true
+// 		});		
+// 	}, 9000);
+// };
+
+// exports.second = (req, res) => {
+// 	setTimeout(()=>{
+// 		res.json({
+// 			success: true
+// 		});		
+// 	}, 5000);
+// };
+// exports.third = (req, res) => {
+// 	setTimeout(()=>{
+// 		res.json({
+// 			success: true
+// 		});		
+// 	}, 2000);
+// };
+

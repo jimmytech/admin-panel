@@ -3,7 +3,7 @@
 app.controller('addEditFaqController', ['htmlToText', '$scope', '$location', 'http', 'toastyService',
 	function (htmlToText, $scope, $location, http, toastyService) {
 
-	(function(){
+	(function(){       
 		if ($location.path() === "/admin/faq/new") {
 			$scope.pageHeader = "Add New FAQ";
 		} else {
