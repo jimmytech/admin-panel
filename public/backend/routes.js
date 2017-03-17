@@ -195,7 +195,6 @@ app.config(['$routeProvider', function($routeProvider) {
 
     .run(['$rootScope', '$location',
         function($rootScope, $location) {
-
             $rootScope.$on('$routeChangeSuccess', function() {
 
                 if ($location.path() == '/admin/login') {
@@ -271,4 +270,5 @@ var notRequired = ['$q', function  ($q) {
     }
 
     return deferred.promise;
+    
 }];

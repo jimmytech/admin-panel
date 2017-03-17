@@ -1,7 +1,7 @@
 'use strict';
 
-app.controller('userController', ['sortIcon', 'http', '$scope', '$location', 'socket', '$routeParams', 'paging',
-	function (sortIcon, http, $scope, $location, socket, $routeParams, paging) {	
+app.controller('userController', ['$rootScope','defaultSortType', 'sortIcon', 'http', '$scope', '$location', 'socket', '$routeParams', 'paging',
+	function ($rootScope, defaultSortType, sortIcon, http, $scope, $location, socket, $routeParams, paging) {	
 
 
 	// var socketObj = {'a': 1, 'b':2};
@@ -9,14 +9,22 @@ app.controller('userController', ['sortIcon', 'http', '$scope', '$location', 'so
              
 	(function(){
 
-        $scope.paging = {page: 1};
+		/*delay this 10 milisecond to get fresh routeParams */
+		setTimeout(function(){
+		    var page = $routeParams.page ? $routeParams.page : 1; 
+		    $scope.paging = {page: page};		
+		    userList();
+		}, 10);				    
+
         $scope.forceEllipses = paging.forceEllipses;
+
+        /*set max size in pagination*/
         $scope.maxSize = paging.maxSize;
-		pageHeading();
-		userList();
+
+        /*define page heading (customer or service provider)*/
+		pageHeading();	
 
 	})();
-
 
 	function pageHeading() {
 
@@ -35,16 +43,29 @@ app.controller('userController', ['sortIcon', 'http', '$scope', '$location', 'so
 
 	}
 
+	/*get users list and show on page*/
+	function userList (sort, type) {
 
-	function userList () {
-		var page = angular.isDefined($scope.paging) ? $scope.paging.page : 1;			
-		http.get('/admin/user-list?type='+$scope.lastIndex+"&page="+page).then(function(response){
+		var sortBy;
+		if (sort) {
+			sortBy = sort;
+		} else {
+			sortBy = "created_at";			
+			type = defaultSortType;		
+		}
+
+		var page = angular.isDefined($scope.paging) ? $scope.paging.page : 1;	
+
+		http.get('/admin/user-list?type='+$scope.lastIndex+"&page="+page+"&sortBy="+sortBy+"&sortType="+type).then(function(response){
+			
 			$scope.data = response;
 			$scope.paging = response.paging;
+
 		});
 
 	}
 
+	/*set page number in url*/
 	function setPageNumberInUrl (n) {
 
 		var page = angular.isDefined(n) ? n : $scope.paging.page;
@@ -53,7 +74,8 @@ app.controller('userController', ['sortIcon', 'http', '$scope', '$location', 'so
 
 	} 
 
-	$scope.search = function() {
+	/*filter user list*/
+	$scope.search = function(getmore) {
 
 		if (angular.isUndefined($scope.searchFor)) {	
 
@@ -64,44 +86,64 @@ app.controller('userController', ['sortIcon', 'http', '$scope', '$location', 'so
 
 		}else{
 
+			/*set default page number*/
+			if (getmore !== 'getmore') {
+				$scope.paging = {page:1};
+				setPageNumberInUrl();
+			}
+
+			/*check if page is defined ot not*/
 			var page = angular.isDefined($scope.paging) ? $scope.paging.page : 1;
 			
+			/*fetch users according to user keywords*/
 			http.get('/admin/search-user?user='+$scope.lastIndex+"&page="+page+"&search="+$scope.searchFor).then(function(response){
 				$scope.data = response;
 				$scope.paging = response.paging;
 			});	
 
+
+
 		}
 
 	};
 
-
-
+	/*show next result using*/
     $scope.getMoreRecord = function(){    
 
     	if (angular.isDefined($scope.searchFor)) {
-    		$scope.search();
+
+    		$scope.search('getmore');
+
     	}else{
-    		userList();   		
-    	}   
+
+    		userList(); 
+
+    	}  
+
     	setPageNumberInUrl();                   
     	
     };	
 
-     
 
 	$scope.addNew = function(url){
 		$location.path(url);
 	};
 
 	$scope.signUp = function(){
-		console.log($scope.user);
+
 	};
 
 	$scope.sort = function(search, sortOn, event){
-		 
+
+		 var type;
 		 var as_ds = sortIcon.set(event);  
-         var sortType = as_ds === 1 ? '' : "-"; 
+         	type = as_ds === 1 ? 1 : -1;
+
+         if (sortOn == 'status') {
+         	type = type*-1;
+         } 
+
+         userList(sortOn, type);
 
 	};
 

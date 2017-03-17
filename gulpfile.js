@@ -46,7 +46,6 @@ gulp.task('jshint', [
            './public/backend/*/*/*.js',
            './config/*.js',
            './config/*/*.js',
-
            './public/frontend/*/*/*.js',
         ])
         .pipe(jshint())
@@ -83,6 +82,7 @@ gulp.task('minify-internal-js-admin', (cb) => {
         gulp.dest('./public/assets/js'),
     ], cb);
 });
+
 
 /*minify internal javascript code for frontend user*/
 
@@ -131,6 +131,7 @@ gulp.task('minify-external-javascript-admin', (cb) => {
     ], cb);
 });
 
+
 /*minify external javascript for frontend*/
 
 gulp.task('minify-external-javascript', (cb) => {
@@ -159,6 +160,7 @@ gulp.task('minify-external-javascript', (cb) => {
     ], cb);
 });
 
+
 /*minify external css for admin*/
 
 gulp.task('minify-external-css-admin', () => {
@@ -174,6 +176,7 @@ gulp.task('minify-external-css-admin', () => {
     .pipe(gulp.dest('./public/assets/css/backend'));
 });
 
+
 /*minify external css for frontend*/
 
 gulp.task('minify-external-css', () => {
@@ -187,6 +190,7 @@ gulp.task('minify-external-css', () => {
     .pipe(gulp.dest('./public/assets/css/frontend'));
 });
 
+
 /*minify internal css for admin*/
 
 gulp.task('minify-internal-css-admin', () => {
@@ -197,6 +201,7 @@ gulp.task('minify-internal-css-admin', () => {
     .pipe(cleancss({compatibility: 'ie8', processImport: false}))
     .pipe(gulp.dest('./public/assets/css/backend'));
 });
+
 
 /*minify internal css for frontend*/
 

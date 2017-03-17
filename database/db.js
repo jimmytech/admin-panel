@@ -4,11 +4,12 @@ const mongoose = require('mongoose'),
     config = require(path.resolve(`./config/env/${process.env.NODE_ENV}`));
 
 
-/*get database name from URL*/
+/*find database name from URL*/
 let splited = config.db.URL.split("/");
 let db = splited[splited.length -1];
 
-/*turn on debug mode*/
+
+/*turn on debug mode - print mongo query on terminal*/
 mongoose.set('debug', true);
 
 
@@ -29,3 +30,7 @@ mongoose.connection.on('error', (err) => {
 mongoose.connection.on('disconnected', (err) => {
 	console.log(`Default connection to DB: ${db} disconnected`)
 });
+
+
+
+
