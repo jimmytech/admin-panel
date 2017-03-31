@@ -1,5 +1,6 @@
 'use strict';
 
+
 require('dotenv').config({silent: true});
 
 const express 		= require('express'),
@@ -7,81 +8,39 @@ const express 		= require('express'),
 	path 			= require('path'),
 	bodyParser 		= require('body-parser'),
 	app 			= express(),
-	routes 			= require('./config/routes.js'),
-	index 			= require(path.resolve('./modules/backend/controllers/index')),
-	config			= require(path.resolve(`./config/env/${process.env.NODE_ENV}`)),
-	server 			= require('http').createServer(app),
-	io 				= require('socket.io')(server);
+	server 			= require('http').createServer(app),	
+	io 				= require('socket.io')(server),
+	routes 			= require('./config/routes'),
+	admin 			= require(path.resolve('./modules/backend/controllers/index')),
+	config			= require(path.resolve(`./config/env/${process.env.NODE_ENV}`));
+;
 
-
+	/*helmet used to secure headers*/
 
 	app.use(helmet());
 	app.use(bodyParser.urlencoded({
 	    extended: true
 	}));
 
+	/*bodyParser used to extract incoming request*/
 	app.use(bodyParser.json());
 
+	/*set static*/
 	app.use(express.static(__dirname + '/public'));
 
-	/*require database file*/
-	require('./database/db.js');
-
+	/*require database file to connect mongoDB*/
+	require('./config/libs/mongoose');
 
 	/*require socket.js file*/
 	require('./modules/socket/socket.js')(io);
 
+	app.use('/', routes.router);
+	app.use('/admin', routes.router);
 
-	app.use('/', routes.user);
-	app.use('/admin', routes.admin);
+server.listen(config.server.PORT || 3000, function(){
 
+	admin.checkAdminAccount();	
+	console.log('listening on', server.address().port);
 
-// if(process.env.NODE_ENV === 'production'){
-// 	app.use((err, req, res, next) => {
-
-// 		if(err){
-// 			res.status(err.status || 500).json({
-// 				errors: {
-// 					source: err,
-// 					message: 'Some error occurred, see log for more info!!',
-// 					success: false
-// 				}	
-// 			});
-// 			logger.log('error', err);		
-// 		}
-// 		next();
-// 	});	
-// } else if(process.env.NODE_ENV === 'test'){
-// 	app.use((err, req, res, next) => {
-// 		if(err){
-// 			res.status(500).send(err);
-// 		}
-// 		next();
-// 	});
-// }  else {
-// 	app.use((err, req, res, next) => {
-// 		if(err){
-// 			res.status(err.status || 500).json({
-// 				errors: {
-// 					source: err,
-// 					code: err.code,
-// 					message: err.message || 'Some error occurred, see log for more info!!',
-// 					success: false
-// 				}	
-// 			});
-// 			logger.log('error', err);		
-// 		}
-// 		next();
-// 	});	
-// }
-
-
-
-
-
-
-server.listen(config.server.PORT , function(){	
-	index.adminAccount();	
-  console.log('listening on', server.address().port);
 });
 

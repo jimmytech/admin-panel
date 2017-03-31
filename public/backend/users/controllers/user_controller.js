@@ -1,11 +1,8 @@
 'use strict';
 
-app.controller('userController', ['$rootScope','defaultSortType', 'sortIcon', 'http', '$scope', '$location', 'socket', '$routeParams', 'paging',
-	function ($rootScope, defaultSortType, sortIcon, http, $scope, $location, socket, $routeParams, paging) {	
+app.controller('userController', ['toastyService', 'confirmationDialog', '$rootScope','defaultSortType', 'sortIcon', 'http', '$scope', '$location', '$routeParams', 'paging',
+	function (toastyService, confirmationDialog, $rootScope, defaultSortType, sortIcon, http, $scope, $location, $routeParams, paging) {	
 
-
-	// var socketObj = {'a': 1, 'b':2};
-	// socket.emit('fist-test-socket', socketObj);
              
 	(function(){
 
@@ -42,6 +39,10 @@ app.controller('userController', ['$rootScope','defaultSortType', 'sortIcon', 'h
 		}
 
 	}
+
+	$scope.redirectTo = function(url, id){
+		$location.path(url+id);
+	};
 
 	/*get users list and show on page*/
 	function userList (sort, type) {
@@ -144,6 +145,22 @@ app.controller('userController', ['$rootScope','defaultSortType', 'sortIcon', 'h
          } 
 
          userList(sortOn, type);
+
+	};
+
+	$scope.trash = function(id, index, event){
+	
+		confirmationDialog.confirm(event, function(result){
+			result.then(function(){
+				http.post('/admin/temp-remove-user/'+id).then(function(response){
+					toastyService.notification(response.result.success, response.result.msg);
+					if (response.result.success) {
+						$scope.data.result.splice(index, 1);
+					}
+				});	
+			}, function(){
+			});
+		});
 
 	};
 

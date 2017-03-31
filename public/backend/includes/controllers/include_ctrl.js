@@ -1,16 +1,19 @@
-app.controller('includeController', ['socket', '$cookies', '$timeout',  'Upload', '$routeParams', '$scope', '$rootScope', '$location', 'http', 'toasty', 'toastyService',
-    'ngDialog',
-    function(socket, $cookies, $timeout, Upload, $routeParams, $scope, $rootScope, $location, http, toasty, toastyService, ngDialog) {
+app.controller('includeController', ['$mdDialog', 'socket', '$cookies', '$timeout',  'Upload', '$routeParams', '$scope', '$rootScope', '$location', 'http', 'toasty', 'toastyService',
+    function($mdDialog, socket, $cookies, $timeout, Upload, $routeParams, $scope, $rootScope, $location, http, toasty, toastyService) {
+
+
+
+        socket.emit('fist-test-socket', function(data) {
+            console.log("This is socket response");            
+        });         
 
         socket.on('notification', function(data) {
-
-            console.log("This is socket response");
-            
+            console.log(data);            
         }); 
 
         (function() {
             if (angular.isUndefined($cookies.get('clickedOn'))) {
-                $cookies.put('clickedOn', '.parent1');
+                $cookies.put('clickedOn', '.dashboard');
             }
             
             $timeout(function() {
@@ -59,27 +62,40 @@ app.controller('includeController', ['socket', '$cookies', '$timeout',  'Upload'
             $location.path('/admin/login');
         };
 
-        $scope.selectLeftPanel = function() {
-           selectMe();
-        };
-
         $scope.toPage = function(url, event) {
-            selectMe(event);
+            // selectMe(event);
             $location.path(url);
         };
 
-        function selectMe(event) {
-            $('.parent7').addClass('active');
+        function getCount () {
+            
+            if ($location.path() == '/admin/login' || $location.path() == '/') {
+
+            }else{
+                http.get('/admin/get-all-count').then(function(response){
+                    var data = response.result;
+                    for(var k in data){
+                        $scope[k] = data[k];
+                    }                
+                });                
+            }
+
         }
 
-        function getCount () {
-            http.get('/admin/get-all-count').then(function(response){
-                var data = response.result;
-                for(var k in data){
-                    $scope[k] = data[k];
-                }                
-            });
-        }
+        $scope.comingSoon = function(ev){
+
+            $mdDialog.show(
+              $mdDialog.alert()
+                .parent(angular.element(document.querySelector('#popupContainer')))
+                .clickOutsideToClose(true)
+                .title('Module is under development')
+                .textContent('')
+                .ariaLabel('Alert Dialog Demo')
+                .ok('Ok')
+                .targetEvent(ev)
+            );
+
+        };
 
     }
 ]);

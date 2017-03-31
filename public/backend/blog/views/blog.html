@@ -24,20 +24,14 @@
                <table class="table table-hover table-custom">
                   <tbody>
                      <tr>
-                        <th width="40%">Title 
+                        <th width="50%">Title 
                            <a class="sort" >
                            <i ng-click = "sort(searchFor, 'title', $event)" ng-class = "titleIcon"  aria-hidden="true">
                            </i>
                            <md-tooltip md-direction="top">Sort by title</md-tooltip>
                            </a>
-                        </th>                                                                        
-                        <th width="10%">Author 
-                           <a class="sort">
-                           <i ng-click = "sort(searchFor, 'author',  $event)" ng-class = "authorIcon" aria-hidden="true">
-                           </i>
-                           <md-tooltip md-direction="top">Sort by author</md-tooltip>
-                           </a>
-                        </th>
+                        </th>                                                                      
+
                         <th  width="10%">Order  
                            <a class="sort" >
                            <i ng-click = "sort(searchFor,
@@ -71,7 +65,7 @@
                            <md-tooltip md-direction = "bottom">Click on view to read more...</md-tooltip>
                            </span>
                         </td>
-                        <td>{{l.author}} </td>
+                        <!-- <td>{{l.author}} </td> -->
                         <td>{{l.order}} </td>
                         <td>{{l.postType}}</td>
                         <td>

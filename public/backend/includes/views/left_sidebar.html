@@ -1,34 +1,79 @@
 <aside class="main-sidebar">
    <section class="sidebar">
       <ul class="sidebar-menu">
-         <li class="treeview parent0" ng-click = "selectMainMenu($event); hideSubmenu(); toPage('/admin/dashboard');"><a> <i class="fa fa-dashboard "></i> <span>Dashboard</span></a>
+         <li class="treeview dashboard" ng-click = "selectMainMenu($event); hideSubmenu(); toPage('/admin/dashboard');"><a> <i class="fa fa-dashboard "></i> <span>Dashboard</span></a>
          </li>
-         <li class="treeview parent1" ng-click = "selectMainMenu($event); hideSubmenu(); toPage('/admin/Categories');"><a> <i class="fa fa-th"></i> <span>Categories</span>
+
+         <li class="treeview users" ng-click = "selectMainMenu($event); hideSubmenu(); toPage('/admin/users');">
+           <a><i class="fa fa-user"></i> <span>Users</span>
+               <span class="pull-right-container">              
+                <small class="label pull-right bg-blue">{{totalUser[0].count+totalUser[1].count}}</small>
+              </span>
+           </a>
+         </li> 
+
+         <li class="treeview category" ng-click = "selectMainMenu($event); hideSubmenu(); toPage('/admin/Categories');"><a> <i class="fa fa-th"></i> <span>Categories</span>
              <span class="pull-right-container">              
               <small class="label pull-right bg-blue">{{totalCategory}}</small>
             </span>
          </a>
          </li>         
-         <li class="treeview parent2" ng-click = "selectMainMenu($event); hideSubmenu(); toPage('/admin/posts');"><a><i class="fa fa-rss "></i> <span>Blogs</span>
+         <li class="treeview blog" ng-click = "selectMainMenu($event); hideSubmenu(); toPage('/admin/posts');"><a><i class="fa fa-rss "></i> <span>Blogs</span>
              <span class="pull-right-container">              
               <small class="label pull-right bg-blue">{{totalBlog}}</small>
             </span>
          </a>
          </li>
-         <li class="treeview parent3" ng-click = "selectMainMenu($event); hideSubmenu(); toPage('/admin/pages');"><a><i class="fa fa-file-text"></i> <span>Pages</span>
+         <li class="treeview pages" ng-click = "selectMainMenu($event); hideSubmenu(); toPage('/admin/pages');"><a><i class="fa fa-file-text"></i> <span>Pages</span>
              <span class="pull-right-container">              
               <small class="label pull-right bg-blue">{{totalPages}}</small>
             </span>
             </a>        
-         <li class="treeview parent4" ng-click = "selectMainMenu($event); hideSubmenu(); toPage('/admin/faq');"><a><i class="fa fa-question-circle"></i> <span>Faq</span>
+         <li class="treeview faq" ng-click = "selectMainMenu($event); hideSubmenu(); toPage('/admin/faq');"><a><i class="fa fa-question-circle"></i> <span>Faq</span>
              <span class="pull-right-container">              
               <small class="label pull-right bg-blue">{{totalFaq}}</small>
             </span>
          </a>
+         </li>   
+
+
+
+         <li class="treeview booking" ng-click = "selectMainMenu($event); hideSubmenu(); toPage();comingSoon($event)">
+           <a><i class="fa fa-book"></i> <span>Bookings</span>
+           </a>
+         </li>          
+
+         <li class="treeview payment" ng-click = "selectMainMenu($event); hideSubmenu(); toPage();comingSoon($event)">
+           <a><i class="fa fa-money"></i> <span>Payments</span>
+           </a>
+         </li> 
+
+
+
+         <li class="treeview report" ng-click = "selectMainMenu($event); hideSubmenu(); toPage();comingSoon($event)">
+           <a><i class="fa fa-flag"></i> <span>Reports</span>
+           </a>
+         </li>          
+
+         <li class="treeview setting" ng-click = "selectMainMenu($event); hideSubmenu(); toPage();comingSoon($event)">
+           <a><i class="fa fa-cog"></i> <span>Settings</span>
+           </a>
          </li>         
-<!--          <li class="treeview parent5" ng-click = "selectMainMenu($event); hideSubmenu();"><a><i class="fa fa-envelope"></i> <span>Email Templates</span></a>
-         </li> -->
-         <li ng-click = "selectMainMenu($event);" class="treeview parent6">
+         <li class="treeview rev-rat" ng-click = "selectMainMenu($event); hideSubmenu(); toPage();comingSoon($event)">
+           <a><i class="fa fa-star-half-o"></i> <span>Reviews & Ratings</span>
+           </a>
+         </li>          
+         <li class="treeview email-temp" ng-click = "selectMainMenu($event); hideSubmenu(); toPage(); comingSoon($event)">
+           <a><i class="fa fa-envelope"></i> <span>Email Templates</span>
+           </a>
+         </li> 
+         <li class="treeview" ng-click = "logout();">
+           <a><i class="fa fa-sign-out"></i> <span>Logout</span>
+           </a>
+         </li>                  
+
+
+         <!-- <li ng-click = "selectMainMenu($event);" class="treeview parent6">
             <a >
             <i class="fa fa-pie-chart"></i>
             <span>Users</span>
@@ -51,7 +96,7 @@
             </span> 
                </li>
             </ul>
-         </li>
+         </li> -->
       </ul>
    </section>
 </aside>

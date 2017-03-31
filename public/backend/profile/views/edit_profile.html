@@ -1,73 +1,3 @@
-<!--    <section class="content-header" ng-init = "adminProfileInfo();">
-      <h1>
-         Update Profile
-      </h1>
-   </section>
-   <section class="content">
-      <div class="row">
-         <div class="col-md-11">
-            <div class=" ">
-               <form  name="adminProfileForm" ng-submit="adminProfileForm.$valid && updateAdminProfile(user)" novalidate="" style="padding-left: 60px;width: 84%;">
-                  <md-input-container class="md-icon-float md-block">
-                     <label>First Name</label>
-                     <input name="firstname" ng-model="user.firstname" required/>
-                     <div ng-messages="adminProfileForm.firstname.$error" ng-show='adminProfileForm.firstname.$dirty || adminProfileForm.firstname.$invalid'>
-                        <div ng-message="required">This is required.</div>
-                        <div ng-message="md-maxlength">First Name is too long!</div>
-                     </div>
-                  </md-input-container>
-                  <md-input-container class="md-icon-float md-block">
-                     <label>Last Name</label>
-                     <input name="lastname" ng-model="user.lastname" required/>
-                     <div ng-messages="adminProfileForm.lastname.$error" ng-show='adminProfileForm.lastname.$dirty || adminProfileForm.lastname.$invalid'>
-                        <div ng-message="required">This is required.</div>
-                     </div>
-                  </md-input-container>
-
-                  <md-input-container class="md-icon-float md-block">
-                     <label>Email</label>
-                     <input name="email" ng-model="user.email" ng-pattern = '/^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i' required/>
-                     <div ng-messages="adminProfileForm.email.$error" ng-show='adminProfileForm.email.$dirty || adminProfileForm.email.$invalid'>
-                        <div ng-message="required">This is required.</div>
-                     </div>
-                     <small class="error" style="color: red;" ng-show="adminProfileForm.email.$error.pattern">
-                     Please input a valid email.
-                     </small>               
-                  </md-input-container>
-                  <md-input-container class="md-icon-float md-block">
-                     <label>Address</label>
-                     <input name="address" ng-model="user.address" required/>
-                     <div ng-messages="adminProfileForm.address.$error" ng-show='adminProfileForm.address.$dirty || adminProfileForm.address.$invalid'>
-                        <div ng-message="required">This is required.</div>
-                     </div>
-                  </md-input-container>
-                  <md-input-container flex="100" style = "width: 100%;">
-                    <label>Gander</label>
-                    <md-select name="favoriteColor" ng-model="user.gander" required>
-                      <md-option value="male">Male</md-option>
-                      <md-option value="female">Female</md-option>
-                    </md-select>
-                    <div class="errors" ng-messages="adminProfileForm.favoriteColor.$error">
-                      <div ng-message="required">This is required.</div>
-                    </div>
-                  </md-input-container>
-
-
-
-                  <div class="row" style="margin-left: 3px; ">
-                     <div class="col-xs-4 pull-right" style="margin-bottom: 30px;">
-                        <button type="submit" class="btn btn-primary btn-block">Submit</button>
-                     </div>
-                  </div>
-               </form>
-
-            </div>
-         </div>
-      </div>
-   </section> -->
-
-
-
    <section class="content-header">
       <h1>
           Update Profile
@@ -81,7 +11,7 @@
 
                   <md-input-container class="md-icon-float md-block">
                      <label class="colorlabel">First Name</label>
-                     <input name="title" ng-model="user.firstname" required/>
+                     <input name="title" ng-model="user.first_name" required/>
                      <div ng-messages="loginForm.title.$error" ng-show='loginForm.title.$dirty || loginForm.title.$invalid'>
                         <div ng-message="required">This is required.</div>
                      </div>
@@ -89,7 +19,7 @@
 
                   <md-input-container  class="md-icon-float md-block">
                      <label class="colorlabel">Last Name</label>
-                     <input name="meta_tittle" ng-model="user.lastname" required/>
+                     <input name="meta_tittle" ng-model="user.last_name" required/>
                      <div ng-messages="loginForm.meta_tittle.$error" ng-show='loginForm.meta_tittle.$dirty || loginForm.meta_tittle.$invalid'>
                         <div ng-message="required">This is required.</div>
                      </div>

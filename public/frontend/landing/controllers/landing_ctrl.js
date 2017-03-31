@@ -1,15 +1,13 @@
 'use strict';
 
-app.controller('landingCtrl', ['$scope', '$location', '$rootScope', '$http', 
-	function($scope, $location, $rootScope, $http) {
-		(function(){
-			init();
-		}());
+app.controller('landingCtrl', ['loginSignupPopup','$scope', '$location', '$rootScope', '$http', '$mdDialog',
+	function(loginSignupPopup, $scope, $location, $rootScope, $http, $mdDialog) {
 
-		function init() {
-			$http.get('/test-function').then(function(response){
-				$scope.data = response.data.result;
-			});
-		}
+		$scope.loginPopup = function  (ev) {
+			loginSignupPopup.login(ev);
+		};
 
+		$scope.signUpPopup = function  (ev) {
+			loginSignupPopup.signup(ev);
+		};
 }]);

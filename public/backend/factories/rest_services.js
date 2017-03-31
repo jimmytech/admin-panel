@@ -16,8 +16,10 @@ app.factory('http', ['$http', function ($http) {
 				};
 			});
 		},
-		put: function(){
-
+		put: function(url, data){
+			return $http.get(url, data).then(function(response){
+				return response.data;
+			});	
 		},
 		delete: function(url){
 			return $http.delete(url).then(function(response){

@@ -6,12 +6,14 @@ const crypto            = require('crypto'),
     mongoose            = require('mongoose'),
     jwt                 = require('jsonwebtoken'),
     async               = require('async'),
-    adminModel          = require(path.resolve('./models/admin_model')),
-    userModel           = require(path.resolve('./models/user_model')),
-    blogModel           = require(path.resolve('./models/blog_model')),
-    cmsModel            = require(path.resolve('./models/cms_model')),
-    faqModel            = require(path.resolve('./models/faq_model')),
-    categoryModel       = require(path.resolve('./models/category_model')),
+    decodeJwt           = require(path.resolve('./config/libs/verify_jwt')),
+    msg                 = require(path.resolve('./config/libs/message')),
+    adminModel          = require(path.resolve('./modules/backend/models/admin_model')),
+    userModel           = require(path.resolve('./modules/frontend/models/user_model')),
+    blogModel           = require(path.resolve('./modules/backend/models/blog_model')),
+    cmsModel            = require(path.resolve('./modules/backend/models/cms_model')),
+    faqModel            = require(path.resolve('./modules/backend/models/faq_model')),
+    categoryModel       = require(path.resolve('./modules/backend/models/category_model')),
     key                 = require(path.resolve(`./config/env/${process.env.NODE_ENV}`));
 
 
@@ -29,78 +31,99 @@ exports.login = (req, res) => {
         auth: 1,
         created: 1
     }, (err, user) => {
+
         if (err) {
             res.send(err);
         } else {
-            if (!user || !user.matchPassword(req.body.password)) {
+
+            if (!user || !user.matchPassword(req.body.pwd)) {
+
                 res.json({
                     message: 'Authentication failed',
                     success: false
                 });
+
             } else {
 
-                let auth = user.auth;
-                let miliseconds = JSON.stringify(+new Date(user.created));
-                let firstAuth = auth.slice(0, 9);
-                let secondAuth = auth.slice(9, 20);
-                let firstMilisecond = miliseconds.slice(0, 5);
-                let secondMilicond = miliseconds.slice(5, 7);
-                let modifiedAuth = `${firstAuth}${firstMilisecond}${secondAuth}${secondMilicond}`;
                 user.password = undefined;
                 user.auth = undefined;
                 user.created = undefined;
+
                 let token = jwt.sign(user, new Buffer(key.secret).toString('base64'));
+                
                 res.json({
                     user: user,
                     token: token,
-                    key: modifiedAuth,
                     success: true,
-                    message: 'login success'
+                    message: 'Logged in successfully'
                 });
+
             }
+
         }
     });
 };
 
-exports.profileInfo = (req, res) => {
-    adminModel.findOne({
-        email: "admin@admin.com"
-    }, {
-        firstname: 1,
-        lastname: 1,
-        email: 1,
-        role:1,
-        address: 1,
-        gender: 1,
-        user_name:1
-    }, function(err, result) {
 
-        res.json({
-            info: result
+exports.profileInfo = (req, res) => {
+
+   let secret = key.secret;
+
+   decodeJwt.run(req, secret, (id) => {
+
+        adminModel.findOne({
+            "_id": id
+        }, {
+            first_name: 1,
+            last_name: 1,
+            email: 1,
+            role:1,
+            address: 1,
+            gender: 1,
+            user_name:1
+        }, function(err, result) {
+            
+            res.json({
+                info: result
+            });
         });
-    });
+        
+   });
+
+
 };
 
 exports.updateProfile = (req, res) => {
+
+   let secret = key.secret;
+
+   decodeJwt.run(req, secret, (id) => {
+
+        adminModel.update(
+        {
+            "_id": id
+        },
+        {
+            $set: req.body
+
+        }, function(err, result) {
+            console.log(result);
+            if (result) {
+                res.json({
+                    success: true,
+                    msg: "Profile updated successfully"
+                });
+            } else {
+                res.json({
+                    success: false,
+                    msg: "some errors occurred "
+                });
+            }
+        });        
+   });
    
-    adminModel.update({},
-    {
-        $set: req.body
 
-    }, function(err, result) {
 
-        if (result) {
-            res.json({
-                success: true,
-                msg: "Profile updated successfully"
-            });
-        } else {
-            res.json({
-                success: false,
-                msg: "some errors occurred "
-            });
-        }
-    });
 };
 
 exports.changePassword = (req, res) => {
@@ -215,6 +238,99 @@ exports.getCount = (req, res) => {
 
         }); 
 
+};
+
+
+exports.getCountOnDashboard  = (req, res) => {
+    console.log("hello getCountOnDashboard");
+
+    async.parallel({
+
+        user: (cb) => {
+            userModel.count((err, count)=>{
+                cb(null, count);
+            });            
+        },
+
+        trashedUser: (cb) => {
+            userModel.count({
+                trash: true
+            }, (err, count)=>{
+                cb(null, count);
+            });               
+        }
+
+    }, (err, result) => {
+
+            res.json({
+                data: result
+            });
+
+    });
+
+};
+
+
+exports.signUp = (req, res) => {
+
+    req.body.password = "peache";
+    let data = new userModel(req.body);
+
+    data.save((err, result) => {
+        if (result) {
+
+            res.json({
+                success: true,
+                message: msg.signup
+            });
+
+        }else{
+
+            res.json({
+                success: false,
+                message: msg.tryAgain
+            });
+
+        }        
+    });
+};
+
+exports.trash = function(req, res){
+
+    userModel.update({
+        "_id": req.params.id
+    }, {
+        "$set": {
+            "trash": true
+        }
+    }, (err, result)=>{
+        if (result.nModified == 1) {
+            res.json({
+                success: true,
+                msg: "Removed successfully"
+            });
+        } else if (err) {
+            if (err.code == 11000) {
+                res.json({
+                    success: false,
+                    msg: "Please try again"
+                });
+            }
+        }
+    });
+};
+
+exports.userInfo = (req, res) => {
+
+    userModel.findOne({
+        "_id": req.query.id
+    }, (err, result) => {
+        if (result) {
+            res.json({
+                result: result
+            });
+        }
+    });
 };
 
 

@@ -18,7 +18,7 @@ module.exports =  (io) => {
 
 	  	socket.on('fist-test-socket', (data) => {
 
-	  		console.log(data);
+	  		// console.log("data");
 
 		    io.emit('notification', {
 		      message: 'new customer',

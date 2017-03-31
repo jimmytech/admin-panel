@@ -1,10 +1,9 @@
 'use strict';
 
 const path                  = require('path'),
-    response                = require(path.resolve('./config/libs/response')),
     msg                     = require(path.resolve('./config/libs/message')),
     getDefault              = require(path.resolve('./config/env/default')),
-    blogModel               = require(path.resolve('./models/blog_model'));
+    blogModel               = require(path.resolve('./modules/backend/models/blog_model'));
 
 
 exports.getPostsList = (req, res) => {
@@ -168,6 +167,9 @@ exports.addUpdatePost = (req, res) => {
         obj.image = image.substring(image.indexOf("/")+1);
     }
     if (obj._id) {
+
+        delete obj.created_at;
+        delete obj.updated_at;        
         blogModel.findOneAndUpdate({
             _id: obj._id
         }, obj, (err, result) => {

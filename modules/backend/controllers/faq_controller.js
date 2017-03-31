@@ -2,7 +2,7 @@
 
 const path					 = require('path'),
 	 msg                     = require(path.resolve('./config/libs/message')),
-	 faqModel                = require(path.resolve('./models/faq_model'));
+	 faqModel                = require(path.resolve('./modules/backend/models/faq_model'));
 
 
 exports.showFaqList = (req, res) => {
@@ -51,10 +51,17 @@ exports.insertUpdateFaq = (req, res) => {
         });
 
     } else {
+
+        delete obj.created_at;
+        delete obj.updated_at;
+
         faqModel.update({
             _id: obj._id
         }, obj, (err, result) => {
-            if (result.nModified == 1) {
+
+            console.log(result);
+
+            if (result.nModified == "1") {
                 res.json({
                     success: true,
                     msg: "Updated successfully"

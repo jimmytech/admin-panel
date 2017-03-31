@@ -1,0 +1,38 @@
+<a class="mobmenu transition" ng-click="active2=!active2" ng-class="{'active': active2}"></a>
+
+<div class="dashNavBx transition " ng-class="{'open': active2}">
+
+   <ul class="select-left-option">
+      <li>
+            <a ng-class = "{active: setClass('my-profile')}" ng-click = "toPage('/my-profile')" ng-class = "{active: setClass()}" ><i><img src="assets/img/frontend/left-nav-icon.png"></i> My Profile</a>
+      </li>
+      <li>
+            <a ng-class = "{active: setClass('my-booking')}" ng-click = "toPage('/my-booking')"><i><img src="assets/img/frontend/left-nav-icon1.png"></i> My BOOKINGS</a>
+      </li>
+      <li>
+            <a ng-class = "{active: setClass()}" ng-click = "toPage('/my-booking')" ><i><img src="assets/img/frontend/left-nav-icon2.png"></i> Payment Preferences</a></li>
+      <li>
+            <a ng-class = "{active: setClass('messages')}" ng-click = "toPage('/messages')" ><i><img src="assets/img/frontend/left-nav-icon3.png"></i> Messages</a>
+      </li>
+      <li>
+            <a ng-class = "{active: setClass('transaction')}" ng-click = "toPage('/transaction')"  ><i><img src="assets/img/frontend/left-nav-icon4.png"></i> Transaction History</a>
+      </li>
+      <li>
+            <a ng-class = "{active: setClass('document-verification')}" ng-click = "toPage('/document-verification')" ><i><img src="assets/img/frontend/left-nav-icon5.png"></i> Verification</a>
+      </li>
+      <li>
+            <a ng-class = "{active: setClass('reviews')}" ng-click = "toPage('/reviews')" ><i><img src="assets/img/frontend/left-nav-icon6.png"></i> Reviews and Ratings</a>
+      </li>
+      <li>
+            <a ng-class = "{active: setClass('settings')}" ng-click = "toPage('/settings')" ><i><img src="assets/img/frontend/left-nav-icon7.png"></i> Settings</a>
+      </li>
+      <li>
+            <a ng-class = "{active: setClass('refer-to-friend')}" ng-click = "toPage('/refer-to-friend')"><i><img src="assets/img/frontend/left-nav-icon8.png"></i> Refer a Friend</a>
+      </li>
+      <li>
+            <a ng-class = "{active: setClass()}" ng-click = "logout()"><i><img src="assets/img/frontend/left-nav-icon9.png"></i> Logout</a>
+      </li>
+
+   </ul>
+
+</div>

@@ -1,0 +1,254 @@
+@media(max-width:1800px){
+.subtotl { font-size: 16px !important;}
+.bookingdatetimeBx span {font-size: 14px; margin-right: 10px;}
+.bookingdatetimeBx span small{ color: #666;}
+.booksumm_Tble td{ padding: 15px 10px !important;}
+}
+@media(max-width:1599px){
+.booksumm_Tble td {padding: 15px 7px !important;}
+.subtotl {font-size: 15px !important;}
+.topless {font-size: 14px !important; font-weight: 700;}
+}
+@media( max-width:1400px){
+.messageList li {padding: 20px 200px 20px 100px;}
+.paypreferBx .md-tab{ padding: 0 20px;}
+.booksumm_Tble td {padding: 10px 7px !important;}
+.bookingdatetimeBx span{ padding-bottom: 10px;}
+table.proceddTble td{ font-size: 18px;}
+}
+@media( max-width:1169px){
+.booking-Left{float: none; width: 100%; padding-left: 190px; min-height: 160px;}
+.bookingImgBx{ padding:5px; width: 170px;}
+.booking-Right {float: none; width: 100%;}
+.BookingHd {font-size: 22px; font-weight: 700; line-height: 17px; padding-bottom: 10px; padding-top: 10px;}
+.bookingdatetimeBx span small{ font-size: 13px;}
+.procedcheckoutBx i{ float: none;}
+.procedcheckoutBx span{ float: none; width: 100%; margin-bottom: 15px;}
+}
+
+@media( max-width:1023px){
+.home-Logo {height: auto; top: 0; width: 100px;}
+.homeContact{ left:10px;}
+.homeLogin{ right:10px;}
+.filterFrmBx{ width:95%;}
+.HomefrmInp{ font-size:16px;}
+.whypeachList i{ width:165px; height:165px;}
+.whypeachList span{ font-size:16px;}
+.whypeachHd{ font-size:32px; top:-50px;}
+.howitHd{ font-size:32px;}
+.howItworkBg{ padding:35px 0; height:485px;}
+.CustomerBx i{ width:140px; height:140px;}
+.CustomerBx i span {border: 3px solid #fff; font-size: 24px; height: 40px; line-height: 34px;  right: 0px; top:0px; width: 40px;}
+.CustomerBx {padding-top: 20px;}
+.CustomerBx > span {font-size: 20px;}
+.footnav li{ width:32%;}
+.footnav li a{ font-size:14px;}
+.footbotInn{ font-size:14px;}
+.Mainbanner .item {height: 700px;}
+.CustomerBx i img{ max-width: 60%;}
+.dashlogoBx{ width: 220px; padding: 15px 0 0 5px;}
+.dashHdrBx{ padding-left: 240px;}
+.dashNavBx{ width: 220px;}
+.dashNavBx li a {font-size: 13px; font-weight: 600; padding: 12px 10px;}
+.myprofileBg {padding: 120px 30px 30px 245px;}
+.profileInnBx{ padding:20px; }
+.profBx-L{ width: 115px;}
+.profInnBx{ padding-left: 135px;}
+.saveBtn, .canclBtn{min-width: 124px;}
+.changepass-R {width: 270px;}
+.changepass-L{ width: 130px;}
+.passwordBx {padding: 20px;}
+.privacy-settingBx{ padding: 20px;}
+.bookingTble{ width: 1100px;}
+.varificationBx md-pagination-wrapper .md-tab{ font-size: 14px; padding:0 10px;}
+.messageList li { padding: 15px 15px 15px 95px;}
+.messageList li i{ top: 15px; left: 15px;}
+.dashservic h4.panel-title {font-size: 18px; font-weight: 600; height: 44px; line-height: 24px;
+    padding: 10px;}
+.serviceTbleBx table {width: 900px; max-width: 900px;}
+.serviceTbleBx {overflow: auto;}
+.addcardBx{ right: -10px;}
+.paypreferBx .md-tab{ font-size: 13px !important; padding: 0 10px !important;}
+.addcardBtn{ padding: 10px; font-size: 13px;}
+.BookingHd{ font-size: 18px;}
+.bookingImgBx {padding: 5px;width: 140px;}
+.booking-Left{ padding-left: 155px;}
+.aboutBannerInn {height: 600px;}
+.howit_Right{ width: 260px;}
+.howitpadd {padding: 0px 280px 0px 0 !important;}
+.howitList li{ min-height: 260px; margin-bottom: 70px; padding: 0 0 0 280px;}
+.howit_Left1{ width: 260px;}
+
+}
+
+@media(max-width:767px){
+.Mainbanner li{ height:400px !important;}
+.homeContact {left: auto;right: 10px; top: 55px;}
+.homeLogin { top: 10px;}
+.home-Logo {height: auto; left: 10px; right: auto; top: 0; width: 80px;}
+.filterFrmBx {height: 160px; margin: -50px auto 0; width: 95%;}
+.frmLocatBx {border-bottom: 1px solid rgba(255, 255, 255, 0.6); border-right: 0 none; float: left; height: 80px; width: 100%;}
+.frmGendBx{ width:25%;}
+.frmdateBx{ width:30%;}
+.frmduratBx{ width:25%;}
+.frmGoBx{ width:20%;}
+.whypeachHd {font-size: 26px; top: -20px;}
+.whypeachBg{ padding:20px 0 30px;}
+.whypeachList {padding-bottom: 30px;}
+.howitHd {font-size: 26px; padding-bottom: 20px;}
+.howittabs{ padding:0 0 20px;}
+.CustomerBx i {height: 140px; margin: 0 auto 10px; width: 140px;}
+.CustomerBx i img{ max-width:50%;}
+.howItworkBg{ height:auto;}
+.footerTop {padding: 10px 0;}
+.CustomerBx i span {border: 2px solid #fff; font-size: 22px; height: 40px; line-height: 36px; width: 40px;}
+.CustomerBx > span {font-size: 18px;}
+
+/*----------------22/03/2017--------------*/
+.dashlogoBx {height: 50px; padding: 5px 7px 0 5px; width: 150px;}
+.dashHdrBx{ height: 50px; padding-left: 165px; padding-right: 35px;}
+.dashHdr-L {font-size: 20px; font-weight: 700;  padding: 5px 0; width: 40%; float: left; background: #666; padding-left: 5px;}
+.dashHdr-R{ width:60%; float: right; background: #666; text-align: right;}
+.mailnoti {font-size: 20px; padding:10px 0 0; width: 50px;}
+.mailnoti > span {font-size: 12px; height: 22px; line-height: 22px; right: 5px; top: 5px; width: 22px}
+.userBx {font-size: 16px; padding-right: 10px; padding-top: 6px;}
+.userBx span {height: 36px;  width: 36px;}
+.dashNavBx {overflow: auto; top: 0; left: -250px; width: 250px; z-index: 100;}
+.dashNavBx.open{ left: 0;}
+.mobmenu{ display:inline-block; background:url(../../img/frontend/menu.png) 0 0 no-repeat; width: 25px; height: 25px; position: fixed; right: 10px; top: 15px; z-index: 1000;}
+.mobmenu.active{ background-position: 0 -25px;}
+.myprofileBg {padding: 120px 15px 15px 15px;}
+.dashHdrBx {height: 100px; padding-left: 0; padding-right: 0; padding-top: 50px;}
+.changepass-L{width: 100%; float: none;}
+.changepass-R {width: 100%; float: none;}
+md-input-container .md-errors-spacer{ min-height: 0;}
+.profbxBlank{ display: none;}
+.changepass-R .saveBtn{ margin-top: 10px;}
+.messageList li strong small{ position: relative;right: auto; top: 20px;left: 0;display: block;
+    top: 0;}
+ .reviewList li span i{ display: none;}
+ .reviewList li span small{ display: block; padding: 2px 0;}
+ .margBot10Mob{ margin-bottom: 20px;}
+ .profmrgn15web{ margin-bottom: 0;}
+ .margBot10{ margin-bottom: 0;}
+ .addcardBx {right: -10px; top: -10px;}
+.paypreferBx md-content{ padding-top: 30px;}
+.addcardBtn{ padding:5px 10px !important; font-size: 13px; min-height: 0;}
+.aboutBannerInn {height: 450px;}
+.aboutusDesc p {font-size: 15px; line-height: 22px;}
+.aboutusDesc h2{ font-size: 32px; padding-bottom: 20px;}
+.ourstoriesBg {padding: 35px 0 20px;}
+.storiesTxt p { font-size: 14px; line-height: 22px; padding-bottom: 15px;}
+
+}
+
+@media(max-width:639px){
+.CustomerBx li {width: 50%; padding-bottom: 25px;}  
+.howItworkBg {height: auto; min-height: 580px;}
+.footLeft {float: none; text-align: center; width: 100%;}
+.footRight {float: none; width: 100%;}
+.footnav li {width: 49%; padding:5px 0;}
+.regPopBg{ min-width: 0;}
+.profBx-L {width: 100%; position: relative;text-align: left;}
+.profInnBx {padding-left: 0;}
+.profname-R {float: none; width: 100%;}
+.profname-L {float: none; width: 100%;}
+.profInnBx md-select {color: #666; display: block; margin-bottom: 20px;}
+.profInnBx{ padding-bottom: 0;}
+.categoryList span{ margin-right: 50px;}
+.cardTble{ overflow: auto;}
+.payprefTble{ width: 600px;}
+.paypreferBx .profname-L{ width: 48%; float: left;}
+.paypreferBx .profname-R{ width: 48%; float: right;}
+.bookingImgBx {left: auto; margin: 0 auto; padding: 5px; position: relative; top: auto; width: 140px;}
+.bookingdatetimeBx span {display: block; padding-bottom: 10px;}
+.bookingdatetimeBx span small{ color: #999;}
+.booking-Left {padding-left: 0; text-align: center;}
+.booksumm_Tble td{ font-size: 13px;}
+.bookingSumList li{ padding:10px;}
+
+}
+@media(max-width:479px){
+.homeLogin a {border-radius: 3px; height: 35px; line-height: 31px; margin-left: 5px; width: 80px;}
+.home-Logo{ width:70px;}
+.homeContact{ top:50px; font-size:20px;}
+.homeContact small{ font-size:12px;}
+.frmLocatBx{ height:65px;}
+.filterFrmBx {height: 197px; margin: -80px auto 0; width: 95%;}
+.frmGendBx {border-bottom: 1px solid rgba(255, 255, 255, 0.6); width: 50%; height:65px;}
+.frmdateBx {border-bottom: 1px solid rgba(255, 255, 255, 0.6); border-right: 0 none; width: 50%; height:65px;}
+.frmduratBx {width: 50%; height:65px;}
+.frmGoBx {width: 50%; height:63px;}
+.HomefrmInp{ height:25px; font-size:14px;}
+.goHome-btn{ height:45px;}
+.whypeachList li {padding-bottom: 20px; width: 100%;}
+.whypeachBg {padding: 20px 0;}
+.howittabs { margin: 0 2px;}
+.howittabs a {border: 1px solid #fff; font-size: 14px; line-height: 31px; padding: 5px 10px;}
+.CustomerBx i {height: 120px;  width: 120px;}
+.howItworkBg {padding:35px 0 0 0; min-height: 540px;}
+.footnav li a {font-size: 12px;}
+.footbotInn > span {float: none; display: block; padding: 10px 0 0 0;}
+.footbotInn {font-size: 14px; text-align: center;}
+.footerBot{ padding:10px 0;}
+.whypeachList{min-height: 215px;}
+.whypeachList i {height: 130px; width: 130px;}
+.whypeachList span { font-size: 14px;}
+.Mainbanner .item {height: 500px;}
+.md-tab{border: 1px solid #fff; border-radius:3px; font-size: 13px; margin:0 2px; padding: 0 10px;}
+md-dialog {min-width: 300px; max-width: 95%; max-height: 90%;}
+.logPopBg{ min-width: 0; padding: 20px 10px 10px 10px;}
+.orBx > i{ border: 5px solid #cfcece; width: 47px; height: 47px; top: -23px;}
+.loginInp{ height: 45px !important; line-height: 43px !important;}
+.loginBx md-input-container label:not(.md-container-ignore) { bottom: 73%; left: 10px;  top: auto;
+    line-height: 45px;}
+ .loginFb > a{ padding: 7px 15px;}
+ .login_gplus > a{ padding: 7px 15px;}
+ .signinBtn{ height: 50px;}
+
+.clm-lft {float: none; width: 100%;}
+.clm-rgt {float: none; width: 100%;}
+.regFbBx .clm-lft {float: none; width: 100%; padding-bottom: 15px;}
+.regPopBg{ padding:	25px 12px 12px; }
+.dashHdr-L{ font-size: 13px; font-weight: 600;}
+.dashHdr-L i{ font-size: 20px;}
+.mailnoti {font-size: 18px; width: 36px; line-height: 32px;}
+.mailnoti > span{ right: 0;}
+.userBx{ font-size: 12px; padding-right:8px; padding-top:8px;}
+.userBx span{ width: 28px; height: 28px;}
+.saveBtn, .canclBtn {min-width: 110px; height: 44px;}
+.dashHdr-L{ padding: 2px 0 1px 5px; }
+.dashHdrBx{ height: 93px;}
+.myprofileBg { padding: 110px 15px 15px 15px;}
+.privacy-settingBx{ padding: 15px;}
+.passwordBx {padding:15px;}
+.varificationBx md-pagination-wrapper .md-tab{min-width:0; font-size: 13px;}
+.changepass-R md-input-container label{ left: 0;}
+.paidBx strong{ font-size: 18px;}
+.messageList li {padding: 10px 10px 10px 70px;}
+.messageList li i {top: 10px;left: 10px;}
+.messageList li i img{ width: 50px; height: 50px;}
+.messageList li strong small{ font-size: 11px;}
+.margTop{ margin-top: 15px;}
+.reviewList li span img{ height: 13px;}
+.messageList li strong{ font-size: 14px;}
+.messageList li strong img{ height: 14px;}
+.leacerevhd{ font-size: 22px;}
+.leaverev-Star span{ padding-bottom: 15px;}
+.leaverev-Star span i{ margin-top: 5px;}
+.leaverev-Star md-input-container{ margin-bottom: 10px;}
+.dashservic .panel-body {padding: 0 0px 20px 0;}
+.categoryList span {margin-right: 20px;}
+.categoryHd{ font-size: 14px; padding-bottom: 10px;}
+.myserviceHd{ font-size: 18px;}
+.bookingTbleBx { overflow: auto;}
+.bookingTbleBx table {width:400px; max-width: 400px;}
+.procedcheckoutBx span { overflow: auto; display: block;}
+.procedcheckoutBx span table {width:400px; max-width: 400px;}
+.aboutBannerInn {height: 300px;}
+.aboutusDesc p {font-size: 14px; line-height: 20px;}
+.aboutusDesc h2{ font-size: 26px; padding-bottom:10px;}
+.ourstoriesBg {padding:25px 0 10px;}
+.storiesTxt p { font-size: 14px; line-height: 20px; padding-bottom: 15px;}
+.aboutpeachBg{ padding: 25px 0 0 0;}
+}

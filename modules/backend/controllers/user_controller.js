@@ -1,7 +1,8 @@
-const path = require('path'),
-    crypto = require('crypto'),
-    getDefault = require(path.resolve('./config/env/default')),
-    userModel = require(path.resolve('./models/user_model'));
+const path      = require('path'),
+    crypto      = require('crypto'),
+    msg         =   require(path.resolve('./config/libs/message')),
+    getDefault  = require(path.resolve('./config/env/default')),
+    userModel   = require(path.resolve('./modules/frontend/models/user_model'));
 
 
 
@@ -17,7 +18,7 @@ function createAccount() {
         password: "123456",
         gender: gender[Math.floor(Math.random() * gender.length)],
         status: status[Math.floor(Math.random() * status.length)],
-        user_type: userType[Math.floor(Math.random() * userType.length)]
+        // user_type: userType[Math.floor(Math.random() * userType.length)]
 
     };
     var data = new userModel(obj);
@@ -56,14 +57,11 @@ exports.userList = (req, res) => {
      sortBy = request.sortBy,
      sortType = request.sortType;
 
-    let type = request.type == 'service-providers' ? 'serviceProvider' : 'customer';
-
     userModel.aggregate([
 
         {
             "$match": {
                 "trash": false,
-                "user_type": type
             }
         }, {
             $sort: {
@@ -75,7 +73,7 @@ exports.userList = (req, res) => {
             $limit: limit
         }, {
             "$project": {
-                "firstname": 1,
+                "first_name": 1,
                 "email": 1,
                 "status": 1,
                 "gender": 1
@@ -87,26 +85,28 @@ exports.userList = (req, res) => {
             userModel.aggregate([{
                 "$match": {
                     "trash": false,
-                    "user_type": type
                 }
             }, {
                 $count: "total"
             }], (err, count) => {
 
-                let total = count[0].total;
-                let paging = {
-                    page: page,
-                    limit: limit,
-                    count: total,
-                    current: result.length,
-                    prevPage: (page > 1),
-                    nextPage: (total > (page * limit))
-                };
-                res.json({
-                    success: true,
-                    paging: paging,
-                    result: result
-                });
+                if (count.length>0) {
+                    let total = count[0].total;
+                    let paging = {
+                        page: page,
+                        limit: limit,
+                        count: total,
+                        current: result.length,
+                        prevPage: (page > 1),
+                        nextPage: (total > (page * limit))
+                    };
+                    res.json({
+                        success: true,
+                        paging: paging,
+                        result: result
+                    });                    
+                }
+
             });
 
 
@@ -132,16 +132,16 @@ exports.search = (req, res) => {
         query = {
             "$and": [{
                 "trash": false,
-                "user_type": type
+                // "user_type": type
             }, {
 
                 "$or": [{
-                    "firstname": {
+                    "first_name": {
                         $regex: search,
                         $options: 'i'
                     }
                 }, {
-                    "lastname": {
+                    "last_name": {
                         $regex: search,
                         $options: 'i'
                     }
@@ -168,7 +168,7 @@ exports.search = (req, res) => {
         $limit: limit
     }, {
         "$project": {
-            "firstname": 1,
+            "first_name": 1,
             "email": 1,
             "status": 1,
             "gender": 1
@@ -210,4 +210,29 @@ exports.search = (req, res) => {
         }
     });
 
+};
+
+
+exports.updateUser = (req, res) => {
+
+    let data = req.body;
+
+    delete data.created_at;
+    delete data.updated_at;
+
+    userModel.update({
+        "_id": req.body._id
+    }, data , (err, result) => {
+        if (result.nModified == "1") {
+            res.json({
+                success: true,
+                msg: msg.updated
+            });
+        }else{
+            res.json({
+                success: false,
+                msg: msg.tryAgain
+            });         
+        }
+    });
 };

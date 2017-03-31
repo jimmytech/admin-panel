@@ -1,0 +1,75 @@
+<div class="myprofileBg">
+	<div class="settingBg">
+	<form name = "changePasswordForm" ng-submit = "changePasswordForm.$valid &&  changePasswordForm.npassword.$viewValue === changePasswordForm.cpassword.$viewValue && changePassword()" novalidate="">
+
+		<div class="passwordBx">
+			<div class="PassHd">Change Password</div>
+			<div class="changepassBx clearfix">
+				<div class="changepass-L">Old Password</div>
+				<div class="changepass-R">
+					<md-input-container class="md-block">
+					    <input name = "password" required="" type="password" ng-model="userPassword.p" class="dashInput" aria-label = "p" >
+					</md-input-container>
+				</div>
+			</div>
+			<div class="changepassBx clearfix">
+				<div class="changepass-L">New Password</div>
+				<div class="changepass-R">
+					<md-input-container class="md-block">
+					    <input name = "npassword" required="" type = "password" ng-model="userPassword.np" class="dashInput" aria-label = "newp">
+					    <!-- <span class="errorImg"><img src="assets/img/frontend/error-icon.png"></span> -->
+					</md-input-container>
+				</div>
+			</div>
+			<div class="changepassBx clearfix">
+				<div class="changepass-L">Confirm Password</div>
+				<div class="changepass-R">
+					<md-input-container class="md-block">
+					    <input name = "cpassword" required="" type = "password" ng-model="userPassword.cp" class="dashInput" aria-label = "cp" >
+
+					    <span  ng-if = "changePasswordForm.npassword.$viewValue !== changePasswordForm.cpassword.$viewValue && changePasswordForm.cpassword.$viewValue.length>0" class="errorImg">
+					    <md-tooltip md-direction="right">Current password does not match with new password</md-tooltip>
+					    <img src="assets/img/frontend/error-icon.png"></span>
+					</md-input-container>
+				</div>
+			</div>
+			<div class="changepassBx clearfix">
+				<div class="changepass-L profbxBlank">&nbsp;</div>
+				<div class="changepass-R">
+					<md-button type = "submit" class="md-raised saveBtn signinBtn">Save</md-button>
+
+					<!-- <md-button class="md-raised canclBtn">Cancel</md-button> -->
+
+				</div>
+			</div>
+		</div>		
+	</form>
+		<div class="privacy-settingBx">
+			<div class="PassHd">Privacy Setting</div>
+			<div class="changepassBx clearfix">
+				<div class="changepass-L">Profile</div>
+				<div class="changepass-R">
+					<div class="privacySettBx">
+						<div class="privacyImg"><img src="assets/img/frontend/peachlist-4.jpg"></div>
+						<strong>{{profileInfo.first_name }} {{profileInfo.last_name}}</strong>
+						<md-switch ng-change = "activeInactive()" ng-model="active.isActive" aria-label = "ps"></md-switch >
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="privacy-settingBx">
+			<div class="PassHd">Notifications 
+				<span><md-switch ng-model="notification.enableNotification" ng-change = "activeInactiveNotification()" aria-label="notifiList"></md-switch></span>
+			</div>
+			<div class="notifiList">
+				<span>
+					<md-checkbox ng-model="data.message" aria-label="Message">Message</md-checkbox>
+				</span>
+		        <span>
+		        	<md-checkbox ng-model="data.confirm" aria-label="Confirm/Rejected">
+		            Confirm/Rejected </md-checkbox>
+		    	</span>
+			</div>
+		</div>
+	</div>
+</div>

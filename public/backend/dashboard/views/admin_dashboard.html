@@ -1,0 +1,123 @@
+<div ng-init = "dashboardUpdate()">
+
+      <section class="content-header">
+         <h1>
+            Dashboard 
+            <small>Control panel</small>
+         </h1>
+      </section>
+      <section class="welcometxtsection">
+        <div class="welcometxt">Welcome back jitendra, you were last login at Thursday, December 8, 2016 @ 08:17:36 AM</div>
+      </section>
+      <section class="content min-heightauto">
+         <div class="row">
+            <div class="col-lg-3 col-xs-6">
+               <div class="small-box bg-orange">
+                  <div class="inner">
+                     <h3>{{listOverview.user}}</h3>
+                     <p>Users</p>
+                  </div>
+                  <div class="icon">
+                     <i class="ion ion-bag"></i>
+                  </div>
+                  <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+               </div>
+            </div>
+            <div class="col-lg-3 col-xs-6">
+               <div class="small-box bg-red">
+                  <div class="inner">
+                     <h3>{{listOverview.trashedUser}}</h3>
+                     <p>Deleted users</p>
+                  </div>
+                  <div class="icon">
+                     <i class="ion ion-stats-bars"></i>
+                  </div>
+                  <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+               </div>
+            </div>
+            <div class="col-lg-3 col-xs-6">
+               <div class="small-box bg-purple">
+                  <div class="inner">
+                     <h3>0</h3>
+                     <p>Completed Bookings</p>
+                  </div>
+                  <div class="icon">
+                     <i class="ion ion-person-add"></i>
+                  </div>
+                  <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+               </div>
+            </div>
+            <div class="col-lg-3 col-xs-6">
+               <div class="small-box bg-green">
+                  <div class="inner">
+                     <h3>0</h3>
+                     <p>Calcelled Bookings</p>
+                  </div>
+                  <div class="icon">
+                     <i class="ion ion-pie-graph"></i>
+                  </div>
+                  <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+               </div>
+            </div>
+            <data style="height: 500px;"></data>
+         </div>
+      </section>
+
+      <div class="row">
+      <div class="padrightleft15 clearfix">
+        <section class="col-lg-8 connectedSortable">
+      <chart title="" xData="lineChartXData" yData="lineChartYData" xName="Month" yName="Hit" subtitle=""></chart>           
+        </section>
+        <section class="col-lg-4 connectedSortable">
+          <div class="box box-solid bg-aqua height250">            
+            <div class="box-body">
+              <div class="box-header"> 
+                <h3 class="box-title color-white">Users Overview</h3>
+              </div>
+              <table class="user_details_dash">
+                <tbody>
+                    <tr>
+                       <td>Active users</td>
+                       <td>43</td>
+                       <td><i class="md md-arrow-drop-up green-text"></i></td>
+                    </tr>
+                    <tr>
+                       <td>Inactive users</td>
+                       <td>4181</td>
+                       <td><i class="md md-arrow-drop-up green-text"></i></td>
+                    </tr>
+                    <tr>
+                       <td>Unverified users</td>
+                       <td>14000</td>
+                       <td><i class="md md-arrow-drop-down red-text"></i></td>
+                    </tr>
+                    <tr>
+                       <td>Deactivated users</td>
+                       <td>40</td>
+                       <td><i class="md md-arrow-drop-up green-text"></i></td>
+                    </tr>                        
+                    <tr>
+                       <td>Deleted users</td>
+                       <td>1489</td>
+                       <td><i class="md md-arrow-drop-up green-text"></i></td>
+                    </tr>
+                 </tbody>
+              </table>
+
+            </div>
+             
+          </div>
+        </section>
+      </div>  
+      </div>     
+
+
+  
+   <footer class="main-footer">
+      <div class="pull-right hidden-xs">
+      </div>
+      <strong>Copyright &copy; 2016-2017 <a href="http://almsaeedstudio.com">Cherrydoor</a>.</strong> All rights
+      reserved.
+   </footer>
+   <div class="control-sidebar-bg"></div>
+</div>

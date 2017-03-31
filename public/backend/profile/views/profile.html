@@ -12,24 +12,31 @@
                      <md-icon>mode_edit</md-icon>
                   </md-button>         
                   <img class="profile-user-img img-responsive img-circle martop40" src="/assets/img/admin.png" alt="User profile picture">               
-               <h3 class="profile-username text-center">{{user.firstname}} {{user.lastname}}</h3>
+               <h3 class="profile-username text-center">{{user.first_name}} {{user.last_name}}</h3>
                <ul class="list-unstyled viewlist_custom profilelist_custom"" >
                  
                   <li>
                      <b>Email: </b> <p>{{user.email}}</p>
-                  </li>                  
+                  </li>  
+                  <li>
+                     <b>First Name: </b> <p>{{user.first_name}}</p>
+                  </li>
+                  <li>
+                     <b>Last Name: </b> <p>{{user.last_name}}</p>
+                  </li>                                                    
                   <li>
                      <b>User Name: </b> <p>{{user.user_name}}</p>
                   </li>
+
                   <li>
                      <b>Address: </b> <p>{{user.address}}</p>
                   </li>
                   <li >
                      <b>Gender: </b> <p>{{user.gender}}</p>
                   </li>
-                  <li >
+<!--                   <li >
                      <b>Role: </b> <p>Super Admin</p>
-                  </li>
+                  </li> -->
                </ul>
                <!-- <a  ng-click = "editProfilePage();" class="btn btn-primary btn-block"><b>Edit</b></a>  -->
                </div>       

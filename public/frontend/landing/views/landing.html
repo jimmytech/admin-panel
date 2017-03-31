@@ -1,14 +1,192 @@
-
-<p>Static data</p>
-<img style="height: 50px; width: 50px;" src="/assets/img/user.png">
-
-<p>Adipiscing a commodo ante nunc accumsan interdum mi ante adipiscing. A nunc lobortis non nisl amet vis volutpat aclacus nascetur ac non. Lorem curae eu ante amet sapien in tempus ac. Adipiscing id accumsan adipiscing ipsum.</p>
-
-
-<p>Dynamic data</p>
-<p >{{data._id}}</p>
-<p >{{data.updated_at}}</p>
-<p >{{data.created_at}}</p>
-<p >{{data.trash}}</p>
-<p >{{data.status}}</p>
-<p >{{data.meta_keywords}}</p>
+<div class="mainCon">
+	<section class="homeBannerBx">
+    	<div id="myCarousel" class="carousel slide Mainbanner" data-ride="carousel">
+        	<div class="carousel-inner" role="listbox">
+                <div class="item active" style="background:url(assets/img/frontend/home-banner.jpg) 0 0 no-repeat; background-size:cover;">
+                	<div class="bannertrans"><i></i></div>
+                </div>
+                <div class="item" style="background:url(assets/img/frontend/home-banner2.jpg) 0 0 no-repeat; background-size:cover;">
+                	<div class="bannertrans"><i></i></div>
+                </div>
+                <div class="item" style="background:url(assets/img/frontend/home-banner3.jpg) 0 0 no-repeat; background-size:cover;">
+                	<div class="bannertrans"><i></i></div>
+                </div>
+        	</div>
+            <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
+                <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                <span class="sr-only">Previous</span>
+              </a>
+              <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
+                <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                <span class="sr-only">Next</span>
+              </a>
+        </div>
+        <div class="home-Logo"><a href="#"><img src="assets/img/frontend/peach-logo.png" alt=""></a></div>
+        <div class="homeContact"><small>Please Contact :</small>  +90-8585896</div>
+        <div class="homeLogin">
+        	<a ng-click = "loginPopup($event)" class="loginBtn transition pointer">Log In</a>
+            <a ng-click = "signUpPopup($event)" class="signupBtn transition pointer">Sign Up</a>
+        </div>
+        <div class="filterFrmBx">
+        	<div class="frmLocatBx">
+                <md-input-container class="locatBx">
+                  <label>Location</label>
+                  <input required name="clientName" ng-model="project.clientName" class="HomefrmInp">
+                  <div ng-messages="projectForm.clientName.$error">
+                    <div ng-message="required">This is required.</div>
+                  </div>
+                </md-input-container>
+            </div>
+            <div class="frmGendBx">
+                <md-input-container class="locatBx">
+                  <label>Gender</label>
+                  <md-select name="type" ng-model="project.type" class="HomefrmInp">
+                    <md-option value="app">Male</md-option>
+                    <md-option value="web">Female</md-option>
+                  </md-select>
+                </md-input-container>
+            </div>
+            <div class="frmdateBx">
+                <md-input-container  class="locatBx">
+                    <label>Start Date</label>
+                    <md-datepicker ng-model="user.submissionDate" focus></md-datepicker>
+                </md-input-container>
+            </div>
+            <div class="frmduratBx">
+                <md-input-container class="locatBx">
+                  <label>Duration</label>
+                  <md-select name="type" ng-model="duration" class="HomefrmInp">
+                    <md-option value="app">2 hrs</md-option>
+                    <md-option value="app1">4 hrs</md-option>
+                    <md-option value="app2">6 hrs</md-option>
+                  </md-select>
+                </md-input-container>
+            </div>
+            <div class="frmGoBx">
+                <md-button class="md-raised goHome-btn">Go</md-button>
+            </div>
+        </div>
+    </section>   
+	<section class="whypeachBg">
+    	<div class="col-sm-12"><div class="whypeachHd">Why PeachE?</div></div>
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-3 col-xs-6">
+                    <div class="whypeachList">
+                        <i><img src="assets/img/frontend/peachlist-1.jpg" alt="" class="transition"></i>
+                        <span><a href="#" class="transition">Young &amp; Professional</a></span>
+                    </div>
+                </div>
+                <div class="col-sm-3 col-xs-6">
+                    <div class="whypeachList">
+                        <i><img src="assets/img/frontend/peachlist-2.jpg" alt="" class="transition"></i>
+                        <span><a href="#" class="transition">Cost Effective</a></span>
+                    </div>
+                </div>
+                <div class="col-sm-3 col-xs-6">
+                    <div class="whypeachList">
+                        <i><img src="assets/img/frontend/peachlist-3.jpg" alt="" class="transition"></i>
+                        <span><a href="#" class="transition">Best Service</a></span>
+                    </div>
+                </div>
+                <div class="col-sm-3 col-xs-6">
+                    <div class="whypeachList">
+                        <i><img src="assets/img/frontend/peachlist-4.jpg" alt="" class="transition"></i>
+                        <span><a href="#" class="transition">Professional</a></span>
+                    </div>
+                </div>
+            </div>
+        
+       
+              </div>
+    </section>
+    <section class="howItworkBg">
+        <div class="howitHd">How it Works</div>   
+        <div class="container">
+            <md-content>
+                <md-tabs md-dynamic-height md-border-bottom>
+                  <md-tab label="For Customer">
+                    <md-content class="md-padding">
+                      <div class="row">
+                        <div class="col-sm-12 col-xs-12">
+                        <div class="col-sm-3 col-xs-6">
+                            <div class="CustomerBx">
+                                <i><img src="assets/img/frontend/register-icon.png" alt="" class="transition">
+                                <span>1</span>
+                                </i>
+                                <span><a href="#" class="transition">Register</a></span>
+                            </div>
+                        </div>
+                        <div class="col-sm-3 col-xs-6">
+                            <div class="CustomerBx">
+                                <i><img src="assets/img/frontend/search-icon.png" alt="" class="transition">
+                                    <span>2</span>
+                                </i>
+                                <span><a href="#" class="transition">Search</a></span>
+                            </div>
+                        </div>
+                        <div class="col-sm-3 col-xs-6">
+                            <div class="CustomerBx">
+                                <i><img src="assets/img/frontend/calander-icon.png" alt="" class="transition">
+                                    <span>3</span>
+                                </i>
+                                <span><a href="#" class="transition">Book</a></span>
+                            </div>
+                        </div>
+                        <div class="col-sm-3 col-xs-6">
+                            <div class="CustomerBx">
+                                <i><img src="assets/img/frontend/payment-icon.png" alt="" class="transition">
+                                    <span>4</span>
+                                </i>
+                                <span><a href="#" class="transition">Payment</a></span>
+                            </div>
+                        </div>
+                    </div>
+                      </div>
+                    </md-content>
+                  </md-tab>
+                  <md-tab label="For Service Provider">
+                    <md-content class="md-padding">
+                      <div class="row">
+                        <div class="col-sm-12 col-xs-12">
+                        <div class="col-sm-3 col-xs-6">
+                            <div class="CustomerBx">
+                                <i><img src="assets/img/frontend/register-icon.png" alt="" class="transition">
+                                <span>1</span>
+                                </i>
+                                <span><a href="#" class="transition">Register</a></span>
+                            </div>
+                        </div>
+                        <div class="col-sm-3 col-xs-6">
+                            <div class="CustomerBx">
+                                <i><img src="assets/img/frontend/login-icon.png" alt="" class="transition">
+                                    <span>2</span>
+                                </i>
+                                <span><a href="#" class="transition">Login</a></span>
+                            </div>
+                        </div>
+                        <div class="col-sm-3 col-xs-6">
+                            <div class="CustomerBx">
+                                <i><img src="assets/img/frontend/dashboard.png" alt="" class="transition">
+                                    <span>3</span>
+                                </i>
+                                <span><a href="#" class="transition">Dashboard</a></span>
+                            </div>
+                        </div>
+                        <div class="col-sm-3 col-xs-6">
+                            <div class="CustomerBx">
+                                <i><img src="assets/img/frontend/services-icon.png" alt="" class="transition">
+                                    <span>4</span>
+                                </i>
+                                <span><a href="#" class="transition">Services</a></span>
+                            </div>
+                        </div>
+                        </div>
+                      </div>
+                    </md-content>
+                  </md-tab>
+                </md-tabs>
+              </md-content>         
+            </div>
+    </section>    
+</div>

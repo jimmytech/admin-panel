@@ -2,7 +2,6 @@
 
 var app = angular.module('myAdminApp', [
     'ngRoute',
-    'ngDialog',
     'ngMaterial',
     'ngMessages',
     'ckeditor',

@@ -1,5 +1,5 @@
 <section class="content-header" ng-init="showPagesList()">
-   <h1 class="page_title"> Users ({{userType}}) <span><button class="btn btn-primary" type="button" ng-click = "addNew('/admin/users/new')" >Add New</button></span></h1>
+   <h1 class="page_title"> Users <span><button class="btn btn-primary" type="button" ng-click = "addNew('/admin/users/new')" >Add New</button></span></h1>
 </section>
 <section class="content">
    <div class="row">
@@ -23,7 +23,7 @@
                      <tr>
                         <th width="25%">First Name
                            <a class="sort" >
-                           <i ng-click = "sort(searchFor, 'firstname', $event)" asc-icon  aria-hidden="true">
+                           <i ng-click = "sort(searchFor, 'first_name', $event)" asc-icon  aria-hidden="true">
                            </i>
                            <md-tooltip md-direction="top">Sort by name</md-tooltip>
                            </a>
@@ -55,7 +55,7 @@
 
                      <tr ng-repeat="l in data.result">
                         <td>
-                           {{l.firstname | limitTo: 10000}} 
+                           {{l.first_name | limitTo: 10000}} 
                            <span ng-if="l.firstname.length>10000">
                            <i class="material-icons">more_horiz</i>
                            <md-tooltip md-direction = "bottom">Click on view to read more...</md-tooltip>
@@ -68,15 +68,15 @@
                            <span ng-if="l.status==false">In-Active</span>
                         </td>
                         <td>
-                           <a ng-click = "redirectTo('/admin/pages/', l._id)">
+                           <a ng-click = "redirectTo('/admin/user/account/', l._id)">
                               <md-tooltip md-direction="bottom">Click to edit</md-tooltip>
                               <i class="material-icons edit">mode_edit</i>
                            </a>
-                           <a ng-click = "redirectTo('/admin/page/detail/', l._id);" >
+                           <a ng-click = "redirectTo('/admin/user/account/', l._id);" >
                               <md-tooltip md-direction="bottom">Click to view</md-tooltip>
                               <i class="material-icons view">remove_red_eye</i> 
                            </a>
-                           <a ng-click = "delete(l._id, $index, $event)">
+                           <a ng-click = "trash(l._id, $index, $event)">
                               <md-tooltip md-direction="bottom">Click to delete</md-tooltip>
                               <i class="material-icons color-red">delete</i>
                            </a>

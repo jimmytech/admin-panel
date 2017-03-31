@@ -1,23 +1,20 @@
 <div class="login_main">
    <div class="login_main_inner">
       <div class="login-box logibshadow" style="margin:auto;">
-         <div class="login-logo">
-            <img src="assets/img/cherrydoor-admin-logo.png">
-         </div>
          <div class="login-box-body">
-            <p class="login-box-msg text-center">Login to start you session. </p>
+            <p class="login-box-msg text-center">Login to start your session. </p>
             <form name="loginForm" ng-submit="loginForm.$valid && adminLogin()" novalidate="">        
                <md-input-container class="md-icon-float md-block">
-                  <label>Username</label>
-                  <input name="username" ng-model="loginInfo.email" required/>
+                  <label>Email</label>
+                  <input name="username" ng-model="user.email" required/>
                   <div ng-messages="loginForm.username.$error" ng-show='loginForm.username.$dirty || loginForm.username.$invalid'>
                      <div ng-message="required">This is required.</div>
                   </div>
                </md-input-container>
                <md-input-container class="md-icon-float md-block">
                   <label>Password</label>
-                  <input name="password" type="password" ng-model="loginInfo.password" required/>
-                  <div ng-messages="loginForm.password.$error" ng-show='loginForm.password.$dirty || loginForm.username.$invalid' '>
+                  <input name="pwd1" type="password" ng-model="user.pwd" required/>
+                  <div ng-messages="loginForm.pwd1.$error" ng-show='loginForm.pwd1.$dirty || loginForm.pwd1.$invalid' '>
                      <div ng-message="required">This is required.</div>
                   </div>
                </md-input-container>

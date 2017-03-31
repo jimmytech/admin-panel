@@ -1,6 +1,6 @@
 const path			= require('path'),
 	msg				= require(path.resolve('./config/libs/message')),
-	categoryModel	= require(path.resolve('./models/category_model'));
+	categoryModel	= require(path.resolve('./modules/backend/models/category_model'));
 
 
 
@@ -47,13 +47,20 @@ exports.insertUpdateCategory = (req, res) => {
     let body = req.body;
     if (body._id) {
 
+        
+
         if (body.child == 'root') {
 
+            delete body.created_at;
+            delete body.updated_at;
             categoryModel.update({
                 "_id": body._id
             }, {
                 $set: body
             }, (err, result) => {
+
+                console.log(result);
+
                 if (result.nModified == "1") {
                     res.json({
                         success: true,

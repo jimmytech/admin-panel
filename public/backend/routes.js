@@ -1,24 +1,18 @@
 'use strict';
 
-app.config(['$routeProvider', function($routeProvider) {
+app.config(['$routeProvider', '$locationProvider', function($routeProvider, $locationProvider) {
+
         $routeProvider
             .when('/', {
-                templateUrl: 'backend/landing/views/admin_login.html',
-                controller: 'homeController',
-                resolve: {
-                    validate: notRequired
-                }
-            })
-            .when('/admin/login', {
                 templateUrl: 'backend/landing/views/admin_login.html',
                 controller: 'authController',
                 resolve: {
                     validate: notRequired
                 }
-            })            
+            })          
             .when('/admin/dashboard', {
-                templateUrl: 'backend/home/views/admin_dashboard.html',
-                controller: 'homeController',
+                templateUrl: 'backend/dashboard/views/admin_dashboard.html',
+                controller: 'dashCtrl',
                 // reloadOnSearch: false,
                 resolve: {
                     validate: required
@@ -139,25 +133,24 @@ app.config(['$routeProvider', function($routeProvider) {
                     validate: required
                 }
             })            
-            .when('/admin/users/service-providers', {
+            .when('/admin/users', {
                 templateUrl: 'backend/users/views/users.html',
                 reloadOnSearch: false,
                 controller: 'userController',
                 resolve: {
                     validate: required
                 }
-            })            
-            .when('/admin/users/customers', {
-                templateUrl: 'backend/users/views/users.html',
-                reloadOnSearch: false,
-                controller: 'userController',
-                resolve: {
-                    validate: required
-                }
-            })            
+            })                      
             .when('/admin/users/new', {
                 templateUrl: 'backend/users/views/new_user.html',
-                controller: 'userController',
+                controller: 'addEditUserCtrl',
+                resolve: {
+                    validate: required
+                }
+            })            
+            .when('/admin/user/account/:id', {
+                templateUrl: 'backend/users/views/edit_user.html',
+                controller: 'addEditUserCtrl',
                 resolve: {
                     validate: required
                 }
@@ -165,15 +158,11 @@ app.config(['$routeProvider', function($routeProvider) {
             .otherwise({
                 redirectTo: '/'
             });
-    }])
 
-    .config(['toastyConfigProvider', function(toastyConfigProvider) {
-        toastyConfigProvider.setConfig({
-            sound: true,
-            shake: false,
-            position: 'top-right'
-        });
-    }])
+            // $locationProvider.html5Mode(true);
+    }]);
+
+app
 
     .config(['$httpProvider', function ($httpProvider) {
         $httpProvider.interceptors.push(['$q', function($q) {
@@ -191,16 +180,23 @@ app.config(['$routeProvider', function($routeProvider) {
                     }
                   };
             }]);
-    }])     
+    }])  
 
+    .config(['toastyConfigProvider', function(toastyConfigProvider) {
+        toastyConfigProvider.setConfig({
+            sound: true,
+            shake: false,
+            position: 'top-right'
+        });
+    }])
+        
     .run(['$rootScope', '$location',
         function($rootScope, $location) {
             $rootScope.$on('$routeChangeSuccess', function() {
-
-                if ($location.path() == '/admin/login') {
-                    $rootScope.headerAndSidebar = true;
-                } else {
+                if ($location.path() == '/admin/login' || $location.path() == '/') {
                     $rootScope.headerAndSidebar = false;
+                } else {
+                    $rootScope.headerAndSidebar = true;
                 }
 
             });
@@ -237,7 +233,6 @@ app.config(['$routeProvider', function($routeProvider) {
             });
         }
     ]);
-
 
 var required = ['$q', function  ($q) {
 

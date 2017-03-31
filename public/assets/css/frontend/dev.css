@@ -1,0 +1,11 @@
+.pointer {
+	cursor: pointer!important;
+}
+
+.select-left-option li a {
+	cursor: pointer!important;
+}
+
+/*md-input-container .md-input:invalid {
+	box-shadow: rgba(0, 0, 0, 0.1) 0 0 2px 1px !important;
+}*/

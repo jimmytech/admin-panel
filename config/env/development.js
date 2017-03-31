@@ -2,8 +2,7 @@
 
 module.exports = {
 	db: {
-		URL: "mongodb://localhost/blog",
-		// URL: "mongodb://jimmy:jimmy@ds137267.mlab.com:37267/heroku_h9gm5fkw",
+		URL: "mongodb://localhost/peachDB",
 		options: {
 			user: '',
 			pass: ''
@@ -13,7 +12,7 @@ module.exports = {
 	server: {
 		PORT: 3000
 	},
-
+	debug_mongo: true,
 	admin: {
 		email: 'admin@gmail.com',
 		password: '123456'
@@ -24,6 +23,9 @@ module.exports = {
       'image/png' : '.png',
       'image/gif' : '.gif'
     },	
+
+    email: "flexsin.nodejs@gmail.com",
+    password: "flexsin@123",
     image_destination: 'public/assets/img/uploads',
     secret: '876sdf&%&^435345(*^&^654sdsdc&^&kjsdfjbksdureyy3(&(*&(&7$%^#%#&^*(&)*)*' 	
 };

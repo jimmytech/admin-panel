@@ -1,30 +1,53 @@
 <!DOCTYPE html>
 <html ng-app="myApp">
    <head>
-      <title>User</title>
+      <title>Peache</title>
+
+      <!-- <base href="/"> -->
+      
       <meta charset="utf-8">
       <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      
       <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
 
+      <!-- minified external css -->
+      <link rel="stylesheet" type="text/css" href="assets/css/frontend/site.min.css">      
+      <!-- <link rel="stylesheet" type="text/css" href="assets/css/frontend/app.min.css"> -->
 
-      <link rel="stylesheet" type="text/css" href="assets/css/frontend/site.min.css">
-      <link rel="stylesheet" type="text/css" href="assets/css/frontend/app.min.css">
+      <link rel="stylesheet" type="text/css" href="assets/css/frontend/style.css">
+      <link rel="stylesheet" type="text/css" href="assets/css/frontend/dev.css">
+      <link rel="stylesheet" type="text/css" href="assets/css/frontend/responsive.css">
 
-      <!-- live path-->
+      <!-- live path -->
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css">
       <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-
    </head>
    <body>
-      <!-- <div ng-controller = "includeCtrl" ng-include="'frontend/includes/views/header.html'"> -->
-      </div>
-      <div>
-         <div ng-view></div>
-      </div>      
-      <toasty></toasty>
 
-      <script type="text/javascript" src="assets/js/site.min.js"></script>
-      <script type="text/javascript" src="assets/js/app.min.js"></script>
+      <div>      
+         <div ng-view></div>
+         <toasty></toasty>
+         <div ng-controller = "includesCtrl">
+         <!-- home page header -->
+         <div ng-if = "!homePage" ng-include = "'frontend/includes/views/main_header.html'"></div>
+
+         <!-- left side panel -->
+         <div ng-if = "!homePage" ng-include = "'frontend/includes/views/left_sidebar.html'"></div>
+
+         <!-- home page footer -->
+         <div ng-if = "homePage" ng-include = "'frontend/includes/views/footer.html'"></div>            
+         </div>
+      </div> 
+
+      <toasty></toasty>
+      <!-- minified external js -->
+      <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+      <script type="text/javascript" src="assets/js/site.min.js"></script>      
+      <!-- minified internal js -->     
+      <script type="text/javascript" src="assets/js/app.min.js"></script>  
+
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/1.7.3/socket.io.js"></script>  
+
 
    </body>
 </html>

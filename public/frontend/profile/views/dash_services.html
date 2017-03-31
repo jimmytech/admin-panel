@@ -1,0 +1,333 @@
+<div class="myprofileBg">
+  <div class="settingBg">
+    <div class="passwordBx dashservic">
+      <div class="dashSerInnBx">
+      <div class="myserviceHd">Hello Kat66! Let's get you started</div>
+      <uib-accordion close-others="oneAtATime">
+        <div uib-accordion-group class="panel-default" heading="Step 1" is-open="status.isFirstOpen" is-disabled="status.isFirstDisabled">
+          <div class="categoryHd">Which categories would you like to add?</div>
+          <div class="categoryList">
+            <span>
+              <i><img src="assets/img/frontend/category-icon1.png"></i>
+              <md-checkbox md-no-ink aria-label="" ng-model="data.cb1" class="md-primary"></md-checkbox>
+            </span>
+            <span>
+              <i><img src="assets/img/frontend/category-icon2.png"></i>
+              <md-checkbox md-no-ink aria-label="" ng-model="data.cb2" class="md-primary"></md-checkbox>
+            </span>
+            <span>
+              <i><img src="assets/img/frontend/category-icon3.png"></i>
+              <md-checkbox md-no-ink aria-label="" ng-model="data.cb3" class="md-primary"></md-checkbox>
+            </span>
+          </div>
+          <md-button class="md-raised saveBtn signinBtn">Next</md-button>
+        </div>
+        <div uib-accordion-group class="panel-default" heading="Step 2">
+          <div class="categoryHd">Please add your Waitress service information</div>
+          <div class="waitressTble">
+            <div class="serviceTbleBx">
+              <table class="table table-striped paypTble">
+                <tr>
+                  <th width="33.33%">Waitressing</th>
+                  <th width="33.33%">Price</th>
+                  <th width="33.33%" style="text-align:right;">Minimum Duration</th>
+                </tr>
+                <tr>
+                  <td>
+                    <md-checkbox ng-model="data.cb1" aria-label="Checkbox 1">
+                      Standard
+                    </md-checkbox>
+                  </td>
+                  <td>
+                    <md-input-container class="md-block serviceInp" flex-gt-sm>
+                      <label>Amount</label>
+                      <input ng-model="user.firstName">
+                    </md-input-container>
+                  </td>
+                  <td align="right">
+                    <md-input-container>
+                      <label>1 Hour</label>
+                      <md-select ng-model="ctrl.Subrub" class="serviceInp">
+                        <md-option>1 Hour</md-option>
+                      </md-select>
+                    </md-input-container>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <md-checkbox ng-model="data.cb2" aria-label="Checkbox 1">
+                      Bikini
+                    </md-checkbox>
+                  </td>
+                  <td>
+                    <md-input-container class="md-block serviceInp" flex-gt-sm>
+                      <label>Amount</label>
+                      <input ng-model="user.firstName">
+                    </md-input-container>
+                  </td>
+                  <td align="right">
+                    <md-input-container>
+                      <label>1 Hour</label>
+                      <md-select ng-model="ctrl.Subrub" class="serviceInp">
+                        <md-option>1 Hour</md-option>
+                      </md-select>
+                    </md-input-container>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <md-checkbox ng-model="data.cb3" aria-label="Checkbox 1">
+                      Topless
+                    </md-checkbox>
+                  </td>
+                  <td>
+                    <md-input-container class="md-block serviceInp" flex-gt-sm>
+                      <label>Amount</label>
+                      <input ng-model="user.firstName">
+                    </md-input-container>
+                  </td>
+                  <td align="right">
+                    <md-input-container>
+                      <label>1 Hour</label>
+                      <md-select ng-model="ctrl.Subrub" class="serviceInp">
+                        <md-option>1 Hour</md-option>
+                      </md-select>
+                    </md-input-container>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <md-checkbox ng-model="data.cb4" aria-label="Checkbox 1">
+                      Nude
+                    </md-checkbox>
+                  </td>
+                  <td>
+                    <md-input-container class="md-block serviceInp" flex-gt-sm>
+                      <label>Amount</label>
+                      <input ng-model="user.firstName">
+                    </md-input-container>
+                  </td>
+                  <td align="right">
+                    <md-input-container>
+                      <label>1 Hour</label>
+                      <md-select ng-model="ctrl.Subrub" class="serviceInp">
+                        <md-option>1 Hour</md-option>
+                      </md-select>
+                    </md-input-container>
+                  </td>
+                </tr>
+              </table>
+            </div>
+            <md-button class="md-raised saveBtn signinBtn">Next</md-button>
+          </div>
+        </div>
+        <div uib-accordion-group class="panel-default" heading="Step 3">
+          <div class="categoryHd">Please add your Poker Dealing service information</div>
+          <div class="waitressTble">
+            <div class="serviceTbleBx">
+              <table class="table table-striped serviceTble">
+                <tr>
+                  <th width="33.33%">Waitressing</th>
+                  <th width="33.33%">Price</th>
+                  <th width="33.33%" style="text-align:right;">Minimum Duration</th>
+                </tr>
+                <tr>
+                  <td>
+                    <md-checkbox ng-model="data.cb1" aria-label="Checkbox 1">
+                      Standard
+                    </md-checkbox>
+                  </td>
+                  <td>
+                    <md-input-container class="md-block serviceInp" flex-gt-sm>
+                      <label>Amount</label>
+                      <input ng-model="user.firstName">
+                    </md-input-container>
+                  </td>
+                  <td align="right">
+                    <md-input-container>
+                      <label>1 Hour</label>
+                      <md-select ng-model="ctrl.Subrub" class="serviceInp">
+                        <md-option>1 Hour</md-option>
+                      </md-select>
+                    </md-input-container>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <md-checkbox ng-model="data.cb2" aria-label="Checkbox 1">
+                      Bikini
+                    </md-checkbox>
+                  </td>
+                  <td>
+                    <md-input-container class="md-block serviceInp" flex-gt-sm>
+                      <label>Amount</label>
+                      <input ng-model="user.firstName">
+                    </md-input-container>
+                  </td>
+                  <td align="right">
+                    <md-input-container>
+                      <label>1 Hour</label>
+                      <md-select ng-model="ctrl.Subrub" class="serviceInp">
+                        <md-option>1 Hour</md-option>
+                      </md-select>
+                    </md-input-container>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <md-checkbox ng-model="data.cb3" aria-label="Checkbox 1">
+                      Topless
+                    </md-checkbox>
+                  </td>
+                  <td>
+                    <md-input-container class="md-block serviceInp" flex-gt-sm>
+                      <label>Amount</label>
+                      <input ng-model="user.firstName">
+                    </md-input-container>
+                  </td>
+                  <td align="right">
+                    <md-input-container>
+                      <label>1 Hour</label>
+                      <md-select ng-model="ctrl.Subrub" class="serviceInp">
+                        <md-option>1 Hour</md-option>
+                      </md-select>
+                    </md-input-container>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <md-checkbox ng-model="data.cb4" aria-label="Checkbox 1">
+                      Nude
+                    </md-checkbox>
+                  </td>
+                  <td>
+                    <md-input-container class="md-block serviceInp" flex-gt-sm>
+                      <label>Amount</label>
+                      <input ng-model="user.firstName">
+                    </md-input-container>
+                  </td>
+                  <td align="right">
+                    <md-input-container>
+                      <label>1 Hour</label>
+                      <md-select ng-model="ctrl.Subrub" class="serviceInp">
+                        <md-option>1 Hour</md-option>
+                      </md-select>
+                    </md-input-container>
+                  </td>
+                </tr>
+              </table>
+            </div>
+            <md-button class="md-raised saveBtn signinBtn">Next</md-button>
+          </div>
+        </div>
+        <div uib-accordion-group class="panel-default" heading="Step 4">
+          <div class="categoryHd">Please add your Exotic Dancing service information</div>
+          <div class="waitressTble">
+            <div class="serviceTbleBx">
+              <table class="table table-striped serviceTble">
+                <tr>
+                  <th width="20%">Exotic Dancing</th>
+                  <th width="40%">Description</th>
+                  <th width="15%">Price</th>
+                  <th width="15%">Duration</th>
+                  <th width="10%" style="text-align:center;">
+                    <img src="assets/img/frontend/green-plus.png" alt="">
+                  </th>
+                </tr>
+                <tr>
+                  <td>
+                    <md-input-container class="md-block serviceInp exoticInp" flex-gt-sm>
+                      <label>Custom Service 1</label>
+                      <input ng-model="user.firstName">
+                    </md-input-container>
+                  </td>
+                  <td>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla quam velit, vulputate eu pharetra nec, mattis acneque. Duis vulputate commodo lectus, ac  blandit elit tincidunt id. Sed rhoncus, tortor sed eleifend tristique,it sed diam.
+                  </td>
+                  <td>
+                    <md-input-container class="md-block serviceInp" flex-gt-sm>
+                      <label>Price</label>
+                      <input ng-model="user.firstName">
+                    </md-input-container>
+                  </td>
+                  <td>
+                    <md-input-container class="md-block serviceInp" flex-gt-sm>
+                      <label>Duration</label>
+                      <input ng-model="user.firstName">
+                    </md-input-container>
+                  </td>
+                  <td align="center"><img src="assets/img/frontend/close-icon.png" alt=""></td>
+                </tr>
+                <tr>
+                  <td>
+                    <md-input-container class="md-block serviceInp exoticInp" flex-gt-sm>
+                      <label>Custom Service 1</label>
+                      <input ng-model="user.firstName">
+                    </md-input-container>
+                  </td>
+                  <td>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla quam velit, vulputate eu pharetra nec, mattis acneque. Duis vulputate commodo lectus, ac  blandit elit tincidunt id. Sed rhoncus, tortor sed eleifend tristique,it sed diam.
+                  </td>
+                  <td>
+                    <md-input-container class="md-block serviceInp" flex-gt-sm>
+                      <label>Price</label>
+                      <input ng-model="user.firstName">
+                    </md-input-container>
+                  </td>
+                  <td>
+                    <md-input-container class="md-block serviceInp" flex-gt-sm>
+                      <label>Duration</label>
+                      <input ng-model="user.firstName">
+                    </md-input-container>
+                  </td>
+                  <td align="center"><img src="assets/img/frontend/close-icon.png" alt=""></td>
+                </tr>
+                <tr>
+                  <td>
+                    <md-input-container class="md-block serviceInp exoticInp" flex-gt-sm>
+                      <label>Custom Service 1</label>
+                      <input ng-model="user.firstName">
+                    </md-input-container>
+                  </td>
+                  <td>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla quam velit, vulputate eu pharetra nec, mattis acneque. Duis vulputate commodo lectus, ac  blandit elit tincidunt id. Sed rhoncus, tortor sed eleifend tristique,it sed diam.
+                  </td>
+                  <td>
+                    <md-input-container class="md-block serviceInp" flex-gt-sm>
+                      <label>Price</label>
+                      <input ng-model="user.firstName">
+                    </md-input-container>
+                  </td>
+                  <td>
+                    <md-input-container class="md-block serviceInp" flex-gt-sm>
+                      <label>Duration</label>
+                      <input ng-model="user.firstName">
+                    </md-input-container>
+                  </td>
+                  <td align="center"><img src="assets/img/frontend/close-icon.png" alt=""></td>
+                </tr>
+              </table>
+            </div>
+            <md-button class="md-raised saveBtn signinBtn">Next</md-button>
+          </div>
+        </div>
+        <div uib-accordion-group class="panel-default" heading="Step 5">
+          <div class="categoryHd">Please add your Travel information</div>
+          <div class="travelInfoFrm">
+            <div class="TranInfoBx">
+                <span>Distance willing to travel (in kms)</span>
+                <md-input-container class="md-block distanceInp" flex-gt-sm>
+                  <label>Distance in kms</label>
+                  <input ng-model="user.firstName">
+                </md-input-container>
+                <i><img src="assets/img/frontend/green-plus.png" alt=""></i>
+            </div>
+          </div>
+        </div>
+
+      </uib-accordion>
+    </div>
+    </div>
+  </div>
+</div>     
+

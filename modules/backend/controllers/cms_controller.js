@@ -2,8 +2,7 @@
 
 const path                  = require('path'),
     msg                     = require(path.resolve('./config/libs/message')),
-    blogModel               = require(path.resolve('./models/blog_model')),
-    cmsModel                = require(path.resolve('./models/cms_model'));
+    cmsModel                = require(path.resolve('./modules/backend/models/cms_model'));
 
 
 
@@ -49,6 +48,9 @@ exports.insertUpdate = (req, res) => {
     } 
     if (obj._id) {
 
+        delete obj.created_at;
+        delete obj.updated_at; 
+        
         cmsModel.findOneAndUpdate({
             _id: obj._id
         }, obj, function(err, result) {

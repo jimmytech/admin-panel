@@ -5,19 +5,18 @@ const express       = require('express'),
     fs              = require('fs'),
     querystring     = require('querystring'),
     expressJWT      = require('express-jwt'),
-    myFunction      = require(path.resolve('./modules/utils/route')),
+    multer      = require(path.resolve('./config/libs/multer')),
     key             = require(path.resolve(`./config/env/${process.env.NODE_ENV}`)),
-    admin           = express.Router(),
-    user            = express.Router();
+    router           = express.Router();
 
 
 
 /*read and load admin controllers*/
 
-let ctrls = {};
+let adminCtrls = {};
 fs.readdirSync(path.resolve('./modules/backend/controllers')).forEach(file => {
     let name = file.substr(0, file.indexOf('.'));
-    ctrls[name] = require(path.resolve(`./modules/backend/controllers/${name}`));
+    adminCtrls[name] = require(path.resolve(`./modules/backend/controllers/${name}`));
 });
 
 
@@ -31,56 +30,43 @@ fs.readdirSync(path.resolve('./modules/frontend/controllers')).forEach(file => {
 
 
 /*routes authencation by using express routes*/
-admin.use(expressJWT({
+router.use(expressJWT({
     secret: new Buffer(key.secret).toString('base64'),
 }).unless({
     path: [
-        '/admin/login',
+        '/admin/login'
     ]
 }));
 
-
-// admin.get('/first', ctrls.index.first);
-// admin.get('/second', ctrls.index.second);
-// admin.get('/third', ctrls.index.third);
-
 /*login route*/
 
-admin.post('/login', ctrls.admin_controller.login);
-admin.get('/get-all-count', ctrls.admin_controller.getCount);
+router.post('/login', adminCtrls.admin_controller.login);
+router.get('/get-all-count', adminCtrls.admin_controller.getCount);
+router.get('/count-on-dashboard', adminCtrls.admin_controller.getCountOnDashboard);
 
 
-admin.get('/user-list', ctrls.user_controller.userList);
-admin.get('/search-user', ctrls.user_controller.search);
+router.get('/user-list', adminCtrls.user_controller.userList);
+router.get('/search-user', adminCtrls.user_controller.search);
+router.post('/update-user', adminCtrls.user_controller.updateUser);
 
 /*CMS routes*/
 
-admin.post('/insert-update-page', myFunction.saveImage(), ctrls.cms_controller.insertUpdate);
-admin.get('/get-cms-page', ctrls.cms_controller.showPagesList);
-admin.get('/cms-page-by-id', ctrls.cms_controller.editpage);
-admin.get('/delete-cms-page', ctrls.cms_controller.deletePage);
+router.post('/insert-update-page', multer.saveImage(), adminCtrls.cms_controller.insertUpdate);
+router.get('/get-cms-page', adminCtrls.cms_controller.showPagesList);
+router.get('/cms-page-by-id', adminCtrls.cms_controller.editpage);
+router.get('/delete-cms-page', adminCtrls.cms_controller.deletePage);
 
 /*end*/
 
 
-
-/*testimonial routes*/
-
-admin.post('/insert-update-testimonail', myFunction.saveImage(), ctrls.testimonial_controller.insertUpdateTestimonail);
-admin.get('/get-testimonial-data', ctrls.testimonial_controller.testimonialData);
-admin.post('/add-testimonial-category', ctrls.testimonial_controller.addTestimonialCategory);
-admin.get('/testimonialCategory', ctrls.testimonial_controller.testimonialCategory);
-
- /*end testimonial routes*/
-
-
-
-
 /*profile routes*/
 
-admin.post('/update-profile', ctrls.admin_controller.updateProfile);
-admin.get('/profile-info', ctrls.admin_controller.profileInfo);
-admin.post('/changePassword', ctrls.admin_controller.changePassword);
+router.post('/update-profile', adminCtrls.admin_controller.updateProfile);
+router.get('/profile-info', adminCtrls.admin_controller.profileInfo);
+router.post('/changePassword', adminCtrls.admin_controller.changePassword);
+router.post('/user-registration', adminCtrls.admin_controller.signUp);
+router.post('/temp-remove-user/:id', adminCtrls.admin_controller.trash);
+router.get('/user-detail-by-id', adminCtrls.admin_controller.userInfo);
 
 /*end profile routes*/
 
@@ -89,40 +75,53 @@ admin.post('/changePassword', ctrls.admin_controller.changePassword);
 
 /*FAQs routes*/
 
-admin.post('/insert-update-faq', ctrls.faq_controller.insertUpdateFaq);
-admin.get('/faq-list', ctrls.faq_controller.showFaqList);
-admin.get('/move-to-trash-faq', ctrls.faq_controller.trashFaq);
-admin.get('/faq-detail', ctrls.faq_controller.faqDetail);
+router.post('/insert-update-faq', adminCtrls.faq_controller.insertUpdateFaq);
+router.get('/faq-list', adminCtrls.faq_controller.showFaqList);
+router.get('/move-to-trash-faq', adminCtrls.faq_controller.trashFaq);
+router.get('/faq-detail', adminCtrls.faq_controller.faqDetail);
 
 /*end FAQs routes*/
 
 
-
-
-
-
-
-
 /*blogs-post routes*/
 
-admin.post('/add-update-post', myFunction.saveImage(), ctrls.post_controller.addUpdatePost);
-admin.get('/post-info', ctrls.post_controller.postInfo);
-admin.get('/posts-list', ctrls.post_controller.getPostsList);
-admin.get('/search-post', ctrls.post_controller.search);
-admin.delete('/delete-post/:id', ctrls.post_controller.deletePost);
+router.post('/add-update-post', multer.saveImage(), adminCtrls.post_controller.addUpdatePost);
+router.get('/post-info', adminCtrls.post_controller.postInfo);
+router.get('/posts-list', adminCtrls.post_controller.getPostsList);
+router.get('/search-post', adminCtrls.post_controller.search);
+router.delete('/delete-post/:id', adminCtrls.post_controller.deletePost);
 
 /*end blog-post routes*/
 
 
 /*category routes*/
-admin.get('/category-list', ctrls.category_controller.categortList);
-admin.post('/add-update-category', ctrls.category_controller.insertUpdateCategory);
-admin.get('/category-info/:id', ctrls.category_controller.categoryInfo);
-admin.delete('/delete-category/:id', ctrls.category_controller.deleteCategory);
-admin.get('/category-drop-down-list', ctrls.category_controller.dropDownList);
+router.get('/category-list', adminCtrls.category_controller.categortList);
+router.post('/add-update-category', adminCtrls.category_controller.insertUpdateCategory);
+router.get('/category-info/:id', adminCtrls.category_controller.categoryInfo);
+router.delete('/delete-category/:id', adminCtrls.category_controller.deleteCategory);
+router.get('/category-drop-down-list', adminCtrls.category_controller.dropDownList);
+
+
+
+
+
+
+
+
+
+
+/*user routes*/
+
+router.post('/user-signup', userCtrls.user_controller.signup);
+router.post('/user-login', userCtrls.user_controller.login);
+router.post('/update-profile', userCtrls.user_controller.updateProfile);
+router.post('/change-password', userCtrls.profile_controller.changePassword);
+router.post('/is-active', userCtrls.profile_controller.activeInactive);
+router.post('/notification-setting', userCtrls.profile_controller.activeInactiveNotification);
+router.get('/refer-to-friend/:email', userCtrls.refer_controller.referToFriend);
+
 
 /*end category routes*/
 module.exports = {
-    admin: admin,
-    user: user
+    router: router
 };

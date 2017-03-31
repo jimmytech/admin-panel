@@ -3,10 +3,10 @@
 app.controller('categoryController', ['toastyService', 'confirmationDialog', '$scope', '$location', 'http',
 	function (toastyService, confirmationDialog, $scope, $location, http) {
 
-	(function(){
-		categortList();
-	})();
-
+		(function(){
+			categortList();
+		})();
+		$scope.determinateValue = 50;
 		
 
 		$scope.addNew = function(url){

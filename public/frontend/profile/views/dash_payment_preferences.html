@@ -1,0 +1,179 @@
+<div class="myprofileBg">
+	<div class="profileInnBx">
+		<div class="paypreferBx varificationBx">
+			<div class="addcardBx"><md-button class="md-raised addcardBtn">ADD NEW CARD</md-button></div>
+			<md-content>
+			    <md-tabs md-dynamic-height md-border-bottom>
+			      <md-tab label="PAYMENT PREFERENCES">
+			        <md-content class="md-padding parpreferPd">
+	                      <div class="changepassBx clearfix">
+							<div class="changepass-L">Card Number</div>
+								<div class="changepass-R">
+									<md-input-container class="md-block">
+									    <input ng-model="user.cardnumber" class="dashInput" placeholder="">
+									</md-input-container>
+								</div>
+							</div>
+							<div class="changepassBx clearfix">
+								<div class="changepass-L">Expiry</div>
+								<div class="changepass-R">
+									<div class="clearfix">
+										<div class="profname-L margBot10">
+										  	<md-input-container class="md-block">
+										        <md-select ng-model="user.expmonth" class="dashInput">
+										          <md-option value = "expmonth">25</md-option>
+										        </md-select>
+										    </md-input-container>
+										</div>				
+										<div class="profname-R margBot10">
+											<md-input-container class="md-block">
+										        <md-select ng-model="user.expyear" class="dashInput">
+										           <md-option value = "expyear">2019</md-option>
+										        </md-select>
+										    </md-input-container>				
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="changepassBx clearfix">
+								<div class="changepass-L">CVV</div>
+								<div class="changepass-R" style="width:100px;">
+									<md-input-container class="md-block">
+									    <input ng-model="user.cvvnumber" class="dashInput" placeholder="">
+									</md-input-container>
+								</div>
+							</div>
+							<div class="changepassBx clearfix">
+								<div class="changepass-L profbxBlank">&nbsp;</div>
+								<div class="changepass-R">
+									<md-button class="md-raised saveBtn signinBtn">SAVE</md-button>
+								</div>
+							</div>
+			        </md-content>
+			      </md-tab>
+			      <md-tab label="PAYOUT PREFERENCES">
+			        <md-content class="md-padding parpreferPd">
+	                      <div class="changepassBx clearfix">
+							<div class="changepass-L">Card Number</div>
+								<div class="changepass-R">
+									<md-input-container class="md-block">
+									    <input ng-model="user.cardnumber" class="dashInput" placeholder="">
+									</md-input-container>
+								</div>
+							</div>
+							<div class="changepassBx clearfix">
+								<div class="changepass-L">Expiry</div>
+								<div class="changepass-R">
+									<div class="clearfix">
+										<div class="profname-L margBot10">
+										  	<md-input-container class="md-block">
+										        <md-select ng-model="user.expmonth" class="dashInput">
+										          <md-option value = "expmonth">25</md-option>
+										        </md-select>
+										    </md-input-container>
+										</div>				
+										<div class="profname-R margBot10">
+											<md-input-container class="md-block">
+										        <md-select ng-model="user.expyear" class="dashInput">
+										           <md-option value = "expyear">2019</md-option>
+										        </md-select>
+										    </md-input-container>				
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="changepassBx clearfix">
+								<div class="changepass-L">CVV</div>
+								<div class="changepass-R" style="width:100px;">
+									<md-input-container class="md-block">
+									    <input ng-model="user.cvvnumber" class="dashInput" placeholder="">
+									</md-input-container>
+								</div>
+							</div>
+							<div class="changepassBx clearfix">
+								<div class="changepass-L profbxBlank">&nbsp;</div>
+								<div class="changepass-R">
+									<md-button class="md-raised saveBtn signinBtn">SAVE</md-button>
+								</div>
+							</div>
+			        </md-content>
+			      </md-tab>
+			      
+			    </md-tabs>
+			</md-content>
+
+			<div class="cardTble">
+				<md-radio-group ng-model="data.group1">
+				<table class="table table-striped payprefTble">
+					<tr>
+						<th width="50%">Card Number </th>
+						<th width="30%"></th>
+						<th width="20%">Action </th>
+					</tr>
+					<tr>
+						<td>
+							<md-radio-button value="card1"></md-radio-button>
+							<img src="assets/img/frontend/visa-icon.png">
+							9898  6598  6586  5657
+						</td>
+						<td class="primaryClr">Primary</td>
+						<td>
+							<i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+							<i class="fa fa-times-circle-o" aria-hidden="true"></i>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<md-radio-button value="card2"></md-radio-button>
+							<img src="assets/img/frontend/visa-icon.png">
+							9898  6598  6586  5657
+						</td>
+						<td class="primaryClr"></td>
+						<td>
+							<i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+							<i class="fa fa-times-circle-o" aria-hidden="true"></i>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<md-radio-button value="card3"></md-radio-button>
+							<img src="assets/img/frontend/visa-icon.png">
+							9898  6598  6586  5657
+						</td>
+						<td class="primaryClr"></td>
+						<td>
+							<i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+							<i class="fa fa-times-circle-o" aria-hidden="true"></i>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<md-radio-button value="card4"></md-radio-button>
+							<img src="assets/img/frontend/visa-icon.png">
+							9898  6598  6586  5657
+						</td>
+						<td class="primaryClr"></td>
+						<td>
+							<i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+							<i class="fa fa-times-circle-o" aria-hidden="true"></i>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<md-radio-button value="card5"></md-radio-button>
+							<img src="assets/img/frontend/visa-icon.png">
+							9898  6598  6586  5657
+						</td>
+						<td class="primaryClr"></td>
+						<td>
+							<i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+							<i class="fa fa-times-circle-o" aria-hidden="true"></i>
+						</td>
+					</tr>
+				</table>
+				</md-radio-group>
+			</div>
+		 </div>
+		</div>
+	</div>
+</div>

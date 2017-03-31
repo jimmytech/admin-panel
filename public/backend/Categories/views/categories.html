@@ -61,7 +61,7 @@
                         </td>
                         <td>{{l.description | limitTo: 100}}
                            <span ng-if="l.description.length>100">
-                           <i class="material-icons pointer">more_horiz</i>
+                           <i ng-click = "redirectTo('/admin/category/detail/', l._id);" class="material-icons pointer">more_horiz</i>
                            <md-tooltip md-direction = "bottom">Read more...</md-tooltip>
                            </span>
                                                    </td>
