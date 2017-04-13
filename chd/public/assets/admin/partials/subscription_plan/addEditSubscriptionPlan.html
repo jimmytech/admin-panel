@@ -1,0 +1,171 @@
+<section  ng-init = "manageAddEditPlanDiv();">
+   <div class="page-header">
+      <h1>
+         <i class="md md-input"></i>
+         {{pageHeader}}
+      </h1>
+   </div>
+   <div class="row  m-b-40">
+   <div class="col-md-3 col-md-push-9">
+      <h5>Validating elements</h5>
+      <p>
+         Push the submit button to check all the validations at once.
+         Resetting will handle resetting the validation messages.
+      </p>
+   </div>
+   <div class="col-md-8 col-md-pull-3">
+      <div class="well white" id="forms-validation-container" ng-if= "pageHeader=='Add New plan'">
+         <form name="addplan" class="form-floating" novalidate="novalidate" ng-submit=" addplan.$valid && addSubscriptionPlan(newPlan);">
+            <fieldset>
+               <div class="form-group">
+                  <label class="control-label" ng-class ="{'invalid-form' : addplan.$submitted && addplan.planname.$invalid}" >Plan Name*</label>
+                  <input type="text" name="planname" class="form-control" ng-model="newPlan.name" required="">
+               </div>
+               <div class="form-group">
+                  <label class="control-label" ng-class ="{'invalid-form' : addplan.$submitted && addplan.price.$invalid}" >Price (£)*</label>
+                  <input  ng-pattern="/^[1-9]\d*([.]\d+)?$/" type="text" name="price" class="form-control" ng-model="newPlan.price" required="" numbers-only >
+               </div>
+               <div class="form-group">
+                  <label class="control-label" ng-class ="{'invalid-form' : addplan.$submitted && addplan.description.$invalid}" >Description*</label>
+                  <textarea class="form-control vertical" name="description" rows="3" ng-model="newPlan.plan_description" required=""></textarea>          
+               </div>
+               <h5 style="margin-top: 40px;" >Select Services</h5>
+               <div class="form-group">
+                  <div layout="row" layout-wrap flex>
+                     <div flex="50" ng-repeat="item in items">
+                        <md-checkbox name = "services" ng-click="toggle(item, selected)" class = "md-primary" ng-required="true">
+                           {{ item }}
+                        </md-checkbox>
+                     </div>
+                  </div>
+               </div>
+               <div class="form-group">
+               </div>
+               <div class="form-group">
+                  <button type="submit"  ng-click = "addplan.$invalid && validate();" class="btn btn-primary">Submit</button>
+                  <button ng-click = "back();" class="btn btn-default">Cancel</button>     
+               </div>
+            </fieldset>
+         </form>
+      </div>
+      <div class="well white" id="forms-validation-container" ng-if= "pageHeader=='Edit Plan'">
+         <form name="editPlan" class="form-floating" novalidate="novalidate" ng-submit="editPlan.$valid && updateSubscriptionPlan(updatedPlan);">
+            <fieldset>
+               <div class="form-group">
+                  <label class="control-label" ng-class ="{'invalid-form' : editPlan.$submitted && editPlan.planname.$invalid}" >Plan Name*</label>
+                  <input type="text" name="planname" class="form-control" ng-model="updatedPlan.name" required="">
+               </div>
+               <div class="form-group">
+                  <label class="control-label" ng-class ="{'invalid-form' : editPlan.$submitted && editPlan.price.$invalid}" >Price (£)*</label>
+                  <input  ng-pattern="/^[1-9]\d*([.]\d+)?$/" type="text" name="price" class="form-control" ng-model="updatedPlan.price" required="" numbers-only >
+               </div>
+               <div class="form-group">
+                  <label class="control-label" ng-class ="{'invalid-form' : editPlan.$submitted && editPlan.description.$invalid}" >Description*</label>
+                  <textarea class="form-control vertical" name="description" rows="3" ng-model="updatedPlan.plan_description" required=""></textarea>          
+               </div>
+               <h5 style="margin-top: 40px;" >Select Services</h5>
+               <div class="form-group">
+                  <div layout="row" layout-wrap flex>
+                     <div flex="50" ng-repeat="item in items">
+                        <md-checkbox ng-checked="exists(item, selected)" ng-click="toggle(item, selected)" class="md-primary">
+                           {{ item }}
+                        </md-checkbox>
+                     </div>
+                  </div>
+                  <div class="form-group">
+                  </div>
+                  <div class="form-group">
+                     <button type="submit" ng-click = "editPlan.$invalid && validate();" class="btn btn-primary">Submit</button>
+                     <button ng-click = "back();" class="btn btn-default">Cancel</button>                  
+                  </div>
+            </fieldset>
+         </form>
+         </div>
+         <div class="row white pad-20 " ng-if= "pageHeader=='Add New Service'">
+            <form name="newservice" novalidate="novalidate" ng-submit="newservice.servicename.$modelValue.length>0 &&  addService(plan);">
+               <div class="form-group">
+                  <label  ng-class ="{'invalid-form' : newservice.$submitted && newservice.servicename.$modelValue.length==0}" >Services (Press enter after type)*</label> 
+                  <md-chips  name = 'servicename' placeholder= "Services"  
+                     " secondary-placeholder="+Services" ng-model="plan.PlanService" md-separator-keys="chips.customKeys" md-removable="removable" md-min-chips="1" ></md-chips>
+               </div>
+               <button ng-disabled = "service-form.$invalid" type="submit" ng-click = "newservice.servicename.$modelValue.length==0 && validate();" class="btn btn-primary">Submit</button>
+               <button ng-click = "back();" class="btn btn-default">Cancel</button>                       
+            </form>
+         </div>
+
+         <div ng-if= "pageHeader=='Add New Additional Service'">
+            <div class="well white" id="forms-validation-container">
+               <form name="additionalservice" class="form-floating" novalidate="novalidate" ng-submit="additionalservice.$valid && addAdditionalService(additional)">
+                  <fieldset>
+                     <div class="form-group">
+                        <label class="control-label" ng-class ="{'invalid-form' : additionalservice.$submitted && additionalservice.additionalservicename.$invalid}" >Additional Service Name*</label>
+                        <input  type="text" name="additionalservicename" class="form-control" ng-model="additional.name" required>
+                     </div>
+                     <div class="form-group">                      
+                     <label class="control-label" ng-class ="{'invalid-form' : additionalservice.$submitted && additionalservice.tooltip.$invalid}" >Tooltip*</label>
+                        <input name="tooltip" type="text" class="form-control" ng-model="selectedRecordToEdit.tooltip_text" required="">
+                     </div>                     
+                     <div class="form-group">
+                        <label class="control-label" ng-class ="{'invalid-form' : additionalservice.$submitted && additionalservice.price.$invalid}" >Price (£)*</label>
+                        <input  ng-pattern="/^[1-9]\d*([.]\d+)?$/" type="text" name="price" class="form-control" ng-model="additional.price" required="" >
+                     </div>
+                     <div class="form-group">
+                        <label class="control-label" ng-class ="{'invalid-form' : additionalservice.$submitted && additionalservice.description.$invalid}" >Description*</label>
+                        <textarea name="description" type="text" class="form-control" ng-model="additional.description" required="" ></textarea>
+                     </div>
+                     <div class="form-group">
+                        <button ng-disabled = "service-form.$invalid" type="submit" ng-click = "additionalservice.$invalid && validate();" class="btn btn-primary">Submit</button>
+                        <button ng-click = "back();" class="btn btn-default">Cancel</button>                        
+                     </div>
+                  </fieldset>
+               </form>
+            </div>
+         </div>
+         <div ng-if= "pageHeader=='Edit Service'">
+            <div class="well white" id="forms-validation-container" ng-init = "getPlanDataToedit();" >
+               <form name="editservice" class="form-floating" novalidate="novalidate" ng-submit=" editservice.$valid  && updateServices(selectedRecordToEdit)">
+                  <fieldset>
+                     <div class="form-group">
+                        <label class="control-label" ng-class ="{'invalid-form' : editservice.$submitted && editservice.servicename.$invalid}"  >Service Name*</label>
+                        <input  type="text" name="servicename" class="form-control" ng-model="selectedRecordToEdit.name" required>
+                     </div>
+                     <div class="form-group">
+                        <button type="submit" ng-click = "editservice.$invalid && validate();" class="btn btn-primary">Submit</button>
+                        <button ng-click = "back();" class="btn btn-default">Cancel</button>
+                     </div>
+                  </fieldset>
+               </form>
+            </div>
+         </div>
+         <div ng-if= "pageHeader=='Edit Additional Service'">
+            <div class="well white" id="forms-validation-container">
+               <form name="editadditionalservice" class="form-floating" novalidate="novalidate" ng-submit="editadditionalservice.$valid && updateAdditionalServices(selectedRecordToEdit)">
+                  <fieldset>
+                     <div class="form-group">
+                        <label class="control-label" ng-class ="{'invalid-form' : editadditionalservice.$submitted && editadditionalservice.additionalservicename.$invalid}" >Additional Service Name*</label>
+                        <input name="additionalservicename" type="text" class="form-control" ng-model="selectedRecordToEdit.name" required="">
+                     </div>  
+                     <div class="form-group">                      
+                     <label class="control-label" ng-class ="{'invalid-form' : editadditionalservice.$submitted && editadditionalservice.tooltip.$invalid}" >Tooltip*</label>
+                        <input name="tooltip" type="text" class="form-control" ng-model="selectedRecordToEdit.tooltip_text" required="">
+                     </div>
+                     <div class="form-group">
+                        <label class="control-label" ng-class ="{'invalid-form' : editadditionalservice.$submitted && editadditionalservice.price.$invalid}" >Price (£)*</label>
+                        <input name="price" ng-pattern="/^[1-9]\d*([.]\d+)?$/" type="text" class="form-control" ng-model="selectedRecordToEdit.price" required="" >
+                     </div>
+                     <div class="form-group">
+                        <label class="control-label" ng-class ="{'invalid-form' : editadditionalservice.$submitted && editadditionalservice.description.$invalid}" >Description*</label>
+                        <textarea name="description" type="text" class="form-control" ng-model="selectedRecordToEdit.description" required="" ></textarea>
+                     </div>
+                     <div class="form-group">
+                        <button ng-click = "editadditionalservice.$invalid && validate();" class="btn btn-primary" type="submit" class="btn btn-primary">Submit</button>
+                        <button ng-click = "back();" class="btn btn-default">Cancel</button>
+                     </div>
+                  </fieldset>
+               </form>
+            </div>
+         </div>
+      </div>
+   </div>
+</section>
+

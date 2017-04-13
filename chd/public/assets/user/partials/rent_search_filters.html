@@ -1,0 +1,85 @@
+<form ng-submit="rent_search_form(rent)" novalidate>
+	<div class="tabcontent" id="tab-1">
+		<div class="topserchdiv">
+			<md-autocomplete
+			class="serchinput"
+			md-menu-class="homeSearchList"
+			md-selected-item="selectedItem"
+			md-search-text-change="searchTextChange(rent.search_address)"
+			md-search-text="rent.search_address"
+			md-selected-item-change="selectedItemChange(item)"
+			md-items="item in querySearch(rent.search_address)"
+			md-item-text="item.suggestion"
+			md-min-length="1"
+			placeholder="Search By County, postcode, address">
+			<md-item-template>
+				<span md-highlight-text="rent.search_address" md-highlight-flags="^i">{{item.suggestion}}</span>
+			</md-item-template>
+			<md-not-found> No address matching "{{rent.search_address}}" were found. </md-not-found>
+			</md-autocomplete>
+			<md-button type="submit" class="btngreenComn font15 md-raised md-primary serchbtn">Search</md-button>
+		</div>
+		<div class="botserchdiv clearfix">
+			<div class="serchselectbox">
+				<md-select ng-model="rent.property_type" name="Property type" md-no-asterisk placeholder="Property Type" class="serchinput selecgarrow  m-t-0 md-no-underline" ng-model-options="{trackBy: '$value._id'}">
+					<md-option value="any">Any</md-option>
+					<md-option ng-repeat="type in property_rental" ng-value="type">{{type.name}}</md-option>
+				</md-select>
+			</div>
+			<div class="serchselectbox">
+				<md-select ng-model="rent.min_price_per_month" name="min_price_per_month" md-no-asterisk placeholder="Min. Price PM" class="serchinput selecgarrow  m-t-0 md-no-underline" >
+					<md-option value="any">No Min</md-option>
+					<md-option ng-repeat="pm in monthly_price" ng-value="pm">{{pm | currency : '&pound;' : 0}}</md-option>
+				</md-select>
+			</div>
+			<div class="serchselectbox">
+				<md-select ng-model="rent.max_price_per_month" name="max_price_per_month" md-no-asterisk placeholder="Max. Price PM" class="serchinput selecgarrow  m-t-0 md-no-underline" >
+					<md-option value="any">No Max</md-option>
+					<md-option ng-repeat="pm in monthly_price" ng-value="pm">{{pm | currency : '&pound;' : 0}}</md-option>
+				</md-select>
+			</div>
+			<div class="serchselectbox univercal">
+				<md-datepicker ng-model="rent.availableDate"  md-hide-icons="triangle" class="serchinput pad7" md-placeholder="Available Date"  md-open-on-focus></md-datepicker>
+			</div>
+			<div class="serchselectbox">
+				<md-select ng-model="rent.min_beds" name="Min. Bedrooms" md-no-asterisk placeholder="Min. Bedrooms" class="serchinput selecgarrow  m-t-0 md-no-underline" >
+					<md-option value="any">Any</md-option>
+					<md-option value="0">Studio</md-option>
+					<md-option 
+					ng-repeat="bed in [1,2,3,4,5]" 
+					ng-pluralize 
+					count="bed" 
+					when="{1: '{{bed}} bed', 5: '{{bed}}+ beds', other: '{{bed}} beds'}"
+					ng-value="bed">{{bed}}</md-option>
+				</md-select>
+			</div>
+			<div class="serchselectbox">
+				<md-select ng-model="rent.max_beds" name="Max. Bedrooms" md-no-asterisk placeholder="Max. Bedrooms" class="serchinput selecgarrow  m-t-0 md-no-underline" >
+					<md-option value="any">Any</md-option>
+					<md-option value="0">Studio</md-option>
+					<md-option 
+					ng-repeat="bed in [1,2,3,4,5]" 
+					ng-pluralize 
+					count="bed" 
+					when="{1: '{{bed}} bed', 5: '{{bed}}+ beds', other: '{{bed}} beds'}"
+					ng-value="bed">{{bed}}</md-option>
+				</md-select>
+			</div>
+<!-- 			<div class="serchselectbox">
+				<md-select ng-model="rent.radius" name="Search Radius" md-no-asterisk placeholder="Distance From"  class="serchinput selecgarrow  m-t-0 md-no-underline" >
+                    <md-option value="any">Any</md-option>
+                    <md-option value=".25">Within 1/4 mile</md-option>
+                    <md-option value=".50">Within 1/2 mile</md-option>
+                    <md-option value="1">Within 1 mile</md-option>
+                    <md-option value="3">Within 3 mile</md-option>
+                    <md-option value="5">Within 5 mile</md-option>
+                    <md-option value="10">Within 10 mile</md-option>
+                    <md-option value="15">Within 15 mile</md-option>
+                    <md-option value="20">Within 20 mile</md-option>
+                    <md-option value="30">Within 30 mile</md-option>
+                    <md-option value="40">Within 40 mile</md-option>
+				</md-select>
+			</div> -->
+		</div>
+	</div>
+</form>

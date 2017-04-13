@@ -1,0 +1,16 @@
+{
+    "node": true,
+    "esversion": 6,
+    "globals": {
+        "$": false,
+        "Dropzone": false,
+        "localStorage": false,
+        "app": false,
+        "moment" : false,
+        "window": false,
+        "google":false,
+        "document": false,
+        "FileReader": false
+    },
+    "predef": ["angular"]
+}

@@ -1,0 +1,200 @@
+<!--Start middle Part-->
+
+<div class="midllepart">
+	<!--Start top serch -->
+	<section class="bluebg section pad-t-0">
+		<!--Start top  Part-->
+		<div class="container marbot30 ">
+			<div class="boxshadowcommon col-lg-12">
+				<div class="row ">
+					<div class="col-lg-12 land_top_list_pad">
+						<ul class="land_top_list">
+							<li> <a href="#"  ng-href="{{}}" ><span class="land_acc_ico"></span> Landlord Account</a></li>
+							<li> <a  ng-href="{{}}"  ><span class="land_list_ico"></span>List your Property</a></li>
+							<li> <a  ng-href="{{}}" class="active"  ><span class="land_listing_ico"></span>Property Listing </a></li>               
+						</ul>  
+					</div>
+				</div>
+			</div>
+		</div>
+		<!--Start top  Part-->
+		<div class="container">
+			<div class="clearfix col-lg-12 boxshadowcommon marbot50">  
+				<div class="row">
+					<div class="col-lg-12">  
+
+						<div class="pad5 "> 
+							<div class="land_details_carosal">
+								<data-owl-carousel-thumb class="owl-carousel" data-options="{navigation: false, pagination: false, rewindNav : false,  items:1,loop:true}">
+									<div owl-carousel-thumb-item="" ng-repeat="item in items" class="item" ng-style="{'background-image':'url({{item.image}})'}" style="background-position:center center ;background-repeat:no-repeat; background-size:cover;">                       
+									</div>
+								</data-owl-carousel-thumb>  
+							</div>  
+
+							<div class="pad20 pad-b-5">    
+								<data-owl-carousel-thumb class="owl-carousel featurehm counsilcarosal" data-options="{  loop:true, pagination: false, margin:20, 
+								rewindNav:false,nav:true,dots:false,items:4,autoplay:false,responsiveClass:true,responsive:{0:{items:1,dots:false},600:{items:2},  1000:{items:3,margin:20 },  1030:{items:3, }
+							}}"> 
+							<div owl-carousel-thumb-item="" ng-repeat="property in properties" class="item">                               
+								<img ng-src="{{property.image}}" alt=""> 
+							</div>
+						</data-owl-carousel-thumb>
+					</div>  
+				</div> 
+			</div>
+		</div>       
+	</div>
+</div>  
+<div class="container">  
+	<div class="clearfix boxshadowcommon col-lg-12 marbot50">
+		<div class="row">
+			<div class="col-lg-12">
+				<div class="pad5">
+					<!--Start prorty part -->
+					<div class="land_pro_det ">
+						<div class="clearfix land_pro_det_top">
+							<div class="fl land_pro_det_name">1101 "Aspire Apartments" 11 Ellenborough Street Woodend Qld 4305</div>  
+							<div class="fr land_pro_det_price opensemibold colorblue">£ 1,300,00</div>
+						</div> 
+						<div class="clearfix">
+							<div class="land_pro_det_amenitie fl">
+								<!--amenities -->
+								<div class="listpropertyfotterinfo clearfix marbot20">
+									<div class="fl">
+										<ul class="amenties">
+											<li><img src="images/savedpro_bath.png"> <span>1</span></li>
+											<li><img src="images/savedpro_bed.png"> <span>2</span></li>
+											<li><img src="images/savedpro_car.png"> <span>3</span></li>
+										</ul>
+									</div>
+									<div class="fr protyderailsbtn">
+										<a ng-href="" class="lineheight30 florbtn mar0">
+											<span class="mycherrydash_icon floor_icon"></span>Floor Plan
+										</a>
+										<md-icon class="colorblue">star_rate</md-icon>
+									</div>                
+								</div>
+								<!--End amenities -->
+								<div class="clearfix">
+									<div class="land_pro_det_Propertytxt ">
+										<span>Property Description</span>
+									</div>
+									<div class="land_pro_det_des">
+										<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Superiores tres erant, quae esse possent, quarum est una sola defensa, eaque vehementer. Dicet pro me ipsa virtus nec dubitabit isti vestro beato M. Sed erat aequius Triarium aliquid de dissensione nostra iudicare. Qui-vere falsone, quaerere mittimus-dicitur oculis se privasse.</p>
+										<p>Traditur, inquit, ab Epicuro ratio neglegendi doloris. Atque his de rebus et splendida est eorum et illustris oratio.</p>
+										<p>Certe nihil nisi quod possit ipsum propter se iure laudari. Simus igitur contenti his. Cuius similitudine perspecta in formarum specie ac dignitate transitum est ad honestatem dictorum atque factorum. Eaedem enim utilitates poterunt eas labefactare atque pervertere. Sed haec quidem liberius ab eo dicuntur et saepius. Parvi enim primo ortu sic iacent, tamquam omnino sine animo sint. Quis Pullum Numitorium Fregellanum, proditorem, quamquam rei publicae nostrae profuit, non odit? Nemo nostrum istius generis asotos iucunde putat vivere. </p>
+									</div>
+								</div>
+							</div>
+							<div class="land_pro_det_amenitie fr">
+								<ul class="land_pro_det_maplist" ng-init="rent=true">
+									<li><a ng-class="{'active':rent}" ng-click="rent=true;sale=false">Enlarge Map </a></li>
+									<li><a ng-class="{'active':sale}" ng-click="rent=false;sale=true">Street View</a></li>
+								</ul>
+								<div class="land_pro_det_mapresult" ng-show="rent">
+									<img src="images/land_map.png" style="width: 100%">
+								</div>
+								<div class="land_pro_det_mapresult"  ng-show="sale">
+									<img src="images/land_map.png" style="width: 100%">
+								</div>
+
+							</div>
+
+						</div> 
+					</div>
+				</div> 
+			</div>
+		</div> 
+		<!--Start prorty part -->
+	</div> 
+	<!-- Tenancy Details-->
+	<div class="clearfix boxshadowcommon col-lg-12 marbot50">
+		<div class="row">
+			<div class="col-lg-12">
+				<div class="pad5">
+					<!--Start prorty part -->
+					<div class="land_pro_det ">
+						<div class="clearfix land_pro_det_top">
+							<div class="fl land_pro_det_name"> Tenancy Details, Restrictions &amp; Features</div> 
+						</div> 
+						<ul class="land_pro_det_Tenancylist clearfix">
+							<li><span>Earliest Move In Date - </span><span class="colorblue">15-oct</span></li>
+							<li><span>Monthly Rent For Entre Property ( £ ) - </span><span class="colorblue">£ 20,00 </span></li>
+							<li><span>Weekly Rent For Entire Property ( £ ) -</span><span class="colorblue"> £ 1,30,00 </span></li>
+							<li><span>Deposit Ammount -  </span><span class="colorblue">£ 20,00</span></li>
+							<li><span>Maximum Tenants Length (Mon:hs) -  </span><span class="colorblue">2 Years</span></li>
+							<li><span>Maximum Number of Tenants -  </span><span class="colorblue">3</span></li>             
+						</ul>
+					</div>
+				</div> 
+			</div>
+		</div>
+	</div> 
+	<div class="clearfix boxshadowcommon col-lg-12 ">
+		<div class="row">
+			<div class="col-lg-12">
+				<div class="pad5">
+					<!--Start prorty part -->
+					<div class="land_pro_det ">
+						<div class="clearfix land_pro_det_top">
+							<div class="fl land_pro_det_name opensemibold"> Contact Agent</div> 
+						</div> 
+						<div class="my_update_form clearfix"> 
+							<div class="my_update_form-full ">
+								<div class="positiorel land_load_dpfull">
+									<div class="land_load_dp"><img src="images/land_dp.png"></div>
+									<span>Marc Quinn</span>
+									<span>053423412</span>
+									<a ng-href="" class="colorblue linkur">View Profile</a>
+								</div>
+							</div>                           
+							<div class="my_update_form-L fl">
+								<label class="opensemibold textupper">Name<sup>*</sup></label>
+								<input type="text" class="traderstopserchselect" placeholder="">
+							</div>
+							<div class="my_update_form-L fr">
+								<label class="opensemibold textupper">Email<sup>*</sup></label>
+								<input type="text" class="traderstopserchselect" placeholder="">              
+							</div>
+							
+							<div class="my_update_form-L fl">
+								<label class="opensemibold textupper">Phone<sup>*</sup></label>
+								<input type="text" class="traderstopserchselect" placeholder="">
+							</div>
+
+							<div class="my_update_form-L fr">
+								<label class="opensemibold textupper">About Me <sup>*</sup></label>
+								<md-select ng-model="user.role" name="role" md-no-asterisk placeholder="Please Choose an Option" class="traderstopserchselect selectlogin99 m-t-0 md-no-underline m-b-0" >
+									<md-option value="buyer">Suggestions for Improvement</md-option>
+									<md-option value="noftbuyer1">Technical Support</md-option>
+									<md-option value="tenant1">House Prices</md-option>
+									<md-option value="landlord1">Advertising on Rightmove</md-option>
+									<md-option value="other1">General</md-option>
+								</md-select>
+							</div>
+
+							<div class="my_update_form-full">
+								<label class="opensemibold textupper">Comment</label>
+								<textarea class="traderstopserchselect height75" placeholder=""></textarea>
+							</div>
+
+							<div class="my_update_form-full">
+								<label class="opensemibold textupper font16 colorblack marbot10">I would like to</label>
+								<md-checkbox ng-model="Arrange" aria-label="Checkbox 1"> Arrange viewing</md-checkbox>
+								<md-checkbox ng-model="contacted" aria-label="Checkbox 2"> Be contacted about similar properties</md-checkbox>
+							</div> 
+							<div class="my_update_form-full">
+								<md-button class="textlower fl land_pro_detbtn font15 md-raised md-primary btnComn ">Submit</md-button>
+							</div>  
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>                
+		<!--Start prorty part -->
+	</div> 
+</div>
+</section>
+<!--Start top serch -->
+</div>
+<!--End middle Part-->

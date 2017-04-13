@@ -1,0 +1,79 @@
+ <!--Start pop up -->
+ <!--<div class="protinrelative">   -->
+ <md-dialog aria-label="myDailog" class="contactmycherry">
+    <form ng-cloak>
+        <md-toolbar>
+          <div class="md-toolbar-tools">
+            <div class="close_popup"><a ng-click="cancel()" class="cancelpop">X</a></div>
+        </div>
+    </md-toolbar>
+    <md-dialog-content>
+        <div class="popouter">
+            <div class="popinner">
+               <div class="profesinalpop borderradius3 pad-t-0">
+                   <div class="mainHd textupper tac profesinalpophd">Please send us your feedback</div>              
+                   <div class="tac"><img src="images/headingimg.png"></div>
+                   
+                   <div class="martop20">
+                    <div class="my_update_form clearfix"> 
+                        <div class="my_update_form-full">
+                            <label class="opensemibold textupper">Current Mail </label>
+                            <p class="opensemibold ng-binding">shivam_tyagi@seologistics.com</p>
+                        </div>                           
+                        <div class="my_update_form-L fl">
+                            <label class="opensemibold textupper">Category<sup>*</sup></label>
+                            <md-select ng-model="user.role" name="role" md-no-asterisk placeholder="Please Select" class="traderstopserchselect selectlogin99 m-t-0 md-no-underline m-b-0" >
+                                <md-option value="buyer">Suggestions for Improvement</md-option>
+                                <md-option value="noftbuyer1">Technical Support</md-option>
+                                <md-option value="tenant1">House Prices</md-option>
+                                <md-option value="landlord1">Advertising on Rightmove</md-option>
+                                <md-option value="other1">General</md-option>
+                            </md-select>
+                        </div>
+                        <div class="my_update_form-L fr">
+                            <label class="opensemibold textupper">Comments</label>
+                            <textarea class="traderstopserchselect" placeholder="Comments"></textarea>
+                        </div>
+                        <div class="my_update_form-L fl">
+                            <label class="opensemibold textupper">Title</label>
+                            <md-select ng-model="user.role" name="role" md-no-asterisk placeholder="Please Select" class="traderstopserchselect selectlogin99 m-t-0 md-no-underline m-b-0" >
+                                <md-option value="buyer">Mr.</md-option>
+                                <md-option value="noftbuyer1">Miss</md-option>
+                                
+                            </md-select>
+                        </div>                             
+                        <div class="my_update_form-L fr">
+                            <label class="opensemibold textupper">First Name</label>
+                            <input type="text" class="traderstopserchselect" placeholder="Sam">
+                        </div>
+                        <div class="my_update_form-L fl">
+                            <label class="opensemibold textupper">Last Name</label>
+                            <input type="text" class="traderstopserchselect" placeholder="Clark">
+                        </div>
+                        <div class="my_update_form-L fr">
+                            <label class="opensemibold textupper">Email Address</label>
+                            <input type="text" class="traderstopserchselect" placeholder="Xys@gmail.com">
+                        </div>
+                        <div class="my_update_form-L fl">
+                            <label class="opensemibold textupper">Contact Phone No.</label>
+                            <input type="text" class="traderstopserchselect" placeholder="01234566789">
+                        </div>
+                        <div class="my_update_form-full">
+                            <md-checkbox ng-model="staySigned" aria-label="Checkbox 1"> I would like CherryDoor to contact me with any relevant properties, offers or news they may have.</md-checkbox>
+                        </div> 
+
+                    </div>
+                    <div class="my_update_form-full clearfix">
+                        <md-button class="traderstopsercbtn textlower fr font15 md-raised md-primary btnComn">Send Mail</md-button>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+</md-dialog-content>
+</form>
+<!--Start pop up -->
+
+</md-dialog>
+<!-- </div>-->

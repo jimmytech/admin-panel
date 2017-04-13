@@ -1,0 +1,103 @@
+<!--Start middle Part-->
+<div class="midllepart"> 
+	<!--Start top serch -->
+    <section class="bluebg section pad-t-0"> 
+        <div class="container">            
+            <div class="col-lg-12 boxshadowcommon">                                    
+                <div class=" mycherrysection clearfix">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="mainHd textupper tac">My CherryDoor</div>
+                            <div class="smallHd tac">Lorem ipsum dolor sit amet, consectetur adipiscing elit. </div>
+                            <div class="tac headingimg"><img src="images/headingimg.png"></div>
+                        </div>
+                    </div>
+                    <div class="row">
+                     <div class="col-lg-12">  
+                        <div class="pad5">
+                            <!--Start tab Part-->      
+                            <div class="exploretab mycherrtdashtab marbot30" profile-menu="list"> </div>
+                            <!--End tab Part-->                       
+                            <!--Start inner update Part--> 
+                            <div class="my_formupdate" >
+                                <div class="clearfix marbot30">
+                                    <div class="my_formupdate_alerttag clearfix">
+                                        <div class="my_formupdate_alerttagtxt fl font18 textupper opensemibold">My saved searches</div>
+                                        <div class="my_formupdate_alerttaglink fr">
+                                        <div ng-repeat="x in property_for_counts" href ng-click="filterProperty(x._id)" class="seprate colorblue linkur textupper opensemibold"><span ng-if="!$first">|</span> For {{x._id}} <span>({{x.count}})</span>
+                                        </div>
+                                        </div>
+                                    </div>
+                                    <div class="my_cherydasj_div">
+                                        <ul>
+                                            <li class="clearfix" ng-repeat="alerts in searchAlerts">
+                                                <div class="my_cherydasj_div_txt"><a href ng-click="search_this_address($index)">{{alerts.save_searches.prettyAddress}} <strong>({{alerts.save_searches.name}})</strong></a></span>
+                                                </div>
+                                                <div class="my_cherydasj_div_alert"><!--a ng-href="#/create-alerts-searches"-->
+                                                    <a href ng-click="toggleAlert($index)">
+                                                    <md-icon class="alerts" ng-class="{'alert_on': alerts.save_searches.frequency !== 'noalert'}">{{alerts.save_searches.frequency === 'noalert' ? 'notifications' : 'notifications_active'}}</md-icon> Alerts ({{alerts.save_searches.frequency === 'noalert' ? 'None' : alerts.save_searches.frequency}}) 
+                                                    </a>
+                                                </div>
+                                                <div class="my_cherydasj_div_close">
+                                                    <a href ng-click="delete($index, $event)" class="colorblack">
+                                                        <md-icon class="alerts">delete</md-icon>
+                                                    </a>
+                                                    <md-tooltip><strong>Delete this search</strong></md-tooltip>
+                                                </div>
+                                            </li>
+                                            <li ng-show="searchAlerts.length === 0">
+                                                <div class="my_cherydasj_div">
+                                                    <p>No Search Saved {{property_for_filter || ''}}, <a class="alert_on" set-url="/">click here to save search </a></p>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="clearfix">
+                                    <div class="my_formupdate_alerttag clearfix">
+                                        <div class="my_formupdate_alerttagtxt fl font18 textupper opensemibold">My Search History</div>
+                                        <div class="my_formupdate_alerttaglink fr">
+                                            <a href ng-click="clear_all_search_history()" class="textupper colorblack linkur opensemibold"> Clear all search history </a>
+                                        </div>
+                                    </div>
+                                    <div class="my_cherydasj_div">
+                                        <ul>
+                                            <li ng-repeat="history in search_history" class="clearfix">
+
+                                                <div class="my_cherydasj_div_txt"><a href ng-click="search_history_address($index)">Property For {{(history.property_for) + ' in ' + (history.search_address || 'UK')}}
+                                                <span ng-if="history.min_beds"> with {{history.min_beds === '0' ? 'Studio': history.min_beds}} Bedroom </span>
+                                                <span ng-if="history.max_beds"> with {{history.max_beds === '0' ? 'Studio': history.max_beds}} Bedroom </span> 
+                                                <span ng-if="history.min_sale_price">, {{history.min_sale_price | currency : '&pound;' : 0}}</span> 
+                                                <span ng-if="history.max_sale_price">, {{history.max_sale_price | currency : '&pound;' : 0}}</span>
+                                                <span ng-if="history.min_price_per_month">, {{history.min_price_per_month | currency : '&pound;' : 0}}</span>
+                                                <span ng-if="history.max_price_per_month">, {{history.max_price_per_month | currency : '&pound;' : 0}}</span>
+                                                </a>
+                                                </div>
+                                                <div class="my_cherydasj_div_alert"><a href ng-click="setAlerts($index)"><md-icon class="alerts">notifications</md-icon> Get Property Alerts </a></div>
+                                                <div class="my_cherydasj_div_close">
+                                                    <a href ng-click="remove_history($index)" class="colorblack">
+                                                        <md-icon class="alerts">delete</md-icon>
+                                                    </a>
+                                                    <md-tooltip><strong>Delete this history</strong></md-tooltip>
+                                                </div>
+                                            </li>
+                                             <li ng-show="search_history.length === 0">
+                                                <div class="my_cherydasj_div">
+                                                    <p>No Search history, <a class="alert_on" set-url="/">click here to begin search </a></p>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>                                                
+                            </div>
+                            <!--End inner update Part--> 
+                        </div> 
+                    </div>
+                </div>
+            </div>            
+        </div>
+    </div>         
+</section>     
+<!--Start top serch -->
+</div>
+<!--End middle Part--> 

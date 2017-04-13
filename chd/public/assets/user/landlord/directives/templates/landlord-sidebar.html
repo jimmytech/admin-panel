@@ -1,0 +1,158 @@
+<div class="profile_pic" >
+
+	<img class="width100" ng-src="{{myImage ? myCroppedImage : ($parent.user.profile_image.path + $parent.user.profile_image.name)}}" alt="{{$parent.user.profile_image.original_name}}">
+	<a ng-href="" class="upoadpro"><md-icon class="transition">camera_alt</md-icon> Select Image</a>
+	<input type="file" ngf-select="selectFile($file, true)" class="uploadpic" accept="image/*">
+</div>
+
+<uib-accordion close-others="oneAtATime" >
+	<div uib-accordion-group class="panel-default land_db_accordion" is-open="openItem1" ng-init="openItem1=['/landlord-account','/landlord-change-password','/landlord-banking'].indexOf(path) !== -1 ? true: false">
+		<uib-accordion-heading ><md-icon>portrait</md-icon>My Profile Details</uib-accordion-heading>
+		<div class="innermenu">
+			<ul>
+				<li><a set-url="/landlord-account"><md-icon>arrow_drop_up</md-icon>Personal Details</a></li>
+				<li><a set-url="/landlord-change-password"><md-icon>arrow_drop_up</md-icon>Change Password</a></li>
+				<li><a set-url="/landlord-banking"><md-icon>arrow_drop_up</md-icon>Banking</a></li>
+				<!-- <li><a set-url="/property-purchased-services"><md-icon>arrow_drop_up</md-icon>Property Purchased Services</a></li> -->
+			</ul>
+		</div>
+	</div>
+	<div uib-accordion-group class="panel-default land_db_accordion" is-open="openItem2" ng-init="openItem2=['/landload-enquiries'].indexOf(path) !== -1 ? true: false">
+		<uib-accordion-heading ><md-icon>help_outline</md-icon>My Enquiry</uib-accordion-heading>
+		<div class="innermenu">
+			<ul>
+				<li><a set-url="/landload-enquiries"><md-icon>arrow_drop_up</md-icon>My Enquiry</a></li>
+			</ul>
+		</div>
+	</div>
+	<div uib-accordion-group class="panel-default land_db_accordion" is-open="openItem3" ng-init="openItem3=['/landload-my-statements'].indexOf(path) !== -1 ? true: false">
+		<uib-accordion-heading ><md-icon>assignment</md-icon>My Statements</uib-accordion-heading>
+		<div class="innermenu">
+			<ul>
+				<li><a set-url="/landload-my-statements"><md-icon>arrow_drop_up</md-icon>My Statements</a></li>
+			</ul>
+		</div>
+	</div>
+	<div uib-accordion-group class="panel-default land_db_accordion" is-open="openItem4" ng-init="openItem4=['/maintenance-work-orders','/landload-invoices','/landload-safety-inspection'].indexOf(path) !== -1 ? true: false">
+		<uib-accordion-heading ><md-icon>settings</md-icon>Maintenance</uib-accordion-heading>
+		<div class="innermenu">
+			<ul>
+				<li><a set-url="/maintenance-work-orders"><md-icon>arrow_drop_up</md-icon>Work Order</a></li>
+				<li><a set-url="/landload-invoices"><md-icon>arrow_drop_up</md-icon>Invoice</a></li>
+				<li><a set-url="/landload-safety-inspection"><md-icon>arrow_drop_up</md-icon>Safety Inspection</a></li>
+			</ul>
+		</div>
+	</div>
+	<div uib-accordion-group class="panel-default land_db_accordion" is-open="openItem5" ng-init="openItem5=['/landload-professional-tradesman'].indexOf(path) !== -1 ? true: false">
+		<uib-accordion-heading ><md-icon>supervisor_account</md-icon>My Professional Tradesman Requests</uib-accordion-heading>
+		<div class="innermenu">
+			<ul>
+				<li><a set-url="/landload-professional-tradesman"><md-icon>arrow_drop_up</md-icon>Tradesman Requests</a></li>
+			</ul>
+		</div>
+	</div>
+	<div uib-accordion-group class="panel-default land_db_accordion">
+		<uib-accordion-heading ><md-icon>chrome_reader_mode</md-icon>My Plan</uib-accordion-heading>
+		<div class="innermenu">
+			<ul>
+				<li><a set-url="/landload-dashboard-plan"><md-icon>arrow_drop_up</md-icon>My Plan</a></li>
+			</ul>
+		</div>
+	</div>
+	<div uib-accordion-group class="panel-default land_db_accordion">
+		<uib-accordion-heading ><md-icon>business</md-icon>Property Visits</uib-accordion-heading>
+		<div class="innermenu">
+			<ul>
+				<li><a set-url="/landload-property-visits"><md-icon>arrow_drop_up</md-icon>Property Visits</a></li>
+			</ul>
+		</div>
+	</div>
+	<div uib-accordion-group class="panel-default land_db_accordion">
+		<uib-accordion-heading ><md-icon>remove_red_eye</md-icon>Property Viewing </uib-accordion-heading>
+		<div class="innermenu">
+			<ul>
+				<li><a set-url="/landload-property-viewing"><md-icon>arrow_drop_up</md-icon>Property Viewing</a></li>
+			</ul>
+		</div>
+	</div>
+	<div uib-accordion-group class="panel-default land_db_accordion">
+		<uib-accordion-heading ><md-icon>info</md-icon>Information</uib-accordion-heading>
+		<div class="innermenu">
+			<ul>
+				<li><a set-url="/landload-important-messages"><md-icon>arrow_drop_up</md-icon>Information</a></li>
+			</ul>
+		</div>
+	</div>
+	<div uib-accordion-group class="panel-default land_db_accordion">
+		<uib-accordion-heading ><md-icon>local_library</md-icon>Tenancy Details</uib-accordion-heading>
+		<div class="innermenu">
+			<ul>
+				<li><a set-url="/landload-tenancy-details"><md-icon>arrow_drop_up</md-icon>Tenancy Details</a></li>
+			</ul>
+		</div>
+	</div>
+	<div uib-accordion-group class="panel-default land_db_accordion">
+		<uib-accordion-heading ><md-icon>account_balance</md-icon>Landlord Insurance </uib-accordion-heading>
+		<div class="innermenu">
+			<ul>
+				<li><a set-url="/landlord-Insurance-desh"><md-icon>arrow_drop_up</md-icon>Landlord Insurance </a></li>
+			</ul>
+		</div>
+	</div>	
+	<div uib-accordion-group class="panel-default land_db_accordion">
+		<uib-accordion-heading ><md-icon>verified_user</md-icon>Assured Short Hold Tenancies (AST's)</uib-accordion-heading>
+		<div class="innermenu">
+			<ul>
+				<li><a set-url="/landload-assured"><md-icon>arrow_drop_up</md-icon>Assured Short Hold Tenancies</a></li>
+			</ul>
+		</div>
+	</div>
+	<div uib-accordion-group class="panel-default land_db_accordion">
+		<uib-accordion-heading ><md-icon>library_add</md-icon>Additional Services</uib-accordion-heading>
+		<div class="innermenu">
+			<ul>
+				<li><a set-url="/landlord-referencing"><md-icon>arrow_drop_up</md-icon>Referencing </a></li>
+				<li><a set-url="/landload-inventory-check-in"><md-icon>arrow_drop_up</md-icon>Inventory / Check-In</a></li>
+				<li><a set-url="/landload-gas-safety"><md-icon>arrow_drop_up</md-icon>Gas Safety </a></li>
+				<li><a set-url="/landload-electrical-safety"><md-icon>arrow_drop_up</md-icon>Electrical Safety</a></li>
+				<li><a set-url="/landload-epc"><md-icon>arrow_drop_up</md-icon>EPC  </a></li>
+				<li><a set-url="/landload-photography"><md-icon>arrow_drop_up</md-icon>Photography</a></li>
+				<li><a set-url="/landload-Insurance"><md-icon>arrow_drop_up</md-icon>Landlord Insurance </a></li>
+				<li><a set-url="/landload-deposit-protection"><md-icon>arrow_drop_up</md-icon>Deposit Protection   </a></li>
+			</ul>
+		</div>
+	</div>
+</uib-accordion>
+<div style="visibility: hidden">
+    <div class="md-dialog-container" id="imageDialog">
+      	<md-dialog   aria-label="Image dialog">
+      		<md-toolbar class="height50">
+  		      <div class="md-toolbar-tools height50">
+  		        <h2>Crop Profile image</h2>
+  		        <span flex></span>
+  		        <md-button class="md-icon-button" ng-click="closeImageDialog()">
+  		          <md-icon aria-label="Close dialog">close</md-icon>
+  		        </md-button>
+  		      </div>
+  		    </md-toolbar>
+  		    <md-dialog-content layout-padding>
+  		    	<div >
+		        	<div class="cropArea">
+		        		<img-crop image="myImage" result-image="myCroppedImage"></img-crop>
+		        	</div>	
+		        	<!-- <div class="tac"><img ng-src="{{myCroppedImage}}" /></div> -->
+		        </div>
+        	</md-dialog-content>
+        	<md-dialog-actions layout="row">
+        			<span class="positiorel changeupload">
+        				<a ng-href="" class="upoadpro">choose another image </a>
+        				<input type="file" class="uploadpic" ngf-select="selectFile($file, false)" accept="image/*">
+        			</span>
+		        	<md-button type="button" ng-click="uploadProfileImage(myCroppedImage,myImage.name)" class="exploremapsearchgraybtn martop10 md-raised md-primary btnComn isLoading" aria-label="upload" ng-disabled="spinner">
+		        		<span ng-hide="spinner">Upload</span>
+		        		<md-progress-circular md-mode="{{determinateValue > 0 ? 'determinate':'indeterminate'}}" value="{{determinateValue}}" class="md-hue-2" md-diameter="20px"></md-progress-circular>
+		        	</md-button>
+        	</md-dialog-actions>
+      	</md-dialog>
+    </div>
+ </div>

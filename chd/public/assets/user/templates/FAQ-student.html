@@ -1,0 +1,41 @@
+<!--Start middle Part-->
+<div class="midllepart">
+  <!--Start top serch -->
+  <section class="bluebg section pad-t-0">
+    <div class="container">
+      <div class="col-lg-12 boxshadowcommon">
+        <div class=" mycherrysection clearfix">
+          <div class="row">
+            <div class="col-lg-12">
+              <div class="mainHd textupper tac">Frequently asked questions ( Student)</div>
+              <div class="smallHd tac">Lorem Ipsum is dummy text</div>
+              <div class="tac headingimg"><img src="images/headingimg.png" alt="headingimg"></div>
+            </div>
+          </div>
+          <!--Start inner update Part-->
+          <div class="row">
+            <div class="col-lg-12">
+              <div class="innerpage_gutter clearfix">
+                <div class="privacypart">
+                  <div>
+                    <uib-accordion close-others="oneAtATime" >
+                      <div uib-accordion-group class="panel-default accoridion_div" ng-repeat="faq in faqData" is-open="isopen">
+                        <uib-accordion-heading > {{faq.title}}
+                          <md-icon class="pull-right" >{{isopen ? 'remove_circle': 'add_circle'}}</md-icon>
+                        </uib-accordion-heading>
+                        <p>{{faq.description}}</p>
+                      </div>
+                    </uib-accordion>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!--End inner update Part-->
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!--Start top serch -->
+</div>
+<!--End middle Part-->

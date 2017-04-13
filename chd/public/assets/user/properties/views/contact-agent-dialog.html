@@ -1,0 +1,92 @@
+<md-dialog layout-padding>
+	<div class="land_pro_det ">
+		<div class="clearfix land_pro_det_top">
+			<div class="fl land_pro_det_name opensemibold"> Contact Agent</div> 
+			<md-icon class="pull-right" ng-click="closeDialog()" aria-label="Close dialog">close</md-icon>
+		</div> 
+		<div class="my_update_form clearfix">
+			<div class="my_update_form-full ">
+				<div class="positiorel land_load_dpfull">
+					<div class="land_load_dp"><img ng-src="{{propertyOwner.user_id.profile_image.path + propertyOwner.user_id.profile_image.name}}"></div>
+					<span>{{propertyOwner.user_id.firstname && propertyOwner.user_id.lastname ? propertyOwner.user_id.firstname + ' ' + propertyOwner.user_id.lastname:propertyOwner.user_id.email}}</span>
+					<span>{{propertyOwner.user_id.email}}</span>
+					<span>{{propertyOwner.user_id.phone ? propertyOwner.user_id.phone.telephone:''}}</span>
+					<!-- <a ng-href="" class="colorblue linkur">View Profile</a> -->
+				</div>
+			</div>
+			<form name="contactAgentForm" ng-submit="contact_to_agent(contactAgentForm.$valid, enquiryUser)" novalidate>   
+				<div class="my_update_form-L fl">
+					<label class="opensemibold textupper">Name<sup>*</sup></label>
+					<input type="text" class="traderstopserchselect" name="name" placeholder="Enter Your Name" 
+					ng-class="{ 'errorborder': contactAgentForm.name.$touched && contactAgentForm.name.$invalid || contactAgentForm.$submitted && contactAgentForm.name.$invalid}" 
+					ng-model="enquiryUser.name" ng-required="true">
+					<div ng-messages="contactAgentForm.name.$error" class="error_tag"  ng-show="contactAgentForm.name.$touched || contactAgentForm.$submitted">
+                        <p ng-message="required">Name is required.</p>
+                    </div>
+				</div>
+				<div class="my_update_form-L fr">
+					<label class="opensemibold textupper">Email<sup>*</sup></label>
+					<input type="email" name="email" class="traderstopserchselect" placeholder="Enter Your Email" ng-model="enquiryUser.email"
+					ng-pattern="/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/"
+                    ng-class="{ 'errorborder': contactAgentForm.email.$touched && contactAgentForm.email.$invalid || contactAgentForm.$submitted && contactAgentForm.email.$invalid}" 
+                    ng-required="true">
+                    <div ng-messages="contactAgentForm.email.$error" class="error_tag"  ng-show="contactAgentForm.email.$touched || contactAgentForm.$submitted">
+                        <p ng-message="required">Email Address is required.</p>
+                        <p ng-message="email">Your email address is invalid</p>
+                        <p ng-message="pattern">Your email address is invalid</p>
+                    </div>
+				</div>
+
+				<div class="my_update_form-L fl">
+					<label class="opensemibold textupper">Phone<sup>*</sup></label>
+					<input type="text" class="traderstopserchselect" name="phone" placeholder="Enter Your Contact No." ng-model="enquiryUser.phone.telephone" ng-class="{ 'errorborder': contactAgentForm.phone.$touched && contactAgentForm.phone.$invalid || contactAgentForm.$submitted && contactAgentForm.phone.$invalid}" 
+					ng-pattern="/^[\d\s-]+$/"
+					ng-maxlength="10"
+                    ng-required="true">
+                    <div ng-messages="contactAgentForm.phone.$error" class="error_tag"  ng-show="contactAgentForm.phone.$touched || contactAgentForm.$submitted">
+                        <p ng-message="required">Phone is required.</p>
+                        <p ng-message="pattern">Please enter a valid Number.</p>
+						<p ng-message="maxlength">Number cannot be more than 10 digits.</p>
+                    </div>
+				</div>
+
+				<div class="my_update_form-L fr">
+					<label class="opensemibold textupper">About Me <sup>*</sup></label>
+					<md-select ng-model="enquiryUser.about_me" name="about_me" md-no-asterisk placeholder="Please Choose an Option" class="traderstopserchselect selectlogin99 m-t-0 md-no-underline m-b-0" ng-class="{ 'errorborder': contactAgentForm.about_me.$touched && contactAgentForm.about_me.$invalid || contactAgentForm.$submitted && contactAgentForm.about_me.$invalid}" 
+                    ng-required="true">
+						<md-option value="I own my own home">I own my own home </md-option>
+						<md-option value="I am renting">I am renting</md-option>
+						<md-option value="I have recently sold">I have recently sold</md-option>
+						<md-option value="I am a first home buyer">I am a first home buyer</md-option>
+						<md-option value="I am looking to invest">I am looking to invest</md-option>
+						<md-option value="I am monitoring the market">I am monitoring the market</md-option>
+					</md-select>
+					<div ng-messages="contactAgentForm.about_me.$error" class="error_tag"  ng-show="contactAgentForm.about_me.$touched || contactAgentForm.$submitted">
+                        <p ng-message="required">Please select one option is required.</p>
+                    </div>
+				</div>
+
+				<div class="my_update_form-full">
+					<label class="opensemibold textupper">Comment</label>
+					<textarea class="traderstopserchselect height75" ng-model="enquiryUser.comment" placeholder="Type Your Comments"></textarea>
+				</div>
+
+				<div class="my_update_form-full">
+					<label class="opensemibold textupper font16 colorblack marbot10">I would like to</label>
+					<!-- <md-checkbox ng-model="enquiryUser.arrange_property_viewing" aria-label="Checkbox 1"> Arrange viewing</md-checkbox> -->
+					<md-checkbox ng-model="enquiryUser.get_an_indication_of_price" aria-label="Checkbox 1"> Get an indication of price</md-checkbox>
+					<!-- <md-checkbox ng-model="enquiryUser.arrange_property_viewing" aria-label="Checkbox 1"> Obtain the contract of sale</md-checkbox> -->
+					<md-checkbox ng-model="enquiryUser.inspect_the_property" aria-label="Checkbox 1"> Inspect the property</md-checkbox>
+					<!-- ToDO - Newslatter subscriber -->
+					<md-checkbox ng-model="enquiryUser.be_contacted_about_similar_properties" aria-label="Checkbox 2"> Be contacted about similar properties</md-checkbox>
+				</div> 
+				<div class="my_update_form-full">
+					<md-button ng-disabled="onSubmit" type="submit" class="textlower fl land_pro_detbtn font15 md-raised md-primary btnComn" aria-label="submit-button">
+						<md-progress-circular ng-show="onSubmit" class="md-hue-2" md-diameter="20px"></md-progress-circular>
+						<span ng-hide="onSubmit">Submit</span>
+					</md-button>
+				</div> 
+			</form> 
+		</div>
+	</div>
+</md-dialog>

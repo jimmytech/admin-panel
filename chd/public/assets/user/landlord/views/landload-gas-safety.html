@@ -1,0 +1,151 @@
+<!--Start middle Part-->
+<div class="midllepart">
+  <!--Start top serch -->
+  <section class="bluebg section pad-t-0 lofinpagebg">
+    <!--Start top  Part-->
+    <div class="container marbot30 ">
+      <div class="boxshadowcommon col-lg-12">
+        <div class="row ">
+          <div class="col-lg-12 land_top_list_pad">
+            <ul class="land_top_list">
+              <li> <a href="#"  ng-href="{{}}" class="active"><span class="land_acc_ico"></span> Landlord Account</a></li>
+              <li> <a  set-url="/property-room-details"  ><span class="land_list_ico"></span>List your Property</a></li>
+              <li> <a  set-url="/property-listings"  ><span class="land_listing_ico"></span>Property Listing </a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!--Start top  Part-->
+    <div class="container land_db">
+      <div class="row ">
+        <div class="col-lg-12">
+          <!--Tittle-->
+          <div class="land_db_title">Landlord Account <span>// You can place subtitle here</span></div>
+          <!--bredcum-->           
+          <!--dashboard-->
+          <div class="main_land_dash">
+            <div class="main_land_dash_row clearfix">
+              <!--dashboard left-->
+               <div class="main_land_dash_left" landlord-sidebar></div>
+              <!--dashboard right-->
+              <div class="main_land_dash_right">
+                <div class="main_land_dash_rightinner">
+                  <div class="titlehd textupper">Gas Safety</div>
+                  <div class="land_db_form marbot30">                           
+                    <div class="land_db_forminner">                           
+                      <div class="landlord-deposit-inner">
+                        <div class="landlord-deposit-inner_title">Gas Safety Certifices - Do I need one?</div>
+                        <p>Click here to learn about gas safety and why it's important. We have a full page dedicated to our process, legal obligations, and the options. Otherwise, continue below if you are looking to book an engineer. </p>                               
+                      </div>
+                    </div>
+                  </div>
+                  <div class="land_db_form ">                           
+                    <div class="land_db_forminner safetybook">                           
+                      <div class="landlord-deposit-inner">
+                        <div class="landlord-deposit-inner_titleblue">Gas Safety Certificate Booking</div>
+                        <div class="addtitle textupper"><span>Property Details: </span></div>
+                        <div class="clearfix">
+                          <div class="my_update_form-full">
+                            <label class="opensemibold">Select Your Property:</label>
+                            <md-select name="title" placeholder="Select Cherrydoor Listing OR enter property address manually below" class="traderstopserchselect selectlogin99 m-t-0 md-no-underline m-b-0"
+                            ng-model="landlord.personalDetail.title">
+                              <md-option value="Mr">Mr</md-option>
+                              <md-option value="Mrs">Mrs</md-option>
+                              <md-option value="Ms">Ms</md-option>
+                              <md-option value="Miss">Miss</md-option>
+                            </md-select>  
+                          </div>  
+                        </div> 
+                        <div class="clearfix">
+                          <div class="my_update_form-L fl">
+                            <label class="opensemibold">Address Line 1</label>
+                             <input type="text" name="firstname" class="traderstopserchselect" placeholder="" >
+                          </div>  
+                          <div class="my_update_form-L fr">
+                            <label class="opensemibold ">Town</label>
+                            <input type="text" name="firstname" class="traderstopserchselect" placeholder="" >
+                          </div>  
+                        </div> 
+                        <div class="clearfix">
+                          <div class="my_update_form-L fl">
+                            <label class="opensemibold">Post Code</label>
+                             <input type="text" name="firstname" class="traderstopserchselect" placeholder="" >
+                          </div> 
+                        </div> 
+                        <hr class="borderhr">   
+                        <div class="clearfix">
+                          <p>Please provide details for the contact we should speak to, to arrange access to the property. </p>
+                          <div class="my_update_form-L fl">
+                            <label class="opensemibold">Contact Name</label>
+                             <input type="text" name="firstname" class="traderstopserchselect" placeholder="" >
+                          </div>  
+                          <div class="my_update_form-L fr">
+                            <label class="opensemibold ">Contact Surname</label>
+                            <input type="text" name="firstname" class="traderstopserchselect" placeholder="" >
+                          </div>  
+                        </div>
+                        <div class="clearfix"> 
+                          <div class="my_update_form-L fl">
+                            <label class="opensemibold">Phone Number</label>
+                             <input type="text" name="firstname" class="traderstopserchselect" placeholder="" >
+                          </div>
+                        </div> 
+                        <hr class="borderhr"> 
+                        <div class="clearfix">
+                          <p>Please enter a preferred appointment date. Our clerk will contact you to confirm their availability and agree an exact time for the inspection after booking. We can't guarantee an appointment date prior to ordering, but in the unlikely event that a mutually agreeable date can't be found, we will of course refund you in full. </p>
+                          <div class="my_update_form-L fl">
+                            <label class="opensemibold">Desired Appointment Date:</label>
+                            <md-datepicker class="traderstopserchselect serchinput pad7"
+                              name="available_date"
+                              ng-required="true" 
+                              ng-model="available_date" 
+                              md-min-date="minDate" 
+                              md-hide-icons="triangle"
+                              md-open-on-focus="" 
+                              ng-class="{ 'errorborder': propertyTenantForm.available_date.$touched && propertyTenantForm.available_date.$invalid || propertyTenantForm.available_date.$invalid && propertyTenantForm.$submitted }">
+                            </md-datepicker>
+                          </div>
+                        </div>   
+                        <div class="clearfix">
+                          <div class="colorblue marbot20">How many gas appliances do you have?</div>
+                          <p class="font-italic">Anything connected to the gas supply needs to be checked (boiler, built-in ovens, water heaters, air heaters, etc.) Providing an incorrect number of appliances will mean the engineer will not be able to carry out the certification for the property.</p>
+                          <div class="my_update_form-full">
+                            <label class="opensemibold">Number Of Appliances for CP12: </label>
+                            <md-select name="title" placeholder="Select Number Of Gas Appliances" class="traderstopserchselect selectlogin99 m-t-0 md-no-underline m-b-0"
+                            ng-model="landlord.personalDetail.title">
+                              <md-option value="Mr">Mr</md-option>
+                              <md-option value="Mrs">Mrs</md-option>
+                              <md-option value="Ms">Ms</md-option>
+                              <md-option value="Miss">Miss</md-option>
+                            </md-select> 
+                          </div>
+                          <div class="my_update_form-full">
+                            <label class="opensemibold">Optional Boiler Service </label>
+                            <md-select name="title" placeholder="Select Boiler" class="traderstopserchselect selectlogin99 m-t-0 md-no-underline m-b-0"
+                            ng-model="landlord.personalDetail.title">
+                              <md-option value="Mr">Mr</md-option>
+                              <md-option value="Mrs">Mrs</md-option>
+                              <md-option value="Ms">Ms</md-option>
+                              <md-option value="Miss">Miss</md-option>
+                            </md-select> 
+                          </div>
+                        </div>                         
+                      </div>
+                    </div>
+                  </div>
+                  <div class="martop10">            
+                            <md-button type="submit" class=" exploremapsearchbtn fontresponsive11 md-raised md-primary btnComn">Purchase Inventory Report : £85</md-button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!--Start top serch -->
+</div>
+<!--End middle Part
+

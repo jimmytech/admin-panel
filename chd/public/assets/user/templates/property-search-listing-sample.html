@@ -1,0 +1,355 @@
+<!--Start middle Part-->
+<div class="midllepart">
+	<!--Start top serch -->
+	<section class="bluebg section pad-t-0">
+		<div class="container marbot30">
+			<div class="boxshadowcommon col-lg-12">
+				<div class="row">
+					<div class="col-lg-12">
+						<div class="mycherrytopfilter">
+							<!--Start inner update Part-->
+							<div class="topserchdiv">
+								<input type="text" class="traderstopserchselect" placeholder="Lorem Ipsum dummy text" >
+								<md-button class="serchbtn traderstopsercbtn md-raised md-primary btnComn">Search</md-button>
+							</div>
+							<div class="clearfix">
+								<div class="my_update_form-fill pr_type fl">
+									<label class="opensemibold textupper">Property Type</label>
+									<md-select ng-model="user.role" name="role" md-no-asterisk placeholder="Show All" class="traderstopserchselect selectlogin99 m-t-0 md-no-underline m-b-0" >
+										<md-option value="op1">All</md-option>
+										<md-option value="op2">Studio</md-option>
+										<md-option value="op3">House</md-option>
+										<md-option value="op4">Flat Apartment</md-option>
+										<md-option value="op5">Commercial Property</md-option>
+									</md-select>
+								</div>
+								<div class="my_update_form-fill bed_type fl">
+									<div class=" fl min_bed">
+										<label class="opensemibold textupper">MIN bED</label>
+										<md-select  ng-model="MinBedrooms.role" name="Min. Bedrooms" md-no-asterisk placeholder="Min Bed" class="traderstopserchselect selectlogin99 m-t-0 md-no-underline m-b-0" >
+											<md-option value="op20">1 Bed</md-option>
+											<md-option value="op21">2 Beds</md-option>
+											<md-option value="op22">3 Beds</md-option>
+											<md-option value="op23">4 Beds</md-option>
+											<md-option value="op24">5 Beds</md-option>
+										</md-select>
+									</div>
+									<div class=" fr min_bed">
+										<label class="opensemibold textupper">Max Bed</label>
+										<md-select ng-model="MaxBedrooms.role" name="Max. Bedrooms" md-no-asterisk placeholder="Max Bed" class="traderstopserchselect selectlogin99 m-t-0 md-no-underline m-b-0" >
+											<md-option value="op25">1 Bed</md-option>
+											<md-option value="op26">2 Beds</md-option>
+											<md-option value="op27">3 Beds</md-option>
+											<md-option value="op28">4 Beds</md-option>
+											<md-option value="op29">5 Beds</md-option>
+										</md-select>
+									</div>
+								</div>
+								<div class="my_update_form-fill bed_type fl">
+									<div class=" fl min_bed">
+										<label class="opensemibold textupper">MIN Price</label>
+										<md-select  ng-model="Min.role" name="Min. Price PCM" md-no-asterisk placeholder="Min Bed" class="traderstopserchselect selectlogin99 m-t-0 md-no-underline m-b-0" >
+											<md-option value="op6"> $50.000</md-option>
+											<md-option value="op7"> $100.000</md-option>
+											<md-option value="op8"> $150.000</md-option>
+											<md-option value="op9"> $200.000</md-option>
+											<md-option value="op10"> $250.000</md-option>
+											<md-option value="op11"> $300.000</md-option>
+											<md-option value="op12"> $350.000</md-option>
+										</md-select>
+									</div>
+									<div class=" fr min_bed">
+										<label class="opensemibold textupper">Max Price</label>
+										<md-select ng-model="Max.role" name="Max. Price PCM" md-no-asterisk placeholder="Max Bed" class="traderstopserchselect selectlogin99 m-t-0 md-no-underline m-b-0" >
+											<md-option value="op13"> $50.000</md-option>
+											<md-option value="op14"> $100.000</md-option>
+											<md-option value="op15"> $150.000</md-option>
+											<md-option value="op16"> $200.000</md-option>
+											<md-option value="op17"> $250.000</md-option>
+											<md-option value="op18"> $300.000</md-option>
+											<md-option value="op19"> $350.000</md-option>
+										</md-select>
+									</div>
+								</div>
+								<div class="my_update_form-fill pr_type fl" ng-init="more_refine=false">
+
+									<label class="opensemibold textupper tabdisplynone">&nbsp;</label>
+									<md-button ng-click="more_refine=!more_refine;" class="traderstopsercbtn graybtncom md-raised md-primary  btnComn">More Refinement
+										<md-icon ng-if="more_refine">keyboard_arrow_down</md-icon>
+										<md-icon ng-if="!more_refine">keyboard_arrow_up</md-icon>
+									</md-button>
+								</div>
+							</div>
+							<div class="clearfix">
+								<md-checkbox ng-model="excludeLetAgreed" class="mar0" aria-label="Checkbox 1"> Exclude Let Agreed </md-checkbox>
+							</div>
+							<!--End inner update Part-->
+							<!--Start more Filter-->
+							<div class="morefilter_mydash clearfix" ng-show="more_refine">
+								<div class="clearfix">
+									<div class="my_update_form-fill keyword_type fl">
+										<label class="opensemibold textupper">Key Words</label>
+										<input type="text" class="traderstopserchselect" name="" placeholder="i.e. Garage, Utility room, Garden">
+									</div>
+									<div class="my_update_form-fill bed_type fl">
+										<div class=" fl min_bed">
+											<label class="opensemibold textupper">Featured First</label>
+											<md-select  ng-model="FeaturedFirst.role" name="FeaturedFirst. Bedrooms" md-no-asterisk placeholder="Latest" class="traderstopserchselect selectlogin99 m-t-0 md-no-underline m-b-0" >
+												<md-option value="op20">Latest</md-option>
+												<md-option value="op21">Latest</md-option>
+												<md-option value="op22">Latest</md-option>
+												<md-option value="op23">Latest</md-option>
+											</md-select>
+										</div>
+										<div class=" fr min_bed">
+											<label class="opensemibold textupper">Price</label>
+											<md-select ng-model="Price1.role" name="Price1. Bedrooms" md-no-asterisk placeholder="Per Month" class="traderstopserchselect selectlogin99 m-t-0 md-no-underline m-b-0" >
+												<md-option value="op25">$200</md-option>
+												<md-option value="op26">$300</md-option>
+												<md-option value="op27">$400</md-option>
+												<md-option value="op28">$500</md-option>
+											</md-select>
+										</div>
+									</div>
+									<div class="my_update_form-fill bed_type fl m-r-0">
+										<div class=" fl min_bed">
+											<label class="opensemibold textupper">Furnishing</label>
+											<md-select  ng-model="Furnishing.role" name="Furnishing. Price PCM" md-no-asterisk placeholder="Furnished" class="traderstopserchselect selectlogin99 m-t-0 md-no-underline m-b-0" >
+												<md-option value="op6"> Furnished</md-option>
+												<md-option value="op7"> Furnished</md-option>
+												<md-option value="op8"> Furnished</md-option>
+											</md-select>
+										</div>
+										<div class=" fr min_bed">
+											<label class="opensemibold textupper">Distance From</label>
+											<md-select ng-model="Max.role" name="Max. Price PCM" md-no-asterisk placeholder="With 1/4 Miles" class="traderstopserchselect selectlogin99 m-t-0 md-no-underline m-b-0" >
+												<md-option value="op13"> With 1/4 Miles</md-option>
+												<md-option value="op13"> With 1/4 Miles</md-option>
+												<md-option value="op13"> With 1/4 Miles</md-option>
+											</md-select>
+										</div>
+									</div>
+								</div>
+								<div class="clearfix">
+									<div class="my_update_form-fill pr_type fl">
+										<label class="opensemibold textupper">Added</label>
+										<md-select ng-model="user.role" name="role" md-no-asterisk placeholder="Nnytime" class="traderstopserchselect selectlogin99 m-t-0 md-no-underline m-b-0" >
+											<md-option value="op1">All</md-option>
+											<md-option value="op2">Nnytime</md-option>
+											<md-option value="op3">Nnytime</md-option>
+										</md-select>
+									</div>
+									<div class="my_update_form-fill pr_type fl mar0">
+										<md-checkbox ng-model="SharedSigned" class="martop35" aria-label="Checkbox 2">Shared Accomodation</md-checkbox>
+									</div>
+								</div>
+								<!--End more Filter-->
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!--End top partr-->
+		<!--statr  sort partr-->
+		<div class="container marbot20">
+			<div class="clearfix mycheyy_dashsort marbot10">
+				<div class="fl ">
+					<ul class="mycheyy_dashsort_list">
+						<li><a ng-href="" class="active" > <span class="mycherrydash_icon list"></span> List View</a></li>
+						<li><a ng-href="" > <span class="mycherrydash_icon map"></span> Map View</a></li>
+					</ul>
+				</div>
+				<div class="fr sort_tab">
+					<span class="sorttxt opensemibold">Sort By:</span>
+					<md-select ng-model="sort.role" name="sort" md-no-asterisk placeholder="Price (High Low)" class="traderstopserchselect selectlogin99 m-t-0 md-no-underline m-b-0" >
+						<md-option value="op1">High Low</md-option>
+						<md-option value="op2">Low Low</md-option>
+					</md-select>
+				</div>
+			</div>
+			<div class="clearfix mycheyy_dashpagination">
+				<div class="pagination fl ">
+					<p>Showing 1 20 of 500 total reults</p>
+				</div>
+				<div class="pagination fr ">
+					<div class="clearfix"> <a href="#"> Prev</a> <a href="#">1</a> <a href="#" class="active">2</a> <a href="#">3</a> <a href="#">4</a> <a href="#">6</a> <a href="#">Next</a> </div>
+				</div>
+			</div>
+		</div>
+		<!--End  sort partr-->
+		
+		<div class="container">
+			<div class="col-lg-12">
+				<div class="row">
+					<ul class="drawserchlist saverserchlist">
+						<li class="clearfix">
+							<!--Start left Part-->
+							<div class="myproperyyimgdiv fl">
+								<div class="myproperyyimg marbot20"> 
+									<a ng-href="" >
+										<div class="picnumber"><span>15</span> <img src="images/cam_icon.png"></div>
+										<img src="images/myproperty_big.png"> 
+									</a> 
+								</div>
+								<div class="clearfix">
+									<div class="fl">
+										<div class="positiorel landlod_height"> <img src="images/no-agent-image.jpg" class="landlod_pic">
+											<p class="landloadname">{{property.user_id.firstname && property.user_id.lastname ? property.user_id.firstname + ' ' + property.user_id.lastname:property.user_id.email}}</p>
+										</div>
+									</div>
+									
+								</div>
+							</div>
+							<!--end left Part-->
+							<!--Start right Part-->
+							<div class="myproperyydetdiv fr">
+								<!--Start name Part-->
+								<div class="clearfix listpropertmname">
+									<div class="myproperyydetdivname fl"> <a ng-href="">
+										<h6 class="font18">3 Bedroom Apartment</h6>
+										<p class="colorbluedark">Blakes Quay, Gas Works Road, RG1 3EW</p>
+									</a> </div>
+									<div class=" fr"> <a ng-href=""> <span class="heart_blank_icon mycherrydash_icon"></span> </a> <span class="myproperyydetdivprice">$ 1,500,00</span> </div>
+								</div>
+								<!--End name Part-->
+								<!--Start Description Part-->
+								<div class="clearfix listpropertdescription marbot20">
+									<p>This is a first floor apartment with an OPEN PLAN living area, kitchen and dining room. There is also a FAMILY SIZE bathroom, BALCONY overlooking the cricket pitch and a spare cupboard area. Both bedrooms are GOOD SIZES and are located near the FAMILY SIZE bathroom. </p>
+									<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, </p>
+								</div>
+								<!--End Description Part-->
+								<!--Start fotterinfo Part-->
+								<div class="listpropertyfotterinfo clearfix">
+									<div class="amenties_div">
+										<ul class="amenties">
+											<li><img src="images/savedpro_bath.png"> <span>1</span></li>
+											<li><img src="images/savedpro_bed.png"> <span>2</span></li>
+											<li><img src="images/savedpro_car.png"> <span>3</span></li>
+										</ul>
+									</div>
+									<div class="fr protyderailsbtn"> <a ng-href="" class="lineheight30 florbtn"> <span class="mycherrydash_icon floor_icon"></span>Floor Plan </a>
+										<md-button class="detalsprobluebtn textlower md-raised md-primary btnComn">Details</md-button>
+									</div>
+								</div>
+								<!--Start fotterinfo Part-->
+							</div>
+						</li> 
+						<li class="clearfix">
+							<!--Start left Part-->
+							<div class="myproperyyimgdiv fl">
+								<div class="myproperyyimg marbot20"> 
+									<a ng-href="" >
+										<div class="picnumber"><span>15</span> <img src="images/cam_icon.png"></div>
+										<img src="images/myproperty_big.png"> 
+									</a> 
+								</div>
+								<div class="clearfix">
+									<div class="fl">
+										<div class="positiorel landlod_height"> <img src="images/landlod_pic.png" class="landlod_pic">
+											<p class="landloadname">Marc  Quinn</p>
+										</div>
+									</div>
+									
+								</div>
+							</div>
+							<!--end left Part-->
+							<!--Start right Part-->
+							<div class="myproperyydetdiv fr">
+								<!--Start name Part-->
+								<div class="clearfix listpropertmname">
+									<div class="myproperyydetdivname fl"> <a ng-href="">
+										<h6 class="font18">3 Bedroom Apartment</h6>
+										<p class="colorbluedark">Blakes Quay, Gas Works Road, RG1 3EW</p>
+									</a> </div>
+									<div class=" fr"> <a ng-href=""> <span class="heart_blank_icon mycherrydash_icon"></span> </a> <span class="myproperyydetdivprice">$ 1,500,00</span> </div>
+								</div>
+								<!--End name Part-->
+								<!--Start Description Part-->
+								<div class="clearfix listpropertdescription marbot20">
+									<p>This is a first floor apartment with an OPEN PLAN living area, kitchen and dining room. There is also a FAMILY SIZE bathroom, BALCONY overlooking the cricket pitch and a spare cupboard area. Both bedrooms are GOOD SIZES and are located near the FAMILY SIZE bathroom. </p>
+									<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, </p>
+								</div>
+								<!--End Description Part-->
+								<!--Start fotterinfo Part-->
+								<div class="listpropertyfotterinfo clearfix">
+									<div class="amenties_div">
+										<ul class="amenties">
+											<li><img src="images/savedpro_bath.png"> <span>1</span></li>
+											<li><img src="images/savedpro_bed.png"> <span>2</span></li>
+											<li><img src="images/savedpro_car.png"> <span>3</span></li>
+										</ul>
+									</div>
+									<div class="fr protyderailsbtn"> <a ng-href="" class="lineheight30 florbtn"> <span class="mycherrydash_icon floor_icon"></span>Floor Plan </a>
+										<md-button class="detalsprobluebtn textlower md-raised md-primary btnComn">Details</md-button>
+									</div>
+								</div>
+								<!--Start fotterinfo Part-->
+							</div>
+						</li> 
+						<li class="clearfix">
+							<!--Start left Part-->
+							<div class="myproperyyimgdiv fl">
+								<div class="myproperyyimg marbot20"> 
+									<a ng-href="" >
+										<div class="picnumber"><span>15</span> <img src="images/cam_icon.png"></div>
+										<img src="images/myproperty_big.png"> 
+									</a> 
+								</div>
+								<div class="clearfix">
+									<div class="fl">
+										<div class="positiorel landlod_height"> <img src="images/landlod_pic.png" class="landlod_pic">
+											<p class="landloadname">Marc  Quinn</p>
+										</div>
+									</div>
+									
+								</div>
+							</div>
+							<!--end left Part-->
+							<!--Start right Part-->
+							<div class="myproperyydetdiv fr">
+								<!--Start name Part-->
+								<div class="clearfix listpropertmname">
+									<div class="myproperyydetdivname fl"> <a ng-href="">
+										<h6 class="font18">3 Bedroom Apartment</h6>
+										<p class="colorbluedark">Blakes Quay, Gas Works Road, RG1 3EW</p>
+									</a> </div>
+									<div class=" fr"> <a ng-href=""> <span class="heart_blank_icon mycherrydash_icon"></span> </a> <span class="myproperyydetdivprice">$ 1,500,00</span> </div>
+								</div>
+								<!--End name Part-->
+								<!--Start Description Part-->
+								<div class="clearfix listpropertdescription marbot20">
+									<p>This is a first floor apartment with an OPEN PLAN living area, kitchen and dining room. There is also a FAMILY SIZE bathroom, BALCONY overlooking the cricket pitch and a spare cupboard area. Both bedrooms are GOOD SIZES and are located near the FAMILY SIZE bathroom. </p>
+									<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, </p>
+								</div>
+								<!--End Description Part-->
+								<!--Start fotterinfo Part-->
+								<div class="listpropertyfotterinfo clearfix">
+									<div class="amenties_div">
+										<ul class="amenties">
+											<li><img src="images/savedpro_bath.png"> <span>1</span></li>
+											<li><img src="images/savedpro_bed.png"> <span>2</span></li>
+											<li><img src="images/savedpro_car.png"> <span>3</span></li>
+										</ul>
+									</div>
+									<div class="fr protyderailsbtn"> <a ng-href="" class="lineheight30 florbtn"> <span class="mycherrydash_icon floor_icon"></span>Floor Plan </a>
+										<md-button class="detalsprobluebtn textlower md-raised md-primary btnComn">Details</md-button>
+									</div>
+								</div>
+								<!--Start fotterinfo Part-->
+							</div>
+						</li>             
+					</ul>
+				</div>
+			</div>
+		</div>  
+		<div class="container">
+			<div class="pagination fr martop20">
+				<div class="clearfix"> <a href="#"> Prev</a> <a href="#">1</a> <a href="#" class="active">2</a> <a href="#">3</a> <a href="#">4</a> <a href="#">6</a> <a href="#">Next</a> </div>
+			</div>
+		</div>
+		
+	</section>
+	<!--Start top serch -->
+</div>
+<!--End middle Part-->

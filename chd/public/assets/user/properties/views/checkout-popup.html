@@ -1,0 +1,52 @@
+<md-dialog aria-label="Mango (Fruit)">
+  <form ng-cloak>
+    <md-toolbar>
+      <div class="md-toolbar-tools">
+        <h2>Payment</h2>
+        <span flex></span>
+        <md-button class="md-icon-button" ng-click="cancel()">
+          <md-icon aria-label="Close dialog">close</md-icon>
+        </md-button>
+      </div>
+    </md-toolbar>
+
+    <md-dialog-content>
+      <div class="md-dialog-content">
+        <!-- <h2>Paypal checkout process</h2> -->
+        <p>Do you want to process your payment - £ {{price}} ?</p>
+      </div>
+    </md-dialog-content>
+
+    <md-dialog-actions layout="row">
+<!--       <md-button class="exploremapsearchgraybtn mar-right5 md-raised md-primary btnComn" ng-click="cancel()">
+        cancel
+      </md-button> -->
+          <form style="overflow:hidden;" class="col-lg-offset-1 col-sm-offset-1 col-md-offset-1 col-xs-offset-1">
+          </form>
+          
+          <form action="https://www.sandbox.paypal.com/cgi-bin/webscr" method="post" style="overflow:hidden;"> 
+              <input type="hidden" name="cmd" value="_cart">
+              <input type="hidden" name="upload" value="1">
+              <input type="hidden" name="business" value="flexsin.nodejs-facilitator@gmail.com">
+              <div ng-repeat = "i in items">
+                <input type="hidden" name="item_name_{{$index+1}}" value="{{i.name}}">
+                <input type="hidden" name="amount_{{$index+1}}" value="{{i.price}}">          
+              </div>
+              <input type="hidden" name="currency_code" value="GBP">            
+              <input type="hidden" name="return" value="http://localhost:7000/successfull_payment" />
+              <input type="hidden" name="cancel_return" value="http://www.yourwebsite.com/cancel.html">      
+
+              <div class="col-lg-offset-1 col-sm-offset-1 col-md-offset-1 col-xs-offset-1">
+
+              <input type="image" name="submit" border="0" src="https://www.paypalobjects.com/en_GB/i/btn/btn_buynowCC_LG.gif" alt="PayPal - The safer, easier way to pay online">
+              </div>
+          </form>
+
+
+      <span flex></span>
+<!--       <md-button class="md-raised md-primary btnComn" ng-click="done('pay')" md-autofocus>
+        Pay
+      </md-button> -->
+    </md-dialog-actions>
+  </form>
+</md-dialog>

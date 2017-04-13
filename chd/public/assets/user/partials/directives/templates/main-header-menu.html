@@ -1,0 +1,5 @@
+<ul ng-controller = "headerMenuCtrl" class="nav navbar-nav navbar-right topmenulist">
+    <li ng-repeat="item in headerMenu"> <a set-url="{{item.url}}" ng-class="{'active': item.url == headerPath}">
+    {{item.text}}
+    </a></li>
+</ul>

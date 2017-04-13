@@ -1,0 +1,329 @@
+@media only screen and (max-width: 1600px) {
+.topmenulist > li > a{margin:10px 7px;  font-size:14px}
+.topmenulist{margin-right:150px;}
+.homehaeder{width:100%;  padding:20px 20px;  }
+.topheader > ul{padding:5px 20px;  }
+}
+@media only screen and (max-width: 1169px) {
+.homebannercarsal .item{height:500px;} 
+.legallink{width: 200px;}
+.fotterlogodiv {margin-right: 30px; width: 300px;} 
+}
+@media only screen and (max-width: 1199px) {
+.homehaeder{ height: 105px;}
+.navbar{z-index: 10;}
+.navbar-header {float: none;    }
+.navbar-toggle {border: 2px solid #fff;display: block;position: absolute;right: 0;top: 21px; padding: 12px 10px; margin: 0!important;}
+.navbar-collapse {border-top: 1px solid transparent;box-shadow: inset 0 1px 0 rgba(255,255,255,0.1);}
+.navbar-collapse.collapse {display: none!important;}
+.navbar-collapse.collapse.in {display: block!important;}
+.navbar-nav {float: none!important;	}	 
+.navbar-toggle .icon-bar { background: #fff none repeat scroll 0 0;}
+.signreg{right: 65px;}
+.homehaeder{padding: 10px;}
+.topheader{padding: 5px 10px;}
+.bothmenu{position: absolute;right: 0px; width: 263px; margin: 0!important; z-index: 70; top: 80px; background: #fff; padding: 0px 0!important; box-shadow: 0 2px 4px -1px rgba(0,0,0,.2),0 4px 5px 0 rgba(0,0,0,.14),0 1px 10px 0 rgba(0,0,0,.12);}
+.bothmenu:before{content: '';position: absolute; width: 0px; height: 0px;right: 13px;  top: -10px; border-style: solid;border-width: 0 10px 10px 10px; border-color: transparent transparent #fff  transparent;}
+.topmenulist{margin: 0 0 0 0!important; width: 100%;}
+.navbar-collapse.in{overflow-y: visible;}
+.topmenulist > li{display: block; width: 100%; float: left!important;}
+.topmenulist > li > a{display: block;color: rgba(0,0,0,0.87); margin:0;padding: 10px 16px; width: 100%; box-sizing: border-box;}
+.topmenulist > li > a:after{display: none;}
+.topmenulist > li:hover{background: #ececec;}
+.legallink{ width: 170px;}
+.fotterlogodiv{width: 100%; margin-right: 0; margin-bottom:20px;  }
+.fottergrrenbtn, .fottergrrenbtn2{width: 100%;}
+.mycherrtdashtab ul li a{font-size: 12px;  padding: 12px 5px 10px;}
+.my_updatepro ul li a{font-size: 12px; margin-right: 25px;}
+.amenties_div{float: left; width: auto;}
+.addedproperty_txt{margin-bottom: 0;}	
+.pr_type, .bed_type {margin-right: 1%;width: 32%;}
+.more_filter_refinement{display: none!important;}
+.keyword_type{width: 290px;margin-right: 1%;}
+.maplick {margin-left: 5px;padding-top: 10px;width: 165px;}
+.maplick.drawserchlistdet a{font-size: 12px; width: 37%; vertical-align: top;}
+.my_update_form-L.fl{clear: both;}
+.prouploadforminner, .backlightblue {  padding: 15px 20px;}
+.moneyconstit_inner_list li{width: 300px;}
+.moneyconstit_inner_list li.one{   right: -250px; } 
+.moneyconstit_inner_list li.two{   right: -350px; } 
+.moneyconstit_inner_list li.three{  right: -370px; } 
+.moneyconstit_inner_list li.four{  right: -320px; } 
+.moneyconstit_inner_list li.five{  left: 50%; margin-left: -150px; } 
+.moneyconstit_inner_list li.six{   left: -250px;} 
+.moneyconstit_inner_list li.Seven{  left: -350px; } 
+.moneyconstit_inner_list li.eight{  left: -370px;  } 
+.moneyconstit_inner_list li.nine{  left: -320px; } 
+.about_panel{margin-bottom: 50px; min-height: auto;}
+.bannertext h3{margin-top: -70px;}
+.planmdcol{ width: 49%;}
+.planmdcol:nth-child(3n){margin-right: 2%;}
+.planmdcol:nth-child(2n){margin-right: 0;}
+.myproperyyimgdiv{width: 40%;}
+.myproperyydetdiv{ width: 59%;}
+}
+@media only screen and (max-width: 991px) {
+.legallink, .downloadappdiv{width: 49%;}
+.fotterlogo{text-align: center;}
+ .toploginav{padding-left: 0;}
+.loginformdiv, .successformdiv {padding: 20px 0;}
+.loginpart{margin:30px auto; padding: 30px 20px;}
+.exploretab ul li, .my_updatepro ul li{display: block;}
+.mycherrtdashtab ul li a{padding: 9px 5px 5px;}
+.mycherrtdashtab ul li a md-icon {display: inline-block;font-size: 20px;}
+.my_updatefotterlist ul li a{ padding: 20px 6px;}
+.mycherrtdashtopmenu {background: #185dab none repeat scroll 0 0 !important; display: block; color: #fff !important;margin: 0;padding: 0 13px;text-align: left; width: 100%;}
+.mycherrtdashtopmenu span{float: left;}
+.mycherrtdashtopmenu .ng-scope.material-icons {color: #fff !important;float: right;line-height: 40px;}
+.my_updatepro ul li a{margin-right: 0;}
+.mycherrtdashtab {margin-bottom: 15px}
+.mycherrtdashtab ul, .my_updatepro ul{display: none; overflow: hidden; -webkit-transition:all linear .4s; -moz-transition:all linear .4s; -ms-transition:all linear .4s; -o-transition:all linear .4s; transition:all linear .4s;}
+.mycherrtdashtab ul.active, .my_updatepro ul.active{display: block;}
+.myproperyyimgdiv{width: 100%; float: none; margin: 0 0 20px 0;}
+.myproperyydetdiv{width: 100%; float: none;}
+.my_cherydasj_div ul li .my_cherydasj_div_txt{width: 100%; float: none; margin-bottom: 10px; padding-right: 30px;}
+.my_cherydasj_div ul li .my_cherydasj_div_alert{width: 100%; float: none; padding-right: 0px;}
+.my_cherydasj_div ul li .my_cherydasj_div_close{top:15px; right:20px;}
+.drawserchlist .clearfix{position: relative;}
+.pr_type, .bed_type {width: 49%;}
+.more_filter_refinement{display: block!important;}
+.keyword_type{width: 49%;margin-right: 1%;}
+.martop35.Shared { margin-top: 0;}
+.drawserchdiv{height: auto; width: 100%;}
+.mapdrawlist{  display: table-row; height: 113px;}
+.mapdrawlist > li {clear: inherit; display: table-cell;}
+.mapdrawlist > li .list_inner{width: 330px;}
+.maplick { margin-left: 5px; padding-top: 10px; vertical-align: top; width: 240px;}
+.draw_area_listing{ overflow: auto;}
+.drawserchmap, .drawserchstrt{ height: auto; width: 100%;}
+.drawserchstrt .watchvideo, .drawserchstrt .dramindicator{width: 100%; float: none; text-align: center; margin-bottom: 5px;}
+.drawserchstrt .dramindicator .detalsprobluebtn  {margin-bottom: 5px;}
+.land_top_list li{margin-right: 5px;}
+.land_top_list li a{width: 210px;}
+.land_top_list li a span::after{right: -8px;}
+.prouploadforminner, .backlightblue {  padding: 15px 10px;}
+.opencam md-icon{display: none;}
+.opencam{line-height: 21px; height: auto; font-size: 13px;}
+.land_pro_det_amenitie{width: 100%; float: none; margin-bottom: 15px;}
+.land_pro_det_Tenancylist li{width: 49%;}
+.land_pro_det_Tenancylist li:nth-child(3n){margin-right: 2%;}
+.land_pro_det_Tenancylist li:nth-child(2n){margin-right: 0;}
+.land_details_carosal .item{height: 400px;}
+.move_outpart, .move_outpart_bottom{padding: 0}
+.move_out_important{padding: 20px 10px;}
+.replacement_boxfulllist > li{width: 48%; margin-right: 2%;}
+.replacement_boxfulllist > li:nth-child(3n){ margin-right:2%;}
+.replacement_boxfulllist > li:nth-child(2n){ margin-right:0;}
+.moneyconstit_inner_list{margin-top: 15px;}
+.moneyconstit_inner_list li { bottom: auto!important; left: auto!important; position: relative; margin-bottom: 20px; right: auto !important; top: auto !important; width: 100%; max-width: 100%;}
+.moneyconstit_inner_list li p{color: #fff;}
+.moneyconstit_inner_list li.six .displaytable, .moneyconstit_inner_list li.Seven .displaytable, .moneyconstit_inner_list li.eight .displaytable, .moneyconstit_inner_list li.nine .displaytable{padding-left: 75px; padding-right: 0}
+.moneyconstit_inner_list li.six span.moneyconstit_inner_icon, .moneyconstit_inner_list li.Seven span.moneyconstit_inner_icon, .moneyconstit_inner_list li.eight span.moneyconstit_inner_icon, .moneyconstit_inner_list li.nine span.moneyconstit_inner_icon, .moneyconstit_inner_list li.five span.moneyconstit_inner_icon{right: auto; left: 0;}
+.moneyconstit_inner_list li.six p ,.moneyconstit_inner_list li.Seven p, .moneyconstit_inner_list li.eight p, .moneyconstit_inner_list li.nine p{text-align: left;}
+.moneyconstit_inner_list li.five{left: auto;  margin-left:0px; }
+.moneyconstit_inner_list li.five span.moneyconstit_inner_icon{left: 0}
+.moneyconstit_inner_list li.five p{padding-top: 0; text-align: left; padding-left: 75px;}
+.moneyconstit_inner{width: 100%; height: auto; text-align: left; border-radius: 0; -webkit-border-radius: 0; -moz-border-radius: 0; -ms-border-radius: 0;}
+.land_pro_det_mapresult{border:1px solid #e5e5e5; width: 100%; margin: 0 0 15px 0px; }
+.serchpanrlfull{position: relative; padding: 30px 0; background: #f1f4f7 none repeat scroll 0 0; left: auto; right: auto; bottom: auto;}
+.searchtab li a{color: #000;}
+.tabcontent{background: #000;}
+.serchselectbox { float: left; margin-bottom: 15px; margin-right: 2%; position: relative;  width: 49%;}
+.serchselectbox:nth-child(2n){margin-right: 0;}
+.serchselectbox:last-child{margin-right: 0; width: 100%; margin-bottom: 0px; }
+.bannertext h3{font-size: 24px;margin-top: 50px;}
+.homebannercarsal .item{height:400px;}	
+.main_land_dash_left { float: left; width: 250px; display: none;}
+.main_land_dash_right {float: none;width: 100%;}
+.map_view_listing{margin-top: 15px;}
+.map_view_listing .map_view{height: auto;}
+.listpropertdescription{min-height: auto; height: auto;}
+.my_cherydasj_table_responsive{overflow: auto; width: 100%}
+.bigtablescrool{width: 900px;}
+} 
+@media only screen and (max-width: 767px) {
+.homebannercarsal .item{height:500px;} 	
+.fotterlink {width: 100%;}	
+.hmleftad{margin-bottom: 20px;}
+.section { padding: 25px 0;}
+.mainHd{font-size: 20px; margin-bottom: 5px;}
+.headingimg { margin-top: 10px;}	
+.bannertext h3{font-size: 24px;margin-top: 50px;}
+.homebannercarsal .item{height:300px;}	
+.fotterlink {margin-bottom: 20px;}
+.botfooter{padding: 15px 0; }
+.fottersocilist, .copyright  {text-align: center;float: none;}
+.fottersocilist li{float: none;}
+.hiddentab{display: none;}
+.copyright {line-height: normal; margin-top: 5px;}
+.legallink, .downloadappdiv{width: 100%}
+.legallinklist li{display: inline-block;margin-right: 15px;}
+.inlineblk.fr {width: 100%;}
+.mycherrysection {padding-top: 25px;}
+.innerpage_gutter {padding: 15px 0;}
+.innerpage_gutter_despart{padding: 0;}
+.statictopimg, .innerpage_gutter_toptxt, .innerpage_gutter_list { margin-bottom: 15px;}
+.innerpage_gutter_listing_blue li{padding-left: 0px;}
+.pad5{padding:10px 0;}
+.my_update_form-L {float: none;margin-bottom: 10px;  width: 100%;}
+.my_updatefotterlist{padding: 10px 0;}
+.my_updatefotterlist ul li a { padding: 4px 6px;}
+.my_cherydasj_table_responsive{overflow: auto; width: 100%}
+.my_cherydasj_table{width: 750px; }
+.amenties_div{float: none; width: 100%; margin-bottom: 10px;}
+.protyderailsbtn{float: none; width: 100%;  text-align: center;}
+.myproperyydetdivname, .my_formupdate_alerttagtxt, .my_formupdate_alerttaglink {width: 100%; float: none;}
+.my_formupdate_alerttagtxt{padding: 0px 0 5px 0; font-size: 14px;}
+.drawserchlistdet{padding-left: 90px; margin-left: 0; width: 100%; padding-right: 25px;}
+.dramremove {position: absolute;right: 0;  width: 17px;}
+.drawserchlistimg {position: absolute;left: 0; }
+.land_owntxt {display: block;font-size: 14px; margin-bottom: 5px;}
+.land_owntxt_full{padding: 0;}
+.step {width: 200px;}
+.land_top_list li a {padding-right: 10px; width: 235px;}
+.land_top_list li{display: block; margin: 0 auto; width: 225px; margin-bottom: 10px;}
+.land_top_list li:last-child{margin-right: auto;}
+.land_top_list li a.active::after{display: none;}
+.prouploadformtop { font-size: 14px;padding: 10px;text-transform: uppercase;}
+.land_top_list li a span::after { right: -15px;}
+.secondsep{margin-bottom: 20px;}
+.addbasket_list > li{ margin-bottom: 10px; }
+.add_check{width: 100%; float: none; margin-bottom: 0px; }
+.add_check .md-label{font-size: 13px;}
+.add_check_btn{width: 100%; float: none;}
+.tabdisplynone{ display: none !important;}
+.listpropertdescription p{margin-top: 10px;}
+.my_listing_topremove .sort_tab {float: left;margin-left: 10px;margin-right: 0; margin-top: 0;  padding-right: 150px; width: 100%;}
+.land_details_carosal .item{height: 300px;}
+.land_pro_det_name{margin-bottom: 10px;}
+.land_pro_det_name, .land_pro_det_price{width: 100%; float: none;}
+.innerpage_gutter_despart_border .text, .agencytxt{font-size: 16px;}
+.innerpage_gutter_despart_border p{padding-left: 0;}
+.innerpage_gutter_despart_border:last-child{margin-bottom: 25px;}
+.aggrement_list_div_inner{padding: 20px 10px;}
+.privacypart_hd{margin-bottom: 20px;}
+.privacylist li{margin-bottom: 20px;}
+.privacylist li .privacylist_left{width: 100%; margin-bottom: 5px; float: none; text-align: left; font-size: 16px; padding: 0}
+.privacylist li .privacylist_right{width: 100%;float: none; padding: 0; border:0;}
+.privacylist li .privacylist_right .dots_icon, .privacylist li .privacylist_right .dots_icon_top{display: none;}
+.privacylist li:last-child .privacylist_right{padding-bottom:20px;}
+.cap_ab{font-size: 15px;}
+.move_outpart_list > li{width:100%;margin-bottom: 15px;border-bottom: 1px solid #ddd;margin-right:0;float:none;padding:15px 10px 15px;}
+.move_outpart_list > li:last-child{ margin-bottom: 15px !important; padding: 15px 10px 15px!important; border-bottom: 0;}
+.move_out_important {margin: 0 -15px;}
+.move_outpart_list > li{border-bottom: 1px solid #ddd;}
+.move_outpart_list > li > label, .move_outpart_list > li > md-icon{margin-bottom: 10px;}
+.replacement_boxfulllist > li{width: 100%; margin-right: 0%;}
+.replacement_boxfulllist > li:nth-child(3n){ margin-right:0%;}
+.privacypart_hd{font-size: 15px;}
+.insurencerablefull{width: 100%; max-width: 100%; overflow: auto;}
+.othercharge .bgbluegray.bgblueletting h4{text-align: left;}
+.othercharge .bgbluegray.bgblueletting p{text-align: left;}
+.insurencerable{width: 750px;}
+.moneyconstit_inner{font-size: 16px; padding: 10px;}
+.move_out_important.moneyconstitinner{padding:0;}
+.innerpage_gutter_despart_border{margin-bottom: 20px;}
+.about_panel{margin-bottom: 20px;}
+.about_panel_img{float: none; width: 100%; text-align: center; margin-bottom: 20px;}
+.about_panel_txt{float: none; width: 100%;}
+.charitylist > li{padding-left: 0; padding: 0 10px; text-align: center; padding-top: 120px; }
+.charitylist > li .charitylogo{left: 0; top:10px; right: 0; margin: auto;  width: 100px;}
+.land_db_title, .main_land_dash_right .titlehd{font-size: 18px;}
+.main_land_dash_rightinner { padding: 10px;}
+.land_db_bredcum{display: none;}
+.land_db_forminner{padding: 0;}
+.land_db_form{background: none;}
+.land_db_form.marbot30{border-bottom: 1px solid #ddd; padding-bottom: 25px;}
+.land_db_forminner .inner {padding: 10px 0;}
+.land_db_title span {display:block;}
+.land_db_forminner .saved_credit  ul.saved_credit_list > li {width: 100%; margin-right: 0;}
+.savedpage{padding: 30px 20px; }
+.changeupload{width: 150px;}
+.planmdcol{ width: 100%;}
+.planmdcol:nth-child(3n){margin-right: 0%;}
+.planmdcol:nth-child(2n){margin-right: 0;} 
+.planmdlist{padding:20px 0;}
+.tableparent{overflow: auto;}
+.main_land_dash_right .titlehd{margin-bottom: 10px;}
+.dashtable{width: 750px;}
+.landlord-deposit-inner .landlord-deposit-inner_titleblue{margin: 0;}
+}
+@media only screen and (max-width: 639px) {
+ 
+.aboutlist {margin-top: 20px; padding-bottom: 15px; border-bottom: 1px solid #ddd;}
+.lastaboutlist .aboutlist{border-bottom: 0;}
+.featurehm{margin-top: 20px;}
+.signregleft{display: none;}
+.signregright{width: 145px;}
+.signreg{width: 142px;border-radius: 3px; -webkit-border-radius: 3px; -moz-border-radius: 3px;}	
+.featurehm .item{margin-bottom: 0;}
+.sort_tab{width: 100%; margin-top: 10px;}	
+.pr_type, .bed_type, .keyword_type {width: 100%; margin-right: 0;}
+.mycherrytopfilter { padding: 15px 0;}
+.mycheyy_dashsort_list li a.active:before, .mycheyy_dashsort_list li a.active:after {display: none;}
+.mycheyy_dashpagination .pagination {margin-bottom: 10px; float: none; width: 100%;}
+.mycheyy_dashpagination .pagination:last-child{margin-bottom: 0;}
+.saverserchlist > li{padding: 10px!important;}
+.mylisting_list > li{padding: 60px 10px 10px!important;}
+.my_listing_topremove .statusdrop{margin-right: 0px; padding-right: 60px;}
+.land_pro_det_Tenancylist li{width: 100%; margin-right: 0; float: none;}
+.commonbot40{margin-bottom: 20px;} 
+.land_aboutlandloadtxt h4 {font-size: 18px;margin-bottom: 10px;}
+.land_aboutlandload p{line-height: 20px;}
+.land_abouttoptxt h5 {font-size: 17px;margin-bottom: 5px;padding-bottom: 10px;}
+.topserchdiv.savedserchtop{width: 100%; padding-right: 0;}
+.topserchdiv.savedserchtop .serchbtn{position: relative; left: auto; right: auto; bottom: auto; top:auto; margin-top: 10px;}
+.map_tab > ul > li > a{font-size: 14px;}
+
+}
+@media only screen and (max-width: 479px) {
+
+.homelogo { position: relative; text-align: center;left: auto;float: none;}
+.navbar-toggle{padding: 9px 10px; border: 1px solid #fff;top: 11px;}
+.signreg.afterlogin .md-button{height: 37px;}
+.homelogo img {width: 180px;}
+.signreg {left: 0;margin-top: 10px; height: 38px;}
+.homehaeder {height: 128px;}
+.signregright {height: auto;padding: 7px 15px; width: auto;}
+.bothmenu{top:59px;}
+.bannertext{padding: 0 15px;}
+.bannertext h3{font-size: 20px;margin-top: 90px; }
+.legallinklist li{margin-right: 0px;}
+.toploginavlist li a{font-size: 13px; padding: 8px 11px;}
+.width130 {width: 95px;}
+.btn100 {height: 35px; font-size: 13px;}
+.btn100.md-button{line-height: 35px;}
+.logininput{height: 45px; padding: 10px 10px 10px 67px;}
+.ms_icon { background: #f0f0f0 url("../images/ms_icon.png") no-repeat scroll 18px 14px;}
+.ps_icon {background: #f0f0f0 url("../images/ps_icon.png") no-repeat scroll 21px 10px / 17px auto;}
+.user_icon {  background: #f0f0f0 url("../images/user_icon.png") no-repeat scroll 17px 13px / 23px auto;}
+.input_icon{width: 60px; height: 43px; }
+.logininput .md-select-value{min-height: 20px;}
+.innerpage_gutter_listing li::before {left: 0;}
+.innerpage_gutter_listing li {padding-left: 10px;}
+.drawserchlistdet a:nth-child(2)::after{display: none;}
+.add_check .md-label{font-size: 13px; text-transform: capitalize; }
+.addbasket_list_tooltop{left: 30px;}
+.land_details_carosal .item{height: 200px;}
+.tabcontent{padding:15px 10px; }
+md-autocomplete.serchinput{min-width: 163px!important;}
+.noresultsfind h3{font-size: 18px;}
+.savedpage{padding: 15px 10px; }
+.savedpage .propertydes, .savedpage .logininput{font-size: 15px; }
+.savedpage .propertydes{margin: 10px 0;}
+ .topheader_list > li{margin-left: 10px;}
+ .selectfilter{width: 100%; float: none; margin-bottom: 10px;}
+}
+ 
+
+@media only screen and (max-width: 360px) {
+ .add_check .md-label{font-size: 12px;  }
+ .exploremapsearchbtn.fontresponsive11{font-size: 11px;}
+ .ahentpad{width: 100%; float: none; padding-top: 10px;}
+ .uplodername{width: 100%; float: none;}
+ .homelogo img{width: 150px;}
+ .signreg{margin-top: 5px;}
+ .navbar-toggle{top:5px;padding: 9px 7px;}
+
+}
+

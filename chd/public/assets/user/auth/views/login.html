@@ -1,0 +1,87 @@
+<!--Start middle Part-->
+<div class="midllepart"> 
+
+	<!--Start Feature Property-->
+	<section class="section bluebg lofinpagebg">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-12">
+				<div class="mainHd textupper tac">Welcome to cherry Door</div>
+				<div class="smallHd tac">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod a lacus in sollicitudin. </div> </div>  
+				
+			</div> 
+
+			<div class="row">
+
+			<div class="col-lg-12">
+			<div class="clearfix loginpart">
+
+				<div class="alert alert-success alert-dismissible" role="alert" ng-if="emailVerified">
+					<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+					<strong>Thanks!</strong> Your email has successfully verified you can now login
+				</div>
+				<div class="toploginav">
+					<ul class="toploginavlist">
+						<li>
+							<a set-url="/login" class="active">Sign In </a>
+						</li>
+						<li>
+							<a set-url="/register">Create an Account</a>
+						</li>
+					</ul>
+				</div>
+				<div class="loginformdiv">   
+					<form name="userLoginForm" ng-submit="login(userLoginForm.$valid)" novalidate>         
+						<div class="positiorel">
+							<input type="email" name="email" placeholder="Email Address" class="logininput" 
+								ng-model="user.email"
+								ng-class="{ 'errorborder': userLoginForm.email.$touched && userLoginForm.email.$invalid }" 
+								required />
+							<span class="input_icon ms_icon"></span>
+
+							<!-- Error messages for wrong and empty inputs -->
+							<div ng-messages="userLoginForm.email.$error" class="error_tag" ng-show="userLoginForm.email.$touched">
+                            	<p ng-message="required">Email Address is required.</p>
+                            	<p ng-message="email">Your email address is invalid</p>
+                        	</div>
+						</div>
+						<div class="positiorel">
+							<input type="password" name="password" placeholder="Password" class="logininput" 
+								ng-model="user.password"
+								ng-class="{ 'errorborder': userLoginForm.password.$touched && userLoginForm.password.$invalid }" 
+								required/>
+							<span class="input_icon ps_icon"></span>
+
+							<!-- Error messages -->
+							<div ng-messages="userLoginForm.password.$error" class="error_tag" ng-show="userLoginForm.password.$touched">
+							    <p ng-message="required">Password is required.</p>
+							</div>
+						</div> 
+						<div class="positiorel clearfix">
+							<div class="inlineblk fr">
+								<span class="font13">
+									<md-checkbox ng-model="staySigned" aria-label="Checkbox 1"> Stay Signed In | </md-checkbox>
+									<a set-url="/forgot-password" class="linkur">Forgot Password?</a>
+								</span>
+							</div>
+							<div class="width130 inlineblk">
+                            	<md-button type="submit" ng-disabled="userLoginForm.$invalid" class="btngreenComn font15 md-raised md-primary btn100">Sign In</md-button>
+                             </div>
+							<div class="width130 inlineblk marleft10"> 
+                           		<md-button href set-url="/" class="btngrayComn font15 md-raised md-primary btn100">cancel</md-button>  
+                            </div>
+							
+						</div>
+					</form>
+					<div class="positiorel martop20">
+						<p>Don't have an account ? <a set-url="/register" class="linkur textupper" >Join NOW!</a></p>
+					</div>
+				</div>  	 
+			</div>
+		</div>
+		</div>
+		</div>
+	</section> 
+	<!--End Feature Property-->
+</div>
+<!--End middle Part--> 

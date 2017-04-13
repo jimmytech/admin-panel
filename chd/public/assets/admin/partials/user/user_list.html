@@ -1,0 +1,145 @@
+<section class="forms-validation">
+   <div ng-init="userList('$')">
+      <div class="page-header">
+         <h1> <i class="md md-list"></i> {{userlistTitle}} </h1>
+         <p class="lead"> This is list of data and default actions you can use. </p>
+      </div>
+      <div class="card bordered">
+         <div class="card-header">
+            <div class="row">
+               <div class="col-md-6">
+                  <form name="searchForm" class="form-inline" ng-submit="searchUser(filterUser)" novalidate="novalidate">
+                     <div class="form-group ">
+                        <div class="input-group">
+                           <input ng-change="callUserList(filterUser)" type="text" class="form-control" placeholder="Search" ng-model="filterUser" required disable-invalid-styling="true">
+                           <div class="input-group-addon padding0"> <button class="btn btn-sm btn-link withoutripple">
+                              <i class="fa fa-search f20"></i>
+                              </button> 
+                           </div>
+                        </div>
+                     </div>
+                  </form>
+               </div>
+               <button class="dropdown-toggle pointer btn btn-round-sm btn-link withoutripple pull-right" ng-click='newUserPage()'>
+                  <i class="fa fa-plus f20"></i>
+                  <md-tooltip>New user</md-tooltip>
+               </button>
+            </div>
+         </div>
+         <div class="table-responsive white">
+            <table class="table table-bordered table-full-small breaktable">
+               <colgroup>
+                  <col class="auto-cell-size" />
+               </colgroup>
+               <thead class="thead-inverse ">
+                  <tr>
+                     <th width="7%">S.No</th>
+                     <th width="17%">Name</th>
+                     <th width="22%">Email</th>
+                     <th width="15%">Role</th>
+                     <th width="10%">Created &nbsp; <i ng-if="sort=='desc1'" class="fa fa-sort" ng-click="userList('$asc')"></i> <i ng-if="sort=='asc'" class="fa fa-sort-asc" ng-click="userList('$asc')"></i> <i ng-if="sort=='desc'" class="fa fa-sort-desc" aria-hidden="true" ng-click="userList('$desc')"></i> </th>
+                     <th width="5%">Verified</th>
+                     <th width="6%">Active</th>
+                     <th width="5%">Status</th>
+                     <th width="12%">Action</th>
+                  </tr>
+               </thead>
+               <tbody>
+                  <tr ng-repeat="u in users">
+                     <td>{{$index+1}}</td>
+                     <td class="table-active cursor-default">
+                        {{u.firstname | limitTo:20}} <span ng-if="u.firstname == undefined">N/A</span> <span ng-if="u.firstname.length>20">...</span>
+                        <md-tooltip>{{u.firstname}} {{u.lastname}}</md-tooltip>
+                     </td>
+                     <td class="cursor-default">
+                        {{u.email | limitTo:27}}<span ng-if="u.email.length>27">...</span>
+                        <md-tooltip>{{u.email}}</md-tooltip>
+                     </td>
+                     <td class=" cursor-default">{{u.role}}</td>
+                     <td class="cursor-default">{{u.created | date:'MMM d, y'}}</td>
+                     <td class="cursor-default"> <span ng-if="u.email_verified " class="label green">Verified</span> <span ng-if="!u.email_verified" class="label label-warning">Pending</span> </td>
+                     <td class=" cursor-default"> <span ng-if="u.deactivate==false" class="label green">Yes</span> <span ng-if="u.deactivate==true" class="label label-danger">No</span> </td>
+                     <td class="cursor-pointor" ng-click="activeInactive(u._id, u.email,u.status, $index, u.role)">
+                        <span ng-if="u.status==true" class="label green">Enable</span> <span ng-if="u.status==false" class="label label-danger">Disable</span>
+                        <md-tooltip>Click to change status</md-tooltip>
+                     </td>
+                     <td>
+                        <div class="btn-group">
+                           <i class="fa fa-eye f20 view" ng-click="viewUserDetail(u._id, u.role, 'view')">
+                              <md-tooltip>Click to View</md-tooltip>
+                           </i>
+                           &nbsp;&nbsp; 
+                           <i class="fa fa-pencil-square-o f20 " ng-click="viewUserDetail(u._id, u.role,'edit')">
+                              <md-tooltip>Click to edit</md-tooltip>
+                           </i>
+                           &nbsp;&nbsp; 
+                           <i class="fa fa-trash-o f20 delete" ng-click="deleteUser(u._id, u.email,$index, u.role, users.length)">
+                              <md-tooltip>Click to Delete</md-tooltip>
+                           </i>
+                        </div>
+                     </td>
+                  </tr>
+                  <tr ng-if="users.length==0">
+                     <td colspan="9">
+                        <p ng-if = "filterUser.length==undefined" style="margin-top: 50px; margin-bottom: 50px;" class="text-center"> No record Found</p>
+                        <p ng-if = "filterUser.length>0" style="margin-top: 50px; margin-bottom: 50px;" class="text-center"> Your search - {{filterUser}} - did not match any record</p>
+                     </td>
+                  </tr>
+                  <tr class="norecord" ng-if="users.length==0">
+                     <td>1</td>
+                     <td class="table-active cursor-default">John milton john nor <span ng-if="u.firstname.length&gt;20">...</span>
+                     </td>
+                     <td>agent@gmail.com </td>
+                     <td>estateAgent</td>
+                     <td>Dec 8, 2016</td>
+                     <td class="cursor-default"> 
+                        <span ng-if="!u.email_verified" class="label label-warning ">Pending</span> 
+                     </td>
+                     <td class=" cursor-default"> <span  class="label green ">Yes</span>  </td>
+                     <td class="cursor-pointor" aria-label="Click to change status" role="button" tabindex="0"> <span  class="label label-danger ">Disable</span>
+                     </td>
+                     <td>
+                        <div class="btn-group"> 
+                           <i class="fa fa-eye f20 view" aria-label="Click to View" role="button"  >
+                           </i> &nbsp;&nbsp;
+                            <i class="fa fa-pencil-square-o f20 " aria-label="Click to edit" role="button" tabindex="0">
+                           </i> &nbsp;&nbsp; <i class="fa fa-trash-o f20 delete"  aria-label="Click to Delete" role="button" tabindex="0">
+                           </i> 
+                        </div>
+                     </td>
+                  </tr>
+               </tbody>
+            </table>
+            <div class="clearfix m-b-10">
+               <ul uib-pagination ng-if="paging.count> paging.limit" previous-text="Prev" force-ellipses="forceEllipses" max-size="maxSize" items-per-page="paging.limit" total-items="paging.count" ng-model="paging.page" class="pagination pagination_theme pull-right" boundary-link-numbers="true" rotate="false" ng-change="pageChanged()"></ul>
+            </div>
+         </div>
+      </div>
+      <div style="padding: 130px" ng-if="loadingUserList" class="center"> <img src="images/loading.gif"> </div>
+   </div>
+</section>
+<script type="text/ng-template" id="exportCsvPopup">
+   <div>
+       <div>
+           <h3 class="center dialog-header">Export {{userToExport}} List</h3>
+       </div>
+       <div>
+           <p class="top-40 lead">Total {{userToExport}} Records: {{countToExportPopup}}</p>
+       </div>
+       <div>
+           <form name="exportForm" class="form-floating top-40" novalidate="novalidate" ng-submit="exportDataToCsv(export)">
+               <div class="card-content">
+                   <div class="form-group filled"> <label class="control-label">Skip Record From</label> <input type="text" class="form-control" ng-model="export.from" min="2" name="from" numbers-only required required-err-type="number"> </div>
+                   <div class="form-group"> <label class="control-label">Limit To Export Record</label> <input type="text" class="form-control" ng-model="export.to" max="5" name="to" numbers-only required required-err-type="number"> </div>
+                   <div class="form-group " style="margin-bottom: 70px;"> <button type="submit" style="margin-left: 10px;" class="pull-right btn  btn-primary">Export CSV</button> <button type="button" ng-click="closeThisDialog()()" class="btn btn-default pull-right">Cancel</button> </div>
+               </div>
+           </form>
+       </div>
+   </div>
+</script>
+<script type="text/ng-template" id="confirmCsvPopup">
+   <p>Are you sure you want to export records?</p>
+   <div class="ngdialog-buttons"> <button type="button" class="ngdialog-button btn-primary" ng-csv="dataToCsv" filename="{{ filename }}.csv" csv-header="getCsvHeaders()" charset="utf-8" ng-click="closeThisDialog(); closeAllDialog();">Yes
+         </button> <button type="button" class="ngdialog-button ngdialog-button-secondary" ng-click="closeThisDialog()">No</button> </div>
+</script>
+

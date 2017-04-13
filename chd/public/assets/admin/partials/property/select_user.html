@@ -1,0 +1,77 @@
+
+
+<section class="forms-validation">
+   <div ng-init="userList()">
+      <div>
+         <div class="page-header">
+            <h1>
+               <i class="md md-list"></i>
+               Search and select user to assign property
+            </h1>
+         </div>
+         <div class="col-md-12 m-b-10">
+            <div class="col-md-6">
+               <form name="searchForm" class="form-inline" ng-submit="searchUser(filterUser)" novalidate="novalidate">
+                  <div class="form-group ">
+                     <div class="input-group">
+                        <input ng-change = "reloadUser(filterUser)" type="text" class="form-control" placeholder="Find user by name/email" ng-model = "filterUser"  disable-invalid-styling="true" ng-required = "true">
+                        <div class="input-group-addon padding0">
+                           <button class="btn btn-sm btn-link withoutripple">
+                           <i class="fa fa-search f20"></i>
+                           </button>   
+                        </div>
+                     </div>
+                  </div>
+               </form>
+            </div>
+         </div>
+         <div class="row">
+            <div class="col-md-12">
+               <div class="table-responsive white">
+                  <table class="table table-bordered table-full-small breaktable">
+                     <colgroup>
+                        <col class="auto-cell-size" />
+                     </colgroup>
+                     <thead class="thead-inverse ">
+                        <tr>
+                           <th width="19%">Name</th>
+                           <th width="32%">Email</th>
+                           <th width="15%">Role</th>
+                           <th width="10%">Verified</th>
+                           <th width="6%">Active</th>
+                           <th width="10%">Status</th>
+                           <th width="7%">Action</th>
+                        </tr>
+                     </thead>
+                     <tbody>
+                        <tr ng-repeat="u in users">
+                           <td class="table-active cursor-default" >{{u.firstname}} {{u.lastname}}
+                              <span ng-if = "u.firstname == undefined">N/A</span>
+                           </td>
+                           <td  class="cursor-default" >{{u.email}}</td>
+                           <td class=" cursor-default">{{u.role}}</td>
+                           <td class="cursor-default">
+                              <span ng-if = "u.email_verified " class="label green">Verified</span>
+                              <span ng-if = "!u.email_verified" class="label label-warning">Pending</span>
+                           </td>
+                           <td class=" cursor-default" >
+                              <span ng-if="u.deactivate==false" class="label green">Yes</span>
+                              <span ng-if="u.deactivate==true" class="label label-danger">No</span>                       
+                           </td>
+                           <td class="cursor-default" >
+                              <span ng-if = "u.status==true" class="label green">Enable</span>
+                              <span ng-if = "u.status==false" class="label label-danger">Disable</span>
+                           </td>
+                           <td title="Next" class="text-center">
+                          <i class="fa fa-arrow-circle-right f25" ng-click = "selectUser(u._id)" style="color: #0D8AEE;" aria-hidden="true"></i>
+                           </td>
+                        </tr>
+                     </tbody>
+                  </table>
+               </div>
+            </div>
+         </div>
+      </div>
+   </div>
+</section>
+

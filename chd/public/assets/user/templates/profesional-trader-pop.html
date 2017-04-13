@@ -1,0 +1,57 @@
+ <!--Start pop up -->
+<!--<div class="protinrelative">   -->
+
+
+<md-dialog aria-label="myDailog">
+<div class="close_popup"><a ng-click="cancel()" class="cancelpop">X</a></div>
+<div class="popouter prodesinalouter">
+<div class="popinner">
+	<div class="profesinalpop borderradius3">
+    	<div class="mainHd textupper tac profesinalpophd">book now</div>              
+		<div class="tac"><img src="images/headingimg.png"></div>
+        
+        <div class="form_bk">
+        	<div class="forminput">
+            	<label>Username</label>
+                <input type="text"  placeholder="Tenant/landlord" class="logininput popinput" />
+            </div>
+            <div class="forminput">
+            	<label>Location</label>
+                <input type="text"  placeholder="eg.Newyork" class="logininput popinput" />
+            </div>
+            <div class="forminput">
+            	<label>Category</label>
+                <input type="text"  placeholder="Plumber" class="logininput popinput" />
+            </div>
+            <div class="forminput clearfix">
+            	<label>When professional tradesman required </label>
+                <div class="forminput50 univercal">
+                	<md-datepicker ng-model="user.submissionDate" class="logininput popinput pad7 selectcal_icon" md-placeholder="Date"  md-open-on-focus></md-datepicker>                    
+               	 
+                </div>
+                <div class="forminput50">
+                	<md-select ng-model="user.role" name="role" md-no-asterisk placeholder="Time" class="popinput selecttime_icon traderstopserchselect m-t-0 md-no-underline m-b-0" >
+            <md-option value="12:00 AM">12:00 AM</md-option>
+            <md-option value="1:00 PM"> 1:00 PM</md-option>
+            <md-option value="2:00 PM">2:00 PM</md-option>
+            <md-option value="3:00 PM">3:00 PM</md-option>
+            <md-option value="4:00 PM">4:00 PM</md-option>
+            <md-option value="5:00 PM">5:00 PM</md-option>
+        </md-select>      
+                 
+                </div>     
+            </div>
+            
+            <div class="forminput">                            
+            	 <md-button class=" traderstopsercbtn font15 md-raised md-primary btnComn">Submit</md-button>                            
+            </div>
+        
+        </div>
+    	
+    </div>
+</div>
+</div>
+<!--Start pop up -->
+
+ </md-dialog>
+<!-- </div>-->

@@ -1,0 +1,80 @@
+<section class="forms-validation" ng-init = "viewUserDetail('data');">
+      <div class="page-header">
+         <h1>  
+           {{user.firstname}}
+         </h1>
+      </div>
+      <div class="row  m-b-40">
+         <div class="col-md-3 col-md-push-9">
+            <h5>Welcome to Cherrydoor.</h5>
+            <p>
+               We love to hear you.<br>
+               Performed action by using your account will be notice.      
+            </p>
+         </div>    
+         <div class="col-md-8 col-md-pull-3">
+            <div class="well white" id="forms-validation-container">
+               <form name="updateform" class="form-floating" novalidate="novalidate" ng-submit=" updateform.$valid && updateUser(user)">
+                  <fieldset>
+                     <div class="form-group">
+                        <label class="control-label" ng-class ="{'invalid-form' : updateform.$submitted && updateform.firstname.$invalid}" >First Name*</label>
+                        <input type="text" name="firstname" class="form-control" ng-model="user.firstname" required>
+                     </div>
+                     <div class="form-group">
+                        <label class="control-label" ng-class ="{'invalid-form' : updateform.$submitted && updateform.lastname.$invalid}" >Last Name*</label>
+                        <input type="text" name="lastname" class="form-control" ng-model="user.lastname" required>
+                     </div>
+                     <md-input-container class = "wid100full">
+                        <label>Plan</label>
+                        <md-select name="favoriteColor" ng-model="user.plan">
+                           <md-option ng-repeat="plan in plans" ng-value="plan.name">{{plan.name}}</md-option>
+                        </md-select>
+                     </md-input-container>                     
+                     <div class="form-group">
+                        <label class="control-label" ng-class ="{'invalid-form' : updateform.$submitted && updateform.email.$invalid}" >Email*</label>
+                        <input name="email" ng-pattern = '/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/' type="email" class="form-control" ng-model="user.email" required>
+                     </div>                   
+                     <div class="form-group">
+                        <label class="control-label" ng-class ="{'invalid-form' : updateform.$submitted && updateform.address1.$invalid}" >Address1*</label>
+                        <input type="text" name="address1" class="form-control" ng-model="user.address.address1" required>
+                     </div>                     
+                     <div class="form-group">
+                        <label class="control-label" >Address2</label>
+                        <input type="text" name="address1" class="form-control" ng-model="user.address.address2" required>
+                     </div>
+                     <div class="form-group">
+                        <label class="control-label" ng-class ="{'invalid-form' : updateform.$submitted && updateform.city.$invalid}" >City*</label>
+                        <input type="text" name="city" class="form-control" ng-model="user.address.city" required>
+                     </div>
+                     <div class="form-group">
+                       <label class="control-label" ng-class ="{'invalid-form' : updateform.$submitted && updateform.state.$invalid}" >State*</label>
+                        <input type="text" name="state" class="form-control" ng-model="user.address.state" required>
+                     </div>
+                     <div class="form-group">
+                       <label class="control-label" ng-class ="{'invalid-form' : updateform.$submitted && updateform.zip.$invalid}" >Zip*</label>
+                        <input type="text" name="zip" class="form-control" ng-model="user.address.postcode" required >
+                     </div>
+                     <div class="form-group">
+                       <label class="control-label" ng-class ="{'invalid-form' : updateform.$submitted && updateform.contactnumber.$invalid}" >Contact Number*</label>
+                        <input type="text" name="contactnumber" class="form-control" ng-model="user.phone.telephone" required >
+                     </div>
+                     <div class="form-group">
+                       <label class="control-label" ng-class ="{'invalid-form' : updateform.$submitted && updateform.otherinfo.$invalid}" >Other Information*</label>
+                        <textarea type="text" name="otherinfo" class="form-control" ng-model="user.other_info" required ></textarea>
+                     </div>
+                     <md-input-container class = "wid100full">
+                        <label>User Status</label>
+                        <md-select name="cat" ng-model="user.status">
+                           <md-option ng-repeat="cat in categoryLst" ng-value="cat.id">{{cat.name}}</md-option>
+                        </md-select>
+                     </md-input-container>                      
+
+                     <div class="form-group">
+                        <button type="submit" ng-click = "updateform.$invalid && validate();" class="btn btn-primary">Submit</button>
+                        <button ng-click = "back();" class="btn btn-default">Cancel</button>                     
+                  </fieldset>
+               </form>
+            </div>
+         </div>
+      </div>
+</section>

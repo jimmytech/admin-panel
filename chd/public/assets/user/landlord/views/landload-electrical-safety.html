@@ -1,0 +1,157 @@
+<!--Start middle Part-->
+<div class="midllepart">
+  <!--Start top serch -->
+  <section class="bluebg section pad-t-0 lofinpagebg">
+    <!--Start top  Part-->
+    <div class="container marbot30 ">
+      <div class="boxshadowcommon col-lg-12">
+        <div class="row ">
+          <div class="col-lg-12 land_top_list_pad">
+            <ul class="land_top_list">
+              <li> <a href="#"  ng-href="{{}}" class="active"><span class="land_acc_ico"></span> Landlord Account</a></li>
+              <li> <a  set-url="/property-room-details"  ><span class="land_list_ico"></span>List your Property</a></li>
+              <li> <a  set-url="/property-listings"  ><span class="land_listing_ico"></span>Property Listing </a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!--Start top  Part-->
+    <div class="container land_db">
+      <div class="row ">
+        <div class="col-lg-12">
+          <!--Tittle-->
+          <div class="land_db_title">Landlord Account <span>// You can place subtitle here</span></div>
+          <!--bredcum-->           
+          <!--dashboard-->
+          <div class="main_land_dash">
+            <div class="main_land_dash_row clearfix">
+              <!--dashboard left-->
+               <div class="main_land_dash_left" landlord-sidebar></div>
+              <!--dashboard right-->
+              <div class="main_land_dash_right">
+                <div class="main_land_dash_rightinner">
+                  <div class="titlehd textupper">Electrical Safety</div>
+                  <div class="land_db_form marbot30">                           
+                    <div class="land_db_forminner">                           
+                      <div class="landlord-deposit-inner">
+                        <div class="landlord-deposit-inner_title">Electrical Safety - Why is it important?</div>
+                        <p>Click here to learn about electrical safety and why it's important. We have a full page dedicated to our process, legal obligations, and the options. Otherwise, continue below if you are looking to book an electrician. </p>                               
+                      </div>
+                    </div>
+                  </div>
+                  <div class="land_db_form ">                           
+                    <div class="land_db_forminner safetybook">                           
+                      <div class="landlord-deposit-inner">
+                        <div class="landlord-deposit-inner_titleblue">Electrical Safety Booking</div>
+                        <div class="addtitle textupper"><span>Home Address</span></div>
+                        <div class="clearfix">
+                          <div class="my_update_form-full">
+                            <label class="opensemibold">Select Your Property:</label>
+                            <md-select name="title" placeholder="Select Cherrydoor Listing OR enter property address manually below" class="traderstopserchselect selectlogin99 m-t-0 md-no-underline m-b-0"
+                            ng-model="landlord.personalDetail.title">
+                              <md-option value="Mr">Mr</md-option>
+                              <md-option value="Mrs">Mrs</md-option>
+                              <md-option value="Ms">Ms</md-option>
+                              <md-option value="Miss">Miss</md-option>
+                            </md-select>  
+                          </div>  
+                        </div> 
+                        <div class="clearfix">
+                          <div class="my_update_form-L fl">
+                            <label class="opensemibold">Address Line 1</label>
+                             <input type="text" name="firstname" class="traderstopserchselect" placeholder="" >
+                          </div>  
+                          <div class="my_update_form-L fr">
+                            <label class="opensemibold ">Town</label>
+                            <input type="text" name="firstname" class="traderstopserchselect" placeholder="" >
+                          </div>  
+                        </div> 
+                        <div class="clearfix">
+                          <div class="my_update_form-L fl">
+                            <label class="opensemibold">Post Code</label>
+                             <input type="text" name="firstname" class="traderstopserchselect" placeholder="" >
+                          </div>  
+                          <div class="my_update_form-L fr">
+                            <label class="opensemibold ">Number of Bedrooms</label>
+                            <input type="text" name="firstname" class="traderstopserchselect" placeholder="" >
+                          </div>  
+                        </div> 
+                        <hr class="borderhr">   
+                        <div class="clearfix">
+                          <p>Please provide details for the contact we should speak to, to arrange access to the property. </p>
+                          <div class="my_update_form-L fl">
+                            <label class="opensemibold">Contact Name</label>
+                             <input type="text" name="firstname" class="traderstopserchselect" placeholder="" >
+                          </div>  
+                          <div class="my_update_form-L fr">
+                            <label class="opensemibold ">Contact Surname</label>
+                            <input type="text" name="firstname" class="traderstopserchselect" placeholder="" >
+                          </div>  
+                        </div>
+                        <div class="clearfix"> 
+                          <div class="my_update_form-L fl">
+                            <label class="opensemibold">Phone Number</label>
+                             <input type="text" name="firstname" class="traderstopserchselect" placeholder="" >
+                          </div>
+                        </div> 
+                        <hr class="borderhr"> 
+                        <div class="clearfix">
+                          <p>Please enter a preferred appointment date. Our clerk will contact you to confirm their availability and agree an exact time for the inspection after booking. We can't guarantee an appointment date prior to ordering, but in the unlikely event that a mutually agreeable date can't be found, we will of course refund you in full. </p>
+                          <div class="my_update_form-L fl">
+                            <label class="opensemibold">Desired Appointment Date:</label>
+                            <md-datepicker class="traderstopserchselect serchinput pad7"
+                              name="available_date"
+                              ng-required="true" 
+                              ng-model="available_date" 
+                              md-min-date="minDate" 
+                              md-hide-icons="triangle"
+                              md-open-on-focus="" 
+                              ng-class="{ 'errorborder': propertyTenantForm.available_date.$touched && propertyTenantForm.available_date.$invalid || propertyTenantForm.available_date.$invalid && propertyTenantForm.$submitted }">
+                            </md-datepicker>
+                          </div>
+                        </div>   
+                        <div class="clearfix">
+                          <div class="colorblue marbot20">How many electrical appliances does this property have?</div>
+                          <p class="font-italic">Our PAT pricing is based on the number of electrical appliances. Providing an incorrect number of appliances will mean the engineer will not be able to create the report, and a callout charge will be applied.</p>
+                          <p>Note: Hard wired appliances do count here, but only a visual check and earth check will be performed if the appliance has no plug socket or it isn't easily accessible. </p>
+                          <div class="my_update_form-full">
+                            <label class="opensemibold">Number Of Appliances: </label>
+                            <md-select name="title" placeholder="Up To 10 Appliances (Included)" class="traderstopserchselect selectlogin99 m-t-0 md-no-underline m-b-0"
+                            ng-model="landlord.personalDetail.title">
+                              <md-option value="Mr">Mr</md-option>
+                              <md-option value="Mrs">Mrs</md-option>
+                              <md-option value="Ms">Ms</md-option>
+                              <md-option value="Miss">Miss</md-option>
+                            </md-select> 
+                          </div>
+                          <p>If you select to have an EICR, this will include up to 8 circuits. Most residential properties have less than 8 circuits - but we must state more circuits than this will be charged later at £15 each. If you are unsure about this, please ask the electrician when they call to confirm the inspection date. </p>
+                          <div class="my_update_form-full">
+                            <label class="opensemibold">Add Electrical Installation Condition Report (EICR) </label>
+                            <md-select name="title" placeholder="Select Whether EICR is Required" class="traderstopserchselect selectlogin99 m-t-0 md-no-underline m-b-0"
+                            ng-model="landlord.personalDetail.title">
+                              <md-option value="Mr">Mr</md-option>
+                              <md-option value="Mrs">Mrs</md-option>
+                              <md-option value="Ms">Ms</md-option>
+                              <md-option value="Miss">Miss</md-option>
+                            </md-select> 
+                          </div>
+                        </div>                         
+                      </div>
+                    </div>
+                  </div>
+                  <div class="martop10">            
+                            <md-button type="submit" class=" exploremapsearchbtn fontresponsive11 md-raised md-primary btnComn">Purchase Electrical Safety Report : £85</md-button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!--Start top serch -->
+</div>
+<!--End middle Part
+

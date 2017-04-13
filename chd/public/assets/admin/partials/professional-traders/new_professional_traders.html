@@ -1,0 +1,74 @@
+<section class="forms-validation">
+   <div class="page-header">
+      <h1>   
+         <i class="md md-person-add"></i>
+         New Professional Trader Account
+      </h1>
+   </div>
+   <div class="row  m-b-40">
+      <div class="col-md-3 col-md-push-9">
+         <h5>Welcome to Cherrydoor.</h5>
+         <p>
+            We love to hear you.<br><br>
+            After account creation password is being sent to the address you provided.<br>
+            Performed action by using your account will be notice. 
+         </p>
+      </div>
+      <div class="col-md-8 col-md-pull-3" ng-init = "planList();" >
+         <div class="well white" id="forms-validation-container">
+            <md-content layout-padding>
+               <form name="userForm" novalidate="novalidate" ng-submit="userForm.$valid && signUp()">
+                  <div layout-gt-sm="row">
+                     <md-input-container class="md-block" flex-gt-sm>
+                        <label>Firstname</label>
+                        <input  required name="name1" ng-model="user.firstname" />
+                     </md-input-container>
+                  </div>
+                  <div layout-gt-sm="row">
+                     <md-input-container class="md-block" flex-gt-sm>
+                        <label>Lastname</label>
+                        <input  required name="name2" ng-model="user.lastname" />
+                     </md-input-container>
+                  </div>
+                  <div layout-gt-sm="row">
+                     <md-input-container class="md-block" flex-gt-sm>
+                        <label>Email</label>
+                        <input name="email" ng-model="user.email"
+                           required minlength="10" maxlength="100" ng-pattern = '/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/' />
+                     </md-input-container>
+                  </div>
+                  <div layout-gt-sm="row">
+                     <md-input-container class="md-block" flex-gt-sm>
+                        <label>Address1</label>
+                        <input required name="address1" ng-model="user.address1" />
+                     </md-input-container>
+                  </div>
+                  <div layout-gt-sm="row">
+                     <md-input-container class="md-block" flex-gt-sm>
+                        <label>Address2</label>
+                        <input name="address2" ng-model="user.address2" />
+                     </md-input-container>
+                  </div>
+                  <div layout-gt-sm="row">
+                     <md-input-container class="md-block" flex-gt-sm>
+                        <label>Phone</label>
+                        <input required name="phone" ng-model="user.phone.telephone" />
+                     </md-input-container>
+                  </div>
+                  <div layout-gt-sm="row">
+                     <md-input-container class="md-block" flex-gt-sm>
+                        <label>Visiting Charge (Allow numbers only)</label>
+                        <input required numbers-only name="visitcharge" ng-model="user.visiting_charge" />
+                     </md-input-container>
+                  </div>
+                  <div class="form-group">
+                     <button type="submit" ng-click = "userForm.$invalid && validate();" class="btn btn-primary pull-right">Submit</button>
+                     <button type="button" ng-click = "back();" class="btn btn-default pull-right">Cancel</button>
+                  </div>
+               </form>
+            </md-content>
+         </div>
+      </div>
+   </div>
+</section>
+

@@ -1,0 +1,75 @@
+<!--Start middle Part-->
+<div class="midllepart"> 
+	<!--Start top serch -->
+    <section class="bluebg section pad-t-0">          
+       <div class="container">            
+            <div class="col-lg-12 boxshadowcommon">                                    
+                <div class=" mycherrysection clearfix">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="mainHd textupper tac">My CherryDoor</div>
+                            <div class="smallHd tac">Lorem ipsum dolor sit amet, consectetur adipiscing elit. </div>
+                            <div class="tac headingimg"><img src="images/headingimg.png"></div>
+                        </div>
+                    </div>
+                    <div class="row">
+                       <div class="col-lg-12">
+                            <div class="pad5">
+                                <!--Start tab Part-->      
+                                <div class="exploretab mycherrtdashtab marbot30" profile-menu="list"> </div>
+                                <!--End tab Part-->  
+                                <!--Start inner pages tab Part-->  
+                                <div class="my_updatepro" my-detail="menu"> </div>   
+                                <!--Start inner pages tab Part--> 
+                                <!--Start inner update Part--> 
+                                <div class="my_formupdate">
+                                    <div class="clearfix">
+                                        <div class="clearfix veriftborder">
+                                            <div class="font18 textupper opensemibold my_update_form-full">Enter your details now to list or rent properties</div>
+                                            <div class="my_update_form-full mar0 clearfix">
+                                                <p class="deactive_acctxt marbot10">Whilst most functionality is open to all users, in order to be able to list new properties, or rent a property you have found, you will need to ensure both your email address and phone number are authenticated below. </p>
+                                                <p class="deactive_acctxt">Please confirm your password for sclarke05@outlook.com to close your CherryDoor account.</p>
+                                            </div>
+                                        </div>
+                                        <div class="clearfix veriftborder">
+                                            <div class="font18 textupper colorblue opensemibold my_update_form-full">Verified Details</div>
+                                            <div class="my_update_form-full mar0 clearfix">
+                                                <p class="deactive_acctxt marbot10">Your email has been verified as <a href="">{{user.email}}</a>
+                                                   <md-icon class="colorblue">done</md-icon></p>
+                                               </div>
+                                           </div>    
+                                           <div class="font18 textupper opensemibold my_update_form-full">Add new Phone number</div>
+                                           <div class="my_update_form-full clearfix">
+                                            <p class="deactive_acctxt marbot10"><strong class="colorblack">Landlords:</strong> We mask your phone numbers (to prevent spam / unsolicited calls), hence they will not be published on our website. This means tenants can enquire using our phone number. If you provide a mobile number, you will receive viewing requests between 9am and 9pm via SMS. All enquires will also be sent via email and be visible on your dashboard.</p>
+                                            <p class="deactive_acctxt marbot10">We require a valid phone number to ensure we can get in touch with both tenants and landlords for viewings.</p>
+                                            <p class="deactive_acctxt marbot10 opensemibold colorblack">We will verify your telephone number by sending a code via text message. If you provide a landline, we will call your landline number and the code will be read out. You will then be asked to enter that code on this page. </p>
+                                            <p class="deactive_acctxt marbot10 colorblack">UK Primary Number  <a ng-href="#" class="linkur textupper colorblue" >(Why only UK numbers?)  </a></p>
+                                        </div>
+                                        <div class="clearfix my_update_form positionrel">
+                                            <form name="codeForm" ng-submit="sendCode(codeForm.$valid)" novalidate>
+                                                <div class="my_update_form-L fl mar-right10">   
+                                                    <input type="text" name="code" ng-model="verifyDetail.code" class="traderstopserchselect" placeholder="" ng-class="{ 'errorborder': codeForm.code.$touched && codeForm.code.$invalid }"
+                                                    required >
+                                                    <div ng-messages="codeForm.code.$error" class="error_tag"  ng-show="codeForm.code.$touched || codeForm.$submitted">
+                                                        <p ng-message="required">Code is required.</p>
+                                                    </div>                               
+                                                </div>
+                                                <div class="fl">
+                                                    <md-button type="submit" class="traderstopsercbtn textlower fr font15 md-raised md-primary btnComn">Send Code</md-button>
+                                                </div>
+                                            </form>       
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <!--End inner update Part--> 
+                            </div> 
+                        </div>   
+                    </div>         
+                </div>
+            </div>
+        </div>             
+    </section>     
+<!--Start top serch -->
+</div>
+<!--End middle Part--> 

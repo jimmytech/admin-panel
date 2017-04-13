@@ -1,0 +1,37 @@
+<section  ng-init = "getAdditionalExclusionDataToedit();">
+   <div class="page-header">
+      <h1>
+         <i class="md md-input"></i>
+         {{pageHeader}} New additional exclusion
+      </h1>
+   </div>
+   <div class="row  m-b-40">
+   <div class="col-md-3 col-md-push-9">
+      <h5>Validating elements</h5>
+      <p>
+         Push the submit button to check all the validations at once.
+         Resetting will handle resetting the validation messages.
+         
+      </p>
+   </div>
+   <div class="col-md-8 col-md-pull-3">
+         <div class="row white pad-20 ">
+            <form name="exclusionform" class="form-floating" novalidate="novalidate" ng-submit="exclusionform.$valid &&  update(newadditionalExclusion);">
+               <div class="form-group">
+                  <label class="control-label" ng-class ="{'invalid-form' : exclusionform.$submitted && exclusionform.additional_exclusion.$invalid}" >Additional exclusion*</label>
+                  <input type="text" name="additional_exclusion" class="form-control" ng-model="newadditionalExclusion.name" required>
+               </div>                            
+               <md-input-container class = "wid100full">
+                  <label>For sale/rent</label>
+                  <md-select name="cat" ng-model="newadditionalExclusion.exclusion_type" required>
+                     <md-option ng-repeat="cat in categoryLst" ng-value="cat.id"  >{{cat.name}}</md-option>
+                  </md-select>
+               </md-input-container>               
+               <button type="submit" ng-click = "exclusionform.$invalid && validate(exclusionform);" class="btn btn-primary">Submit</button>
+               <button type="button" ng-click = "back();" class="btn btn-default">Cancel</button>                       
+            </form>
+         </div>
+      </div>
+   </div>
+</section>
+

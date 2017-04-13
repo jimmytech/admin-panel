@@ -1,0 +1,81 @@
+<!--Start Header-->
+<header>
+	<div ng-if="user" class="topheader" ng-class="{'positiorel':blackheader}">
+
+		<ul class="topheader_list clearfix">
+			<!-- <li><a href="">Add to cart<md-icon>shopping_cart</md-icon>(3)</a></li> -->
+			<li><a href="">Notifications<md-icon>notifications</md-icon>(3)</a></li>
+		</ul>
+	</div>
+	<div class="homehaeder" ng-class="{'blackheader':blackheader, 'top30':user}">
+		<div class="positiorel clearfix">
+			<div class="homelogo"><a set-url="/"><img src="images/logo.png" /></a></div>
+			<!--Start signup-->
+			<div ng-if="!user" class="signreg">
+				<div class="clearfix">
+					<div class="signregleft"><img src="images/sing_icon.png" /></div>
+					<div class="signregright"><a href="#/login">Sign In</a><a href="#/register">Register</a></div>
+				</div>    
+			</div>
+			<!-- after login -->
+			<div class="signreg afterlogin" ng-if="user"> 
+				<div class="positiorel">
+					<md-menu md-position-mode="target-right bottom" md-offset="-17 1">
+						<md-button aria-label="Open demo menu" class="md-primary md-raised demo-menu-open-button" ng-click="$mdOpenMenu($event)">
+							<md-icon>account_circle</md-icon>&nbsp;&nbsp;<md-icon>keyboard_arrow_down</md-icon>
+						</md-button>
+						<md-menu-content width="4" class="headersubmenu" > 
+							<md-list-item> 
+								<p>Welcome: <strong>{{user.firstname && user.lastname ? user.firstname + ' ' + user.lastname:user.email}}</strong></p>
+							</md-list-item>
+							<md-divider></md-divider>
+							<md-list-item ng-click="clearToken()"> 
+								<md-icon >power_settings_new</md-icon> 
+								<p>Logout</p> 
+							</md-list-item>
+						</md-menu-content>
+					</md-menu>
+				</div>
+			</div>                
+			<!--End signup--> 
+
+
+			<!--Start menu-->
+			<nav class="navbar">
+				<div class="container">
+				    <!-- Brand and toggle get grouped for better mobile display -->
+				    <div class="navbar-header">
+				      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" ng-click="toggleLeft('left')" aria-expanded="false">
+				        <span class="sr-only">Toggle navigation</span>
+				        <span class="icon-bar"></span>
+				        <span class="icon-bar"></span>
+				        <span class="icon-bar"></span>
+				      </button>
+				 
+				    </div>
+
+				    <!-- Collect the nav links, forms, and other content for toggling -->
+				    <div class="collapse navbar-collapse bothmenu" d="bs-example-navbar-collapse-1" header-menu="headerMenu"> </div> 
+				    <!-- /.navbar-collapse -->
+				</div><!-- /.container-fluid -->
+			</nav>
+			<!--End signup--> 
+		</div> 
+	</div>
+</header>
+<!--End Header -->
+<!--   Sidenav   -->
+<md-sidenav class="md-sidenav-left md-whiteframe-4dp" md-component-id="left">
+	<md-toolbar layout="row" class="blackheader pad-16">
+      <div class="md-toolbar-tools">
+        <div layout-align="center center"><a set-url="/"><img src="images/logo.png" /></a></div>
+      </div>
+    </md-toolbar>
+ 	<md-list>
+		<md-list-item ng-click="closeSidenav('left')" ng-href="#{{nav.link}}" ng-repeat="nav in navlinks"> 
+			<md-icon >{{nav.icon}}</md-icon>
+			<p>{{nav.text}}</p> 
+			<md-divider></md-divider>
+		</md-list-item>
+    </md-list>
+</md-sidenav>

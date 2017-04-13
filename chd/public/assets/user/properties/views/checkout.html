@@ -1,0 +1,85 @@
+<!--Start middle Part-->
+<div class="midllepart" ng-init = "additionalServiceList();">
+   <!--Start top serch -->
+   <section class="bluebg section pad-t-0">
+      <div class="responsive pad-b-5 marbot30">
+         <div class="boxshadowcommon pad30 positiorel">
+            <!--Start cart  -->
+            <div class="land_cart">
+               <div class="cartimg ">
+                  <md-icon class="colorblue">shopping_cart</md-icon>
+               </div>
+               <div class="land_cartinner">
+                  <div class="">{{items.length || 0}} items.</div>
+                  <div class="">Total Price :  {{(price | currency:"£": 2) || 0}}</div>
+               </div>
+            </div>
+            <!--End cart  -->               
+            <div class="mainHd textupper tac">View cart page</div>
+            <div class="smallHd tac colorblue textupper font16 opensemibold">Lorem ipsum </div>
+            <div class="tac headingimg"><img src="images/headingimg.png"></div>
+         </div>
+      </div>
+      <div class="responsive pad-b-5">
+         <!--Start midlle Part-->
+         <div class="exploremid clearfix m-t-0 ">
+            <div class="boxshadowcommon pad20">
+               <p class="textupper font15 opensemibold marbot10">{{address}}</p>
+               <div class="clearfix marbot30">
+                  <table class="explore-school-table addtable" cellpadding="0" cellspacing="0" border="0">
+                     <tbody>
+                        <tr>
+                           <th width="10%">&nbsp;</th>
+                           <th width="70%">Name </th>
+                           <th width="20%">Price</th>
+                        </tr>
+                        <tr ng-repeat="item in items">
+                           <td >
+                           <a ng-href="" ng-click="remove($index,$event, item._id, item.price)" class="colorred font15 opensemibold">
+                           <md-tooltip >remove from cart</md-tooltip>
+                           X</a>
+                           </td>
+                           <td>
+                              <md-icon>web</md-icon>
+                              {{item.name}}
+                           </td>
+                           <td>£{{item.price}}</td>
+                        </tr>
+                        <tr ng-show="total_no_items === 0">
+                           <td colspan="3">Nothing to checkout, cart is empty</td>
+                        </tr>
+                     </tbody>
+                  </table>
+               </div>
+            </div>
+         </div>
+         <!--End midlle Part-->
+      </div>
+      <div class="responsive martop10">
+         <div class="row">
+            <div class="col-md-6">
+               <form action="https://www.sandbox.paypal.com/cgi-bin/webscr" method="post" style="overflow:hidden;">
+                  <input type="hidden" name="cmd" value="_cart">
+                  <input type="hidden" name="upload" value="1">
+                  <input type="hidden" name="business" value="flexsin.cherrydoor.merchant@gmail.com">
+                  <div ng-repeat = "i in items">
+                     <input type="hidden" name="item_name_{{$index+1}}" value="{{i.name}}">
+                     <input type="hidden" name="amount_{{$index+1}}" value="{{i.price}}">  
+                  </div>
+                  <input type="hidden" name="currency_code" value="GBP">           
+                  <input type="hidden" name="custom" value="{{custom}}">            
+                  <input type="hidden" name="return" value="{{url}}/#/payment-successful" />
+                  <input type="hidden" name="notify_url" value="{{url}}/successfull_payment" />
+                  <input type="hidden" name="cancel_return" value="{{url}}">  
+                  <input type="image" src="https://www.sandbox.paypal.com/en_GB/i/btn/btn_buynowCC_LG.gif" border="0" name="submit" alt="PayPal – The safer, easier way to pay online!">
+               </form>
+            </div>
+            <div class="col-md-6">
+               <md-button href set-url="/property-listings" class=" exploremapsearchgraybtn mar-right5 md-raised md-primary btnComn pull-right">Cancel</md-button>
+            </div>
+         </div>
+      </div>
+   </section>
+   <!--Start top serch -->
+</div>
+<!--End middle Part

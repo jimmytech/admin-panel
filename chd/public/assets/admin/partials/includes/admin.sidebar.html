@@ -1,0 +1,105 @@
+<aside class="sidebar fixed" ng-init = "updateSideBar();">
+   <div class="brand-logo">
+      <img src="images/cherrydoor-admin-logo.png">
+   </div>
+   <div class="user-logged-in">
+      <div class="content admin-name-padding">
+         <div class="user-name">{{userInfo.name}} <span class="text-muted f9">admin</span></div>
+         <div class="user-email">{{userInfo.email}}</div>
+         <div class="user-actions">
+            <a href ng-click="clearToken()">logout</a>
+         </div>
+      </div>
+   </div>
+   <ul class="menu-links" ng-cloak>
+      <a menu-link href="#/dashboard" icon="md md-blur-on" ng-class="{ active: isActive('/dashboard') }">Dashboard</a>
+      <li style="" menu-toggle path="/users" name="Users">
+         <a ng-click = "userList('allUsers')" name="Agents" ng-class="{ active: isActive('/users/all-user') }">
+         <span class="pull-right badge theme-primary-bg z-depth-0">{{totalUsersCount||0}}</span>
+         All Users
+         </a>       
+         <a ng-click = "userList('estateAgents')" name="Agents" ng-class="{ active: isActive('/users/estate-agent') }">
+         <span class="pull-right badge theme-primary-bg z-depth-0">{{estateAgentsCount||0}}</span>
+         Estate Agents
+         </a>      
+         <a ng-click = "userList('franchisees')" name="Franchisee" ng-class="{ active: isActive('/users/franchisee') }">
+         <span class="pull-right badge theme-primary-bg z-depth-0">{{franchiseesCount||0}}</span>
+         Franchisees
+         </a>
+         <a ng-click = "userList('professionalTraders')" name="Traders" ng-class="{ active: isActive('/users/professional-trader') }">
+         <span class="pull-right badge theme-primary-bg z-depth-0">{{professionalTradersCount||0}}</span>
+         Professional Traders
+         </a>      
+         <a ng-click = "userList('landlords')" name="Landlords" ng-class="{ active: isActive('/users/landlord') }">
+         <span class="pull-right badge theme-primary-bg z-depth-0">{{landlordsCount||0}}</span>
+         Landlords
+         </a> 
+         <a ng-click = "userList('tenants')" name="Tenants" ng-class="{ active: isActive('/users/tenant') }">
+         <span class="pull-right badge theme-primary-bg z-depth-0">{{tenantsCount||0}}</span>
+         Tenants
+         </a>                  
+      </li>
+      <li menu-toggle path="/franchisee-management" name="Franchisee">
+         <a href="#/franchisee-management/request" name="New" ng-class="{ active: isActive('/franchisee-management/request') }">
+         <span class="pull-right badge theme-primary-bg z-depth-0"></span>
+         Franchisee Requests
+         </a>                        
+      </li>  
+
+      <li menu-toggle path="/professional-traders" name="Professional Traders">
+         <a href="#/professional-traders/service-request" name="New" ng-class="{ active: isActive('/professional-traders/service-request') }">
+         <span class="pull-right badge theme-primary-bg z-depth-0"></span>
+         Professional Traders Request
+         </a>                      
+      </li>
+
+      <li menu-toggle path="/subscription-plan" name="Plan Management">
+         <a href="#/subscription-plan/plan" name="New" ng-class="{ active: isActive('/subscription-plan/plan') }">
+         <span class="pull-right badge theme-primary-bg z-depth-0"></span>
+         Manage Subscription Plan
+         </a> 
+         <a href="#/subscription-plan/service" name="New" ng-class="{ active: isActive('/subscription-plan/service') }">
+         <span class="pull-right badge theme-primary-bg z-depth-0"></span>
+         Manage Service
+         </a>
+         <a href="#/subscription-plan/additional-service" name="New" ng-class="{ active: isActive('/subscription-plan/additional-service') }">
+         <span class="pull-right badge theme-primary-bg z-depth-0"></span>
+         Manage Additional Service
+         </a>                  
+      </li>
+      <li menu-toggle path="/property-management" name="Property Management">
+         <a href="#/property-management/option" name="Cms" ng-class="{ active: isActive('/property-management/option') }">
+         <span class="pull-right badge theme-primary-bg z-depth-0"></span>
+         Property options
+         </a>      <a href="#/property-management/additional-exclusion" name="Cms" ng-class="{ active: isActive('/property-management/additional-exclusion') }">
+         <span class="pull-right badge theme-primary-bg z-depth-0"></span>
+         Additional exclusion
+         </a>       
+         <a href="#/property-management/additional-feature" name="Cms" ng-class="{ active: isActive('/property-management/additional-feature') }">
+         <span class="pull-right badge theme-primary-bg z-depth-0"></span>
+         Additional feature
+         </a> 
+         <a href="#/property-management/view-property/all" name="New" ng-class="{ active: isActive('/property-management/view-property/all') }">
+         <span class="pull-right badge theme-primary-bg z-depth-0"></span>
+         All Properties
+         </a>       
+         <a href="#/property-management/view-property/agent" name="New" ng-class="{ active: isActive('/property-management/view-property/agent') }">
+         <span class="pull-right badge theme-primary-bg z-depth-0"></span>
+         By Agents
+         </a>       
+         <a href="#/property-management/view-property/landlord" name="New" ng-class="{ active: isActive('/property-management/view-property/landlord') }">
+         <span class="pull-right badge theme-primary-bg z-depth-0"></span>
+         By Landlords
+         </a>             
+         <a href="#/property-management/view-property/admin" name="New" ng-class="{ active: isActive('/property-management/view-property/admin') }">
+         <span class="pull-right badge theme-primary-bg z-depth-0"></span>
+         By Me
+         </a>                 
+      </li>
+      <li menu-toggle name="Mail Activities">
+         <a href="#/sendgrid-mail-queue" name="sendgrid-mail" ng-class="{ active: isActive('/sendgrid-mail-queue') }"> Sendgrid Mail Queue</a>
+         <a href="#/cron-mail-queue" name="cron-mail" ng-class="{ active: isActive('/cron-mail-queue') }"> Cron Mail Queue</a>
+      </li> 
+   </ul>
+</aside>
+

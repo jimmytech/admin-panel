@@ -1,0 +1,116 @@
+<!--Start middle Part-->
+<div class="midllepart">
+  <!--Start top serch -->
+  <section class="bluebg section pad-t-0">
+    <div class="responsive pad-b-5">
+      <div class="traderstopserch boxshadowcommon">                 
+        <div class="topserchdiv mar20">          
+          <input type="text" class="traderstopserchselect" placeholder="Manchestar, UK">
+          <md-button class="serchbtn traderstopsercbtn md-raised md-primary btnComn">Search</md-button>
+        </div>
+      </div>
+    </div>
+    <div class="responsive pad-b-5"> 
+      <!--Start tab Part-->      
+      <div class="exploretab">
+        <ul>
+          <li> <a href="#"  ng-href="{{}}" >Local Schools</a></li>
+          <li> <a href="#"  ng-href="{{}}" >Borough Council </a></li>
+          <li> <a href="#"  ng-href="{{}}" class="active">Places of Interest</a></li>
+          <li> <a href="#"  ng-href="{{}}">Things to do</a></li>
+        </ul>
+      </div>
+      <!--End tab Part-->  
+      <!--Start midlle Part-->
+      <div class="exploremid clearfix m-t-0 ">
+        <div class="councilimg marbot30" style="background: url('images/explore_big.jpg') no-repeat center center; background-size: cover;">
+        </div>
+        <div class="boxshadowcommon">
+         <div class="mainHd councilimghd textupper tac">Places To Visit</div>
+         <div class="clearfix padlrb35">
+          <div class="fl "><h4 class="colorbluedark font18 lineheight35">Where do NW11 Locals Go?</h4></div>
+          <div class="fr">
+           <md-button class="exploremapsearchbtn md-raised md-primary btnComn">What is your Favourite Place?</md-button>
+         </div>
+         <div class="clearfix">
+          <data-owl-carousel class="owl-carousel featurehm counsilcarosal" data-options="{  loop:true, margin:20, nav:true, dots:false, items:3, autoplayTimeout:1000, autoplay:false}"> 
+            <div owl-carousel-item="" ng-repeat="property in properties" class="item">
+              <div class="featurehm_img">
+                <a href="javascript:;">
+                  <img ng-src="{{property.image}}" alt="">  
+                </a>
+              </div>
+              <div class="featurehm_name">
+                <a href="javascript:;" class="featurehm_nametxt">{{property.type}}</a>
+                <p class="featurehm_nameloc">{{property.description}}</p>
+              </div>
+            </div>
+          </data-owl-carousel>
+        </div>
+      </div>
+      
+    </div>   
+
+
+    
+    
+    
+  </div>
+  <!--End midlle Part-->
+</div>
+<div class="clearfix responsive marbot30">
+ <div class="mainHd councilimghd textupper tac mar0">Explore Manchestar, UK</div>
+ <div class="Councilgoomap  boxshadowcommon">
+  <img src="images/counsilismap.jpg" style="width: 100%;">
+</div>
+</div>
+<div class="responsive ">                
+ <div class="Councilbottomamrties  boxshadowcommon pad35full">
+  <div class="clearfix">
+    <div class="ammentiesdiv">
+      <div class="ammentiesdivhd marbot10 textupper font16"><img src="images/amentiew_res.png">   AMEITIES</div>
+      <ul class="amelist">
+        <li><md-checkbox ng-model="staySigned" aria-label="Checkbox 1"> Restaurants </md-checkbox></li>
+        <li><md-checkbox ng-model="staySigned1" aria-label="Checkbox 2"> Restaurants </md-checkbox></li>
+        <li><md-checkbox ng-model="staySigned2" aria-label="Checkbox 3"> Restaurants </md-checkbox></li>
+        <li><md-checkbox ng-model="staySigned3" aria-label="Checkbox 4"> Restaurants </md-checkbox></li>
+        <li><md-checkbox ng-model="staySigned4" aria-label="Checkbox 5"> Restaurants </md-checkbox></li>
+      </ul>
+    </div>
+    <div class="ammentiesdiv">
+      <div class="ammentiesdivhd marbot10 textupper font16"><img src="images/amentiew_res.png">   AMEITIES</div>
+      <ul class="amelist">
+        <li><md-checkbox ng-model="staySigned" aria-label="Checkbox 1"> Restaurants </md-checkbox></li>
+        <li><md-checkbox ng-model="staySigned1" aria-label="Checkbox 2"> Restaurants </md-checkbox></li>
+        <li><md-checkbox ng-model="staySigned2" aria-label="Checkbox 3"> Restaurants </md-checkbox></li>
+        <li><md-checkbox ng-model="staySigned3" aria-label="Checkbox 4"> Restaurants </md-checkbox></li>
+        <li><md-checkbox ng-model="staySigned4" aria-label="Checkbox 5"> Restaurants </md-checkbox></li>
+      </ul>
+    </div>
+    <div class="ammentiesdiv">
+      <div class="ammentiesdivhd marbot10 textupper font16"><img src="images/amentiew_res.png">   AMEITIES</div>
+      <ul class="amelist">
+        <li><md-checkbox ng-model="staySigned" aria-label="Checkbox 1"> Restaurants </md-checkbox></li>
+        <li><md-checkbox ng-model="staySigned1" aria-label="Checkbox 2"> Restaurants </md-checkbox></li>
+        <li><md-checkbox ng-model="staySigned2" aria-label="Checkbox 3"> Restaurants </md-checkbox></li>
+        <li><md-checkbox ng-model="staySigned3" aria-label="Checkbox 4"> Restaurants </md-checkbox></li>
+        <li><md-checkbox ng-model="staySigned4" aria-label="Checkbox 5"> Restaurants </md-checkbox></li>
+      </ul>
+    </div>
+    <div class="ammentiesdiv">
+      <div class="ammentiesdivhd marbot10 textupper font16"><img src="images/amentiew_res.png">   AMEITIES</div>
+      <ul class="amelist">
+        <li><md-checkbox ng-model="staySigned" aria-label="Checkbox 1"> Restaurants </md-checkbox></li>
+        <li><md-checkbox ng-model="staySigned1" aria-label="Checkbox 2"> Restaurants </md-checkbox></li>
+        <li><md-checkbox ng-model="staySigned2" aria-label="Checkbox 3"> Restaurants </md-checkbox></li>
+        <li><md-checkbox ng-model="staySigned3" aria-label="Checkbox 4"> Restaurants </md-checkbox></li>
+        <li><md-checkbox ng-model="staySigned4" aria-label="Checkbox 5"> Restaurants </md-checkbox></li>
+      </ul>
+    </div>
+  </div> 
+</div>
+</div> 
+</section>
+<!--Start top serch -->
+</div>
+<!--End middle Part-->

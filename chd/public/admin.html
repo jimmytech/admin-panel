@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html ng-app = materialism>
+   <head>
+         <title>Cherry Door | Admin</title>    
+         <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">    
+   <link rel="stylesheet" href="css/admin/admin-site.min.css">
+   <link href="/css/admin/admin_style.css" rel="stylesheet" />  
+   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+   
+   </head>
+         <body ng-controller="adminThemeCtrl" ng-class="[theme.template, theme.color]" ng-cloack >        
+            <main>
+               <div ng-if = "header" ng-include src="'assets/admin/partials/includes/admin.sidebar.html'" class="display-none" ng-controller="userManagementCtrl" ></div>
+               <div class="main-container">
+                  <div ng-if = "header" ng-include src="'assets/admin/partials/includes/admin.header.html'" class="display-none" ></div>
+                  <div class="main-content" ng-cloak ng-view></div>
+               </div>
+            </main>    
+
+         <script src="/js/admin/admin-site.min.js"></script>
+         <script src="/js/admin/admin-app.js"></script>
+         <script src="/assets/admin/services/services.js"></script>                 
+         <script src="/assets/admin/factories/property_upload_factory.js"></script>
+         <script src="/assets/admin/factories/admin_factory.js"></script>
+         <script src="/assets/admin/factories/comman_factory.js"></script>
+         <script src="/assets/admin/factories/rest.js"></script>
+         <script src="/assets/admin/factories/sidebar/sidebar_factory.js"></script>
+         <script src="/assets/admin/directives/property_upload_directive.js"></script>
+         <script src="/assets/admin/directives/theme_directive.js"></script>
+         <script src="/assets/admin/config/routes.js"></script>     
+         <script src="/assets/admin/controllers/admin_theme_ctrl.js"></script> 
+         <script src="/assets/admin/controllers/user_management_ctrl.js">
+         </script>          
+         <script src="/assets/admin/controllers/subscription_plan_management_ctrl.js">
+         </script>  
+         <script src="/assets/admin/controllers/admin_ctrl.js"></script>
+         <script src="/assets/admin/controllers/dashboardCtrl.js">
+         </script>               
+         <script src="/assets/admin/controllers/property_management_ctrl.js"></script>               
+         <script src="/assets/admin/controllers/additional_exclusion_ctrl.js"></script>               
+         <script src="/assets/admin/controllers/additional_frature_ctrl.js"></script>               
+         <script src="/assets/admin/controllers/property_option_ctrl.js"></script>               
+         <script src="/assets/admin/controllers/franchisee_management_ctrl.js"></script>               
+         <script src="/assets/admin/controllers/professional_traders_management.js"></script>               
+         <script src="/assets/admin/controllers/mail_activities_ctrl.js"></script>               
+         <script src="/assets/admin/controllers/cron_mail_ctrl.js"></script>               
+         </body>
+</html>

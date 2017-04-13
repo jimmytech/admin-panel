@@ -1,0 +1,26 @@
+
+ <md-dialog aria-label="DeactivateDialog">
+  <form>
+    <md-toolbar>
+      <div class="md-toolbar-tools">
+        <h2>Confirmation Message</h2>
+
+        <span flex></span>
+        <md-button  class="md-icon-button" ng-click="cancel()">
+          <md-icon aria-label="close">close</md-icon>
+        </md-button>
+      </div>
+
+    </md-toolbar>
+    <p>do you want deactivate your cherrydoor account</p>
+    <md-dialog-content style="max-width:800px;max-height:810px; ">
+         <md-dialog-actions layout="row">
+      <md-button ng-click="deactivate('deactivate')" style="margin-right:48px;">
+        Deactivate
+      </md-button>
+      <md-button ng-click="cancel('cancel')" style="margin-right:145px;" >
+        Cancel
+      </md-button>
+    </md-dialog-actions>
+  </form>
+</md-dialog>

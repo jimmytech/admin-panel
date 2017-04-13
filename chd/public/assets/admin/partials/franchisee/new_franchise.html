@@ -1,0 +1,59 @@
+<section class="forms-validation" ng-init = "fillNewFranchiseeForm()">
+      <div class="page-header">
+         <h1>   
+            <i class="md md-person-add"></i>
+            New Franchisee Account
+         </h1>
+      </div>
+      <div class="row  m-b-40">
+         <div class="col-md-3 col-md-push-9">
+            <h5>Welcome to Cherrydoor.</h5>
+            <p>
+               We love to hear you.<br><br>
+               After account creation password is being sent to the address you provided.<br>
+               Performed action by using your account will be notice. 
+            </p>
+         </div>
+         <div class="col-md-8 col-md-pull-3" ng-init = "planList();" >
+            <div class="well white" id="forms-validation-container">
+               <form name="signupform" class="form-floating" novalidate="novalidate" ng-submit="signupform.$valid && storeFranchiseeInfo(signupform)">
+                  <fieldset>
+                     <div class="form-group">
+                        <label class="control-label" ng-class ="{'invalid-form' : signupform.$submitted && signupform.first_name.$invalid}" >First Name*</label>
+                        <input type="text" name="first_name" class="form-control" ng-model="newUser.firstname" required>
+                     </div>
+                     <div class="form-group">
+                        <label class="control-label" ng-class ="{'invalid-form' : signupform.$submitted && signupform.last_name.$invalid}" >Last Name*</label>
+                        <input type="text" name="last_name" class="form-control" ng-model="newUser.lastname" required>
+                     </div>
+                     <div class="form-group">
+                        <label class="control-label" ng-class ="{'invalid-form' : signupform.$submitted && signupform.email.$invalid}">Email*</label>
+                        <input ng-pattern = '/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/' type="email" class="form-control" name="email" ng-model="newUser.email" required disable-validation-message="">
+                     </div>                    
+                     <div class="form-group">
+                        <label class="control-label" ng-class ="{'invalid-form' : signupform.$submitted && signupform.address1.$invalid}" >Address1*</label>
+                        <input type="text" name="address1" class="form-control" ng-model="newUser.address.address1" required>
+                     </div>                        
+                     <div class="form-group">
+                        <label class="control-label" >Address2*</label>
+                        <input type="text" name="address2" class="form-control" ng-model="newUser.address.address2">
+                     </div>                     
+                     <div class="form-group">
+                        <label class="control-label" ng-class ="{'invalid-form' : signupform.$submitted && signupform.zip_code.$invalid}" >Zip Code*</label>
+                        <input type="text" name="zip_code" class="form-control" ng-model="newUser.address.postcode" required>
+                     </div>
+                     <div class="form-group">
+                        <label class="control-label" ng-class ="{'invalid-form' : signupform.$submitted && signupform.contact_number.$invalid}" >Contact Number*</label>
+                        <input type="text" name="contact_number" class="form-control" ng-model="newUser.phone.telephone" numbers-only required>
+                     </div>                 
+                     <div class="form-group">
+                        <button type="submit" ng-click = "signupform.$invalid && validate();" class="btn btn-primary pull-right">Next</button>
+                        <button type="button" ng-click = "back();" class="btn btn-default pull-right">Cancel</button>
+                     </div>                  
+                  </fieldset>
+               </form>
+            </div>
+         </div>
+      </div>
+</section>
+

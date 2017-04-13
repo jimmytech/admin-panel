@@ -1,0 +1,67 @@
+{
+  "name": "cherrydoor",
+  "version": "1.0.0",
+  "description": "meanstack real-estate project",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "test": "mocha --timeout=10000",
+    "coverage": "istanbul cover _mocha -- -R spec"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@bitbucket.org/cherrydoordev/cherrydoor.git"
+  },
+  "keywords": [
+    "mongo",
+    "express",
+    "angular",
+    "node",
+    "meanjs"
+  ],
+  "author": "Flexsin",
+  "license": "ISC",
+  "homepage": "https://bitbucket.org/cherrydoordev/cherrydoor#readme",
+  "dependencies": {
+    "async": "^2.1.4",
+    "bluebird": "^3.4.6",
+    "body-parser": "^1.15.2",
+    "compression": "^1.6.2",
+    "dotenv": "^2.0.0",
+    "express": "^4.14.0",
+    "express-jwt": "^5.1.0",
+    "helmet": "^2.3.0",
+    "jsonwebtoken": "^7.2.1",
+    "lodash": "^4.17.2",
+    "mongodb": "^2.2.21",
+    "mongoose": "^4.7.2",
+    "mongoose-unique-validator": "^1.0.3",
+    "morgan": "^1.7.0",
+    "multer": "^1.2.1",
+    "node-uuid": "^1.4.7",
+    "nodemailer": "^2.7.0",
+    "nodemailer-sendgrid-transport": "^0.2.0",
+    "nodemailer-stub-transport": "^1.1.0",
+    "paypal-rest-sdk": "^1.7.1",
+    "sendgrid": "^4.7.1",
+    "thumbnail": "^0.1.9",
+    "winston": "^2.3.0"
+  },
+  "devDependencies": {
+    "chai": "^3.5.0",
+    "chai-http": "^3.0.0",
+    "gulp": "^3.9.1",
+    "gulp-clean-css": "^2.3.0",
+    "gulp-concat": "^2.6.1",
+    "gulp-jshint": "^2.0.4",
+    "gulp-nodemon": "^2.2.1",
+    "gulp-notify": "^2.2.0",
+    "gulp-uglify": "^2.0.0",
+    "istanbul": "^0.4.5",
+    "jshint": "^2.9.4",
+    "jshint-stylish": "^2.2.1",
+    "map-stream": "0.0.6",
+    "mocha": "^3.2.0",
+    "pump": "^1.0.1"
+  }
+}

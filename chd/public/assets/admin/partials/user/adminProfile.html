@@ -1,0 +1,96 @@
+<section class="forms-validation">
+      <div class="page-header" ng-init = "adminProfileDetail()">
+         <h1>  
+           {{pageHeader}}
+         </h1>
+      </div>
+      <div class="row  m-b-40">
+         <div class="col-md-3 col-md-push-9">
+            <h5>Welcome to Cherrydoor.</h5>
+            <p>
+               We love to hear you.<br>
+               Performed action by using your account will be notice.      
+            </p>
+         </div>    
+         <div class="col-md-8 col-md-pull-3">
+            <div class="well white" id="forms-validation-container" ng-if="pageHeader=='My Profile'">
+               <form name="adminprofile" class="form-floating" novalidate="novalidate" ng-submit="adminprofile.$valid && updateMyProfile()">
+                  <fieldset>
+                     <div class="form-group">
+                     <label class="control-label"  ng-class ="{'invalid-form' : adminprofile.$submitted && adminprofile.firstname.$invalid}" >First Name*</label>
+                        
+                        <input type="text" name="firstname" class="form-control" ng-model="user.firstname" required >
+                     </div>
+                     <div class="form-group">
+                        <label class="control-label"  ng-class ="{'invalid-form' : adminprofile.$submitted && adminprofile.lastname.$invalid}" >Last Name*</label>
+                        <input name="lastname" type="text" class="form-control" ng-model="user.lastname" required>
+                     </div>                    
+                     <div class="form-group">
+                     <label class="control-label" >Email*</label>
+                 
+                        <input ng-pattern = '/^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i' type="email" class="form-control" name = "email" ng-model="user.email" ng-disabled = "true">
+                     </div>
+<!--                      <div class="form-group">
+                        Street Address
+                        <input type="text" class="form-control" ng-model="user.address.street_address" required >
+                     </div> -->
+                     <div class="form-group">
+                     <label class="control-label"  ng-class ="{'invalid-form' : adminprofile.$submitted && adminprofile.city.$invalid}" >City*</label>
+                        
+                        <input name="city" type="text" class="form-control" ng-model="user.address.city" required >
+                     </div>
+                     <div class="form-group">
+                     <label class="control-label"  ng-class ="{'invalid-form' : adminprofile.$submitted && adminprofile.state.$invalid}" >State*</label>
+                        
+                        <input name="state" type="text" class="form-control" ng-model="user.address.state" required >
+                     </div>
+                     <div class="form-group">
+                     <label class="control-label"  ng-class ="{'invalid-form' : adminprofile.$submitted && adminprofile.zip.$invalid}" >Zip Code*</label>
+                        <input name="zip" type="text" class="form-control" ng-model="user.address.postcode" required >
+                     </div>
+                     <div class="form-group">
+                       <label class="control-label"  ng-class ="{'invalid-form' : adminprofile.$submitted && adminprofile.contactnumber.$invalid}" >Contact Number*</label>
+                        <input ng-pattern="/^[1-9]\d*([.]\d+)?$/" name="contactnumber" type="text" class="form-control" ng-model="user.phone.telephone" required>
+                     </div>
+                     <div class="form-group">
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                        <button type="reset" class="btn btn-default">Reset</button>
+                     </div>
+                     <div style="margin-top: 10px;" ng-if = "adminprofile.$submitted && adminprofile.$invalid" >
+                     <label class="invalid-form">"{{invalidForm}}"</label>
+                     </div>                     
+                  </fieldset>
+               </form>
+            </div> 
+            <div class="well white" id="forms-validation-container" ng-if="pageHeader=='Change Password'">
+
+               <form name="changePasswordForm" class="form-floating" novalidate="novalidate" ng-submit=" changePasswordForm.$valid && changeMyPassword(password, changePasswordForm)">
+                  <fieldset>
+                     <div class="form-group">
+                        <label class="control-label"  ng-class ="{'invalid-form' : changePasswordForm.$submitted && changePasswordForm.currentpassword.$invalid}" >Current Password*</label>
+                        <input name="currentpassword" type="password" class="form-control" ng-model="password.current" required>
+                     </div>
+                     <div class="form-group">
+                        <label  class="control-label"  ng-class ="{'invalid-form' : changePasswordForm.$submitted && changePasswordForm.newpassword.$invalid}" >New Password*</label>
+                        <input name="newpassword" type="password" minlength="6" maxlength="15" class="form-control" ng-model="password.new" required>
+                     </div>
+
+                     <div class="form-group">
+                        <label class="control-label"  ng-class ="{'invalid-form' : changePasswordForm.$submitted && changePasswordForm.confirmpassword.$invalid}" >Confirm Password*</label>
+                        <input name="confirmpassword" type="password" minlength="6" maxlength="15" class="form-control" ng-model="password.confirm" required>
+                     </div>
+                     <div class="form-group">
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                        <button type="button" ng-click = "back();" class="btn btn-default">Cancel</button>
+                     </div>
+                     <div style="margin-top: 10px;" ng-if = "changePasswordForm.$submitted && changePasswordForm.$invalid" >
+                     <label class="invalid-form">"{{invalidForm}}"</label>
+                     </div>                      
+                     </div>
+
+                  </fieldset>
+               </form>
+            </div>
+         </div>
+      </div>
+</section>

@@ -1,0 +1,75 @@
+<section class="forms-validation" >
+   <div>
+      <div>
+         <div class="page-header">
+            <h1>
+               <i class="md md-list"></i>
+               Cron Email Queue Info
+            </h1>
+            <p class="lead">
+               This is list of crons running in system
+            </p>
+         </div>
+         <div class="row m-b-10">
+            <div class="col-md-6">
+               <form name="searchForm" class="form-inline" ng-submit="searchMailQueue(searchText)" novalidate="novalidate">
+                  <div class="form-group ">
+                     <div class="input-group">
+                        <input type="text" class="form-control" placeholder="Find user by email" ng-model = "searchText" required disable-invalid-styling="true">
+                        <div class="input-group-addon padding0">
+                           <button class="btn btn-sm btn-link withoutripple">
+                              <i class="fa fa-search f20"></i>
+                           </button>   
+                        </div>
+                     </div>   
+                  </div>
+               </form>
+            </div>
+         </div>
+         <div class="row">
+            <div class="col-md-12">
+               <div class="table-responsive white">
+                  <table class="table table-bordered ">
+                     <colgroup>
+                        <col class="auto-cell-size" />
+                     </colgroup>
+                     <thead class="thead-inverse ">
+                        <tr>
+                           <th>Email</th>
+                           <th>Frequency</th>
+                           <th>Status</th>
+                           <th>Date</th>
+                           <th>Action</th>
+                        </tr>
+                     </thead>
+                     <tbody>
+                        <tr ng-repeat="e in cronmails">
+                           <td >{{e.user[0].email}}</td>
+                           <td class="text-capital">{{e.frequency}}</td>
+                           <td>{{e.status}}</td>
+                           <td>{{e.created | date: 'medium'}}</td>
+                           <td><md-icon>remove_red_eye</md-icon></td>
+                        </tr>
+                        <tr ng-if="cronmails.length === 0">
+                        	<td colspan="4" class="text-center">No Result Found</td>
+                        </tr>
+                     </tbody>
+                  </table>      
+
+
+               </div>
+            </div>   
+            <div class="col-md-12">
+               <div class="col-md-4">
+                     <p style="margin: 23px 0;">Showing {{paging.current}} of {{paging.count}} total results</p>
+               </div>
+               <div class="col-md-8">
+               <ul uib-pagination ng-if="paging.count> paging.limit" previous-text="Prev" force-ellipses="forceEllipses" max-size="maxSize" items-per-page="paging.limit" total-items="paging.count" ng-model="paging.page" class="pagination pull-right" boundary-link-numbers="true" rotate="false" ng-change="pageChanged()"></ul>    
+               </div>
+            </div>   
+            </div>
+         </div>
+      </div>
+   </div>
+</section>
+

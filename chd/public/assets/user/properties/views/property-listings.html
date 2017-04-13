@@ -1,0 +1,155 @@
+<!--Start middle Part-->
+<div class="midllepart">
+	<!--Start top serch -->
+	<section class="bluebg section pad-t-0">
+		<div class="container marbot30 ">
+			<div class="boxshadowcommon col-lg-12">
+				<div class="row ">
+					<div class="col-lg-12 land_top_list_pad">
+						<ul class="land_top_list">
+							<li> <a  set-url="/landlord-account" ><span class="land_acc_ico"></span> Landlord Account</a></li>
+							<li> <a set-url="/property-room-details"  ><span class="land_list_ico"></span>List your Property</a></li>
+							<li> <a set-url="/property-listings" class="active"  ><span class="land_listing_ico"></span>Property Listing </a></li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!--End top partr-->
+		<!--statr  sort partr-->
+		<div class="container marbot20" ng-hide="spinner">
+			<div class="clearfix mycheyy_dashsort marbot10">
+				<div class="fl ">
+					<ul class="mycheyy_dashsort_list">
+						<li><a  class="active" > <span class="mycherrydash_icon list"></span> List View</a></li>
+						<li><a set-url="/property-map-view" > <span class="mycherrydash_icon map"></span> Map View</a></li>
+					</ul>
+				</div>
+				<div class="fr sort_tab">
+					<span class="sorttxt opensemibold">Sort By:</span>
+					<md-select ng-change="sortByPrice(price)" ng-model="price" md-no-asterisk placeholder="Price (High Low)" class="traderstopserchselect selectlogin99 m-t-0 md-no-underline m-b-0" >
+						<md-option value="-1">High - Low</md-option>
+						<md-option value="1">Low - High</md-option>
+					</md-select>
+				</div>
+			</div>
+			<div class="clearfix mycheyy_dashpagination">
+				<div class="pagination fl ">
+					<p>Showing {{paging.current}} of {{paging.count}} total results</p>
+				</div>
+				<div class="pagination fr ">
+						<ul class="paginationlist" uib-pagination ng-if="paging.count > paging.limit" previous-text="Prev" force-ellipses="forceEllipses" max-size="maxSize" items-per-page="paging.limit" total-items="paging.count" ng-model="paging.page" class="pagination-sm" boundary-link-numbers="true" rotate="false" ng-change="pageChanged()"></ul>
+				</div>
+			</div>
+		</div>
+		<!--End  sort partr-->
+		<div layout="row" layout-sm="column" layout-align="space-around" ng-show="spinner">
+	    	<md-progress-circular md-mode="indeterminate"></md-progress-circular>
+	    </div>
+		<div class="container" ng-hide="spinner">
+			<div class="col-lg-12">
+				<div class="row">
+					<ul class="saverserchlist mylisting_list">
+						<li ng-repeat="property in properties" ng-init="property.loading=false">
+							<div class="my_listing_topremove clearfix">
+
+								<div class="fr listingclose rightposition">
+									<md-tooltip md-direction="top"><strong>Update Property Details</strong></md-tooltip>
+									<a href ng-click="editProperty($index)"><md-icon>edit</md-icon></a>
+								</div>
+								<div class="fr listingclose">
+									<md-tooltip md-direction="top"><strong>Delete this Property</strong></md-tooltip>
+									<a href ng-click="delete($index,$event)"><md-icon>close</md-icon></a>
+								</div>
+
+								<div class="fr m-r-60">
+
+									<md-switch ng-change="publish(property.isPublished, $index)" ng-model="property.isPublished" class="m-t-0 m-b-0" aria-label="property status"> {{ property.isPublished === true ? 'Publish' : 'Un-Publish' }}
+									</md-switch>
+								</div>
+
+							</div>
+
+							<div class="clearfix">
+								<!--Start left Part-->
+								<div class="myproperyyimgdiv positiorel fl">
+									<div class="myproperyyimg marbot20 image_listing" style="background-image: url({{property.image_count > 0 ? (property.cover_photo ? property.cover_photo.thumb_path + property.cover_photo.thumb_name : property.image[0].thumb_path + property.image[0].thumb_name) :(property.default_image.thumb_path + property.default_image.thumb_name)}});">
+										<a set-url="/property/{{property.slug}}">
+											<div class="picnumber"><span>{{property.image_count}}</span> <md-icon>photo_camera</md-icon></div>
+											<img style="opacity: 0" ng-src="{{property.image_count > 0 ? (property.cover_photo ? property.cover_photo.thumb_path + property.cover_photo.thumb_name : property.image[0].thumb_path + property.image[0].thumb_name) :(property.default_image.thumb_path + property.default_image.thumb_name)}}">
+										</a>
+									</div>
+									<span ng-if="property.property_for === 'sale'" class="featurehm_saletag featurehm_saletagtxt ng-binding">For Sale</span>
+									<span ng-if="property.property_for === 'rent'" class="featurehm_renttag featurehm_saletagtxt ng-binding">For Rent</span>
+									<!-- <div class="clearfix">
+										<div class="fl">
+											<div class="positiorel landlod_height"> <img src="images/landlod_pic.png" class="landlod_pic">
+												<p class="landloadname">Marc  Quinn</p>
+											</div>
+										</div>
+
+									</div> -->
+								</div>
+								<!--end left Part-->
+								<!--Start right Part-->
+								<div class="myproperyydetdiv fr">
+									<!--Start name Part-->
+									<div class="clearfix listpropertmname">
+										<div class="myproperyydetdivname fl"> <a set-url="/property/{{property.slug}}">
+											<h6 class="font18">{{property.beds === 0 ? 'Studio': property.beds}} Bedroom, {{property.property_type.name}}</h6>
+											<p class="colorbluedark">{{property.virtual_name}}</p>
+										</a> </div>
+										<div class=" fr"> <!--a ng-href=""> <span class="heart_blank_icon mycherrydash_icon"></span> </a-->
+										<span ng-if="property.monthly_rent" class="myproperyydetdivprice"><md-tooltip md-direction="bottom"> <strong>Monthly Rental Price</strong> </md-tooltip>{{property.monthly_rent | currency : '&pound;' : 2}}</span>
+											<span ng-if="property.sale_price" class="myproperyydetdivprice">
+											<md-tooltip md-direction="bottom"> <strong>Property Sale Price</strong> </md-tooltip>
+											{{property.sale_price | currency : '&pound;' : 2}}
+											</span>
+										</div>
+									</div>
+									<!--End name Part-->
+									<!--Start Description Part-->
+									<div class="clearfix listpropertdescription marbot20">
+									<p>{{property.description | limitTo : 600}}<a ng-if="property.description.length > 600" set-url="/property/{{property.slug}}"> ... Read More</a></p>
+									</div>
+									<!--End Description Part-->
+									<!--Start fotterinfo Part-->
+									<div class="listpropertyfotterinfo clearfix">
+										<div class="amenties_div">
+											<ul class="amenties">
+												<li><img src="images/savedpro_bath.png"> <span>{{property.bathroom}}</span></li>
+												<li><img src="images/savedpro_bed.png"> <span>{{property.beds === 0 ? 'Studio': property.beds}}</span></li>
+												<li><img src="images/savedpro_car.png"> <span>{{property.parking.name}}</span></li>
+											</ul>
+										</div>
+
+										<div class="fr protyderailsbtn"> 
+											<a ng-click = "property.floor_plan.length>0 && showFloorPlan(property.floor_plan, $event)" class="lineheight30 florbtn"><md-tooltip md-direction="bottom">{{property.floor_plan.length>0 ? 'Click to see floor plan':'No floor plan available'}}</md-tooltip> <span class="mycherrydash_icon floor_icon"></span>{{property.floor_plan.length > 0 ? 'Floor Plan Available': 'No Floor Plan'}}</a>
+											<md-button href set-url="/property/{{property.slug}}" class="detalsprobluebtn textlower md-raised md-primary btnComn">Details</md-button>
+    									 </div> 
+
+									</div>
+									<!--Start fotterinfo Part-->
+								</div>
+							</div>
+							<div class="my_listing_topremove_date">{{property.created | date : 'dd/MM/yyyy'}}</div>
+						</li>
+					</ul>
+					<div class="no_result_found" ng-show="properties.length === 0">
+						<h3>You haven't uploaded any property yet, <a set-url="/property-room-details">click here</a> to upload</h3>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="container">
+			<div class="pagination fr ">
+				<ul class="paginationlist" uib-pagination ng-if="paging.count > paging.limit" previous-text="Prev" force-ellipses="forceEllipses" max-size="maxSize" items-per-page="paging.limit" total-items="paging.count" ng-model="paging.page" class="pagination-sm" boundary-link-numbers="true" rotate="false" ng-change="pageChanged()"></ul>
+			</div>
+		</div>
+	</section>
+	<!--Start top serch -->
+</div>
+<!--End middle Part-->
+
+<a ng-repeat="image in floorPlan" id="single_image{{$index}}" ng-href="{{image.path + image.name}}" fancyboxable>
+<img ng-src="{{image.path + image.name}}" alt=""/></a>

@@ -1,0 +1,91 @@
+<!--Start middle Part-->
+<div class="midllepart"> 
+	<!--Start top serch -->
+    <section class="bluebg section pad-t-0">  
+
+        <div class="container">            
+            <div class="col-lg-12 boxshadowcommon">                                    
+                <div class=" mycherrysection clearfix">
+                  <div class="row">
+                        <div class="col-lg-12">
+                            <div class="mainHd textupper tac">My CherryDoor</div>
+                            <div class="smallHd tac">Lorem ipsum dolor sit amet, consectetur adipiscing elit. </div>
+                            <div class="tac headingimg"><img src="images/headingimg.png"></div>
+                        </div>
+                  </div>
+                  <div class="row">
+                     <div class="col-lg-12">  
+                        <div class="pad5">
+                            <!--Start tab Part-->      
+                            <div class="exploretab mycherrtdashtab marbot30" profile-menu="list"> </div>
+                            <!--End tab Part-->  
+                            <!--Start inner pages tab Part-->  
+                            <div class="my_updatepro" my-detail="menu"> </div>  
+                            <!--Start inner pages tab Part--> 
+                            <!--Start inner update Part--> 
+                            
+                            <form name="changeEmailForm" ng-submit="updateEmail(changeEmailForm.$valid)" novalidate>
+                                <div class="my_formupdate">
+                                    <div class="my_update_form clearfix">
+                                        <div class="my_update_form-L ">
+                                            <label class="opensemibold textupper">Current Mail </label>
+                                            <p class="opensemibold">{{user.email}}</p>
+                                        </div>
+                                        <div class="my_update_form-L ">
+                                            <label class="opensemibold textupper">New Email</label>
+                                            <input type="email" name="newemail" class="traderstopserchselect" placeholder="New Email" 
+                                            ng-model="changeEmail.newemail"
+                                            ng-class="{ 'errorborder': changeEmailForm.newemail.$touched && changeEmailForm.newemail.$invalid || changeEmailForm.newemail.$invalid && changeEmailForm.$submitted }" 
+                                            required >
+                                            <div ng-messages="changeEmailForm.newemail.$error" class="error_tag"  ng-show="changeEmailForm.newemail.$touched || changeEmailForm.$submitted">
+                                                <p ng-message="required">Email is required.</p>
+                                                <p ng-message="email">Your email address is invalid</p>
+                                            </div>         
+                                        </div>
+                                        <div class="my_update_form-L ">
+                                            <label class="opensemibold textupper">Confirm New Email</label>
+                                            <input type="email" name="conemail" class="traderstopserchselect" placeholder="Confirm New Email" 
+                                            ng-class="{ 'errorborder': changeEmailForm.conemail.$touched && changeEmailForm.conemail.$invalid || changeEmailForm.conemail.$invalid && changeEmailForm.$submitted }"
+                                            ng-model="changeEmail.conemail"
+                                            required >
+                                            <div ng-messages="changeEmailForm.conemail.$error" class="error_tag"  
+                                            ng-show="changeEmailForm.conemail.$touched || changeEmailForm.$submitted">
+                                                <p ng-message="required">Confirm Email is required.</p>
+                                                <p ng-message="email">Your email address is invalid</p>
+                                            </div> 
+                                        </div>
+
+                                        <div class="my_update_form-L ">
+                                            <label class="opensemibold textupper">Password</label>
+                                            <input type="password" name="password" class="traderstopserchselect" placeholder="Your Password" 
+                                            ng-minlength="6" 
+                                            ng-model="changeEmail.password"
+                                            ng-class="{ 'errorborder': changeEmailForm.password.$touched && changeEmailForm.password.$invalid || changeEmailForm.password.$invalid && changeEmailForm.$submitted }" 
+                                            required>
+                                            <div ng-messages="changeEmailForm.password.$error" class="error_tag"  ng-show="changeEmailForm.password.$touched || changeEmailForm.$submitted">
+                                                <p ng-message="minlength">Password must be atleast 6 characters long.</p>
+                                                <p ng-message="required">Password is required.</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="my_update_form-full clearfix">
+                                        <p>If you have forgotten password and you no longer have access to your old email address then please <a href="mailto:support.cherrydoor.com" class="linkur textupper colorblue" > email us.</a></p>
+                                    </div> 
+                                </div>
+                                <div class="my_update_form-full clearfix">
+                                    <md-button type="submit" class="traderstopsercbtn textlower fr font15 md-raised md-primary btnComn" >Change Email</md-button>
+                                </div>
+                            </form>
+                        </div>
+                        <!--End inner update Part--> 
+
+                    </div>
+                 </div>
+              </div>  
+            </div>
+        </div> 
+    </div>            
+</section>     
+<!--Start top serch -->
+</div>
+<!--End middle Part--> 

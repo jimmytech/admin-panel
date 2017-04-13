@@ -1,0 +1,378 @@
+<!--Start middle Part-->
+<div class="midllepart"> 
+  <!--Start top serch -->
+  <section class="bluebg section pad-t-0 lofinpagebg">
+  	<!--Start top  Part-->
+  	<div class="container marbot30 ">
+  		<div class="boxshadowcommon col-lg-12">
+			<div class="row ">
+		        <div class="col-lg-12 land_top_list_pad">
+		          	<ul class="land_top_list">
+			          <li> <a href="#"  ng-href="{{}}" class="active"><span class="land_acc_ico"></span> Landlord Account</a></li>
+			          <li> <a  set-url="/property-room-details"  ><span class="land_list_ico"></span>List your Property</a></li>
+			          <li> <a  set-url="/property-listings"  ><span class="land_listing_ico"></span>Property Listing </a></li>
+					</ul>  
+		        </div>
+			</div>
+		</div>
+  	</div>
+  	<!--Start top  Part-->
+  	<div class="container land_db">  		
+		<div class="row ">
+	        <div class="col-lg-12">
+	        	<!--Tittle-->
+	        	<div class="land_db_title">Landlord Account <!--span>// You can place subtitle here</span--></div>
+	        	<!--bredcum-->
+	        	<!-- <div class="land_db_bredcum">
+	        		<ul class="land_db_bredcum_list clearfix">
+	        			<li><a ng-href=""><md-icon>home</md-icon> CherryDoor </a></li>
+	        			<li><span><md-icon>keyboard_arrow_right</md-icon> My Profile Details </span></li>
+	        			<li><span><md-icon>keyboard_arrow_right</md-icon> Personal Details </span></li>
+	        		</ul>
+	        	</div> -->
+	        	<!--dashboard-->
+	        	<div class="main_land_dash">	        		
+                    <div class="main_land_dash_row clearfix">
+                    	<!--dashboard left-->
+                    	<div class="main_land_dash_left" landlord-sidebar></div>
+                    	<!--dashboard right-->
+                    	<div class="main_land_dash_right">
+                    		<form name="landlordPersonalForm" ng-submit="landlordPersonalForm.$valid && landlordDetails(landlordPersonalForm.$valid)" novalidate>
+		                    	<div class="main_land_dash_rightinner">
+		                    		<div class="titlehd textupper">Personal Details</div>
+		                    		<div class="land_db_form">
+		                    			<!-- <div class="suggection">To edit your information, please click on the pencil and then click "Submit" to finish.</div> -->
+		                    			<div class="land_db_forminner">
+		                    				<div class="inner">
+			                    				<div class="clearfix">
+			                    					<div class="my_update_form-L fl">
+			                    						<label class="opensemibold">Title</label>
+                        	  							<md-select name="title" placeholder="Title" class="traderstopserchselect selectlogin99 m-t-0 md-no-underline m-b-0" 
+                        	  							ng-class="{ 'errorborder': landlordPersonalForm.title.$touched && landlordPersonalForm.title.$invalid || landlordPersonalForm.title.$invalid && landlordPersonalForm.$submitted }" 
+                        	  							md-no-asterisk 
+                        	  							ng-model="landlord.personalDetail.title"
+                        	  							>
+                        	  								<md-option value="Mr">Mr</md-option>
+                        	  								<md-option value="Mrs">Mrs</md-option>
+                        	  								<md-option value="Ms">Ms</md-option>
+                        	  								<md-option value="Miss">Miss</md-option>
+                        	  							</md-select>  
+			                    					</div>	
+			                    					<div class="my_update_form-L fr">
+			                    						<label class="opensemibold ">First Name</label>
+			                    						<input type="text" name="firstname" class="traderstopserchselect" placeholder="First Name" 
+			                    						ng-model="landlord.personalDetail.firstname"
+	                                                    ng-maxlength="20" 
+	                                                    ng-class="{ 'errorborder': landlordPersonalForm.firstname.$touched && landlordPersonalForm.firstname.$invalid || landlordPersonalForm.firstname.$invalid && landlordPersonalForm.$submitted }" 
+	                                                    required >
+			                    						<div ng-messages="landlordPersonalForm.firstname.$error" class="error_tag"  ng-show="landlordPersonalForm.firstname.$touched || landlordPersonalForm.$submitted">
+			                    						    <p ng-message="required">First Name is required.</p>
+			                    						    <p ng-message="maxlength">Firstname cannot be more then 20 characters.</p>
+			                    						</div>
+			                    					</div>	
+			                    				</div>
+			                    				<div class="clearfix">
+			                    					<div class="my_update_form-L fl">
+			                    						<label class="opensemibold ">Lastname</label>
+			                    						<input type="text" name="lastname" class="traderstopserchselect" placeholder="Lastname" 
+			                    						ng-model="landlord.personalDetail.lastname"
+	                                                    ng-maxlength="20" 
+	                                                    ng-class="{ 'errorborder': landlordPersonalForm.lastname.$touched && landlordPersonalForm.lastname.$invalid || landlordPersonalForm.lastname.$invalid && landlordPersonalForm.$submitted }" 
+	                                                    required >
+			                    						<div ng-messages="landlordPersonalForm.lastname.$error" class="error_tag"  ng-show="landlordPersonalForm.lastname.$touched || landlordPersonalForm.$submitted">
+			                    						    <p ng-message="required">Last Name is required.</p>
+			                    						    <p ng-message="maxlength">Lastname cannot be more then 20 characters.</p>
+			                    						</div>
+			                    					</div>	
+			                    					<div class="my_update_form-L fr">
+			                    						<label class="opensemibold ">Initials</label>
+			                    						<input type="text" name="initials" class="traderstopserchselect" placeholder="First letter of a name eg. A" 
+			                    						ng-model="landlord.personalDetail.initials"
+	                                                    ng-maxlength="1" 
+	                                                    ng-class="{ 'errorborder': landlordPersonalForm.initials.$touched && landlordPersonalForm.initials.$invalid || landlordPersonalForm.initials.$invalid && landlordPersonalForm.$submitted }" 
+	                                                     >
+			                    						<div ng-messages="landlordPersonalForm.initials.$error" class="error_tag"  ng-show="landlordPersonalForm.initials.$touched || landlordPersonalForm.$submitted">
+			                    						    <p ng-message="maxlength">Initials cannot be more then 1 character.</p>
+			                    						</div>
+			                    					</div>	
+			                    				</div>
+			                    				<div class="clearfix">
+			                    					<div class="my_update_form-L fl">
+			                    						<label class="opensemibold ">Displayed as </label>
+			                    						<input type="text" name="display_as" class="traderstopserchselect" placeholder="Mr First Last" ng-model="landlord.personalDetail.display_as">
+			                    					</div>	
+			                    					<div class="my_update_form-L fr">
+			                    						<label class="opensemibold ">Company </label>
+			                    						<input type="text" name="company" class="traderstopserchselect" placeholder="Company" ng-model="landlord.personalDetail.company">
+			                    					</div>	
+			                    				</div>
+			                    				<div class="clearfix">
+			                    					<div class="my_update_form-L fl">
+			                    						<label class="opensemibold ">Daytime Number </label>
+			                    						<input type="text" name="daytime" class="traderstopserchselect" placeholder="Daytime Number" ng-model="landlord.personalDetail.phone.daytime"
+			                    						ng-pattern="/^[\d\s-]+$/"
+			                    						ng-maxlength="10" 
+			                    						ng-class="{ 'errorborder': landlordPersonalForm.daytime.$touched && landlordPersonalForm.daytime.$invalid || landlordPersonalForm.daytime.$invalid && landlordPersonalForm.$submitted }" 
+			                    						ng-model="landlord.personalDetail.phone.daytime">
+			                    						<div class="error_tag"
+			                    						 ng-messages="landlordPersonalForm.daytime.$error"
+			                    						 ng-show="landlordPersonalForm.daytime.$touched || landlordPersonalForm.$submitted">
+			                    						    <p ng-message="pattern">Please enter a valid Number.</p>
+			                    						    <p ng-message="maxlength">Number cannot be more than 10 digits</p>
+			                    						</div>
+			                    					</div>	
+			                    					<div class="my_update_form-L fr">
+			                    						<label class="opensemibold ">Evening Number  </label>
+			                    						<input type="text" name="evening" class="traderstopserchselect" placeholder="Evening Number" 
+			                    						ng-model="landlord.personalDetail.phone.evening"
+			                    						ng-pattern="/^[\d\s-]+$/"
+			                    						ng-maxlength="10" 
+			                    						ng-class="{ 'errorborder': landlordPersonalForm.evening.$touched && landlordPersonalForm.evening.$invalid || landlordPersonalForm.evening.$invalid && landlordPersonalForm.$submitted }" 
+			                    						ng-model="landlord.personalDetail.phone.evening">
+			                    						<div class="error_tag"
+			                    						 ng-messages="landlordPersonalForm.evening.$error"
+			                    						 ng-show="landlordPersonalForm.evening.$touched || landlordPersonalForm.$submitted">
+			                    						    <p ng-message="pattern">Please enter a valid Number.</p>
+			                    						    <p ng-message="maxlength">Number cannot be more than 10 digits</p>
+			                    						</div>
+			                    					</div>	
+			                    				</div>
+			                    				<div class="clearfix">
+			                    					<div class="my_update_form-L fl">
+			                    						<label class="opensemibold ">Telephone  </label>
+			                    						<input type="text" name="telephone" class="traderstopserchselect" placeholder="Telephone" 
+			                    						ng-pattern="/^[\d\s-]+$/"
+			                    						ng-maxlength="10" 
+			                    						ng-class="{ 'errorborder': landlordPersonalForm.telephone.$touched && landlordPersonalForm.telephone.$invalid || landlordPersonalForm.telephone.$invalid && landlordPersonalForm.$submitted }" 
+			                    						ng-model="landlord.personalDetail.phone.telephone"
+			                    						ng-required="true">
+			                    						<div class="error_tag"
+			                    						 ng-messages="landlordPersonalForm.telephone.$error"
+			                    						 ng-show="landlordPersonalForm.telephone.$touched || landlordPersonalForm.$submitted">
+			                    						    <p ng-message="required">Telephone is required.</p>
+			                    						    <p ng-message="pattern">Please enter a valid Number.</p>
+			                    						    <p ng-message="maxlength">Telephone cannot be more than 10 digits</p>
+			                    						</div>
+			                    					</div>	
+			                    					<div class="my_update_form-L fr">
+			                    						<label class="opensemibold ">Fax   </label>
+			                    						<input type="text" name="fax" class="traderstopserchselect" placeholder="+(country code) (area code) (fax number)" ng-model="landlord.personalDetail.phone.fax"
+			                    						ng-pattern="/^\+?[\d\s]+$/"
+			                    						ng-maxlength="20" 
+			                    						ng-class="{ 'errorborder': landlordPersonalForm.fax.$touched && landlordPersonalForm.fax.$invalid || landlordPersonalForm.fax.$invalid && landlordPersonalForm.$submitted }" >
+			                    						<div class="error_tag"
+			                    						 ng-messages="landlordPersonalForm.fax.$error"
+			                    						 ng-show="landlordPersonalForm.fax.$touched || landlordPersonalForm.$submitted">
+			                    						    <p ng-message="pattern">Please enter a valid Fax Number.</p>
+			                    						    <p ng-message="maxlength">Fax cannot be more than 20 digits</p>
+			                    						</div>
+			                    					</div>	
+			                    				</div>
+			                    				<div class="clearfix">
+			                    					<div class="my_update_form-L fl">
+			                    						<label class="opensemibold ">Emergency Number  </label>
+			                    						<input type="text" name="emergency" class="traderstopserchselect" placeholder="Emergency Number" ng-model="landlord.personalDetail.phone.emergency"
+			                    						ng-pattern="/^[\d\s-]+$/"
+			                    						ng-maxlength="10" 
+			                    						ng-class="{ 'errorborder': landlordPersonalForm.emergency.$touched && landlordPersonalForm.emergency.$invalid || landlordPersonalForm.emergency.$invalid && landlordPersonalForm.$submitted }" 
+			                    						ng-model="landlord.personalDetail.phone.emergency">
+			                    						<div class="error_tag"
+			                    						 ng-messages="landlordPersonalForm.emergency.$error"
+			                    						 ng-show="landlordPersonalForm.emergency.$touched || landlordPersonalForm.$submitted">
+			                    						    <p ng-message="pattern">Please enter a valid Number.</p>
+			                    						    <p ng-message="maxlength">Number cannot be more than 10 digits</p>
+			                    						</div>
+			                    					</div>	
+			                    					<div class="my_update_form-L fr">
+			                    						<label class="opensemibold ">Email Address   </label>
+			                    						<input type="email" class="traderstopserchselect" placeholder="Email address" name="email"
+			                    						    ng-model="landlord.personalDetail.email"
+			                    						    ng-class="{ 'errorborder': landlordPersonalForm.email.$touched && landlordPersonalForm.email.$invalid || landlordPersonalForm.email.$invalid && landlordPersonalForm.$submitted }" 
+			                    						    disabled 
+			                    						    required >
+			                    						<div ng-messages="landlordPersonalForm.email.$error" class="error_tag"  ng-show="landlordPersonalForm.email.$touched || landlordPersonalForm.$submitted">
+			                    						    <p ng-message="required">Email address is required.</p>
+			                    						    <p ng-message="email">Email address is invalid</p>
+			                    						</div>    
+			                    					</div>	
+			                    				</div>
+		                    				</div>
+		                    				<div class="addtitle"><span>Home Address</span></div>
+		                    				<div class="inner">
+			                    				<div class="clearfix">
+			                    					<div class="my_update_form-L fl">
+			                    						<label class="opensemibold ">Postcode Lookup</label>
+		                    							<input type="text" name="postcode" class="traderstopserchselect" placeholder="Postocde" 
+		                    							ng-model="landlord.personalDetail.address.postcode"
+				  							 			ng-class="{ 'errorborder': landlordPersonalForm.postcode.$touched && landlordPersonalForm.postcode.$invalid || landlordPersonalForm.postcode.$invalid && landlordPersonalForm.$submitted || postcodeinvalid }"
+				  										ng-required="true">
+														<md-button ng-click="findByPostcode(landlord.personalDetail.address.postcode, true)" class="postcode_loopkup md-icon-button serchbtn md-raised margin2cutom md-primary btnComn">
+														<md-icon>search</md-icon>
+														</md-button>
+														<div class="error_tag" ng-show="postcodeinvalid">
+						                  				    <p>{{postcode_response_message || 'Postcode is invalid'}}</p>
+						                  				</div>
+														<div class="error_tag" ng-messages="landlordPersonalForm.postcode.$error"
+						                  					ng-show="landlordPersonalForm.postcode.$touched || landlordPersonalForm.$submitted">
+						                  				    <p ng-message="required">Postcode is required.</p>
+						                  				</div>
+			                    					</div>	
+			                    					<div class="my_update_form-L fr">
+			                    						<label class="opensemibold ">Address 1</label>
+			                    						<md-select name="address1" placeholder="Address Line 1" class="traderstopserchselect selectlogin99 m-t-0 md-no-underline m-b-0" 
+							  							ng-class="{ 'errorborder': landlordPersonalForm.address1.$touched && landlordPersonalForm.address1.$invalid || landlordPersonalForm.address1.$invalid && landlordPersonalForm.$submitted}" 
+							  							ng-model="landlord.personalDetail.address.address1" 
+							  							md-no-asterisk 
+							  							ng-required="true">
+							  								<md-option ng-repeat="address in postcodeResults | unique : 'line_1'" ng-if="address.line_1 !== ''" ng-value="address.line_1">{{address.line_1}}</md-option>                          
+							  							</md-select>
+							  							<div ng-messages="landlordPersonalForm.address1.$error" class="error_tag" 
+							  							ng-show="landlordPersonalForm.address1.$touched || landlordPersonalForm.$submitted">
+							  							    <p ng-message="required">Please select address 1</p>
+							  							</div>
+			                    					</div>	
+			                    				</div>
+			                    				<div class="clearfix">
+			                    					<div class="my_update_form-L fl">
+			                    						<label class="opensemibold ">Address 2</label>
+			                    						<md-select name="address2" placeholder="Address Line 2" class="traderstopserchselect selectlogin99 m-t-0 md-no-underline m-b-0" 
+					  									ng-model="landlord.personalDetail.address.address2" 
+					  									md-no-asterisk>
+					  										<md-option ng-repeat="address in postcodeResults | unique : 'line_2'" ng-if="address.line_2 !== ''" ng-value="address.line_2">{{address.line_2}}</md-option>                          
+					  									</md-select>
+			                    					</div>	
+			                    					<div class="my_update_form-L fr">
+			                    						<label class="opensemibold ">Country </label>
+			                    						<md-select name="country" placeholder="Country" class="traderstopserchselect selectlogin99 m-t-0 md-no-underline m-b-0" 
+							  							ng-class="{ 'errorborder': landlordPersonalForm.country.$touched && landlordPersonalForm.country.$invalid || landlordPersonalForm.country.$invalid && landlordPersonalForm.$submitted}" 
+							  							ng-model="landlord.personalDetail.address.country" 
+							  							md-no-asterisk 
+							  							ng-required="true">
+							  								<md-option ng-repeat="address in postcodeResults | unique : 'country'" ng-if="address.country !== ''" ng-value="address.country">{{address.country}}</md-option>                          
+							  							</md-select>
+							  							<div ng-messages="landlordPersonalForm.country.$error" class="error_tag" 
+							  							ng-show="landlordPersonalForm.country.$touched || landlordPersonalForm.$submitted">
+							  							    <p ng-message="required">Please select address 1</p>
+							  							</div>
+			                    					</div>
+			                    				</div>
+			                    				<div class="clearfix">
+			                    					<div class="my_update_form-L fl">
+			                    						<label class="opensemibold ">Town </label>
+			                    						<md-select name="town" placeholder="Please select town" class="traderstopserchselect selectlogin99 m-t-0 md-no-underline m-b-0" 
+							  							md-no-asterisk
+							  							ng-model="landlord.personalDetail.address.town"
+							  							ng-class="{ 'errorborder': landlordPersonalForm.town.$touched && landlordPersonalForm.town.$invalid || landlordPersonalForm.town.$invalid && landlordPersonalForm.$submitted}" 
+							  							ng-required="true">
+							  								<md-option ng-repeat="address in postcodeResults | unique : 'post_town'" ng-value="address.post_town">{{address.post_town}}</md-option>
+							  							</md-select>  
+							  							<div ng-messages="landlordPersonalForm.town.$error" class="error_tag" 
+							  							ng-show="landlordPersonalForm.town.$touched || landlordPersonalForm.$submitted">
+							  							    <p ng-message="required">Please select town</p>
+							  							</div>
+			                    					</div>	
+			                    					<div class="my_update_form-L fr">
+			                    						<label class="opensemibold ">County </label>
+			                    						<md-select name="county" placeholder="Please select county" class="traderstopserchselect selectlogin99 m-t-0 md-no-underline m-b-0" 
+							  							ng-model="landlord.personalDetail.address.county"
+							  							md-no-asterisk
+							  							ng-class="{ 'errorborder': landlordPersonalForm.county.$touched && landlordPersonalForm.county.$invalid || landlordPersonalForm.county.$invalid && landlordPersonalForm.$submitted}" 
+							  							ng-required="true">
+							  								<md-option ng-repeat="address in postcodeResults | unique : 'county'" ng-value="address.county">{{address.county}}</md-option>
+							  							</md-select>
+							  							<div ng-messages="landlordPersonalForm.county.$error" class="error_tag" 
+							  							ng-show="landlordPersonalForm.county.$touched || landlordPersonalForm.$submitted">
+							  							    <p ng-message="required">Please select county</p>
+							  							</div>      
+			                    					</div>	
+			                    				</div>
+		                    				</div>
+		                    				<div class="addtitle">
+		                    					<span>Correspondence Address</span>		
+		                    				</div>
+		                    				<div class="inner" >
+		                    					<div class="clearfix my_update_form-full">
+		                    						<md-checkbox ng-model="landlord.personalDetail.correspondence_as_home" class="pull-left" aria-label="Checkbox 1">Same as Home Address</md-checkbox>
+		                    					</div>	
+		                    				</div>	
+		                    				<div class="inner" ng-hide="landlord.personalDetail.correspondence_as_home">
+		                    					
+			                    				<div class="clearfix">
+			                    					<div class="my_update_form-L fl">
+			                    						<label class="opensemibold ">Postcode Lookup</label>
+		                    							<input type="text" name="correspondence_postcode" class="traderstopserchselect" placeholder="Postocde" 
+		                    							ng-model="landlord.personalDetail.correspondence_address.postcode"
+				  							 			ng-class="{ 'errorborder': landlordPersonalForm.correspondence_postcode.$touched && landlordPersonalForm.correspondence_postcode.$invalid || landlordPersonalForm.correspondence_postcode.$invalid && landlordPersonalForm.$submitted || cpostcodeinvalid }">
+														<md-button ng-click="findByCorrespondencePostcode(landlord.personalDetail.correspondence_address.postcode, true)" class="postcode_loopkup md-icon-button serchbtn md-raised margin2cutom md-primary btnComn">
+														<md-icon>search</md-icon>
+														</md-button>
+														<div class="error_tag" ng-show="cpostcodeinvalid">
+						                  				    <p>{{cpostcode_response_message || 'Postcode is invalid'}}</p>
+						                  				</div>
+			                    					</div>	
+			                    					<div class="my_update_form-L fr">
+			                    						<label class="opensemibold ">Address 1</label>
+			                    						<md-select name="correspondence_address1" placeholder="Address Line 1" class="traderstopserchselect selectlogin99 m-t-0 md-no-underline m-b-0" 
+							  							ng-model="landlord.personalDetail.correspondence_address.address1" 
+							  							md-no-asterisk>
+							  								<md-option ng-repeat="address in cpostcodeResults | unique : 'line_1'" ng-if="address.line_1 !== ''" ng-value="address.line_1">{{address.line_1}}</md-option>                          
+							  							</md-select>
+			                    					</div>	
+			                    				</div>
+			                    				<div class="clearfix">
+			                    					<div class="my_update_form-L fl">
+			                    						<label class="opensemibold ">Address 2</label>
+			                    						<md-select name="correspondence_address2" placeholder="Address Line 2" class="traderstopserchselect selectlogin99 m-t-0 md-no-underline m-b-0" 
+					  									ng-model="landlord.personalDetail.correspondence_address.address2" 
+					  									md-no-asterisk>
+					  										<md-option ng-repeat="address in cpostcodeResults | unique : 'line_2'" ng-if="address.line_2 !== ''" ng-value="address.line_2">{{address.line_2}}</md-option>                          
+					  									</md-select>
+			                    					</div>	
+			                    					<div class="my_update_form-L fr">
+			                    						<label class="opensemibold ">Country </label>
+			                    						<md-select name="correspondence_country" placeholder="Address Line 2" class="traderstopserchselect selectlogin99 m-t-0 md-no-underline m-b-0" 
+					  									ng-model="landlord.personalDetail.correspondence_address.country" 
+					  									md-no-asterisk>
+					  										<md-option ng-repeat="address in cpostcodeResults | unique : 'country'" ng-if="address.country !== ''" ng-value="address.country">{{address.country}}</md-option>                          
+					  									</md-select>
+			                    					</div>
+			                    				</div>
+			                    				<div class="clearfix">
+			                    					<div class="my_update_form-L fl">
+			                    						<label class="opensemibold ">Town </label>
+			                    						<md-select name="correspondence_town" placeholder="Please select town" class="traderstopserchselect selectlogin99 m-t-0 md-no-underline m-b-0" 
+							  							md-no-asterisk
+							  							ng-model="landlord.personalDetail.correspondence_address.town">
+							  								<md-option ng-repeat="address in cpostcodeResults | unique : 'post_town'" ng-value="address.post_town">{{address.post_town}}</md-option>
+							  							</md-select>  
+			                    					</div>	
+			                    					<div class="my_update_form-L fr">
+			                    						<label class="opensemibold ">County </label>
+			                    						<md-select name="correspondence_county" placeholder="Please select county" class="traderstopserchselect selectlogin99 m-t-0 md-no-underline m-b-0" 
+							  							ng-model="landlord.personalDetail.correspondence_address.county"
+							  							md-no-asterisk>
+							  								<md-option ng-repeat="address in cpostcodeResults | unique : 'county'" ng-value="address.county">{{address.county}}</md-option>
+							  							</md-select>   
+			                    					</div>	
+			                    				</div>
+			                    				 
+		                    				</div>
+		                    			</div>
+		                    		</div>
+		                    	</div>
+		                    	<div class="martop10">		  			
+				  					<md-button type="submit" class="exploremapsearchbtn md-raised md-primary btnComn">Submit</md-button>
+				  				</div>  
+				  			</form>	
+		  				</div>
+                    </div>
+	        	</div>
+	        </div>
+	    </div>			
+	</div>			        
+  	 
+	  	 
+</section>
+<!--Start top serch -->
+</div>
+<!--End middle Part

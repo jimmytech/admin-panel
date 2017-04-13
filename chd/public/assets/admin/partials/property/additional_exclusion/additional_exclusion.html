@@ -1,0 +1,75 @@
+<section class="cards" ng-init = "additionalExclusionList();">
+   <div class="page-header">
+      <h1>
+         <i class="md md-photo"></i>
+         {{pageHeader}}
+      </h1>
+   </div>
+   <div class="row m-b-60" ng-if = "additionalExclusionRecord.length>0" >
+      <div class="col-md-12">
+         <div class="card bordered">
+            <div class="card-header">
+               <span class="card-title">Additional exclusion management</span>
+               <button class="dropdown-toggle pointer btn btn-round-sm btn-link withoutripple pull-right" bs-dropdown="dropdown"
+                  ng-click = 'addAdditionalExclusionPage()' title="New {{pageHeader}}" data-animation="mat-grow-top-right">
+               <i class="fa fa-plus f20"></i>
+               </button>            
+            </div>
+            <div class="table-responsive">
+               <table class="table table-bordered table-full-small ">
+                  <colgroup>
+                     <col class="auto-cell-size" />
+                  </colgroup>
+                  <thead class="thead-inverse">
+                     <tr>
+                        <th>Sr.No</th>
+                        <th>Name</th>
+                        <th>Created</th>
+                        <th>Rent/Sale</th>
+                        <th>Status</th>
+                        <th>Action</th>
+                     </tr>
+                  </thead>
+                  <tbody>
+                     {{subscriptionRecords.lengt}}
+                     <tr ng-repeat = "p in additionalExclusionRecord">
+                        <td>{{$index+1}}</td>
+                        <td> {{p.name}}</td>
+                        <td>{{ p.createdAt | date:'MMM d, y h:mm:ss a'}}
+                        </td>
+                        <td>
+                        <span ng-if = "p.exclusion_type == 'sale'">Sale</span>
+                        <span ng-if = "p.exclusion_type=='rent'">Rent</span>
+                        <span ng-if = "p.exclusion_type=='both'">Sale/Rent</span>
+                        </td>
+                        <td>
+                           <span class="cursor-pointor"  ng-click = "activeInactive(p._id, p.status, p.name, $index);">
+                           <span ng-if = "p.status==false" class="label label-danger">Disable</span>
+                           <span ng-if = "p.status==true" class="label green">Enable</span>
+                           </span>                         
+                        </td>
+                           <td>
+                           <i class="fa fa-pencil-square-o f20 " title="edit" ng-click = "editpage(p._id)" ></i>&nbsp;&nbsp;&nbsp;
+                           <i class="fa fa-trash-o f20 delete" title="delete" ng-click = "delete(p._id, $index, p.name)"></i>
+                        </td>
+                     </tr>
+                  </tbody>
+               </table>
+            </div>
+         </div>
+      </div>
+   </div>
+   <div class="raw"  ng-if = "additionalExclusionRecord.length==0">
+      <div class="bs-component">
+         <button class="dropdown-toggle pointer btn btn-round-sm btn-link withoutripple pull-right"  title="New additional exclusion" ng-click = "addAdditionalExclusionPage();"
+            >
+         <i class="fa fa-plus f20"></i>
+         </button>
+         <div class="alert alert-dismissible alert-info"">
+            <h4>Info!</h4>
+            <p >No record found in data table.</p>
+         </div>
+      </div>
+   </div>
+</section>
+

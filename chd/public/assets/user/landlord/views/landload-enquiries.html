@@ -1,0 +1,146 @@
+<!--Start middle Part-->
+<div class="midllepart">
+	<!--Start top serch -->
+	<section class="bluebg section pad-t-0 lofinpagebg">
+		<!--Start top  Part-->
+		<div class="container marbot30 ">
+			<div class="boxshadowcommon col-lg-12">
+				<div class="row ">
+					<div class="col-lg-12 land_top_list_pad">
+						<ul class="land_top_list">
+							<li> <a href="#"  ng-href="{{}}" class="active"><span class="land_acc_ico"></span> Landlord Account</a></li>
+							<li> <a  set-url="/property-room-details"  ><span class="land_list_ico"></span>List your Property</a></li>
+							<li> <a  set-url="/property-listings"  ><span class="land_listing_ico"></span>Property Listing </a></li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!--Start top  Part-->
+		<div class="container land_db">
+			<div class="row ">
+				<div class="col-lg-12">
+					<!--Tittle-->
+					<div class="land_db_title">Landlord Account </div>
+					<!--bredcum-->           
+					<!--dashboard-->
+					<div class="main_land_dash">
+						<div class="main_land_dash_row clearfix">
+							<!--dashboard left-->
+							<div class="main_land_dash_left" landlord-sidebar></div>
+							<!--dashboard right-->
+							<div class="main_land_dash_right">
+								<div class="main_land_dash_rightinner">
+									<div class="titlehd textupper">My Enquiry</div>
+									<div class="land_db_form">                     
+										<div class="planmdlist clearfix">
+											<div class="pagedetalisorder clearfix">
+											<div class="row">												
+												<div class="col-xs-6 col-sm-4 col-md-4 fr">
+													<md-select ng-change="filterByPropertySale(property_for)" name="property_for" placeholder="All" class="traderstopserchselect selectlogin99 m-t-0 md-no-underline m-b-0 pull-right" ng-model="property_for">
+														<md-option value="sale">For Sale</md-option>
+														<md-option value="rent">For Rent</md-option>
+													</md-select>
+												</div>
+											</div>
+											</div>
+											<div class="tableparent" ng-scrollbars ng-scrollbars-config="{axis:'x',theme:'dark',}">
+												<table  class="dashtable2" width="100%" cellpadding="0" cellspacing="0" border="0">
+													<tbody>
+														<tr>
+															<!-- <th width="5%">Ref Id</th> -->
+															<th width="25%">Address</th>
+															<th width="15%">Tenant Name</th>
+															<th width="15%">Email</th>
+															<th width="10%">Phone No.</th>
+															<th width="10%">Organize Referencing</th>
+															<th width="15%">Notes</th>
+															<th width="10%">Action</th>
+														</tr>
+														<tr ng-if="enquiries" ng-repeat="enquiry in enquiries">
+															<!-- <td >{{enquiry.tenant_enquiries._id | limitTo : 4}}</td> -->
+															<td >{{enquiry.tenant_enquiries.property_address}}</td>
+															<td >{{enquiry.tenant_enquiries.name}}</td>
+															<td ><a href="mailto:{{enquiry.tenant_enquiries.email}}" class="link">{{enquiry.tenant_enquiries.email}}</a></td>
+															<td >{{enquiry.tenant_enquiries.phone.telephone}}</td>
+															<td >
+																<a ng-if="enquiry.tenant_enquiries.status === 'pending' && enquiry.tenant_enquiries.referencing === 'pending'" href ng-click="organize($index, $event)" class="link">Organize</a>
+																<span ng-if="enquiry.tenant_enquiries.status !== 'pending' && enquiry.tenant_enquiries.referencing === 'pending'" >No Referencing</span>
+																<span ng-if="enquiry.tenant_enquiries.referencing !== 'pending'" class="textCaptilize">{{enquiry.tenant_enquiries.referencing}}</span>
+															</td>
+															<td >{{enquiry.tenant_enquiries.comment || '-'}}</td>
+															<td >No Actions Yet</td>
+															<!-- <td ng-if="enquiry.tenant_enquiries.status === 'pending'">
+				                                                <a ng-click="notify('decline', $index, $event)" href="" class="opensemibold linkur colorred "> Decline </a> 
+				                                                <a ng-click="notify('approve', $index, $event)" href="" class="opensemibold linkur colorblue "> Approve </a>
+				                                            </td>
+				                                            <td ng-if="enquiry.tenant_enquiries.status !== 'pending'" class="textCaptilize">{{enquiry.tenant_enquiries.status}}</td> -->
+														</tr>
+														<tr ng-if="enquiries.length === 0">
+															<td colspan="8"><p class="text-center">No Enquiries yet</p></td>
+														</tr>
+													</tbody>
+												</table>
+
+												<!-- <table class="dashtable dashtable2" width="100%" cellpadding="0" cellspacing="0" border="0">
+													<tbody>
+														<tr>
+															<th width="10%">Ref Id</th>
+															<th width="15%">Tenant Name</th>
+															<th width="20%">Email</th>
+															<th width="10%">Phone No.</th>
+															<th width="10%">Organize Referencing</th>
+															<th width="10%">Notes</th>
+															<th width="15%">Action</th>
+														</tr>
+														<tr ng-repeat="enquiry in enquiries">
+															<td colspan="7">
+																<table width="100%">
+																	<tr>
+																		<td >{{enquiry.tenant_enquiries._id | limitTo : 4}}</td>
+																		<td >{{enquiry.tenant_enquiries.name}}</td>
+																		<td ><a href="" class="link">{{enquiry.tenant_enquiries.email}}</a></td>
+																		<td >{{enquiry.tenant_enquiries.phone.telephone}}</td>
+																		<td ><a href="" class="link">Organize</a></td>
+																		<td >{{enquiry.tenant_enquiries.comment}}</td>
+						                                            </tr>
+						                                            <tr>
+						                                            	<td colspan="7">{{enquiry.tenant_enquiries.property_address}}</td>
+						                                            </tr>
+						                                            <tr>
+						                                            	<td>
+							                                                <a ng-href="" class="opensemibold linkur colorred "> Declined </a> /
+							                                                <a ng-href="" class="opensemibold linkur colorblue "> Approved </a> /
+							                                                <a ng-href="" class="opensemibold linkur colorgreen"> Re-scheduled </a>
+							                                            </td>
+						                                            </tr>
+					                                            </table>
+				                                            </td>
+														</tr>
+														<tr ng-if="enquiries.length === 0">
+															<td colspan="8"><p class="text-center">No Enquiries yet</p></td>
+														</tr>
+													</tbody>
+												</table> -->
+											</div>
+											<div class="row">
+											<div class="col-xs-12">
+												<div class="pagination mar0 pull-right">
+													<ul class="paginationlist" uib-pagination ng-if="paging.count > paging.limit" previous-text="Prev" force-ellipses="forceEllipses" max-size="maxSize" items-per-page="paging.limit" total-items="paging.count" ng-model="paging.page" class="pagination-sm" boundary-link-numbers="true" rotate="false" ng-change="pageChanged()"></ul>
+												</div>													
+											</div>
+											</div>	
+										</div>  
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	<!--Start top serch -->
+</div>
+<!--End middle Part -->
+

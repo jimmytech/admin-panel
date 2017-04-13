@@ -1,0 +1,344 @@
+<section class="cards" ng-init = "getData();">
+   <div class="page-header">
+      <h1>
+         <i class="md md-photo"></i>
+         {{pageHeader}} Property Types
+      </h1>
+   </div>
+   <div class="row m-b-60" >
+      <div class="col-md-12">
+         <div class="card bordered">
+            <div class="card-header top-blue">
+               <span class="card-title white-font">
+               Rental/Sale type</span>
+               <button class="dropdown-toggle pointer btn btn-round-sm btn-link withoutripple pull-right" bs-dropdown="dropdown"
+                  ng-click = 'new("new-rent-sale")' title="New {{pageHeader}}" data-animation="mat-grow-top-right">
+               <i class="fa fa-plus f20"></i>
+               </button>            
+            </div>
+            <div class="table-responsive" ng-if = "propertyTypeRecord.property_type.length>0">
+               <table class="table table-bordered table-full-small ">
+                  <colgroup>
+                     <col class="auto-cell-size" />
+                  </colgroup>
+                  <thead class="">
+                     <tr>
+                        <th>Sr.No</th>
+                        <th>Name</th>
+                        <th>Created</th>
+                        <th>Status</th>
+                        <th>Action</th>
+                     </tr>
+                  </thead>
+                  <tbody>
+                     <tr ng-repeat = "p in propertyTypeRecord.property_type">
+                        <td>{{$index+1}}</td>
+                        <td> {{p.name}}</td>
+                        <td>{{ p.createdAt | date:'MMM d, y h:mm:ss a'}}
+                        </td>
+                        <td>
+                           <span class="cursor-pointor"  ng-click = "activeInactive(p._id, p.status, p.name, $index, 'property_type');">
+                           <span ng-if = "p.status==false" class="label label-danger">Disable</span>
+                           <span ng-if = "p.status==true" class="label green">Enable</span>
+                           </span>                         
+                        </td>
+                        <td>
+                           <i class="fa fa-pencil-square-o f20 " title="edit" ng-click = "edit(p._id, 'property_type')" ></i>&nbsp;&nbsp;&nbsp;
+                           <i class="fa fa-trash-o f20 delete" title="delete" ng-click = "delete(p._id, $index, p.name, 'property_type')"></i>
+                        </td>
+                     </tr>
+                  </tbody>
+               </table>
+            </div>
+         </div>
+      </div>
+   </div>
+   <div class="row m-b-60" >
+      <div class="col-md-12">
+         <div class="card bordered">
+            <div class="card-header top-blue">
+               <span class="card-title white-font">
+               Parking</span>
+               <button class="dropdown-toggle pointer btn btn-round-sm btn-link withoutripple pull-right" bs-dropdown="dropdown"
+                  ng-click = 'new("new-parking")' title="New {{pageHeader}}" data-animation="mat-grow-top-right">
+               <i class="fa fa-plus f20"></i>
+               </button>            
+            </div>
+            <div class="table-responsive" ng-if = "propertyTypeRecord.parking.length>0">
+               <table class="table table-bordered table-full-small ">
+                  <colgroup>
+                     <col class="auto-cell-size" />
+                  </colgroup>
+                  <thead class="">
+                     <tr>
+                        <th>Sr.No</th>
+                        <th>Name</th>
+                        <th>Created</th>
+                        <th>Status</th>
+                        <th>Action</th>
+                     </tr>
+                  </thead>
+                  <tbody>
+                     <tr ng-repeat = "p in propertyTypeRecord.parking">
+                        <td>{{$index+1}}</td>
+                        <td> {{p.name}}</td>
+                        <td>{{ p.createdAt | date:'MMM d, y h:mm:ss a'}}
+                        </td>
+                        <td>
+                           <span class="cursor-pointor"  ng-click = "activeInactive(p._id, p.status, p.name, $index, 'parking');">
+                           <span ng-if = "p.status==false" class="label label-danger">Disable</span>
+                           <span ng-if = "p.status==true" class="label green">Enable</span>
+                           </span>                         
+                        </td>
+                        <td>
+                           <i class="fa fa-pencil-square-o f20 " title="edit" ng-click = "edit(p._id, 'parking')" ></i>&nbsp;&nbsp;&nbsp;
+                           <i class="fa fa-trash-o f20 delete" title="delete" ng-click = "delete(p._id, $index, p.name, 'parking')"></i>
+                        </td>
+                     </tr>
+                  </tbody>
+               </table>
+            </div>
+         </div>
+      </div>
+   </div>
+   <div class="row m-b-60">
+      <div class="col-md-12">
+         <div class="card bordered">
+            <div class="card-header top-blue">
+               <span class="card-title white-font">Heating</span>
+               <button class="dropdown-toggle pointer btn btn-round-sm btn-link withoutripple pull-right" bs-dropdown="dropdown"
+                  ng-click = 'new("new-heating")' title="New {{pageHeader}}" data-animation="mat-grow-top-right">
+               <i class="fa fa-plus f20"></i>
+               </button>            
+            </div>
+            <div class="table-responsive" ng-if = "propertyTypeRecord.heating.length>0">
+               <table class="table table-bordered table-full-small ">
+                  <colgroup>
+                     <col class="auto-cell-size" />
+                  </colgroup>
+                  <thead class="">
+                     <tr>
+                        <th>Sr.No</th>
+                        <th>Name</th>
+                        <th>Created</th>
+                        <th>Status</th>
+                        <th>Action</th>
+                     </tr>
+                  </thead>
+                  <tbody>
+                     <tr ng-repeat = "p in propertyTypeRecord.heating">
+                        <td>{{$index+1}}</td>
+                        <td> {{p.name}}</td>
+                        <td>{{ p.createdAt | date:'MMM d, y h:mm:ss a'}}
+                        </td>
+                        <td>
+                           <span class="cursor-pointor"  ng-click = "activeInactive(p._id, p.status, p.name, $index, 'heating');">
+                           <span ng-if = "p.status==false" class="label label-danger">Disable</span>
+                           <span ng-if = "p.status==true" class="label green">Enable</span>
+                           </span>                         
+                        </td>
+                        <td>
+                           <i class="fa fa-pencil-square-o f20 " title="edit" ng-click = "edit(p._id, 'heating')" ></i>&nbsp;&nbsp;&nbsp;
+                           <i class="fa fa-trash-o f20 delete" title="delete" ng-click = "delete(p._id, $index, p.name, 'heating')"></i>
+                        </td>
+                     </tr>
+                  </tbody>
+               </table>
+            </div>
+         </div>
+      </div>
+   </div>
+   <div class="row m-b-60" >
+      <div class="col-md-12">
+         <div class="card bordered">
+            <div class="card-header top-blue">
+               <span class="card-title white-font">Location</span>
+               <button class="dropdown-toggle pointer btn btn-round-sm btn-link withoutripple pull-right" bs-dropdown="dropdown"
+                  ng-click = 'new("new-location")' title="New {{pageHeader}}" data-animation="mat-grow-top-right">
+               <i class="fa fa-plus f20"></i>
+               </button>            
+            </div>
+            <div class="table-responsive" ng-if = "propertyTypeRecord.location.length>0">
+               <table class="table table-bordered table-full-small ">
+                  <colgroup>
+                     <col class="auto-cell-size" />
+                  </colgroup>
+                  <thead class="">
+                     <tr>
+                        <th>Sr.No</th>
+                        <th>Name</th>
+                        <th>Created</th>
+                        <th>Status</th>
+                        <th>Action</th>
+                     </tr>
+                  </thead>
+                  <tbody>
+                     <tr ng-repeat = "p in propertyTypeRecord.location">
+                        <td>{{$index+1}}</td>
+                        <td> {{p.name}}</td>
+                        <td>{{ p.createdAt | date:'MMM d, y h:mm:ss a'}}
+                        </td>
+                        <td>
+                           <span class="cursor-pointor"  ng-click = "activeInactive(p._id, p.status, p.name, $index, 'location');">
+                           <span ng-if = "p.status==false" class="label label-danger">Disable</span>
+                           <span ng-if = "p.status==true" class="label green">Enable</span>
+                           </span>                         
+                        </td>
+                        <td>
+                           <i class="fa fa-pencil-square-o f20 " title="edit" ng-click = "edit(p._id, 'location')" ></i>&nbsp;&nbsp;&nbsp;
+                           <i class="fa fa-trash-o f20 delete" title="delete" ng-click = "delete(p._id, $index, p.name, 'location')"></i>
+                        </td>
+                     </tr>
+                  </tbody>
+               </table>
+            </div>
+         </div>
+      </div>
+   </div>
+   <div class="row m-b-60" >
+      <div class="col-md-12">
+         <div class="card bordered">
+            <div class="card-header top-blue">
+               <span class="card-title white-font">Local authority</span>
+               <button class="dropdown-toggle pointer btn btn-round-sm btn-link withoutripple pull-right" bs-dropdown="dropdown"
+                  ng-click = 'new("new-authority")' title="New {{pageHeader}}" data-animation="mat-grow-top-right">
+               <i class="fa fa-plus f20"></i>
+               </button>            
+            </div>
+            <div class="table-responsive" ng-if = "propertyTypeRecord.authority.length>0">
+               <table class="table table-bordered table-full-small ">
+                  <colgroup>
+                     <col class="auto-cell-size" />
+                  </colgroup>
+                  <thead class="">
+                     <tr>
+                        <th>Sr.No</th>
+                        <th>Name</th>
+                        <th>Created</th>
+                        <th>Status</th>
+                        <th>Action</th>
+                     </tr>
+                  </thead>
+                  <tbody>
+                     <tr ng-repeat = "p in propertyTypeRecord.authority">
+                        <td>{{$index+1}}</td>
+                        <td> {{p.name}}</td>
+                        <td>{{ p.createdAt | date:'MMM d, y h:mm:ss a'}}
+                        </td>
+                        <td>
+                           <span class="cursor-pointor"  ng-click = "activeInactive(p._id, p.status, p.name, $index, 'authority');">
+                           <span ng-if = "p.status==false" class="label label-danger">Disable</span>
+                           <span ng-if = "p.status==true" class="label green">Enable</span>
+                           </span>                         
+                        </td>
+                        <td>
+                           <i class="fa fa-pencil-square-o f20 " title="edit" ng-click = "edit(p._id, 'authority')" ></i>&nbsp;&nbsp;&nbsp;
+                           <i class="fa fa-trash-o f20 delete" title="delete" ng-click = "delete(p._id, $index, p.name, 'authority')"></i>
+                        </td>
+                     </tr>
+                  </tbody>
+               </table>
+            </div>
+         </div>
+      </div>
+   </div>
+   <div class="row m-b-60">
+      <div class="col-md-12">
+         <div class="card bordered">
+            <div class="card-header top-blue">
+               <span class="card-title white-font">Property age</span>
+               <button class="dropdown-toggle pointer btn btn-round-sm btn-link withoutripple pull-right" bs-dropdown="dropdown"
+                  ng-click = 'new("new-property-age")' title="New {{pageHeader}}" data-animation="mat-grow-top-right">
+               <i class="fa fa-plus f20"></i>
+               </button>            
+            </div>
+            <div class="table-responsive" ng-if = "propertyTypeRecord.age.length>0">
+               <table class="table table-bordered table-full-small ">
+                  <colgroup>
+                     <col class="auto-cell-size" />
+                  </colgroup>
+                  <thead class="">
+                     <tr>
+                        <th>Sr.No</th>
+                        <th>Name</th>
+                        <th>Created</th>
+                        <th>Status</th>
+                        <th>Action</th>
+                     </tr>
+                  </thead>
+                  <tbody>
+                     <tr ng-repeat = "p in propertyTypeRecord.age">
+                        <td>{{$index+1}}</td>
+                        <td> {{p.name}}</td>
+                        <td>{{ p.createdAt | date:'MMM d, y h:mm:ss a'}}
+                        </td>
+                        <td>
+                           <span class="cursor-pointor"  ng-click = "activeInactive(p._id, p.status, p.name, $index, 'age');">
+                           <span ng-if = "p.status==false" class="label label-danger">Disable</span>
+                           <span ng-if = "p.status==true" class="label green">Enable</span>
+                           </span>                         
+                        </td>
+                        <td>
+                           <i class="fa fa-pencil-square-o f20 " title="edit" ng-click = "edit(p._id, 'age')" ></i>&nbsp;&nbsp;&nbsp;
+                           <i class="fa fa-trash-o f20 delete" title="delete" ng-click = "delete(p._id, $index, p.name, 'age')"></i>
+                        </td>
+                     </tr>
+                  </tbody>
+               </table>
+            </div>
+         </div>
+      </div>
+   </div>
+   <div class="row m-b-60">
+      <div class="col-md-12">
+         <div class="card bordered">
+            <div class="card-header top-blue">
+               <span class="card-title white-font">Property style</span>
+               <button class="dropdown-toggle pointer btn btn-round-sm btn-link withoutripple pull-right" bs-dropdown="dropdown"
+                  ng-click = 'new("new-property-style")' title="New {{pageHeader}}" data-animation="mat-grow-top-right">
+               <i class="fa fa-plus f20"></i>
+               </button>            
+            </div>
+
+            <div class="table-responsive" ng-if = "propertyTypeRecord.style.length>0">
+               <table class="table table-bordered table-full-small ">
+                  <colgroup>
+                     <col class="auto-cell-size" />
+                  </colgroup>
+                  <thead class="">
+                     <tr>
+                        <th>Sr.No</th>
+                        <th>Name</th>
+                        <th>Created</th>
+                        <th>Status</th>
+                        <th>Action</th>
+                     </tr>
+                  </thead>
+                  <tbody>
+                     <tr ng-repeat = "p in propertyTypeRecord.style">
+                        <td>{{$index+1}}</td>
+                        <td> {{p.name}}</td>
+                        <td>{{ p.createdAt | date:'MMM d, y h:mm:ss a'}}
+                        </td>
+                        <td>
+
+                           <span class="cursor-pointor"  ng-click = "activeInactive(p._id, p.status, p.name, $index, 'style');">
+
+                           <span ng-if = "p.status==false" class="label label-danger">Disable</span>
+                           <span ng-if = "p.status==true" class="label green">Enable</span>
+                           </span>                         
+                        </td>
+                        <td>
+                           <i class="fa fa-pencil-square-o f20 " title="edit" ng-click = "edit(p._id, 'style')" ></i>&nbsp;&nbsp;&nbsp;
+                           <i class="fa fa-trash-o f20 delete" title="delete" ng-click = "delete(p._id, $index, p.name, 'style')"></i>
+                        </td>
+                     </tr>
+                  </tbody>
+               </table>
+            </div>
+           
+         </div>
+      </div>
+   </div>
+</section>
+

@@ -1,0 +1,344 @@
+<!--Start middle Part-->
+<div class="midllepart">
+	<!--Start top serch -->
+	<section class="bluebg section pad-t-0">
+		<div class="container marbot30">
+			<div class="boxshadowcommon col-lg-12">
+				<div class="row">
+					<div class="col-lg-12">
+						<form ng-submit="advance_search()" novalidate>
+							<div class="mycherrytopfilter">
+								<!--Start inner update Part-->
+								<div class="topserchdiv savedserchtop">
+									<md-autocomplete
+									class="traderstopserchselect advance_search"
+									md-selected-item="selectedItem"
+									md-search-text-change="searchTextChange(property.search_address)"
+									md-search-text="property.search_address"
+									md-selected-item-change="selectedItemChange(item)"
+									md-items="item in querySearch(property.search_address)"
+									md-item-text="item.suggestion"
+									md-min-length="1"
+									placeholder="Search By County, postcode, address">
+									<md-item-template>
+										<span md-highlight-text="property.search_address" md-highlight-flags="^i">{{item.suggestion}}</span>
+									</md-item-template>
+									<md-not-found> No address matching "{{property.search_address}}" were found. </md-not-found>
+								</md-autocomplete>
+								<md-button type="submit" class="serchbtn height38 traderstopsercbtn md-raised md-primary btnComn">Search</md-button>
+								<md-button ng-click="save_search()" class="serchbtn serchsavedbtn height38 traderstopsercbluebtn md-raised md-primary btnComn">
+									<md-tooltip><strong>Save this search</strong></md-tooltip>
+									<md-icon>star_border</md-icon>
+									Save Search
+								</md-button>
+								<!-- <md-button type="submit" class="serchbtn height38 traderstopsercbtn md-raised md-primary btnComn">Save Search</md-button> -->
+							</div>
+							<div class="clearfix">
+								<div class="my_update_form-fill pr_type fl">
+									<label class="opensemibold textupper">Property Type</label>
+									<md-select ng-model="property.property_type" name="Property type" md-no-asterisk placeholder="Property Type" class="traderstopserchselect selectlogin99 m-t-0 md-no-underline m-b-0" ng-model-options="{trackBy: '$value._id'}">
+										<md-option value="any">Any</md-option>
+										<md-option ng-repeat="type in property_rental" ng-value="type">{{type.name}}</md-option>
+									</md-select>
+								</div>
+								<div class="my_update_form-fill bed_type fl">
+									<div class=" fl min_bed">
+										<label class="opensemibold textupper">MIN BED</label>
+										<md-select ng-model="property.min_beds" name="Min. Bedrooms" md-no-asterisk placeholder="Min Bed" class="traderstopserchselect selectlogin99 m-t-0 md-no-underline m-b-0" >
+											<md-option value="any">Any</md-option>
+											<md-option value="0">Studio</md-option>
+											<md-option 
+											ng-repeat="bed in [1,2,3,4,5]" 
+											ng-pluralize 
+											count="bed" 
+											when="{1: '{{bed}} bed', 5: '{{bed}}+ beds', other: '{{bed}} beds'}"
+											ng-value="bed">{{bed}}</md-option>
+										</md-select>
+									</div>
+									<div class=" fr min_bed">
+										<label class="opensemibold textupper">Max Bed</label>
+										<md-select ng-model="property.max_beds" name="Max. Bedrooms" md-no-asterisk placeholder="Max Bed" class="traderstopserchselect selectlogin99 m-t-0 md-no-underline m-b-0" >
+											<md-option value="any">Any</md-option>
+											<md-option value="0">Studio</md-option>
+											<md-option 
+											ng-repeat="bed in [1,2,3,4,5]" 
+											ng-pluralize 
+											count="bed" 
+											when="{1: '{{bed}} bed', 5: '{{bed}}+ beds', other: '{{bed}} beds'}"
+											ng-value="bed">{{bed}}</md-option>
+										</md-select>
+									</div>
+								</div>
+								<!-- Property Sale Filters  -->
+								<div class="my_update_form-fill bed_type fl" ng-if="property.property_for==='sale'">
+									<div class=" fl min_bed">
+										<label class="opensemibold textupper">Min Price</label>
+										<md-select ng-model="property.min_sale_price" name="min_sale_price" md-no-asterisk placeholder="Min. Price" class="traderstopserchselect selectlogin99 m-t-0 md-no-underline m-b-0" >
+											<md-option value="any">Any</md-option>
+											<md-option ng-repeat="sp in salePrice" ng-value="sp">{{sp | currency : '&pound;' : 0}}</md-option>
+										</md-select>
+									</div>
+									<div class=" fr min_bed">
+										<label class="opensemibold textupper">Max Price</label>
+										<md-select ng-model="property.max_sale_price" name="max_sale_price" md-no-asterisk placeholder="Max Price" class="traderstopserchselect selectlogin99 m-t-0 md-no-underline m-b-0" >
+											<md-option value="any">Any</md-option>
+											<md-option ng-repeat="sp in salePrice" ng-value="sp">{{sp | currency : '&pound;' : 0}}</md-option>
+										</md-select>
+									</div>
+								</div>
+								<!-- Property Rent Filters  -->
+								<div class="my_update_form-fill bed_type fl" ng-if="property.property_for==='rent'">
+									<div class=" fl min_bed">
+										<label class="opensemibold textupper">Min Price PM</label>
+										<md-select  ng-model="property.min_price_per_month" name="min_price_per_month" md-no-asterisk placeholder="Min Price PM" class="traderstopserchselect selectlogin99 m-t-0 md-no-underline m-b-0" >
+											<md-option value="any">Any</md-option>
+											<md-option ng-repeat="pm in monthly_price" ng-value="pm">{{pm | currency : '&pound;' : 0}}</md-option>
+										</md-select>
+									</div>
+									<div class=" fr min_bed">
+										<label class="opensemibold textupper">Max Price PM</label>
+										<md-select ng-model="property.max_price_per_month" name="max_price_per_month" md-no-asterisk placeholder="Max Price PM" class="traderstopserchselect selectlogin99 m-t-0 md-no-underline m-b-0" >
+											<md-option value="any">Any</md-option>
+											<md-option ng-repeat="pm in monthly_price" ng-value="pm">{{pm | currency : '&pound;' : 0}}</md-option>
+										</md-select>
+									</div>
+								</div>
+								<div class="my_update_form-fill pr_type fl">
+									<label class="opensemibold textupper tabdisplynone">&nbsp;</label>
+									<md-button ng-click="isMoreRefineOpen()" class="traderstopsercbtn graybtncom md-raised md-primary  btnComn">
+										More Refinement
+										<md-icon ng-if="more_refine">keyboard_arrow_up</md-icon>
+										<md-icon ng-if="!more_refine">keyboard_arrow_down</md-icon>
+									</md-button>
+								</div>
+							</div>
+							<div class="clearfix">
+								<md-checkbox ng-model="property.let_agreed" ng-if="property.property_for ==='rent'" class="" aria-label="Checkbox 1"> Exclude Let Agreed </md-checkbox>
+								<md-checkbox ng-model="property.under_offer" class="" ng-if="property.property_for ==='sale'" aria-label="Checkbox 2"> Exclude under offer </md-checkbox>
+								<md-checkbox ng-model="property.sold_stc" class="m-b-0" ng-if="property.property_for ==='sale'" aria-label="Checkbox 3"> Exclude Sold STC </md-checkbox>
+								<md-checkbox ng-model="property.reserved" class="m-b-0" ng-if="property.property_for ==='sale'" aria-label="Checkbox 3"> Reserved </md-checkbox>
+							</div>
+							<!--End inner update Part-->
+							<!--Start more Filter-->
+							<div class="morefilter_mydash clearfix" ng-if = "more_refine">
+								<div class="clearfix">
+									<div class="my_update_form-fill keyword_type fl">
+										<label class="opensemibold textupper">Additional Features</label>
+										<md-select ng-model="property.additionalFeature"  md-no-asterisk placeholder="Property Type" md-on-close="clearSearchTerm()" class="traderstopserchselect selectlogin99 m-t-0 md-no-underline m-b-0" multiple>
+											<md-select-header>
+												<input ng-keydown="keyDownEvent($event)" ng-model="searchTerm"
+												type="search"
+												placeholder="Search for a features.."
+												class="traderstopserchselect">
+											</md-select-header>
+											<md-optgroup label="Select additional features" >
+												<md-option ng-value="type._id" ng-repeat="type in additionalFeatureList | filter:searchTerm">{{type.name}}</md-option>
+											</md-optgroup>
+										</md-select>                            
+									</div>
+									<div class="my_update_form-fill bed_type fl">
+										<div class=" fl min_bed">
+											<label class="opensemibold textupper">Furnishing</label>
+											<md-select  ng-model="property.furnishingType" name="Furnishing. Price PCM" md-no-asterisk placeholder="Select" class="traderstopserchselect selectlogin99 m-t-0 md-no-underline m-b-0" >  <md-option value="undefined">All</md-option>
+												<md-option value="furnished">Furnished</md-option>
+												<md-option value="unfurnished">Unfurnished</md-option>
+												<md-option value="partially-furnished">Part-furnished</md-option>
+											</md-select>
+										</div>
+										<div class=" fr min_bed">
+											<label class="opensemibold textupper">Distance From</label>
+											<md-select  ng-change = "isValidPostcode()" ng-model="property.radius" md-no-asterisk placeholder="Distance From" class="traderstopserchselect selectlogin99 m-t-0 md-no-underline m-b-0" >
+												<md-option value="any">Any</md-option>
+												<md-option value=".25">Within 1/4 mile</md-option>
+												<md-option value=".50">Within 1/2 mile</md-option>
+												<md-option value="1">Within 1 mile</md-option>
+												<md-option value="3">Within 3 mile</md-option>
+												<md-option value="5">Within 5 mile</md-option>
+												<md-option value="10">Within 10 mile</md-option>
+												<md-option value="15">Within 15 mile</md-option>
+												<md-option value="20">Within 20 mile</md-option>
+												<md-option value="30">Within 30 mile</md-option>
+												<md-option value="40">Within 40 mile</md-option>
+											</md-select>
+										</div>
+									</div>
+								</div>
+								<div class="clearfix">
+									<div class="my_update_form-fill pr_type fl">
+										<label class="opensemibold textupper">Added</label>
+
+										<md-select ng-model="property.added" name="role" md-no-asterisk placeholder="Anytime" class="traderstopserchselect selectlogin99 m-t-0 md-no-underline m-b-0" >
+											<md-option value="any">Anytime</md-option>
+											<md-option value="24-hours">Last 24 hours </md-option>
+											<md-option value="2-days">Last 2 days </md-option>      
+											<md-option value="5-days">Last 5 days </md-option>      
+											<md-option value="7-days">Last 7 days </md-option>      
+											<md-option value="14-days">Last 14 days </md-option>      
+											<md-option value="30-days">Last 30 days </md-option>      
+										</md-select>
+									</div>
+									<div class="my_update_form-fill pr_type fl mar0">
+										<md-checkbox ng-model="SharedSigned" class="martop35" aria-label="Checkbox 2">
+											<md-tooltip md-direction="bottom"> <strong>Not implemented yet</strong> </md-tooltip>
+											Shared Accomodation
+										</md-checkbox>
+									</div>
+								</div>
+								<!--End more Filter-->
+							</div>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!--End top partr-->
+	<!--statr  sort partr-->
+	<div class="container marbot20" ng-hide="spinner">
+		<div class="clearfix mycheyy_dashsort marbot10">
+			<div class="fl ">
+				<ul class="mycheyy_dashsort_list">
+					<li><a ng-href="" class="active" > <span class="mycherrydash_icon list"></span> List View</a></li>
+					<li><a ng-href="" > <span class="mycherrydash_icon map"></span> Map View</a></li>
+				</ul>
+			</div>
+			<div class="fr sort_tab">
+				<span class="sorttxt opensemibold">Sort By:</span>
+				<md-select ng-change="sortByPrice(price)" ng-model="price" md-no-asterisk placeholder="Price (High Low)" class="traderstopserchselect selectlogin99 m-t-0 md-no-underline m-b-0" >
+					<md-option value="-1">High - Low</md-option>
+					<md-option value="1">Low - High</md-option>
+				</md-select>
+			</div>
+		</div>
+		<div class="clearfix mycheyy_dashpagination">
+			<div class="pagination fl ">
+				<p>Showing {{paging.current}} of {{paging.count}} total results</p>
+			</div>
+			<div class="pagination fr ">
+				<ul class="paginationlist" uib-pagination ng-if="paging.count > paging.limit" previous-text="Prev" force-ellipses="forceEllipses" max-size="maxSize" items-per-page="paging.limit" total-items="paging.count" ng-model="paging.page" class="pagination-sm" boundary-link-numbers="true" rotate="false" ng-change="pageChanged()"></ul>
+			</div>
+		</div>
+	</div>
+	<!--End  sort partr-->
+	<div layout="row" layout-sm="column" layout-align="space-around" ng-show="spinner">
+		<md-progress-circular md-mode="indeterminate"></md-progress-circular>
+	</div>
+	<div class="container animate-result" ng-hide="spinner">
+		<div class="col-lg-12">
+			<div class="row">
+				<ul class="drawserchlist saverserchlist">
+					<li ng-repeat="property in properties" class="clearfix">
+						<!--Start left Part-->
+						<div class="myproperyyimgdiv positiorel fl">
+							<div class="myproperyyimg marbot20 image_listing" style="background-image: url({{property.image_count > 0 ? (property.cover_photo ? property.cover_photo.thumb_path + property.cover_photo.thumb_name : property.image[0].thumb_path + property.image[0].thumb_name) :(property.default_image.thumb_path + property.default_image.thumb_name)}});">
+								<a set-url="/property/{{property.slug}}" >
+									<div class="picnumber">
+										<span>{{property.image_count}}</span> 
+										<md-icon>photo_camera</md-icon>
+									</div>
+									<img style="opacity: 0" ng-src="{{property.image_count > 0 ? (property.cover_photo ? property.cover_photo.thumb_path + property.cover_photo.thumb_name : property.image[0].thumb_path + property.image[0].thumb_name) :(property.default_image.thumb_path + property.default_image.thumb_name)}}">
+								</a>
+							</div>
+							<span ng-if="property.property_for === 'sale'" class="featurehm_saletag featurehm_saletagtxt ng-binding">For Sale</span>
+							<span ng-if="property.property_for === 'rent'" class="featurehm_renttag featurehm_saletagtxt ng-binding">For Rent</span>
+							<div class="clearfix">
+								<div class="fl uplodername">
+									<div class="positiorel landlod_height">
+										<img ng-src="{{property.user_id.profile_image.path + property.user_id.profile_image.name}}" class="landlod_pic">
+										<p class="landloadname">{{property.user_id.firstname && property.user_id.lastname ? property.user_id.firstname + ' ' + property.user_id.lastname:property.user_id.email}}</p>
+									</div>
+								</div>
+								<div class="fr ahentpad">
+									<md-button ng-if="user._id !== property.user_id._id" ng-click="showContactAgent($event, $index)" class="traderstopsercbtn height38  textlower md-raised md-primary btnComn">Contact Agent</md-button>
+								</div>
+							</div>
+						</div>
+						<!--end left Part-->
+						<!--Start right Part-->
+						<div class="myproperyydetdiv fr">
+							<!--Start name Part-->
+							<div class="clearfix listpropertmname">
+								<div class="myproperyydetdivname fl">
+									<a set-url="/property/{{property.slug}}">
+										<h6 class="font18">{{property.beds === 0 ? 'Studio': property.beds}}  Bedroom, {{property.property_type.name}}</h6>
+										<p class="colorbluedark">{{property.virtual_name}}</p>
+									</a>
+								</div>
+								<div class=" fr">
+									<a ng-if="user._id !== property.user_id._id" href ng-click="saveProperty($index)">
+										<md-tooltip md-direction="bottom"> <strong>{{(user.save_property | indexOf:property._id) === -1 ? 'Save Property': 'Saved Property'}}</strong> </md-tooltip>
+										<md-icon ng-if="user" class="favorite">{{(user.save_property | indexOf:property._id) === -1 ? 'favorite_border': 'favorite'}}</md-icon>
+										<!-- <md-icon ng-if="user && (user.save_property | indexOf:property._id) !== -1" class="favorite">favorite</md-icon> -->
+										<md-icon ng-if="!user" class="favorite">favorite_border</md-icon>
+									</a>
+									<span ng-if="property.monthly_rent" class="myproperyydetdivprice">
+										<md-tooltip md-direction="bottom"> <strong>Monthly Rental Price</strong> </md-tooltip>
+										{{property.monthly_rent | currency : '&pound;' : 2}}
+									</span>
+									<span ng-if="property.sale_price" class="myproperyydetdivprice">
+										<md-tooltip md-direction="bottom"> <strong>Property Sale Price</strong> </md-tooltip>
+										{{property.sale_price | currency : '&pound;' : 2}}
+									</span>
+								</div>
+							</div>
+							<!--End name Part-->
+							<!--Start Description Part-->
+							<div class="clearfix listpropertdescription marbot20">
+								<p>{{property.description | limitTo : 600}} <a ng-if="property.description.length > 600" set-url="/property/{{property.slug}}"> ... Read More</a></p>
+							</div>
+							<!--End Description Part-->
+							<!--Start fotterinfo Part-->
+							<div class="listpropertyfotterinfo clearfix">
+								<div class="amenties_div">
+									<ul class="amenties">
+										<li><img src="images/savedpro_bath.png"> <span>{{property.bathroom}}</span></li>
+										<li><img src="images/savedpro_bed.png"> <span>{{property.beds === 0 ? 'Studio' : property.beds}}</span></li>
+										<li><img src="images/savedpro_car.png"> <span>{{property.parking.name}}</span></li>
+									</ul>
+								</div>
+
+								<div class="fr protyderailsbtn"> 
+									<a ng-click = "property.floor_plan.length>0 && showFloorPlan(property.floor_plan, $event)" class="lineheight30 florbtn"> 
+									<md-tooltip md-direction="bottom"> {{property.floor_plan.length>0 ? 'Click to see floor plan':'No floor plan available'}} </md-tooltip><span class="mycherrydash_icon floor_icon"></span>{{property.floor_plan.length>0 ? 'Floor Plan Available':'No floor plan'}} </a>
+									<md-button href set-url="/property/{{property.slug}}" class="detalsprobluebtn textlower md-raised md-primary btnComn">Details</md-button>
+								</div>
+
+
+
+
+							</div>
+							<!--Start fotterinfo Part-->
+						</div>
+					</li>
+				</ul>
+				<div class="no_result_found" ng-show="properties.length === 0">
+					<div class="tac noresultsfind boxshadowcommon ">
+						<h3 class="opensemibold">We couldn't find anything matching your search criteria</h3>
+						<p>Results for properties for {{property.property_for}} in {{property.search_address}}</p>
+						<div class="Suggestions">
+							<h4 class="textupper opensemibold">Suggestions</h4>
+							<ul class="Suggestionslist">
+								<li>Try changing your search criteria</li>
+								<li>Use suggested locations</li>
+								<li>Expand your search to include more areas</li>
+							</ul>
+							<md-button class="md-primary md-raised btnpad" href set-url="/" >New search</md-button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="container">
+		<div class="pagination fr martop20">
+			<ul class="paginationlist" uib-pagination ng-if="paging.count > paging.limit" previous-text="Prev" force-ellipses="forceEllipses" max-size="maxSize" items-per-page="paging.limit" total-items="paging.count" ng-model="paging.page" class="pagination-sm" boundary-link-numbers="true" rotate="false" ng-change="pageChanged()"></ul>
+		</div>
+	</div>
+</section>
+<!--Start top serch -->
+
+</div>
+<!--End middle Part-->
+
+<a ng-repeat="image in floorPlan" id="single_image{{$index}}" ng-href="{{image.path + image.name}}" fancyboxable>
+	<img ng-src="{{image.path + image.name}}" alt=""/></a>

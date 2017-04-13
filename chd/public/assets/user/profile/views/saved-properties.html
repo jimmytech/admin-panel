@@ -1,0 +1,145 @@
+<!--Start middle Part-->
+<div class="midllepart">
+	<!--Start top serch -->
+	<section class="bluebg section pad-t-0">
+		<div class="container clearfix">            
+			<div class="col-lg-12 boxshadowcommon marbot30">                                    
+				<div class=" mycherrysection clearfix">
+					<div class="row">
+						<div class="col-lg-12">
+							<div class="mainHd textupper tac">Viewing properties</div>
+							<div class="smallHd tac">Think carefully about who you should live with</div>
+							<div class="tac headingimg"><img src="images/headingimg.png"></div>
+						</div>
+					</div>
+					<div class="row"> 
+						<div class="col-lg-12">
+							<div class="pad5"> 
+								<!--Start tab Part-->
+								<div class="exploretab mycherrtdashtab marbot30" profile-menu="list"> </div>
+								<!--End tab Part-->
+								<!--Start inner update Part-->
+								<div  class="my_formupdate">
+									<div class="my_formupdate_alerttag clearfix marbot30">
+										<div class="my_formupdate_alerttagtxt fl font18 textupper opensemibold">My saved properties</div>
+										<div class="my_formupdate_alerttaglink fr"> 
+											<div ng-repeat="property_type in group" ng-click="propertyFor(property_type._id)" class="seprate colorblue linkur textupper opensemibold"><span ng-if="!$first">|</span> For {{property_type._id}} <span>({{property_type.count}})</span> </div>
+										</div>
+
+									</div>
+									<div class="clearfix mycheyy_dashsort marbot20">
+										<!-- <div class="fl pad-t-5">
+											<div class="clearfix">
+												<div class="fl mar-right10 pad-t-5">
+													<md-checkbox ng-model="staySigned" class="mar0" aria-label="Checkbox 1"> Select all </md-checkbox>
+												</div>
+												<div class="fl ">
+													<md-button class=" textlower detalsprogrrenbtn md-raised md-primary btnComn">Remove</md-button>
+												</div>
+											</div>
+										</div> -->
+										<div ng-if="saved_properties.length > 0" class="fr sort_tab"> <span class="sorttxt opensemibold">Sort By:</span>
+											<md-select md-on-close="sortByDate(date)" ng-model="date" md-no-asterisk placeholder="Date Saved" class="traderstopserchselect selectlogin99 m-t-0 md-no-underline m-b-0" >
+												<md-option value="-1">Date Saved: Newest First</md-option>
+												<md-option value="1">Date Saved: Newest Last</md-option>
+											</md-select>
+										</div>
+									</div>
+									<!--End inner update Part-->
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div ng-if="saved_properties.length > 0" class="">    
+				<div class="col-lg-12">                                
+					<div class="row">				
+						 
+						<div class="clearfix">
+							
+							<ul class="drawserchlist removebtnlist">
+
+								<li ng-repeat="x in saved_properties" class="clearfix">
+									<div class="my_listing_topremove clearfix">
+										<div class="saveddetalsaved  clearfix">												
+											<span class="fr">Saved on {{ x.save_property.saved_at | date : 'dd/MM/yyyy' }}</span>
+										</div>
+										<div class="fr listingclose">
+											<a href="" ng-click="delete($index,$event)">X</a>
+										</div>
+
+									</div>
+									<!--Start left Part-->
+									<div class="myproperyyimgdiv positiorel fl">
+										<div class="myproperyyimg marbot20 image_listing" style="background-image: url({{x.properties.image.length !== 0 ? (x.properties.cover_photo ? x.properties.cover_photo.thumb_path + x.properties.cover_photo.thumb_name : x.properties.image[0].thumb_path + x.properties.image[0].thumb_name) :(x.properties.default_image.thumb_path + x.properties.default_image.thumb_name)}});"> 
+											<a set-url="/property/{{x.properties.slug}}">
+												<div class="picnumber"><span>{{x.properties.image.length}}</span> <md-icon>photo_camera</md-icon></div>
+												<img style="opacity: 0" ng-src="{{x.properties.image.length !== 0 ? (x.properties.cover_photo ? x.properties.cover_photo.thumb_path + x.properties.cover_photo.thumb_name : x.properties.image[0].thumb_path + x.properties.image[0].thumb_name) :(x.properties.default_image.thumb_path + x.properties.default_image.thumb_name)}}"> 
+											</a> 
+											<div class="clearfix addedproperty_txt">
+											<p class="colorblue lineheight30 tar fl">Added on {{x.properties.created | date: 'dd/MM/yyyy'}} by {{x.property_owner.firstname && x.property_owner.lastname ? x.property_owner.firstname +' '+ x.property_owner.lastname : x.property_owner.email}}. </p>
+											</div>
+										</div>
+										<span ng-if="x.properties.property_for === 'sale'" class="featurehm_saletag featurehm_saletagtxt ng-binding">For Sale</span>
+										<span ng-if="x.properties.property_for === 'rent'" class="featurehm_renttag featurehm_saletagtxt ng-binding">For Rent</span>
+									</div>
+									<!--end left Part-->
+									<!--Start right Part-->
+									<div class="myproperyydetdiv fr">
+										<!--Start name Part-->
+										<div class="clearfix listpropertmname ">
+											<div class="myproperyydetdivname fl"> <a set-url="/property/{{x.properties.slug}}">
+												<h6 class="font16 textupper opensemibold">{{x.properties.beds === 0 ? 'Studio':x.properties.beds}} Bedroom {{x.properties.property_type.name}}</h6>
+												<p class="textupper sub-hd">{{x.properties.virtual_name}}</p>
+											</a> </div>
+											
+											<div class=" fr">  <!--a ng-href=""> <span class="heart_blank_icon mycherrydash_icon"></span> </a--> 
+											<span ng-if="x.properties.monthly_rent" class="myproperyydetdivprice"><md-tooltip md-direction="bottom"> <strong>Monthly Rental Price</strong> </md-tooltip>{{x.properties.monthly_rent | currency : '&pound;' : 2}}</span> 
+												<span ng-if="x.properties.sale_price" class="myproperyydetdivprice">
+												<md-tooltip md-direction="bottom"> <strong>Property Sale Price</strong> </md-tooltip>
+												{{x.properties.sale_price | currency : '&pound;' : 2}}
+												</span> 
+											</div>
+											<div class="clearfix listpropertdescription marbot20">
+												<p>{{x.properties.description | limitTo : 600}}<a ng-if="property.description.length > 6" set-url="/property/{{x.properties.slug}}"> ... Read More</a></p>
+											</div>
+											
+												
+										</div>
+										<!--Start fotterinfo Part-->
+										<div class="clearfix">
+											<div class="devlogo clearfix"> 
+												<a ng-if="user._id !== x.property_owner._id" href ng-click="showContactAgent($event, $index)" class="textupper pull-right"><md-icon>email</md-icon> Contact Agent</a>
+											</div>
+										</div>
+									</div>
+								</li>
+							</ul>
+						</div>
+					</div>
+				</div> 
+			</div>
+			<div ng-if="saved_properties.length === 0" class="no_result_found">
+				<div class="tac noresultsfind boxshadowcommon ">
+				<h3 class="opensemibold">You haven't saved any property yet</h3>
+
+				<div class="Suggestions">
+				
+				 <md-button class="md-primary md-raised btnpad" href set-url="/" >Browse Properties</md-button>				
+				 
+				</div>
+				</div>
+			</div>
+			<div ng-if="saved_properties.length > 0" class=" col-lg-12">
+				<div class="row clearfix">
+					<div class="pagination fr martop20">
+						<ul class="paginationlist" uib-pagination ng-if="paging.count > paging.limit" previous-text="Prev" force-ellipses="forceEllipses" max-size="maxSize" items-per-page="paging.limit" total-items="paging.count" ng-model="paging.page" class="pagination-sm" boundary-link-numbers="true" rotate="false" ng-change="pageChanged()"></ul>
+					</div>
+				</div>
+			</div>     
+		</div> 
+	</section>
+<!--Start top serch -->
+</div>
+<!--End middle Part-->

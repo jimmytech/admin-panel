@@ -1,0 +1,32 @@
+<section  ng-init = "manageAddEditPlanDiv();">
+   <div class="page-header">
+      <h1>
+         <i class="md md-input"></i>
+         {{pageHeader}} New additional feature
+      </h1>
+   </div>
+   <div class="row  m-b-40">
+   <div class="col-md-3 col-md-push-9">
+      <h5>Validating elements</h5>
+      <p>
+         Push the submit button to check all the validations at once.
+         Resetting will handle resetting the validation messages.
+      </p>
+   </div>
+   <div class="col-md-8 col-md-pull-3">
+
+         <div class="row white pad-20 ">
+            <form name="exclusionform" class="form-floating" novalidate="novalidate" ng-submit="(exclusionform.additional_exclusion.$modelValue.length>0 && exclusionform.$valid) &&  addAdditionalExclusion();">
+               <div class="form-group">
+                  <label  ng-class ="{'invalid-form' : exclusionform.$submitted && exclusionform.additional_exclusion.$modelValue.length==0}" >Additional feature (Press enter after type)*</label> 
+                  <md-chips  name = 'additional_exclusion' placeholder= "+Additional feature"  
+                     " secondary-placeholder="+Additional feature" ng-model="additionalExclusion.feature" md-separator-keys="additionalExclusion.customKeys" md-removable="removable" md-min-chips="1" ></md-chips>
+               </div>                            
+               <button ng-disabled = "service-form.$invalid" type="submit" ng-click = "exclusionform.additional_exclusion.$modelValue.length==0 && validate(exclusionform);" class="btn btn-primary">Submit</button>
+               <button ng-click = "back();" class="btn btn-default">Cancel</button>                       
+            </form>
+         </div>
+      </div>
+   </div>
+</section>
+

@@ -1,0 +1,117 @@
+<!--Start Banner-->
+<div class="homebanner">
+	<div class="homebannercarsal" >
+		<data-owl-carousel class="owl-carousel" data-options="{navigation: false, pagination: false, rewindNav : false,  items:1,loop:true}">
+			<div owl-carousel-item="" ng-repeat="item in items" class="item" ng-style="{'background-image':'url({{item.image}})'}" style="background-position:center center ;background-repeat:no-repeat; background-size:cover;">
+				<div class="bannerTrans">
+					<div class="bannerCont">
+						<div class="bannertext">
+							<h3> {{item.title}} </h3>
+							<p>{{item.text}}</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</data-owl-carousel>
+	</div>
+	<!--Start Search panel-->
+	<div class="serchpanrlfull">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-12">
+					<div class="serchpanrlinner">
+						<ul class="searchtab" ng-init="rentTab=true">
+							<li><a ng-class="{'active':rentTab}" ng-click="rentTab=true;saleTab=false">for Rent </a></li>
+							<li><a ng-class="{'active':saleTab}" ng-click="rentTab=false;saleTab=true">for Sale</a></li>
+						</ul>
+						
+						<div class="tabcontent" ng-hide="!filterSpinner">
+							<div class="filter_loader" layout="row" layout-sm="column" layout-align="center center">
+						      <md-progress-circular md-mode="indeterminate" class="md-hue-1" md-diameter="30px"></md-progress-circular>
+						    </div>
+					    </div>
+						<div ng-show="rentTab && !filterSpinner" ng-include="'assets/user/partials/rent_search_filters.html'"></div>
+						<div ng-show="saleTab && !filterSpinner" ng-include="'assets/user/partials/sale_search_filters.html'"></div>
+					</div>
+				</div>
+			</div>  
+		</div>      
+	</div>
+<!--Start Search panel-->
+</div>
+<!--End Banner-->
+<!--Start About-->
+<section class="section">
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-12">
+				<div class="mainHd textupper tac">Get everything you need to pick</div>
+				<div class="smallHd tac">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod a lacus in sollicitudin. </div>
+				<div class="tac headingimg"><img src="images/headingimg.png" alt="headingimg"></div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-sm-4 col-xs-12">
+				<div class="aboutlist tac">
+					<div class="abouthmimg"><img src="images/abou_img.png"></div>
+					<h4>Be the First One to <br> Get Property Alerts</h4>
+					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod a lacus in sollicitudin. Sed in luctus enim. Maecenas eget elit sit </p>
+				</div>
+			</div>
+			<div class="col-sm-4 col-xs-12">
+				<div class="aboutlist tac">
+					<div class="abouthmimg"><img src="images/abou_img2.png"></div>
+					<h4>Draw a <br> Search</h4>
+					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod a lacus in sollicitudin. Sed in luctus enim. Maecenas eget elit sit </p>
+				</div>
+			</div>
+			<div class="col-sm-4 col-xs-12 lastaboutlist">
+				<div class="aboutlist tac">
+					<div class="abouthmimg"><img src="images/abou_img3.png"></div>
+					<h4>London <br> Tube</h4> 
+					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod a lacus in sollicitudin. Sed in luctus enim. Maecenas eget elit sit </p>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+<!--End About-->
+<!--Start Feature Property-->
+<section class="section bluebg">
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-12">
+				<div class="mainHd textupper tac">Featured properties</div>
+				<div class="smallHd tac">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod a lacus in sollicitudin. </div>
+				<div class="tac headingimg"><img src="images/headingimg.png" alt="headingimg" ></div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-lg-12">
+				<data-owl-carousel class="owl-carousel featurehm" data-options="{  loop:true, margin:40, nav:false, items:3, dots:true, autoplayTimeout:1000, autoplay:false, responsiveClass:true,responsive:{0:{items:1,dots:false},600:{items:2},  1000:{items:3,margin:20 },  1030:{items:3, }
+			}}">
+			<div owl-carousel-item="" ng-repeat="property in properties" class="item">
+				<div class="featurehm_img"> <a href="javascript:;"> <img ng-src="{{property.image}}" alt=""> <span class="featurehm_price">{{property.price}}</span> <span class="featurehm_saletag featurehm_saletagtxt">{{property.purpose}}</span> </a> </div>
+				<div class="featurehm_name"> <a href="javascript:;" class="featurehm_nametxt">{{property.type}}</a>
+					<p class="featurehm_nameloc"><img alt="loca_icon" src="images/loca_icon.png">{{property.description}}</p>
+				</div>
+			</div>
+		</data-owl-carousel>
+	</div>
+</div>
+</div>
+</div>
+</section>
+<!--End Feature Property-->
+<!--Start Advertisement-->
+<section class="section">
+	<div class="container">
+		<div class="row">
+			<div class="clearfix adhm">
+				<div class="hmleftad col-sm-6 col-xs-12"><img src="images/advertisement1.png" alt="advertisement1"></div>
+				<div class="hmrightad col-sm-6 col-xs-12"><img src="images/advertisement2.png" alt="advertisement2"></div>
+			</div>
+		</div>
+	</div>
+</section>
+<!--End Advertisement-->

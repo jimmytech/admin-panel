@@ -1,0 +1,185 @@
+<!--Start middle Part-->
+<div class="midllepart">
+	<!--Start top serch -->
+	<section class="bluebg section pad-t-0">
+		<!--Start top  Part-->
+		<div class="container marbot30 ">
+	  		<div class="boxshadowcommon col-lg-12">
+				<div class="row ">
+			        <div class="col-lg-12 land_top_list_pad">
+			          	<ul class="land_top_list">
+				          	<li> <a  set-url="/landlord-account" ><span class="land_acc_ico"></span> Landlord Account</a></li>
+				          	<li> <a  set-url="/property-tenancy-details" class="active" ><span class="land_list_ico"></span>List your Property</a></li>
+				          	<li> <a  set-url="/property-listings"  ><span class="land_listing_ico"></span>Property Listing </a></li>               
+						</ul>  
+			        </div>
+				</div>
+			</div>
+  		</div>
+		<!--Start top  Part-->
+		<form name="propertyTenantForm" ng-submit="secondStep(propertyTenantForm.$valid)" novalidate>
+			<div class="container ">
+		  		<div class="boxshadowcommon col-lg-12">
+					<div class="clearfix mycherrysection">
+						<div class="mainHd textupper tac">List Your Property</div>
+						<div class="smallHd tac colorblue textupper font16 opensemibold">Lorem ipsum </div>
+						<div class="tac headingimg"><img src="images/headingimg.png"></div>
+						<div class="pad5 pad-t-0">
+
+							<div class="steptostep">
+								<ul class="step">
+									<li class="one active complete"><a ng-href="">1</a></li>
+									<li class="two active "><a ng-href="">2</a></li>
+									<li class="three "><a ng-href="">3</a></li>            
+								</ul>
+							</div>
+							<!--Start prorty part -->
+							<div class="prouploadform">
+								<div class="prouploadformtop opensemibold">2. Tenancy Details, Restrictions &amp; Features</div>
+								<div class="prouploadforminner clearfix">  
+									<div class="my_update_form-L fl secondsep">  
+										<div class="my_update_form-full univercal">
+											<label class="opensemibold">Earliest Move In Date</label>
+											<md-datepicker class="traderstopserchselect serchinput pad7"
+												name="available_date"
+												ng-required="true" 
+												ng-model="available_date" 
+												md-min-date="minDate" 
+												md-hide-icons="triangle"
+												md-open-on-focus="" 
+												ng-class="{ 'errorborder': propertyTenantForm.available_date.$touched && propertyTenantForm.available_date.$invalid || propertyTenantForm.available_date.$invalid && propertyTenantForm.$submitted }" 
+												md-placeholder="Enter property available date"></md-datepicker>
+											<div class="error_tag" 
+												ng-messages="propertyTenantForm.available_date.$error"   
+												ng-show="propertyTenantForm.available_date.$touched || propertyTenantForm.$submitted">
+											    <p ng-message="required">Available date is required.</p>
+											    <p ng-message="mindate">Available date is invalid</p>
+											</div>	
+										</div>
+										<div class="my_update_form-full positiorel">
+											<label class="opensemibold ">Monthly Rent For Entire Property (£) </label>
+											<input type="text" name="monthly_rent" class="traderstopserchselect" placeholder="Monthly Rent in (£)"
+											ng-keyup="monthly(step2.monthly_rent)"
+											ng-model="step2.monthly_rent"
+											ng-class="{ 'errorborder': propertyTenantForm.monthly_rent.$touched && propertyTenantForm.monthly_rent.$invalid || propertyTenantForm.monthly_rent.$invalid && propertyTenantForm.$submitted }" 
+											ng-pattern="/^[1-9]\d*([.]\d+)?$/"
+											ng-required="true">
+											<div class="error_tag"
+											 ng-messages="propertyTenantForm.monthly_rent.$error"
+											 ng-show="propertyTenantForm.monthly_rent.$touched || propertyTenantForm.$submitted">
+											    <p ng-message="required">Monthly Rent is required.</p>
+											    <p ng-message="pattern">Please enter a valid amount.</p>
+											</div>
+										</div>
+										<div class="my_update_form-full positiorel">
+											<label class="opensemibold">Weekly Rent For Entire Property (£)</label>
+											<input type="text" name="weekly_rent" class="traderstopserchselect" placeholder="Weekly Rent in (£)"
+											ng-keyup="weekly(step2.weekly_rent)"
+											ng-model="step2.weekly_rent"
+											ng-pattern="/^\d+([.]\d+)?$/"
+											ng-class="{ 'errorborder': propertyTenantForm.weekly_rent.$touched && propertyTenantForm.weekly_rent.$invalid || propertyTenantForm.weekly_rent.$invalid && propertyTenantForm.$submitted }" 
+											ng-required="true">
+											<div class="error_tag"
+											 ng-messages="propertyTenantForm.weekly_rent.$error"
+											 ng-show="propertyTenantForm.weekly_rent.$touched || propertyTenantForm.$submitted">
+											    <p ng-message="required">Weekly Rent is required.</p>
+											    <p ng-message="pattern">Please enter a valid amount.</p>
+											</div>
+										</div>
+										<div class="my_update_form-full positiorel">
+											<label class="opensemibold">Deposit Amount (£)</label>
+											<input type="text" name="deposit_amount" class="traderstopserchselect" placeholder="Deposit Amount (£)" 
+												ng-model="step2.deposit_amount"
+												ng-pattern="/^[1-9]\d*([.]\d+)?$/"
+												ng-class="{ 'errorborder': propertyTenantForm.deposit_amount.$touched && propertyTenantForm.deposit_amount.$invalid || propertyTenantForm.deposit_amount.$invalid && propertyTenantForm.$submitted }" 
+												ng-required="true">
+											<div class="error_tag"
+											 ng-messages="propertyTenantForm.deposit_amount.$error"
+											 ng-show="propertyTenantForm.deposit_amount.$touched || propertyTenantForm.$submitted">
+											    <p ng-message="required">Deposit Amount is required.</p>
+											    <p ng-message="pattern">Please enter a valid amount.</p>
+											</div>
+										</div>
+										<div class="my_update_form-full positiorel">
+											<label class="opensemibold ">Minimum Tenancy Length (Months)</label>
+											<input type="text" name="minimum_tenancy_length" class="traderstopserchselect" placeholder="Minimum Tenancy Length" 
+												ng-model="step2.minimum_tenancy_length"
+												ng-pattern="/^[1-9]\d*$/"
+												ng-class="{ 'errorborder': propertyTenantForm.minimum_tenancy_length.$touched && propertyTenantForm.minimum_tenancy_length.$invalid || propertyTenantForm.minimum_tenancy_length.$invalid && propertyTenantForm.$submitted }" 
+												ng-required="true">
+											<div class="error_tag"
+											 ng-messages="propertyTenantForm.minimum_tenancy_length.$error"
+											 ng-show="propertyTenantForm.minimum_tenancy_length.$touched || propertyTenantForm.$submitted">
+											    <p ng-message="required">Minimum Tenancy Length.</p>
+											    <p ng-message="pattern">Please enter a valid length.</p>
+											</div>
+										</div>
+										<div class="my_update_form-full positiorel">
+											<label class="opensemibold ">Tenancy Agreement Length (Months)</label>
+											<input type="text" name="tenancy_agreement_length" class="traderstopserchselect" placeholder="Tenancy Agreement Length" 
+												ng-model="step2.tenancy_agreement_length"
+												ng-pattern="/^[1-9]\d*$/"
+												ng-class="{ 'errorborder': propertyTenantForm.tenancy_agreement_length.$touched && propertyTenantForm.tenancy_agreement_length.$invalid || propertyTenantForm.tenancy_agreement_length.$invalid && propertyTenantForm.$submitted }" 
+												ng-required="true">
+											<div class="error_tag"
+											 ng-messages="propertyTenantForm.tenancy_agreement_length.$error"
+											 ng-show="propertyTenantForm.tenancy_agreement_length.$touched || propertyTenantForm.$submitted">
+											    <p ng-message="required">Tenancy Agreement Length.</p>
+											    <p ng-message="pattern">Please enter a valid length.</p>
+											</div>
+										</div>
+										<div class="my_update_form-full univercal  positiorel">
+											<label class="opensemibold ">Availability for Viewings</label>
+											<md-datepicker name="viewing_date" class="traderstopserchselect serchinput pad7" 
+												md-placeholder="Availability for Viewings"  
+												md-hide-icons="triangle"
+												md-min-date="minDate" 
+												md-max-date="available_date" 
+												md-open-on-focus=""
+												ng-required="true"
+												ng-model="viewing_date"
+												ng-class="{ 'errorborder': propertyTenantForm.viewing_date.$touched && propertyTenantForm.viewing_date.$invalid || propertyTenantForm.viewing_date.$invalid && propertyTenantForm.$submitted }"></md-datepicker>
+											<div class="error_tag" 
+												ng-messages="propertyTenantForm.viewing_date.$error"   
+												ng-show="propertyTenantForm.viewing_date.$touched || propertyTenantForm.$submitted">
+											    <p ng-message="required">Viewing date is required.</p>
+											    <p ng-message="mindate">Available date is invalid</p>
+											</div>	
+										</div>
+										<!-- <div class="my_update_form-full positiorel mar0 clearfix">
+											<md-checkbox ng-model="step2.let_agreed" class="mar0" aria-label="Checkbox 1">Let Agreed </md-checkbox>
+										</div> -->
+									</div>
+									<div class="my_update_form-L fr"> 
+										<div class="my_update_form-full marbot30">
+											<label class="opensemibold ">Please tell us about any additional exclusion / additions to be placed 
+												on your advert.</label>
+											</div> 
+											<div class="my_update_form-full clearfix" ng-if="x.type === 'rent' || x.type === 'both'" ng-repeat="x in exclusion">
+												<div class="fl lineheight25">
+													<label class="opensemibold ">{{x.name}} </label>
+												</div>
+												<div class="fr ">
+													<md-switch ng-model="step2.additional_exclusion[x._id]" class="mar0" aria-label="Switch 1" ng-true-value="'Yes'" >
+														{{ step2.additional_exclusion[x._id] || 'No' }}
+													</md-switch>
+												</div>
+											</div> 
+										</div>
+									</div>
+								</div>
+								<!--Start prorty part -->
+							</div> 
+						</div>
+
+				</div>
+			</div>	
+			<div class="container martop10">
+				<md-button href set-url="/property-room-details" class=" exploremapsearchgraybtn mar-right5 md-raised md-primary btnComn">Previous</md-button>    
+				<md-button type="submit" class="exploremapsearchbtn md-raised md-primary btnComn">Next</md-button>                  
+			</div>      
+			</form>         
+		</section>
+		<!--Start top serch -->
+	</div>
+	<!--End middle Part-->

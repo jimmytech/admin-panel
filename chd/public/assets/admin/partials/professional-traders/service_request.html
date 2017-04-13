@@ -1,0 +1,89 @@
+<section class="cards" ng-init = "serviceRequestList();">
+   <div class="page-header">
+      <h1>
+         <i class="md md-photo"></i>
+         {{pageHeader}} Franchisee Request
+      </h1>
+   </div>
+   <div class="row m-b-60"  >
+      <div class="col-md-12">
+         <div class="card bordered" >
+            <div class="card-header">
+               <div class="row">
+                  <div class="col-md-6"  >
+                     <form name="searchForm" class="form-inline" ng-submit="search(filte)" novalidate="novalidate">
+                        <div class="form-group ">
+                           <div class="input-group">
+                              <input  type="text" ng-change = "refreshList(filte)" class="form-control" placeholder="Search Property" ng-model = "filte" required disable-invalid-styling="true">
+                              <div class="input-group-addon padding0">
+                                 <button class="btn btn-sm btn-link withoutripple">
+                                 <i class="fa fa-search f20"></i>
+                                 </button>   
+                              </div>
+                           </div>
+                        </div>
+                     </form>
+                  </div>
+                  <button  class="dropdown-toggle pointer btn btn-round-sm btn-link withoutripple pull-right" 
+                     ng-click = 'newAccountPage()' title="New Professional Tarder">
+                  <i class="fa fa-plus f20"></i>
+                  </button>  
+               </div>
+            </div>
+            <div class="table-responsive" ng-if = "requests.length>0" >
+               <table class="table table-bordered table-full-small ">
+                  <colgroup>
+                     <col class="auto-cell-size" />
+                  </colgroup>
+                  <thead class="thead-inverse">
+                     <tr>
+                        <th width="5%">Sr.No</th>
+                        <th width="18%" >Firstname</th>
+                        <th width="17%" >Lastname</th>
+                        <th width="25%">Email</th>
+                        <th width="20%">Request Time
+                           &nbsp;
+                           <i ng-if = "sort=='desc1'" class="fa fa-sort" ng-click = "propertyListing('asc')"></i>
+                           <i ng-if = "sort=='asc'" class="fa fa-sort-asc"  ng-click = "propertyListing('asc')"></i>
+                           <i ng-if = "sort=='desc'" class="fa fa-sort-desc" aria-hidden="true" ng-click = "propertyListing('desc')"></i>                    </th>
+                        <th width="15%">Action</th>
+                     </tr>
+                  </thead>
+                  <tbody>
+                     <tr ng-repeat = "p in requests">
+                        <td>{{$index+1}}</td>
+                        <td> {{p.firstname}}</td>
+                        <td> {{p.lastname}} </td>
+                        <td> {{p.email}}                   
+                        </td>
+                        <td>
+                  {{ p.created | date:'MMM d, y h:mm:ss a'}}  
+                           </td>
+                             <td> 
+                             <button title="Next" ng-click = "view(p._id);" type="button" class="btn btn-link btn-round view" >
+                           <i class="fa fa-eye f20 view"></i>
+                           </button>                          
+                           <button title="Delete" ng-click = "delete(p._id, $index, p.name);" type="button" class="btn btn-link btn-round" ><i class="fa fa-trash-o f20 delete m-t-10"></i>
+                           </button>                                                  
+                         
+                                                 
+                        </td>
+                     </tr>
+                  </tbody>
+               </table>
+               <ul uib-pagination ng-if="paging.count> paging.limit" previous-text="Prev" force-ellipses="forceEllipses" max-size="maxSize" items-per-page="paging.limit" total-items="paging.count" ng-model="paging.page" class="pagination pull-right" boundary-link-numbers="true" rotate="false" ng-change="pageChanged()"></ul>
+            </div>
+            <div class="raw" ng-if = "requests.length==0">
+               <div class="bs-component">
+                  <div class="alert alert-dismissible alert-info"">
+                     <h4>Info!</h4>
+                     <p >No record found in data table.</p>
+                  </div>
+               </div>
+            </div>            
+         </div>
+
+      </div>
+   </div>
+</section>
+

@@ -1,0 +1,97 @@
+
+
+<div class="midllepart">
+   <section class="section bluebg lofinpagebg">
+      <div class="container">
+         <div class="row">
+            <div class="col-lg-12">
+               <div class="mainHd textupper tac">Become a Franchise</div>
+               <div class="smallHd tac">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod a lacus in sollicitudin. </div>
+            </div>
+         </div>
+         <div class="row">
+            <div class="col-lg-12 ">
+               <div class="clearfix boxshadowcommon becomefracses">
+                  <div class="prouploadformtop opensemibold">Please Enter These Fields</div>
+                  <form name="becomefranchiseeform" ng-submit="becomefranchiseeform.$valid && becomeFranchisee()" novalidate>
+                     <div class="prouploadforminner">
+                        <div class="clearfix">
+                           <div class="my_update_form-L fl">
+                              <label class="opensemibold textlower">First Name</label>
+                              <input  name = "firstname" ng-model = "request.firstname" type="text" class="traderstopserchselect" placeholder="First Name" required="true">
+                             <div ng-messages="becomefranchiseeform.firstname.$error" class="error_tag"  ng-show="becomefranchiseeform.firstname.$touched || becomefranchiseeform.$submitted">
+                                 <p ng-message="required">First Name is required.</p>
+                                 <p ng-message="text">Your First Name is invalid</p>
+                             </div>                               
+                           </div>
+                           <div class="my_update_form-L fr">
+                              <label class="opensemibold textlower">Last Name</label>
+                              <input name = "lastname" ng-model = "request.lastname" type="text" class="traderstopserchselect" placeholder="Last Name" required="true">
+                             <div ng-messages="becomefranchiseeform.lastname.$error" class="error_tag"  ng-show="becomefranchiseeform.lastname.$touched || becomefranchiseeform.$submitted">
+                                 <p ng-message="required">Last Name is required.</p>
+                                 <p ng-message="text">Your Last Name is invalid</p>
+                             </div>                               
+                           </div>
+                        </div>
+                        <div class="clearfix">
+                           <div class="my_update_form-L fl">
+                              <label class="opensemibold textlower">Email Address</label>
+                              <input type="email" name = "email" ng-model = "request.email" type="text" class="traderstopserchselect" placeholder="Email Address" required="true">
+                             <div ng-messages="becomefranchiseeform.email.$error" class="error_tag"  ng-show="becomefranchiseeform.email.$touched || becomefranchiseeform.$submitted">
+                                 <p ng-message="required">Email Address is required.</p>
+                                 <p ng-message="email">Your Email Address is invalid</p>
+                             </div>                               
+                           </div>
+                           <div class="my_update_form-L fr">
+                              <label class="opensemibold textlower">Phone Number</label>
+                              <input name = "phone" ng-model = "request.phone.telephone" ng-maxlength="16" type="text" class="traderstopserchselect" placeholder="Phone Number" required="true">
+                             <div ng-messages="becomefranchiseeform.phone.$error" class="error_tag"  ng-show="becomefranchiseeform.phone.$touched || becomefranchiseeform.$submitted">
+                                 <p ng-message="required">Phone Number is required.</p>
+                                 <p ng-message="text">Your Phone Number is invalid</p>
+                             </div>                               
+                           </div>
+                        </div>
+                        <div class="clearfix">
+                          <div class="my_update_form-L fl">
+                              <label class="opensemibold textlower">Address </label>
+                              <textarea type = "text" name = "myaddress" ng-model = "request.address" class="traderstopserchselect heightsuto"  placeholder="Address" required="true"></textarea >
+                             <div ng-messages="becomefranchiseeform.myaddress.$error" class="error_tag"  ng-show="becomefranchiseeform.myaddress.$touched || becomefranchiseeform.$submitted">
+                                 <p ng-message="required">Address is required.</p>
+                                 
+                             </div>                               
+                           </div>
+                           <div class="my_update_form-L fr">
+                              <label class="opensemibold textlower">Company Name </label>
+                              <input name = "company" ng-model = "request.company" type="text" class="traderstopserchselect" placeholder="Company Name " required="true">
+                             <div ng-messages="becomefranchiseeform.company.$error" class="error_tag"  ng-show="becomefranchiseeform.company.$touched || becomefranchiseeform.$submitted">
+                                 <p ng-message="required"> Company is required.</p>
+                                 
+                             </div>                               
+                           </div>
+                           
+                        </div>
+                        <div class="clearfix">
+                         <div class="my_update_form-L fl">
+                              <label class="opensemibold textlower">Notes (Optional) </label>
+                              <textarea type = "text" name = "ad" ng-model = "request.notes" rows="5" cols="40" class="traderstopserchselect heightsuto"  placeholder="Notes"></textarea >                              
+                           </div>
+                           <div class="my_update_form-L fr">
+                              <label class="opensemibold textlower">Interested post code <small class="font12">(Use comma after every post code)</small></label>
+                                <textarea type = "text" rows="5" cols="40"  name = "postcode" ng-model = "request.intrested_zip" class="traderstopserchselect heightsuto"  placeholder="Post code"></textarea >                                 
+                             <div  class="error_tag"  ng-show="becomefranchiseeform.postcode.$modelValue.length==0 && becomefranchiseeform.$submitted">
+                                 <p >Post code is required.</p>
+                             </div>                                  
+                           </div>
+                        </div>
+                        <div class="clearfix">
+                           <md-button type="submit" class=" exploremapsearchbtn md-raised md-primary btnComn">Submit</md-button>
+                        </div>
+                     </div>
+                  </form>
+               </div>
+            </div>
+         </div>
+      </div>
+   </section>
+</div>
+

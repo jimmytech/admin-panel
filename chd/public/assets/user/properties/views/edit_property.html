@@ -1,0 +1,735 @@
+
+
+<!--Start middle Part-->
+<div class="midllepart" ng-init = "getPropertyAdditionals()">
+   <!--Start top serch -->
+   <section class="bluebg section pad-t-0">
+      <!--Start top  Part-->
+      <div class="container marbot30 ">
+         <div class="boxshadowcommon col-lg-12">
+            <div class="row ">
+               <div class="col-lg-12 land_top_list_pad">
+                  <ul class="land_top_list">
+                     <li> <a  set-url="/landlord-account" ><span class="land_acc_ico"></span> Landlord Account</a></li>
+                     <li> <a  set-url="{{}}" class="active" ><span class="land_list_ico"></span>Edit your Property</a></li>
+                     <li> <a  set-url="/property-listings"  ><span class="land_listing_ico"></span>Property Listing </a></li>
+                  </ul>
+               </div>
+            </div>
+         </div>
+      </div>
+      <!--Start top  Part-->
+      <form name="propertyUpdateForm" ng-submit="update(propertyUpdateForm.$valid)" novalidate>
+         <div class="container editmargin">
+            <div class="boxshadowcommon col-lg-12">
+               <div class="mycherrysection ">
+                  <div class="row">
+                     <div class="col-lg-12">
+                        <div class="mainHd textupper tac">Update Your Property</div>
+                        <div class="smallHd tac colorblue textupper opensemibold font16">Lorem ipsum  </div>
+                        <div class="tac headingimg"><img src="images/headingimg.png"></div>
+                     </div>
+                  </div>
+                  <div class="row">
+                     <div class="col-lg-12">
+                        <div id="top" class="pad5">
+                           <div class="my_formupdate_alerttag clearfix marbot20 ">
+                              <div class="pad10 land_owntxt_full">
+                                 <!-- <md-input-container> -->
+                                 <span class="land_owntxt opensemibold textupper mar-right10">Who OWNS this Property ?</span>
+                                 <div class="positiorel displayinline">
+                                    <md-radio-group name="owner" ng-model="property.owner" ng-required="true">
+                                       <md-radio-button value="user_property" class="displayinline vlign mar-right20 mar0">You </md-radio-button>
+                                       <md-radio-button value="company_property" class="displayinline vlign mar-right20 mar0">  This is company property  </md-radio-button>
+                                    </md-radio-group>
+                                    <div ng-messages="propertyUpdateForm.owner.$error" class="error_tag" ng-show="propertyUpdateForm.$submitted">
+                                       <p ng-message="required">Who owns this property ?</p>
+                                    </div>
+                                 </div>
+                                 <!-- </md-input-container>	 -->
+                              </div>
+                           </div>
+                           <div class="steptostep">
+                              <ul class="step">
+                                 <li class="one active "><a ng-href="">1</a></li>
+                                 <li class="two "><a ng-href="">2</a></li>
+                                 <li class="three "><a ng-href="">3</a></li>
+                              </ul>
+                           </div>
+                           <!--Start prorty part -->
+                           <div class="prouploadform">
+                              <div class="prouploadformtop opensemibold">1. Property / Room Details</div>
+                              <div class="prouploadforminner clearfix">
+                                 <!-- 
+                                    UK Postcode pattern match reference (https://gist.github.com/simonwhitaker/5748487)
+                                    	 -->
+                                 <div class="my_update_form-L fl padright120">
+                                    <label class="opensemibold ">Postcode</label>
+                                    <input type="text" name="postcode" class="traderstopserchselect" placeholder="Postcode"
+                                       ng-model="property.address.postcode"
+                                       ng-class="{ 'errorborder': propertyUpdateForm.postcode.$touched && propertyUpdateForm.postcode.$invalid || propertyUpdateForm.postcode.$invalid && propertyUpdateForm.$submitted || postcodeinvalid }"
+                                       ng-required="true">
+                                    <md-button ng-click="findByPostcode(true)" class="serchbtn md-raised margin2cutom md-primary btnComn">LOOK UP</md-button>
+                                    <div class="error_tag" ng-show="postcodeinvalid">
+                                       <p>{{postcode_response_message || 'Postcode is invalid'}}</p>
+                                    </div>
+                                    <div class="error_tag" 
+                                       ng-messages="propertyUpdateForm.postcode.$error"   
+                                       ng-show="propertyUpdateForm.postcode.$touched || propertyUpdateForm.$submitted">
+                                       <p ng-message="required">Postcode is required.</p>
+                                    </div>
+                                 </div>
+                                 <div class="my_update_form-L fr">
+                                    <label class="opensemibold ">Property For</label>
+                                    <md-select name="property_for" placeholder="Select Property For" class="traderstopserchselect selectlogin99 m-t-0 md-no-underline m-b-0" 
+                                       ng-class="{ 'errorborder': propertyUpdateForm.property_for.$touched && propertyUpdateForm.property_for.$invalid || propertyUpdateForm.property_for.$invalid && propertyUpdateForm.$submitted }" 
+                                       md-no-asterisk 
+                                       ng-model="property.property_for"
+                                       ng-required="true">
+                                       <md-option value="sale">For Sale</md-option>
+                                       <md-option value="rent">For Rent</md-option>
+                                    </md-select>
+                                    <div ng-messages="propertyUpdateForm.property_for.$error" class="error_tag"  ng-show="propertyUpdateForm.property_for.$touched || propertyUpdateForm.$submitted">
+                                       <p ng-message="required">Please select property type</p>
+                                    </div>
+                                 </div>
+                                 <div class="my_update_form-L fl">
+                                    <label class="opensemibold ">Flat or House Number (kept private) &amp; First Line of Address</label>
+                                    <input type="text" name="house_number" class="traderstopserchselect" placeholder="Flat or House Number" 
+                                       ng-model="property.address.house_number"
+                                       ng-class="{ 'errorborder': propertyUpdateForm.house_number.$touched && propertyUpdateForm.house_number.$invalid || propertyUpdateForm.type.$invalid && propertyUpdateForm.$submitted}" 
+                                       ng-required="true">      
+                                    <div ng-messages="propertyUpdateForm.house_number.$error" class="error_tag" 
+                                       ng-show="propertyUpdateForm.house_number.$touched || propertyUpdateForm.$submitted">
+                                       <p ng-message="required">House Number is required.</p>
+                                    </div>
+                                 </div>
+                                 <div class="my_update_form-L fr">
+                                    <label class="opensemibold ">Property Type</label>
+                                    <md-select name="property_type" placeholder="Select Property Type" class="traderstopserchselect selectlogin99 m-t-0 md-no-underline m-b-0" 
+                                       ng-class="{ 'errorborder': propertyUpdateForm.property_type.$touched && propertyUpdateForm.property_type.$invalid || propertyUpdateForm.property_type.$invalid && propertyUpdateForm.$submitted }" 
+                                       md-no-asterisk 
+                                       ng-model="property.property_type" 
+                                       ng-model-options="{trackBy: '$value._id'}"
+                                       ng-required="true">
+                                       <md-option ng-repeat="property_type in property_rental" ng-value="property_type">{{property_type.name}}</md-option>
+                                    </md-select>
+                                    <div ng-messages="propertyUpdateForm.property_type.$error" class="error_tag"  ng-show="propertyUpdateForm.property_type.$touched || propertyUpdateForm.$submitted">
+                                       <p ng-message="required">Please select property type</p>
+                                    </div>
+                                 </div>
+                                 <div class="my_update_form-L fl">
+                                    <label class="opensemibold ">Address Line 1</label>
+                                    <md-select name="address1" placeholder="Address Line 1" class="traderstopserchselect selectlogin99 m-t-0 md-no-underline m-b-0" 
+                                       ng-class="{ 'errorborder': propertyUpdateForm.address1.$touched && propertyUpdateForm.address1.$invalid || propertyUpdateForm.address1.$invalid && propertyUpdateForm.$submitted}" 
+                                       ng-model="property.address.address1" 
+                                       md-no-asterisk 
+                                       ng-required="true">
+                                       <md-option ng-click="getIndex($index)" ng-repeat="address in postcodeResults | unique : 'line_1'" ng-if="address.line_1 !== ''" ng-value="address.line_1">{{address.line_1}}</md-option>
+                                    </md-select>
+                                    <div ng-messages="propertyUpdateForm.address1.$error" class="error_tag" 
+                                       ng-show="propertyUpdateForm.address1.$touched || propertyUpdateForm.$submitted">
+                                       <p ng-message="required">Please select address 1</p>
+                                    </div>
+                                 </div>
+                                 <div class="my_update_form-L fr">
+                                    <label class="opensemibold ">Number of Bedrooms in Property</label>
+                                    <md-select name="beds" placeholder="Please select number of bedrooms" class="traderstopserchselect selectlogin99 m-t-0 md-no-underline m-b-0" 
+                                       md-no-asterisk
+                                       ng-model="property.beds"
+                                       ng-class="{ 'errorborder': propertyUpdateForm.beds.$touched && propertyUpdateForm.beds.$invalid || propertyUpdateForm.beds.$invalid && propertyUpdateForm.$submitted}" 
+                                       ng-required="true">
+                                       <md-option value="0">Studio</md-option>
+                                       <md-option ng-repeat="bed in [1,2,3,4,5,6,7,8,9,10]" value="{{bed}}">{{bed}}</md-option>
+                                    </md-select>
+                                    <div ng-messages="propertyUpdateForm.beds.$error" class="error_tag" 
+                                       ng-show="propertyUpdateForm.beds.$touched || propertyUpdateForm.$submitted">
+                                       <p ng-message="required">Please select number of bedrooms</p>
+                                    </div>
+                                 </div>
+                                 <div class="my_update_form-L fl">
+                                    <label class="opensemibold ">Address Line 2 (optional)</label>
+                                    <md-select name="address2" placeholder="Address Line 2" class="traderstopserchselect selectlogin99 m-t-0 md-no-underline m-b-0" 
+                                       ng-model="property.address.address2" 
+                                       md-no-asterisk>
+                                       <md-option ng-repeat="address in postcodeResults | unique : 'line_2'" ng-if="address.line_2 !== ''" ng-value="address.line_2">{{address.line_2}}</md-option>
+                                    </md-select>
+                                 </div>
+                                 <div class="my_update_form-L fr">
+                                    <label class="opensemibold ">Number of Bathrooms in Property</label>
+                                    <md-select name="bathroom" placeholder="Please Select" class="traderstopserchselect selectlogin99 m-t-0 md-no-underline m-b-0" 
+                                       ng-class="{ 'errorborder': propertyUpdateForm.bathroom.$touched && propertyUpdateForm.bathroom.$invalid || propertyUpdateForm.bathroom.$invalid && propertyUpdateForm.$submitted}" 
+                                       ng-model="property.bathroom" 
+                                       md-no-asterisk 
+                                       ng-required="true">
+                                       <md-option ng-repeat="bathroom in [1,2,3,4,5,6,7,8,9,10]" value="{{bathroom}}">{{bathroom}}</md-option>
+                                    </md-select>
+                                    <div ng-messages="propertyUpdateForm.bathroom.$error" class="error_tag" 
+                                       ng-show="propertyUpdateForm.bathroom.$touched || propertyUpdateForm.$submitted">
+                                       <p ng-message="required">Please select number of bathroom</p>
+                                    </div>
+                                 </div>
+                                 <div class="my_update_form-L fl">
+                                    <label class="opensemibold ">County</label>
+                                    <md-select name="county" placeholder="Please select county" class="traderstopserchselect selectlogin99 m-t-0 md-no-underline m-b-0" 
+                                       ng-model="property.address.county"
+                                       md-container-class="m-t-10" md-no-asterisk
+                                       ng-class="{ 'errorborder': propertyUpdateForm.county.$touched && propertyUpdateForm.county.$invalid || propertyUpdateForm.county.$invalid && propertyUpdateForm.$submitted}" 
+                                       ng-required="true">
+                                       <md-option ng-repeat="address in postcodeResults | unique : 'county'" ng-value="address.county">{{address.county}}</md-option>
+                                    </md-select>
+                                    <div ng-messages="propertyUpdateForm.county.$error" class="error_tag" 
+                                       ng-show="propertyUpdateForm.county.$touched || propertyUpdateForm.$submitted">
+                                       <p ng-message="required">Please select county</p>
+                                    </div>
+                                 </div>
+                                 <div class="my_update_form-L fr">
+                                    <label class="opensemibold ">Parking Options</label>
+                                    <md-select name="parking" placeholder="Please select parking option" class="traderstopserchselect selectlogin99 m-t-0 md-no-underline m-b-0" 
+                                       md-no-asterisk
+                                       ng-model="property.parking"
+                                       ng-class="{ 'errorborder': propertyUpdateForm.parking.$touched && propertyUpdateForm.parking.$invalid || propertyUpdateForm.parking.$invalid && propertyUpdateForm.$submitted}" 
+                                       ng-required="true"
+                                       ng-model-options="{trackBy: '$value._id'}">
+                                       <md-option ng-repeat="parking in parkingOptions" ng-value="parking">{{parking.name}}</md-option>
+                                    </md-select>
+                                    <div ng-messages="propertyUpdateForm.parking.$error" class="error_tag" 
+                                       ng-show="propertyUpdateForm.parking.$touched || propertyUpdateForm.$submitted">
+                                       <p ng-message="required">Please select parking options</p>
+                                    </div>
+                                 </div>
+                                 <div class="my_update_form-L fl">
+                                    <label class="opensemibold">Town</label>
+                                    <md-select name="town" placeholder="Please select town" class="traderstopserchselect selectlogin99 m-t-0 md-no-underline m-b-0" 
+                                       md-container-class="m-t-10" md-no-asterisk
+                                       ng-model="property.address.town"
+                                       ng-class="{ 'errorborder': propertyUpdateForm.town.$touched && propertyUpdateForm.town.$invalid || propertyUpdateForm.town.$invalid && propertyUpdateForm.$submitted}" 
+                                       ng-required="true">
+                                       <md-option ng-repeat="address in postcodeResults | unique : 'post_town'" ng-value="address.post_town">{{address.post_town}}</md-option>
+                                    </md-select>
+                                    <div ng-messages="propertyUpdateForm.town.$error" class="error_tag" 
+                                       ng-show="propertyUpdateForm.town.$touched || propertyUpdateForm.$submitted">
+                                       <p ng-message="required">Please select town</p>
+                                    </div>
+                                 </div>
+
+                                 <div class="my_update_form-L fr">
+                                    <label class="opensemibold ">Heating Options</label>
+                                    <md-select name="heating" placeholder="Please select heating option" class="traderstopserchselect selectlogin99 m-t-0 md-no-underline m-b-0" 
+                                       md-no-asterisk
+                                       ng-model="property.heating"
+                                       ng-class="{ 'errorborder': propertyUpdateForm.heating.$touched && propertyUpdateForm.heating.$invalid || propertyUpdateForm.heating.$invalid && propertyUpdateForm.$submitted}" 
+                                       ng-required="false"
+                                       ng-model-options="{trackBy: '$value._id'}">
+                                       <md-option ng-repeat="h in heating" ng-value="h">{{h.name}}</md-option>
+                                    </md-select>
+                                    <!-- <div ng-messages="propertyUpdateForm.heating.$error" class="error_tag" 
+                                       ng-show="propertyUpdateForm.heating.$touched || propertyUpdateForm.$submitted">
+                                           <p ng-message="required">Please select heating options</p>
+                                       </div> -->  
+                                 </div>
+                                 <div class="my_update_form-L fl">
+                                    <label class="opensemibold ">Location Options</label>
+                                    <md-select name="location" placeholder="Please select location option" class="traderstopserchselect selectlogin99 m-t-0 md-no-underline m-b-0" 
+                                       md-no-asterisk
+                                       ng-model="property.location"
+                                       ng-class="{ 'errorborder': propertyUpdateForm.location.$touched && propertyUpdateForm.location.$invalid || propertyUpdateForm.location.$invalid && propertyUpdateForm.$submitted}" 
+                                       ng-required="false"
+                                       ng-model-options="{trackBy: '$value._id'}">
+                                       <md-option ng-repeat="l in location" ng-value="l">{{l.name}}</md-option>
+                                    </md-select>
+                                    <!-- <div ng-messages="propertyUpdateForm.location.$error" class="error_tag" 
+                                       ng-show="propertyUpdateForm.location.$touched || propertyUpdateForm.$submitted">
+                                           <p ng-message="required">Please select location options</p>
+                                       </div>   -->
+                                 </div>
+                                 <div class="my_update_form-L fr">
+                                    <label class="opensemibold ">Local Authority</label>
+                                    <md-select name="local_authority" placeholder="Please select local authority" class="traderstopserchselect selectlogin99 m-t-0 md-no-underline m-b-0" 
+                                       md-no-asterisk
+                                       ng-model="property.local_authority"
+                                       ng-class="{ 'errorborder': propertyUpdateForm.local_authority.$touched && propertyUpdateForm.local_authority.$invalid || propertyUpdateForm.local_authority.$invalid && propertyUpdateForm.$submitted}" 
+                                       ng-required="false"
+                                       ng-model-options="{trackBy: '$value._id'}">
+                                       <md-option ng-repeat="aX in authority" ng-value="aX">{{aX.name}}</md-option>
+                                    </md-select>
+                                    <!-- <div ng-messages="propertyUpdateForm.local_authority.$error" class="error_tag" 
+                                       ng-show="propertyUpdateForm.local_authority.$touched || propertyUpdateForm.$submitted">
+                                           <p ng-message="required">Please select Local Authority</p>
+                                       </div>   -->
+                                 </div>
+                                 <div class="my_update_form-L fl">
+                                    <label class="opensemibold ">Property Age</label>
+                                    <md-select name="age" placeholder="Please select property age" class="traderstopserchselect selectlogin99 m-t-0 md-no-underline m-b-0" 
+                                       md-no-asterisk
+                                       ng-model="property.age"
+                                       ng-class="{ 'errorborder': propertyUpdateForm.age.$touched && propertyUpdateForm.age.$invalid || propertyUpdateForm.age.$invalid && propertyUpdateForm.$submitted}" 
+                                       ng-required="false"
+                                       ng-model-options="{trackBy: '$value._id'}">
+                                       <md-option ng-repeat="a in age" ng-value="a">{{a.name}}</md-option>
+                                    </md-select>
+                                    <!-- <div ng-messages="propertyUpdateForm.age.$error" class="error_tag" 
+                                       ng-show="propertyUpdateForm.age.$touched || propertyUpdateForm.$submitted">
+                                           <p ng-message="required">Please select property age</p>
+                                       </div>  --> 
+                                 </div>
+                                 <div class="my_update_form-L fr">
+                                    <label class="opensemibold ">Property Style</label>
+                                    <md-select name="style" placeholder="Please select property style" class="traderstopserchselect selectlogin99 m-t-0 md-no-underline m-b-0" 
+                                       md-no-asterisk
+                                       ng-model="property.style"
+                                       ng-class="{ 'errorborder': propertyUpdateForm.style.$touched && propertyUpdateForm.style.$invalid || propertyUpdateForm.style.$invalid && propertyUpdateForm.$submitted}" 
+                                       ng-required="false"
+                                       ng-model-options="{trackBy: '$value._id'}">
+                                       <md-option ng-repeat="s in style" ng-value="s">{{s.name}}</md-option>
+                                    </md-select>
+                                    <!-- <div ng-messages="propertyUpdateForm.style.$error" class="error_tag" 
+                                       ng-show="propertyUpdateForm.style.$touched || propertyUpdateForm.$submitted">
+                                           <p ng-message="required">Please select property style</p>
+                                       </div> -->  
+                                 </div>
+                                 <div class="my_update_form-L fl">
+                                    <label class="opensemibold ">EPC Rating </label>
+                                    <md-select name="epc_rating" placeholder="Please select your EPC Rating" class="traderstopserchselect selectlogin99 m-t-0 md-no-underline m-b-0" 
+                                       ng-model="property.epc_rating"
+                                       md-no-asterisk
+                                       ng-class="{ 'errorborder': propertyUpdateForm.epc_rating.$touched && propertyUpdateForm.epc_rating.$invalid || propertyUpdateForm.epc_rating.$invalid && propertyUpdateForm.$submitted}" 
+                                       ng-required="true">
+                                       <md-option ng-repeat="epc in ['A','B','C','D','E','F','G']" value="{{epc}}">{{epc}}</md-option>
+                                    </md-select>
+                                    <div ng-messages="propertyUpdateForm.epc_rating.$error" class="error_tag" 
+                                       ng-show="propertyUpdateForm.epc_rating.$touched || propertyUpdateForm.$submitted">
+                                       <p ng-message="required">Please select your EPC Rating</p>
+                                    </div>
+                                 </div>
+                                 <div class="my_update_form-L fr" ng-if="property.property_for === 'rent'">
+                                    <label class="opensemibold ">Furnishing Options </label>
+                                    <md-select name="furnished" placeholder="Please Select Furnishing Option" class="traderstopserchselect selectlogin99 m-t-0 md-no-underline m-b-0" 
+                                       ng-class="{ 'errorborder': propertyUpdateForm.furnished.$touched && propertyUpdateForm.furnished.$invalid || propertyUpdateForm.furnished.$invalid && propertyUpdateForm.$submitted}" 
+                                       md-container-class="m-t-10" 
+                                       md-no-asterisk
+                                       ng-model="property.furnished"
+                                       ng-required="property.property_for === 'rent'">
+                                       <md-option value="furnished">Furnished</md-option>
+                                       <md-option value="unfurnished">Unfurnished</md-option>
+                                       <md-option value="partially-furnished">Part-furnished</md-option>
+                                    </md-select>
+                                    <div ng-messages="propertyUpdateForm.furnished.$error" class="error_tag" 
+                                       ng-show="propertyUpdateForm.furnished.$touched || propertyUpdateForm.$submitted">
+                                       <p ng-message="required">Please select furnishing option</p>
+                                    </div>
+                                 </div>
+
+                                 <div class="my_update_form-full clearfix">
+                                    <label class="opensemibold ">Additonal Features</label>
+                                    <md-select ng-model="property.features" placeholder="Select Additonal Features" 
+                                       md-on-close="clearSearchTerm()" 
+                                       ng-model-options="{trackBy: '$value._id'}" multiple>
+                                       <md-select-header>
+                                          <input ng-keydown="keyDownEvent($event)" ng-model="searchTerm" 
+                                             type="search" 
+                                             placeholder="Search for a features.." 
+                                             class="traderstopserchselect">
+                                       </md-select-header>
+                                       <md-optgroup label="vegetables">
+                                          <md-option ng-value="feature" ng-repeat="feature in featuresX | filter:searchTerm">{{feature.name}}</md-option>
+                                       </md-optgroup>
+                                    </md-select>
+                                 </div>
+                                 <div class="my_update_form-full positiorel clearfix">
+                                    <label class="opensemibold ">Description</label>  
+                                    <textarea name="description" class="traderstopserchselect height120"
+                                       ng-class="{ 'errorborder': propertyUpdateForm.description.$touched && propertyUpdateForm.description.$invalid || propertyUpdateForm.description.$invalid && propertyUpdateForm.$submitted}" 
+                                       ng-model="property.description" 
+                                       ></textarea>
+                                    <!-- <div ng-messages="propertyUpdateForm.description.$error" class="error_tag"  ng-show="propertyUpdateForm.description.$touched || profileForm.$submitted">
+                                       <p ng-message="required">Description is required.</p>
+                                       <p ng-message="minlength">Description must be atleast of 600 characters</p>
+                                       </div>     -->       
+                                 </div>
+                                 <div class="my_update_form-full mar0 clearfix">
+                                    <ul>
+                                       <li>1. An overview of the condition of the property</li>
+                                       <li>2. Details of local shops, restaurants, transport links, school and entertainments.</li>
+                                       <li>3. Any other details you feel would be of interest to prospective tenants about your neighbourhood. Try to write at least 600 words, more is better. </li>
+                                    </ul>
+                                 </div>
+                              </div>
+                           </div>
+                           <!--Start prorty part -->
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+         <!-- if property for rent -->
+         <div class="container marbot30" ng-if="property.property_for === 'rent'">
+            <div class="boxshadowcommon col-lg-12">
+               <div class="clearfix mycherrysection">
+                  <div class="pad5 pad-t-0">
+                     <!--Start prorty part -->
+                     <div class="prouploadform">
+                        <div class="prouploadformtop opensemibold">2. Tenancy Details, Restrictions &amp; Features</div>
+                        <div class="prouploadforminner clearfix">
+                           <div class="my_update_form-L fl secondsep">
+                              <div class="my_update_form-full univercal">
+                                 <label class="opensemibold">Earliest Move In Date</label>
+                                 <md-datepicker class="traderstopserchselect serchinput pad7"
+                                    name="available_date"
+                                    ng-required="true" 
+                                    ng-model="$parent.available_date" 
+                                    md-min-date="minDate" 
+                                    md-hide-icons="triangle"
+                                    md-open-on-focus="" 
+                                    ng-class="{ 'errorborder': propertyUpdateForm.available_date.$touched && propertyUpdateForm.available_date.$invalid || propertyUpdateForm.available_date.$invalid && propertyUpdateForm.$submitted }" 
+                                    md-placeholder="Enter property available date"></md-datepicker>
+                                 <div class="error_tag" 
+                                    ng-messages="propertyUpdateForm.available_date.$error"   
+                                    ng-show="propertyUpdateForm.available_date.$touched || propertyUpdateForm.$submitted">
+                                    <p ng-message="required">Available date is required.</p>
+                                    <p ng-message="mindate">Available date is invalid</p>
+                                 </div>
+                              </div>
+                              <div class="my_update_form-full positiorel">
+                                 <label class="opensemibold ">Monthly Rent For Entire Property (£) </label>
+                                 <input type="text" name="monthly_rent" class="traderstopserchselect" placeholder="Monthly Rent in (£)"
+                                    ng-keyup="monthly(property.monthly_rent)"
+                                    ng-model="property.monthly_rent"
+                                    ng-class="{ 'errorborder': propertyUpdateForm.monthly_rent.$touched && propertyUpdateForm.monthly_rent.$invalid || propertyUpdateForm.monthly_rent.$invalid && propertyUpdateForm.$submitted }" 
+                                    ng-pattern="/^[1-9]\d*([.]\d+)?$/"
+                                    ng-required="true">
+                                 <div class="error_tag"
+                                    ng-messages="propertyUpdateForm.monthly_rent.$error"
+                                    ng-show="propertyUpdateForm.monthly_rent.$touched || propertyUpdateForm.$submitted">
+                                    <p ng-message="required">Monthly Rent is required.</p>
+                                    <p ng-message="pattern">Please enter a valid amount.</p>
+                                 </div>
+                              </div>
+                              <div class="my_update_form-full positiorel">
+                                 <label class="opensemibold">Weekly Rent For Entire Property (£)</label>
+                                 <input type="text" name="weekly_rent" class="traderstopserchselect" placeholder="Weekly Rent in (£)"
+                                    ng-keyup="weekly(property.weekly_rent)"
+                                    ng-model="property.weekly_rent"
+                                    ng-pattern="/^\d+([.]\d+)?$/"
+                                    ng-class="{ 'errorborder': propertyUpdateForm.weekly_rent.$touched && propertyUpdateForm.weekly_rent.$invalid || propertyUpdateForm.weekly_rent.$invalid && propertyUpdateForm.$submitted }" 
+                                    ng-required="true">
+                                 <div class="error_tag"
+                                    ng-messages="propertyUpdateForm.weekly_rent.$error"
+                                    ng-show="propertyUpdateForm.weekly_rent.$touched || propertyUpdateForm.$submitted">
+                                    <p ng-message="required">Weekly Rent is required.</p>
+                                    <p ng-message="pattern">Please enter a valid amount.</p>
+                                 </div>
+                              </div>
+                              <div class="my_update_form-full positiorel">
+                                 <label class="opensemibold">Deposit Amount (£)</label>
+                                 <input type="text" name="deposit_amount" class="traderstopserchselect" placeholder="Deposit Amount (£)" 
+                                    ng-model="property.deposit_amount"
+                                    ng-pattern="/^[1-9]\d*([.]\d+)?$/"
+                                    ng-class="{ 'errorborder': propertyUpdateForm.deposit_amount.$touched && propertyUpdateForm.deposit_amount.$invalid || propertyUpdateForm.deposit_amount.$invalid && propertyUpdateForm.$submitted }" 
+                                    ng-required="true">
+                                 <div class="error_tag"
+                                    ng-messages="propertyUpdateForm.deposit_amount.$error"
+                                    ng-show="propertyUpdateForm.deposit_amount.$touched || propertyUpdateForm.$submitted">
+                                    <p ng-message="required">Deposit Amount is required.</p>
+                                    <p ng-message="pattern">Please enter a valid amount.</p>
+                                 </div>
+                              </div>
+                              <div class="my_update_form-full positiorel">
+                                 <label class="opensemibold ">Minimum Tenancy Length (Months)</label>
+                                 <input type="text" name="minimum_tenancy_length" class="traderstopserchselect" placeholder="Minimum Tenancy Length" 
+                                    ng-model="property.minimum_tenancy_length"
+                                    ng-pattern="/^[1-9]\d*$/"
+                                    ng-class="{ 'errorborder': propertyUpdateForm.minimum_tenancy_length.$touched && propertyUpdateForm.minimum_tenancy_length.$invalid || propertyUpdateForm.minimum_tenancy_length.$invalid && propertyUpdateForm.$submitted }" 
+                                    ng-required="true">
+                                 <div class="error_tag"
+                                    ng-messages="propertyUpdateForm.minimum_tenancy_length.$error"
+                                    ng-show="propertyUpdateForm.minimum_tenancy_length.$touched || propertyUpdateForm.$submitted">
+                                    <p ng-message="required">Minimum Tenancy Length.</p>
+                                    <p ng-message="pattern">Please enter a valid length.</p>
+                                 </div>
+                              </div>
+                              <div class="my_update_form-full positiorel">
+                                 <label class="opensemibold ">Tenancy Agreement Length </label>
+                                 <input type="text" name="tenancy_agreement_length" class="traderstopserchselect" placeholder="Tenancy Agreement Length" 
+                                    ng-model="property.tenancy_agreement_length"
+                                    ng-pattern="/^[1-9]\d*$/"
+                                    ng-class="{ 'errorborder': propertyUpdateForm.tenancy_agreement_length.$touched && propertyUpdateForm.tenancy_agreement_length.$invalid || propertyUpdateForm.tenancy_agreement_length.$invalid && propertyUpdateForm.$submitted }" 
+                                    ng-required="true">
+                                 <div class="error_tag"
+                                    ng-messages="propertyUpdateForm.tenancy_agreement_length.$error"
+                                    ng-show="propertyUpdateForm.tenancy_agreement_length.$touched || propertyUpdateForm.$submitted">
+                                    <p ng-message="required">Tenancy Agreement Length.</p>
+                                    <p ng-message="pattern">Please enter a valid length.</p>
+                                 </div>
+                              </div>
+                              <div class="my_update_form-full univercal  positiorel">
+                                 <label class="opensemibold ">Availability for Viewings</label>
+                                 <md-datepicker name="viewing_date" class="traderstopserchselect serchinput pad7" 
+                                    md-placeholder="Availability for Viewings"  
+                                    md-hide-icons="triangle"
+                                    md-min-date="minDate" 
+                                    md-max-date="available_date" 
+                                    md-open-on-focus=""
+                                    ng-required="true"
+                                    ng-model="$parent.viewing_date"
+                                    ng-class="{ 'errorborder': propertyUpdateForm.viewing_date.$touched && propertyUpdateForm.viewing_date.$invalid || propertyUpdateForm.viewing_date.$invalid && propertyUpdateForm.$submitted }"></md-datepicker>
+                                 <div class="error_tag" 
+                                    ng-messages="propertyUpdateForm.viewing_date.$error"   
+                                    ng-show="propertyUpdateForm.viewing_date.$touched || propertyUpdateForm.$submitted">
+                                    <p ng-message="required">Viewing date is required.</p>
+                                    <p ng-message="mindate">Available date is invalid</p>
+                                 </div>
+                              </div>
+                              <div class="my_update_form-full positiorel mar0 clearfix">
+                                 <md-checkbox ng-model="property.let_agreed" class="mar0" aria-label="Checkbox 1">Let Agreed </md-checkbox>
+                              </div>
+                           </div>
+                           <div class="my_update_form-L fr">
+                              <div class="my_update_form-full marbot30">
+                                 <label class="opensemibold ">Please tell us about any additional exclusion / additions to be placed 
+                                 on your advert.</label>
+                              </div>
+                              <div class="my_update_form-full clearfix" ng-if="x.type === 'rent' || x.type === 'both'" ng-repeat="x in exclusion">
+                                 <div class="fl lineheight25">
+                                    <label class="opensemibold ">{{x.name}} </label>
+                                 </div>
+                                 <div class="fr ">
+                                    <md-switch ng-model="property.additional_exclusion[x._id]" class="mar0" aria-label="Switch 1" ng-true-value="'Yes'" >
+                                       {{ property.additional_exclusion[x._id] || 'No' }}
+                                    </md-switch>
+                                 </div>
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                     <!--Start prorty part -->
+                  </div>
+               </div>
+            </div>
+         </div>
+         <!-- If property for sale -->
+         <div class="container" ng-if="property.property_for === 'sale'">
+            <div class="boxshadowcommon col-lg-12">
+               <div class="clearfix mycherrysection">
+                  <div class="pad5 pad-t-0">
+                     <!--Start prorty part -->
+                     <div class="prouploadform">
+                        <div class="prouploadformtop opensemibold">2. Property Sale Details and Features</div>
+                        <div class="prouploadforminner clearfix">
+                           <div class="my_update_form-L fl secondsep">
+                              <div class="my_update_form-full univercal">
+                                 <label class="opensemibold">Available Date</label>
+                                 <md-datepicker class="traderstopserchselect serchinput pad7"
+                                    name="available_date"
+                                    ng-required="true" 
+                                    ng-model="$parent.available_date" 
+                                    md-min-date="minDate" 
+                                    md-hide-icons="triangle"
+                                    md-open-on-focus="" 
+                                    ng-class="{ 'errorborder': propertyUpdateForm.available_date.$touched && propertyUpdateForm.available_date.$invalid || propertyUpdateForm.available_date.$invalid && propertyUpdateForm.$submitted }" 
+                                    md-placeholder="Enter property available date"></md-datepicker>
+                                 <div class="error_tag" 
+                                    ng-messages="propertyUpdateForm.available_date.$error"   
+                                    ng-show="propertyUpdateForm.available_date.$touched || propertyUpdateForm.$submitted">
+                                    <p ng-message="required">Available date is required.</p>
+                                    <p ng-message="mindate">Available date is invalid</p>
+                                 </div>
+                              </div>
+                              <div class="my_update_form-full positiorel">
+                                 <label class="opensemibold">Sale Price (£) </label>
+                                 <input type="text" name="sale_price" class="traderstopserchselect" placeholder="Sale Price (£)" 
+                                    ng-model="property.sale_price"
+                                    ng-pattern="/^[1-9]\d*([.]\d+)?$/"
+                                    ng-class="{ 'errorborder': propertyUpdateForm.sale_price.$touched && propertyUpdateForm.sale_price.$invalid || propertyUpdateForm.sale_price.$invalid && propertyUpdateForm.$submitted }" 
+                                    ng-required="true">
+                                 <div class="error_tag"
+                                    ng-messages="propertyUpdateForm.sale_price.$error"
+                                    ng-show="propertyUpdateForm.sale_price.$touched || propertyUpdateForm.$submitted">
+                                    <p ng-message="required">Sale Price is required.</p>
+                                    <p ng-message="pattern">Please enter a valid amount.</p>
+                                 </div>
+                              </div>
+                              <div class="my_update_form clearfix">
+                                 <ul class="addbasket_list">
+                                    <li class="clearfix">
+                                       <div class="fl positiorel add_check">
+                                          <md-checkbox ng-model="property.under_offer"  class="mar0 textupper font15 lineheight35" aria-label="Checkbox">Under Offer</md-checkbox>
+                                       </div>
+                                    </li>
+                                    <li class="clearfix">
+                                       <div class="fl positiorel add_check">
+                                          <md-checkbox ng-model="property.sold_stc" class="mar0 textupper font15 lineheight35" aria-label="Checkbox1">Sold (STC)</md-checkbox>
+                                       </div>
+                                    </li>
+                                    <li class="clearfix">
+                                       <div class="fl positiorel add_check">
+                                          <md-checkbox ng-model="property.reserved" class="mar0 textupper font15 lineheight35" aria-label="Checkbox2">Reserved</md-checkbox>
+                                       </div>
+                                    </li>
+                                 </ul>
+                              </div>
+                           </div>
+                           <div class="my_update_form-L fr">
+                              <div class="my_update_form-full marbot30">
+                                 <label class="opensemibold ">Please tell us about any additional exclusion / additions to be placed 
+                                 on your advert.</label>
+                              </div>
+                              <div class="my_update_form-full clearfix" ng-if="x.type === 'sale' || x.type === 'both'" ng-repeat="x in exclusion">
+                                 <div class="fl lineheight25">
+                                    <label class="opensemibold ">{{x.name}} </label>
+                                 </div>
+                                 <div class="fr ">
+                                    <md-switch ng-model="property.additional_exclusion[x._id]" class="mar0" aria-label="Switch 1" ng-true-value="'Yes'">
+                                       {{ property.additional_exclusion[x._id] || 'No' }}
+                                    </md-switch>
+                                 </div>
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                     <!--Start prorty part -->
+                  </div>
+               </div>
+            </div>
+         </div>
+         <div class="container ">
+            <div class="boxshadowcommon col-lg-12">
+               <div class="clearfix mycherrysection">
+                  <div class="pad5 pad-t-0">
+                     <!--Start prorty part -->
+                     <div class="prouploadform">
+                        <div class="prouploadformtop opensemibold">3. Photos, Videos and Other Media</div>
+                        <div class="prouploadforminner pad-b-5 clearfix">
+                           <div class="my_update_form-full marbot20">
+                              <label class="opensemibold textupper">Need a better photo or a floor plan ? Our Research from property rentals show protessional quality photographs obtain a 10% higher rental value.</label>
+                              <div class="my_update_form-L martop10 positiorel">
+                                 <a ng-href="" class="opencam">
+                                    <md-icon>camera_alt</md-icon>
+                                    Learn More About Professional Photography Options
+                                    <div class="addbasket_list_tooltop boxshadowcommon"> @ £85.00 tick to odd to your basket "Professional photos can improve your tenancy viewing and help you achieve a higher rental income. You will keep the 8 photos for future use. </div>
+                                 </a>
+                              </div>
+                           </div>
+                           <div class="my_update_form-full marbot20">
+                              <label class="opensemibold textupper">Have your own photos ? Please select the photos you would like to display on your listing page.</label>
+                              <div class="my_update_form clearfix">
+                                 <div class="selectprdrop">
+                                    <h3 class="opensemibold textupper font18">Select Files</h3>
+                                    <p class="">Add files to the upload queue and click the start button.</p>
+                                 </div>
+                                 <div class="dragandrop marbot20">
+                                    <!-- <img src="images/uploadfloor.png" style="width: 100%;"> -->
+                                    <div class="dropzone" getDropzone="dropInstance(dropzone)" dropzone="dropzoneConfig" id="dropzone">
+                                       <div class="dz-default dz-message"> Drag and drop files here or click to upload </div>
+                                    </div>
+                                    <div class="my_update_form-full positiorel">
+                                       <div class="row" ng-init="xchexck=1">
+                                          <md-radio-group name="cover_photo" ng-model="property.cover_photo.name">
+                                             <div ng-repeat="image in property.image" class="col-xs-12 col-sm-6 col-md-3">
+                                                <div class="uploadedproimg">
+                                                   <div class="thumbnailup" style="background: url({{image.thumb_path + image.thumb_name}}) no-repeat top center; background-size: cover;"> </div>
+                                                   <div class="captionup">
+                                                      <md-radio-button ng-click="getImageObj(image)" ng-value="image.name"> Cover Photo </md-radio-button>
+                                                      <md-checkbox ng-if = "property.floor_plan_service" ng-checked="existsFloorPlan(image, property.floor_plan)" ng-click="toggleFloorPlan(image, property.floor_plan)"> Floor Plan 
+                                                      </md-checkbox>
+                                                      <div class="">
+                                                         <md-button ng-click="removePhoto($index,property.image, $event)" class="md-primary md-raised btnpad mar0">Remove</md-button>
+                                                      </div>
+                                                   </div>
+                                                </div>
+                                             </div>
+                                          </md-radio-group>
+                                       </div>
+                                    </div>
+                                 </div>
+                                 <div class="my_update_form-full positiorel">
+                                    <label class="textupper"><strong>Optional :</strong> Add PhotoSynth Share address <a href="https://en.wikipedia.org/wiki/Photosynth" target="_blank">( what is this ? )</a></label>
+                                    <input type="url" name="external_photo_url" ng-model="property.external_photo_url" class="traderstopserchselect"
+                                       ng-class="{ 'errorborder': propertyUpdateForm.external_photo_url.$touched && propertyUpdateForm.external_photo_url.$invalid || propertyUpdateForm.external_photo_url.$invalid && propertyUpdateForm.$submitted }"
+                                       ng-pattern="/^(http:\/\/www\.|https:\/\/www\.|http:\/\/|https:\/\/)[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}(:[0-9]{1,5})?(\/.*)?$/">
+                                    <div class="error_tag" 
+                                       ng-messages="propertyUpdateForm.external_photo_url.$error"   
+                                       ng-show="propertyUpdateForm.external_photo_url.$touched || propertyUpdateForm.$submitted">
+                                       <p ng-message="url">Enter a valid photo address.</p>
+                                       <p ng-message="pattern">Enter a valid photo address.</p>
+                                    </div>
+                                 </div>
+                                 <div class="my_update_form-full mar0 positiorel">
+                                    <label class="textupper"><strong>Optional :</strong> Add Youtube share address</label>
+                                    <input type="url" name="youtube_url" ng-model="property.youtube_url" class="traderstopserchselect" ng-class="{ 'errorborder': propertyUpdateForm.youtube_url.$touched && propertyUpdateForm.youtube_url.$invalid || propertyUpdateForm.youtube_url.$invalid && propertyUpdateForm.$submitted }"
+                                       ng-pattern="/^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|\&v=|\?v=)([^#\&\?]*).*/">
+                                    <div class="error_tag" 
+                                       ng-messages="propertyUpdateForm.youtube_url.$error"   
+                                       ng-show="propertyUpdateForm.youtube_url.$touched || propertyUpdateForm.$submitted">
+                                       <p ng-message="url">Enter a valid youtube url.</p>
+                                       <p ng-message="pattern">Enter a valid youtube url.</p>
+                                    </div>
+                                 </div>
+                              </div>
+                           </div>
+                        </div>
+                        <div ng-if = "property.paid_services.length>'0'" class="prouploadforminner  clearfix" >
+                           <div class="my_update_form clearfix">
+                              <label class="opensemibold textupper font15 marbot20">Purchased Services</label>
+                              <table class="table table-bordered">
+                                 <thead>
+                                    <tr>
+                                       <th>Name</th>
+                                       <th>Price</th>
+                                    </tr>
+                                 </thead>
+                                 <tbody>
+                                    <tr ng-repeat="x in property.paid_services">
+                                       <td>{{x.name}}</td>
+                                       <td>{{x.price | currency : '&pound;' :2 }}</td>
+                                    </tr>
+                                 </tbody>
+                              </table>
+                           </div>
+                        </div>
+                        <div ng-intro-options="IntroOptions" ng-intro-oncomplete="CompletedEvent" ng-intro-onexit="ExitEvent" ng-intro-method="CallMe"></div>
+                        <div class="prouploadforminner clearfix" ng-if="paid_services_info.length > 0">
+                           <div class="my_update_form-full paidserve">
+                              <label class="opensemibold textupper font15 marbot20">Additional Services</label>
+                              <div class="my_update_form clearfix">
+                                 <ul class="addbasket_list">
+                                    <li class="clearfix" ng-repeat="service in paid_services_info">
+                                       <div class="fl positiorel add_check">
+                                          <div ng-if="service.tooltip_text" class="addbasket_list_tooltop boxshadowcommon"> {{service.tooltip_text}} </div>
+                                          <md-checkbox ng-checked="exists(service, property.cart)" ng-click="toggle(service, property.cart)" class="mar0 textupper font15 lineheight35" ng-true-value="'Yes'" ng-false-value="'No'" aria-label="Checkbox{{$index}}">{{service.name}} - (£{{service.price}})</md-checkbox>
+                                       </div>
+                                       <div class="fr add_check_btn">
+                                          <md-button ng-click="toggle(service, property.cart)" ng-class="{'bg-red':exists(service, property.cart)}" class=" textlower detalsprobluebtn md-primary md-raised btnComn">{{exists(service, property.cart) ? 'Remove From Basket':'Add To Basket'}}</md-button>
+                                       </div>
+                                    </li>
+                                 </ul>
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                     <!--Start prorty part -->
+                  </div>
+               </div>
+            </div>
+         </div>
+         <div class="container martop10">
+            <md-button href set-url="/property-listings" class="exploremapsearchgraybtn martop10  mar-right5 md-raised md-primary btnComn">cancel</md-button>
+            <md-button type="submit" class="exploremapsearchbtn martop10 mar-right5 md-raised md-primary btnComn isLoading" ng-disabled="spinner">
+               <span ng-hide="spinner">Update</span>
+               <md-progress-circular ng-show="spinner" class="md-hue-2" md-diameter="20px"></md-progress-circular>
+            </md-button>
+         </div>
+      </form>
+      <div>
+      
+      <md-button  id="step1"  ng-if = "property.cart.length>0" class = "btn-fix md-fab md-mini" ng-click = "checkOut(propertyUpdateForm.$valid)">
+         <md-icon >shopping_basket</md-icon>
+         <md-tooltip md-direction = "top">Click to see basket</md-tooltip>
+      </md-button>
+      
+   </section>
+   <!--Start top serch -->
+</div>
+<!--End middle Part
+

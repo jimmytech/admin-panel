@@ -1,0 +1,139 @@
+<section class="cards" ng-init = "getRequestDetail();">
+   <div class="page-header">
+      <h1>
+         <i class="md md-photo"></i>
+         {{pageHeader}} Request Detail
+      </h1>
+   </div>
+   <div class="row m-b-60"  >
+      <div class="col-md-12">
+         <div class="card bordered" >
+            <div class="card-header frachissdetals">
+               <form name="updateRequestForm" class="form-floating" novalidate="novalidate" ng-submit="updateRequestForm.$valid && updateFranchiseeRequest()">            
+               <div class="row" >
+                  <div class="col-md-12 col-sm-12" ">
+                     <div class="row ">
+                        <div class="col-md-4 col-sm-4 col-xs-12 marbot15">
+                           <label class="hd">First Name:</label>
+                        </div>
+                        <div class="col-md-8 col-sm-8 col-xs-12 marbot15 width-60-p" > 
+                           <label>{{requestDetail.firstname}}</label>
+                        </div>
+                     </div>
+                     <div class="row ">
+                        <div class="col-md-4 col-sm-4 col-xs-12 marbot15">
+                           <label class="hd">Last Name:</label>
+                        </div>
+                        <div class="col-md-8 col-sm-8 col-xs-12 marbot15 width-60-p" > 
+                           <label>{{requestDetail.lastname}}</label>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+               <div class="row">
+                  <div class="col-md-12 col-sm-12">
+                     <div class="row " >
+                        <div class="col-md-4 col-sm-4 col-xs-12 marbot15">
+                           <label class="hd">Phone:</label>
+                        </div>
+                        <div class="col-md-8 col-sm-8 col-xs-12 marbot15 width-60-p" > 
+                           <label>{{requestDetail.phone.telephone}}</label>
+                        </div>                        
+                     </div>
+                  </div>
+               </div>
+               <div class="row">
+                  <div class="col-md-12 col-sm-12"  >
+                     <div class="row " >
+                        <div class="col-md-4 col-sm-4 col-xs-12 marbot15">
+                           <label class="hd">Company:</label>
+                        </div>
+                        <div class="col-md-8 col-sm-8 col-xs-12 marbot15 width-60-p" > 
+                           <label>{{requestDetail.company}}</label>
+                        </div>                         
+                     </div>
+                  </div>
+               </div>
+               <div class="row" >
+                  <div class="col-md-12 col-sm-12"  >
+                     <div class="row " >
+                        <div class="col-md-4 col-sm-4 col-xs-12 marbot15">
+                           <label class="hd">Email:</label>
+                        </div>
+                        <div class="col-md-8 col-sm-8 col-xs-12 marbot15 width-60-p" > 
+                           <label>{{requestDetail.email}}</label>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+               <div class="row">
+                  <div class="col-md-12 col-sm-12"  >
+                     <div class="row ">
+                        <div class="col-md-4 col-sm-4 col-xs-12 marbot15">
+                           <label class="hd">Request Time:</label>
+                        </div>
+                        <div class="col-md-8 col-sm-8 col-xs-12 marbot15" > 
+                           <label> {{ requestDetail.created | date:'MMM d, y h:mm:ss a'}} </label>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+               <div class="row" >
+                  <div class="col-md-12 col-sm-12"  >
+                     <div class="row " >
+                        <div class="col-md-4 col-sm-4 col-xs-12 marbot15">
+                           <label class="hd">Address:</label>
+                        </div>
+                        <div class="col-md-8 col-sm-8 col-xs-12 marbot15 width-60-p" > 
+                           <label> {{ requestDetail.address}} </label>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+               <div class="row ">
+                  <div class="col-md-12 ">
+                     <div class="row">
+                        <div class="col-md-4 col-sm-4 col-xs-12 marbot15">
+                           <label class="hd">Requested Post Code/Area:</label>
+                        </div>
+                        <div class="col-md-8 col-sm-8 col-xs-12 marbot15 width-60-p" > 
+                           <label> {{ requestDetail.intrested_zip}} </label>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+               <div class="row marbot15">
+                  <div class="col-md-12 ">
+                     <div class="row ">
+                        <div class="col-md-4 col-sm-4 col-xs-12 marbot15">
+                           <label class="hd">Notes:</label>
+                        </div>
+                        <div class="col-md-8 col-sm-8 col-xs-12 marbot15 width-60-p " > 
+                           <label> {{ requestDetail.notes}} </label>
+                        </div>
+                     </div>
+                  </div>
+               </div>               
+               <div class="row marbot15">
+                  <div class="col-md-12 ">
+                     <div class="row ">
+                        <div class="col-md-4 col-sm-4 col-xs-12 marbot15">
+                           <label class="hd">Comment:</label>
+                        </div>
+                        <div class="col-md-6 col-sm-6 col-xs-12 marbot15" > 
+                           <input placeholder="Your comment for this account" type="text" class="width100" ng-model = "requestDetail.comment">
+                        </div>
+                     </div>
+                  </div>
+               </div>
+               <div class="form-group clearfix" style="margin-top: 20px;">
+                  <button type="button" ng-click = "assignPostCodePage(requestDetail.intrested_zip)" class="btn btn-primary pull-right ">Next</button>
+                  <button type="button" ng-click = "back();" class="btn btn-default pull-right mar-right10">Cancel</button>
+               </div>
+               </form>
+            </div>
+         </div>
+      </div>
+   </div>
+</section>
+

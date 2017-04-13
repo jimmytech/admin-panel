@@ -1,0 +1,31 @@
+<section  ng-init = "getAdditionalfeatureDataToedit();">
+   <div class="page-header">
+      <h1>
+         <i class="md md-input"></i>
+         {{pageHeader}}
+      </h1>
+   </div>
+   <div class="row  m-b-40">
+   <div class="col-md-3 col-md-push-9">
+      <h5>Validating elements</h5>
+      <p>
+         Push the submit button to check all the validations at once.
+         Resetting will handle resetting the validation messages.
+         
+      </p>
+   </div>
+   <div class="col-md-8 col-md-pull-3">
+         <div class="row white pad-20 ">
+            <form name="fratureform" class="form-floating" novalidate="novalidate" ng-submit="fratureform.$valid &&  update(newadditionalfeature);">
+               <div class="form-group">
+                  <label class="control-label" ng-class ="{'invalid-form' : fratureform.$submitted && fratureform.additional_exclusion.$invalid}" >Additional exclusion*</label>
+                  <input type="text" name="additional_exclusion" class="form-control" ng-model="newadditionalfeature.name" required>
+               </div>                                            
+               <button type="submit" ng-click = "fratureform.$invalid && validate(fratureform);" class="btn btn-primary">Submit</button>
+               <button type="button" ng-click = "back();" class="btn btn-default">Cancel</button>                       
+            </form>
+         </div>
+      </div>
+   </div>
+</section>
+

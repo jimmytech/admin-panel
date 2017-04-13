@@ -1,0 +1,92 @@
+<!--Start middle Part-->
+<div class="midllepart"> 
+    <!--Start top serch -->
+    <section class="bluebg section pad-t-0">  
+        <div class="container">            
+            <div class="col-lg-12 boxshadowcommon">                                    
+                <div class=" mycherrysection clearfix">
+                    <div class="row">
+                            <div class="col-lg-12">
+                                <div class="mainHd textupper tac">My CherryDoor</div>
+                                <div class="smallHd tac">Lorem ipsum dolor sit amet, consectetur adipiscing elit. </div>
+                                <div class="tac headingimg"><img src="images/headingimg.png"></div>
+                            </div>
+                      </div>
+                    <div class="row">
+                        <div class="col-lg-12"> 
+                            <div class="pad5">
+                                <!--Start tab Part-->    
+                                <div class="exploretab mycherrtdashtab marbot30" profile-menu="list"> </div>  
+                                <!--End tab Part-->  
+                                <div class="my_updatepro" request-menu="userRequest"> 
+                                </div>                    
+                                <!--Start inner update Part--> 
+                                <div class="my_formupdate my_cherydasj_table_responsive">
+                                    <table cellspacing="0" cellpadding="0" border="0" class="my_cherydasj_table noborder">
+                                        <tr>
+                                            <!-- <th width="10%">Ref Id</th> -->
+                                            <th width="25%">Address</th>
+                                            <th width="10%">Tenant Name</th>
+                                            <th width="20%">Email</th>
+                                            <th width="15%">Phone No.</th>
+                                            <th width="10%">Referencing</th>
+                                            <th width="10%">Notes</th>
+                                            <th width="10%">Action</th>
+                                        </tr>
+                                        <tr ng-if="enquiries" ng-repeat="enquiry in enquiries">
+                                            <!-- <td >{{enquiry.tenant_enquiries._id | limitTo : 4}}</td> -->
+                                            <td >{{enquiry.tenant_enquiries.property_address}}</td>
+                                            <td >{{enquiry.tenant_enquiries.name}}</td>
+                                            <td ><a href="mailto:{{enquiry.tenant_enquiries.email}}" class="link">{{enquiry.tenant_enquiries.email}}</a></td>
+                                            <td >{{enquiry.tenant_enquiries.phone.telephone}}</td>
+                                            <td >
+                                                <a ng-click="makeReferencing($index, $event)" ng-if="enquiry.tenant_enquiries.referencing === 'scheduled'" href="" class="link">Requested
+                                                <md-tooltip><strong>Referencing requested by landlord</strong></md-tooltip>
+                                                </a>
+                                                <span ng-if="enquiry.tenant_enquiries.referencing !== 'scheduled'" class="textCaptilize">{{enquiry.tenant_enquiries.referencing}}</span>
+                                            </td>
+                                            <td >{{enquiry.tenant_enquiries.comment || '-'}}</td>
+                                            <td class="textCaptilize">{{enquiry.tenant_enquiries.status}}</td>
+                                        </tr>
+                                        <tr ng-if="enquiries.length === 0">
+                                            <td colspan="8"><p class="text-center">No Enquiries yet</p></td>
+                                        </tr>
+                                        
+                                    </table>
+
+                                </div>
+                                <div class="row">
+                                    <div class="col-xs-12">
+                                        <div class="pagination mar0 pull-right">
+                                            <ul class="paginationlist" uib-pagination ng-if="paging.count > paging.limit" previous-text="Prev" force-ellipses="forceEllipses" max-size="maxSize" items-per-page="paging.limit" total-items="paging.count" ng-model="paging.page" class="pagination-sm" boundary-link-numbers="true" rotate="false" ng-change="pageChanged()"></ul>
+                                        </div>                                                  
+                                    </div>
+                                </div>        
+                                <!--End inner update Part--> 
+                            </div> 
+                        </div>
+                    </div>        
+                </div>
+            </div> 
+        </div>            
+    </section>     
+    <!--Start top serch -->
+</div>
+<!--End middle Part--> 
+
+<!-- Payment confirmation dialog -->
+<div style="visibility: hidden">
+    <div class="md-dialog-container" id="paymentConfirmationDialog">
+      <md-dialog layout-padding>
+        <h3>Are you sure you want to procced</h3>
+        <p>
+          You need to make payment of &pound; 20 to make the referencing,<br>
+          by clicking on yes you will redirect to payment page
+        </p>
+        <md-dialog-actions layout="row">
+        <md-button ng-click="pay()" class="exploremapsearchbtn martop10 mar-right5 md-raised md-primary btnComn">Yes</md-button>
+        <md-button ng-click="close()" class="exploremapsearchgraybtn martop10  mar-right5 md-raised md-primary btnComn">cancel</md-button>
+        </md-dialog-actions>
+      </md-dialog>
+    </div>
+  </div>

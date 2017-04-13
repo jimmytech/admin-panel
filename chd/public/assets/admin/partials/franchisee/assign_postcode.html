@@ -1,0 +1,183 @@
+<section class="cards" ng-init = "franchiseeList();splitPostcode();">
+   <div class="page-header">
+      <h1 ng-if = "mypostCode.length>0">
+         Requested postcode
+         <div style="margin-top: 10px;">
+            <p style="color: #9C9D9C;">{{firstname}}: {{ mypostCode}}</p>
+         </div>
+      </h1>      
+      <h1 ng-if = "mypostCode.length==0">
+         Assign postcode to {{firstname}}
+      </h1>
+   </div>
+   <div class="row "  >
+      <div class="col-md-12">
+         <div class="card bordered boxshadownone">
+            <div class="card-header">
+               <div class="row">
+                  <div class="col-md-6"  >
+                     <form name="searchForm" class="form-inline">
+                        <div class="form-group ">
+                           <div class="input-group">
+                              <input  ng-change = "refreshFranchiseeList(postcode)" type="text" class="form-control" placeholder="Search Postcode" ng-model = "postcode" disable-invalid-styling="true">
+                              <div class="input-group-addon padding0">
+                                 <button class="dropdown-toggle pointer btn btn-round-sm btn-link withoutripple pull-right" bs-dropdown="dropdown"
+                                    ng-click = "lookup(postcode, firstname)">
+                                 <i class="fa fa-search f20"></i>
+                                 </button> 
+                              </div>
+                           </div>
+                        </div>
+                     </form>
+                  </div>
+               </div>
+            </div>
+            <div class="row ">
+               <div class="col-md-12">
+                  <div class="card bordered boxshadownone">
+                     <div class="card-header top-blue">
+                        <div class="row">
+                           <div class="col-xs-6"><span class="card-title white-font">Allocated Postcodes</span>    </div>   
+                        <div class="col-xs-6">
+                           <button ng-click = "showPrerenderedDialog()" class="btn btn-primary pull-right btn-sm">Send Confirmation</button>     
+                        </div>  
+                        </div> 
+                     </div>
+                     <div class="table-responsive">
+                        <table class="table table-bordered table-full-small ">
+                           <colgroup>
+                              <col class="auto-cell-size" />
+                           </colgroup>
+                           <thead class="thead-inverse">
+                              <tr>
+                                 <th width="5%">Sr.No</th>
+                                  <th  width="25%">Postcode</th>
+                                 <th  width="30%">Name</th>                              
+                                 <th  width="30%">Status</th>
+                                 <th  width="10%">Delete</th>
+                              </tr>
+                           </thead>
+                           <tbody>
+                              <tr ng-repeat = "p in selectedPostcode track by $index">
+                                 <td class=" cursor-default">{{$index+1}}</td>
+                                 <td class=" cursor-default">
+                                    {{p}}                      
+                                 </td>
+                                 <td class=" cursor-default"> {{firstname}}</td>
+
+                                 <td class=" cursor-default">                                      
+                                    <span ng-if = "selectedPostcode.indexOf(p) !==-1" class="allocated label positiorel pointer" >Allocated</span>  
+                                                                                       
+                                 </td>
+                                 <td>
+                                    <span title="Click to remove from allocated list" ng-if = "selectedPostcode.indexOf(p) !==-1" class="remove-allocated label positiorel pointer" ng-click = "deleteFromPostcodeList(p)" >Remove</span>  
+                                 </td>
+                              </tr>
+                              <tr ng-if = "selectedPostcode.length==0">
+                                 <td colspan="5">
+                                    <p class="text-center"> No allocated postcode Found</p>
+                                 </td>
+                              </tr>   
+                           </tbody>
+                        </table>
+                     </div>
+                  </div>
+               </div>
+            </div>
+            <!-- <text-angular ng-model="htmlVariable"></text-angular> -->
+
+            <div class="row ">
+               <div class="col-md-12">
+                  <div class="card bordered boxshadownone">
+                     <div class="card-header top-blue">
+                        <span class="card-title white-font">Franchisee </span>                       
+                     </div>
+                     <div class="table-responsive">
+                        <table class="table table-bordered table-full-small ">
+                           <colgroup>
+                              <col class="auto-cell-size" />
+                           </colgroup>
+                           <thead class="thead-inverse">
+                              <tr>
+                                 <th  width="5%">Sr.No</th>
+                                 <th width="20%">Post code</th>
+                                 <th width="20%">Name</th>
+                                 <th width="35%">Email</th>
+                                 <th width="10%">Phone</th>
+                                 <th width="10%">Status</th>
+                              </tr>
+                           </thead>
+                           <tbody>
+                              <tr ng-repeat = "p in franchiseeRecord">
+                                 <td>{{$index+1}}</td>
+                                 <td>
+                                    {{p.intrested_zip}} 
+                                 </td>
+                                 <td> {{p.firstname}} {{p.lastname}}</td>
+                                 <td>  
+                                    {{p.email}}                   
+                                 </td>
+                                 <td>  
+                                    {{p.phone.telephone}}                   
+                                 </td>
+                                 <td class=" cursor-default"> 
+                                    <span ng-if = "p.status==true" class="label green">Active</span>
+                                    <span ng-if = "p.status==false" class="label label-danger">Inactive</span>
+                                 </td>
+                              </tr>
+                              
+                              <tr ng-if = "franchiseeRecord.length=='0'">
+                                 <td colspan="6">
+                                    <p class="text-center">
+                                    Your search - {{postcode}} - did not match any franchisee</p>
+                                 </td>
+                              </tr>                                
+                           </tbody>
+                        </table>
+                        <ul uib-pagination ng-if="paging.count> paging.limit" previous-text="Prev" force-ellipses="forceEllipses" max-size="maxSize" items-per-page="paging.limit" total-items="paging.count" ng-model="paging.page" class="pagination pull-right" boundary-link-numbers="true" rotate="false" ng-change="pageChanged()"></ul>
+                     </div>
+                  </div>
+               </div>
+            </div>
+
+<!--             <div class="raw" ng-if = "franchiseeRecord.length==0">
+               <div class="bs-component">
+                  <div class="alert alert-dismissible alert-info"">
+                     <h4>Info!</h4>
+                     <p >No Franchisee detail found in data table.</p>
+                  </div>
+               </div>
+            </div> -->
+         </div>
+      </div>
+   </div>
+</section>
+
+<div style="visibility: hidden">
+    <div class="md-dialog-container" id="myDialog">
+      <md-dialog >
+       <md-toolbar class="themebg">
+         <div class="md-toolbar-tools">
+           <h2 class="white-font">Confirmation Letter</h2>
+           <span flex></span>
+           <md-button class="md-icon-button" ng-click="closemdDialog()">
+             <md-icon md-svg-src="images/ic_close_24px.svg" aria-label="Close dialog"></md-icon>
+           </md-button>
+         </div>
+       </md-toolbar>
+      <text-angular name="franchiseeEditor" ng-model="franchiseeConfirmation"></text-angular>             
+      <md-dialog-actions layout="row">
+      <span flex></span>
+      <md-button ng-click="openPdf()">
+       Print
+      </md-button>
+      <md-button ng-click="signUp()">
+        Email
+      </md-button>
+    </md-dialog-actions>      
+      </md-dialog>
+    </div>
+</div>
+
+
+

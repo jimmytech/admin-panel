@@ -1,0 +1,45 @@
+# Build:
+# docker build -t yasharma6121991/cherrydoor .
+#
+# Run:
+# docker run -it yasharma6121991/cherrydoor
+#
+# Compose:
+# docker-compose up -d
+
+FROM centos
+MAINTAINER Cherrydoor
+
+# Cherrydoor server = 7000
+EXPOSE 7000
+
+# Set development environment as default
+ENV NODE_ENV cherrydoor-local
+
+# Install nodejs
+RUN curl --silent --location https://rpm.nodesource.com/setup_6.x | bash -
+RUN yum -y install nodejs
+
+# Install MEAN.JS Prerequisites
+RUN npm install --quiet -g pm2 && npm cache clean
+
+RUN mkdir -p /opt/cherrydoor
+WORKDIR /opt/cherrydoor
+
+# Copies the local package.json file to the container
+# and utilities docker container cache to not needing to rebuild
+# and install node_modules/ everytime we build the docker, but only
+# when the local package.json file changes.
+# Install npm packages
+COPY package.json /opt/cherrydoor/package.json
+RUN npm install --only=production --quiet && npm cache clean
+
+# Install bower packages
+# COPY bower.json /opt/cherrydoor/bower.json
+# COPY .bowerrc /opt/cherrydoor/.bowerrc
+# RUN bower install --quiet --allow-root --config.interactive=false
+
+COPY . /opt/cherrydoor
+
+# Run cherrydoor server
+CMD ["npm", "start"]

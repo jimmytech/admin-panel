@@ -1,0 +1,158 @@
+<!--Start middle Part-->
+<div class="midllepart">
+	<!--Start top serch -->
+	<section class="bluebg section pad-t-0">
+		<!--Start top  Part-->
+		<div class="container marbot30 ">
+	  		<div class="boxshadowcommon col-lg-12">
+				<div class="row ">
+			        <div class="col-lg-12 land_top_list_pad">
+			          	<ul class="land_top_list">
+				          	<li> <a  set-url="/landlord-account" ><span class="land_acc_ico"></span> Landlord Account</a></li>
+				          	<li> <a  set-url="/property-tenancy-details" class="active" ><span class="land_list_ico"></span>List your Property</a></li>
+				          	<li> <a  set-url="/property-listings"  ><span class="land_listing_ico"></span>Property Listing </a></li>               
+						</ul>  
+			        </div>
+				</div>
+			</div>
+  		</div>
+		<!--Start top  Part-->
+		<form name="propertySaleForm" ng-submit="secondStep(propertySaleForm.$valid)" novalidate>
+			<div class="container ">
+		  		<div class="boxshadowcommon col-lg-12">
+					<div class="clearfix mycherrysection">
+						<div class="mainHd textupper tac">List Your Property</div>
+						<div class="smallHd tac colorblue textupper font16 opensemibold">Lorem ipsum </div>
+						<div class="tac headingimg"><img src="images/headingimg.png"></div>
+						<div class="pad5 pad-t-0">
+
+							<div class="steptostep">
+								<ul class="step">
+									<li class="one active complete"><a ng-href="">1</a></li>
+									<li class="two active "><a ng-href="">2</a></li>
+									<li class="three "><a ng-href="">3</a></li>            
+								</ul>
+							</div>
+							<!--Start prorty part -->
+							<div class="prouploadform">
+								<div class="prouploadformtop opensemibold">2. Property Sale Details and Features</div>
+								<div class="prouploadforminner clearfix">  
+									<div class="my_update_form-L fl secondsep">  
+										<div class="my_update_form-full univercal">
+											<label class="opensemibold">Available Date</label>
+											<md-datepicker class="traderstopserchselect serchinput pad7"
+												name="available_date"
+												ng-required="true" 
+												ng-model="available_date" 
+												md-min-date="minDate" 
+												md-hide-icons="triangle"
+												md-open-on-focus="" 
+												ng-class="{ 'errorborder': propertySaleForm.available_date.$touched && propertySaleForm.available_date.$invalid || propertySaleForm.available_date.$invalid && propertySaleForm.$submitted }" 
+												md-placeholder="Enter property available date"></md-datepicker>
+											<div class="error_tag" 
+												ng-messages="propertySaleForm.available_date.$error"   
+												ng-show="propertySaleForm.available_date.$touched || propertySaleForm.$submitted">
+											    <p ng-message="required">Available date is required.</p>
+											    <p ng-message="mindate">Available date is invalid</p>
+											</div>	
+										</div>
+										<div class="my_update_form-full positiorel">
+											<label class="opensemibold">Sale Price (£) </label>
+											<input type="text" name="sale_price" class="traderstopserchselect" placeholder="Sale Price (£)" 
+												ng-model="step2.sale_price"
+												ng-pattern="/^[1-9]\d*([.]\d+)?$/"
+												ng-class="{ 'errorborder': propertySaleForm.sale_price.$touched && propertySaleForm.sale_price.$invalid || propertySaleForm.sale_price.$invalid && propertySaleForm.$submitted }" 
+												ng-required="true">
+											<div class="error_tag"
+											 ng-messages="propertySaleForm.sale_price.$error"
+											 ng-show="propertySaleForm.sale_price.$touched || propertySaleForm.$submitted">
+											    <p ng-message="required">Sale Price is required.</p>
+											    <p ng-message="pattern">Please enter a valid amount.</p>
+											</div>
+										</div>
+										<!-- 
+										On client requirement min and max price has removed
+										<div class="my_update_form-full positiorel">
+											<label class="opensemibold">Min Price (£)</label>
+											<md-select name="min_price" placeholder="Select Min Price (£)" class="traderstopserchselect selectlogin99 m-t-0 md-no-underline m-b-0" 
+				  							ng-class="{ 'errorborder': propertySaleForm.min_price.$touched && propertySaleForm.min_price.$invalid || propertySaleForm.min_price.$invalid && propertySaleForm.$submitted }" 
+				  							md-no-asterisk 
+				  							ng-model="step2.min_price"
+				  							ng-required="true">
+				  								<md-option ng-repeat="p in ['100', '500', '1000', '5000', '10000', '20000', '50000']" ng-value="p">{{p}}</md-option>
+				  							</md-select>  
+				  							<div ng-messages="propertySaleForm.min_price.$error" class="error_tag"  ng-show="propertySaleForm.min_price.$touched || propertySaleForm.$submitted">
+			                  				    <p ng-message="required">Min Price is required</p>
+			                  				</div>
+										</div>
+										
+										<div class="my_update_form-full positiorel">
+											<label class="opensemibold">Max Price (£)</label>
+											<md-select name="max_price" placeholder="Select Max Price (£)" class="traderstopserchselect selectlogin99 m-t-0 md-no-underline m-b-0" 
+				  							ng-class="{ 'errorborder': propertySaleForm.max_price.$touched && propertySaleForm.max_price.$invalid || propertySaleForm.max_price.$invalid && propertySaleForm.$submitted }" 
+				  							md-no-asterisk 
+				  							ng-model="step2.max_price"
+				  							ng-required="true">
+				  								<md-option ng-repeat="p in ['100', '500', '1000', '5000', '10000', '20000', '50000']" ng-value="p">{{p}}</md-option>
+				  							</md-select>  
+				  							<div ng-messages="propertySaleForm.max_price.$error" class="error_tag"  ng-show="propertySaleForm.max_price.$touched || propertySaleForm.$submitted">
+			                  				    <p ng-message="required">Max Price is required</p>
+			                  				</div>
+										</div> -->
+										<!--
+											Pop ups: “?” Under Offer & Sold STC - Sold 'Subject to Contract' (STC) or 'Under Offer' (UO) means that the homeowner has accepted an offer from a buyer but the paperwork is not yet complete. 
+											Under offer (UO) is also used by some Estate Agents to indicate that an offer has been made, but not yet accepted.You can still enquire about a Sold STC or UO property as the sale is not complete until the signed contracts are exchanged. Technically the property is still available. It may still be worth contacting the estate agent to discuss the strength of the accepted offer, particularly as there is no legal obligation on homeowner or homebuyer to complete the sale. On average about 15% of Sold STC or UO properties come back on the market after the sale has failed to proceed.Reserved - A new build property is reserved when a homebuyer has paid a reservation fee to acquire it. The homebuyer generally has a period of 28 days to exchange contracts from reservation date although this can change according to developer. If they don't complete contracts the property becomes available again.Reserved properties are generally withdrawn from sale and are often not subject to any price increases.
+										-->
+										<div class="my_update_form clearfix">
+											<ul class="addbasket_list">
+												<li class="clearfix">
+													<div class="fl positiorel add_check">
+														<md-checkbox ng-model="step2.under_offer"  class="mar0 textupper font15 lineheight35" ng-true-value="'Yes'" ng-false-value="'No'" aria-label="Checkbox">Under Offer</md-checkbox>
+													</div>
+												</li>
+												<li class="clearfix">
+													<div class="fl positiorel add_check">
+														<md-checkbox ng-model="step2.sold_stc" class="mar0 textupper font15 lineheight35" ng-true-value="'Yes'" ng-false-value="'No'" aria-label="Checkbox1">Sold (STC)</md-checkbox>
+													</div>
+												</li>
+												<li class="clearfix">
+													<div class="fl positiorel add_check">
+														<md-checkbox ng-model="step2.reserved" class="mar0 textupper font15 lineheight35" ng-true-value="'Yes'" ng-false-value="'No'" aria-label="Checkbox2">Reserved</md-checkbox>
+													</div>
+												</li>
+											</ul>
+										</div> 
+									</div>
+									<div class="my_update_form-L fr"> 
+										<div class="my_update_form-full marbot30">
+											<label class="opensemibold ">Please tell us about any additional exclusion / additions to be placed 
+												on your advert.</label>
+											</div> 
+											<div class="my_update_form-full clearfix" ng-if="x.type === 'sale' || x.type === 'both'" ng-repeat="x in exclusion">
+												<div class="fl lineheight25">
+													<label class="opensemibold ">{{x.name}} </label>
+												</div>
+												<div class="fr ">
+													<md-switch ng-model="step2.additional_exclusion[x._id]" class="mar0" aria-label="Switch 1" ng-true-value="'Yes'">
+														{{ step2.additional_exclusion[x._id] || 'No' }}
+													</md-switch>
+												</div>
+											</div> 
+										</div>
+									</div>
+								</div>
+								<!--Start prorty part -->
+							</div> 
+						</div>
+
+				</div>
+			</div>	
+			<div class="container martop10">
+				<md-button href set-url="/property-room-details" class=" exploremapsearchgraybtn mar-right5 md-raised md-primary btnComn">Previous</md-button>    
+				<md-button type="submit" class="exploremapsearchbtn md-raised md-primary btnComn">Next</md-button>                  
+			</div>      
+			</form>         
+		</section>
+		<!--Start top serch -->
+	</div>
+	<!--End middle Part-->

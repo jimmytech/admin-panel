@@ -1,0 +1,53 @@
+<!--Start middle Part-->
+<div class="midllepart"> 
+
+	<!--Start Feature Property-->
+	<section class=" bluebg lofinpagebg">
+		<div class="container">	
+			<div class="row">
+				<div class="col-lg-12">
+					<div class="clearfix savedpage">
+						<form name="emailAlertForm" ng-submit="createAlert(emailAlertForm.$valid)" novalidate>
+							<div class="mainHd  tac mar0">Saved this Search	</div>
+							<div class="propertydes">
+								<strong>{{pretty_search_address}}</strong>
+							</div>
+							<div class="positiorel">
+								<input type="text" name="name" class="logininput" placeholder='Name this search (eg. "Places near work")'
+								ng-class="{ 'errorborder': emailAlertForm.name.$touched && emailAlertForm.name.$invalid || emailAlertForm.name.$invalid && emailAlertForm.$submitted }" 
+								ng-model="alert.name" ng-required="true">
+								<div ng-messages="emailAlertForm.name.$error" class="error_tag"  ng-show="emailAlertForm.name.$touched || emailAlertForm.$submitted">
+                                    <p ng-message="required">Please give this search a name</p>
+                                </div>    
+							</div>	  
+							<div class="propertydes"><strong>And alert me</strong></div>	
+							<div class="my_update_form-full row">
+								<div class="col-sm-6">
+									<md-select name="frequency" placeholder="Daily" class="logininput selectlogin99 m-t-0 md-no-underline m-b-0" ng-model="alert.frequency" value="daily">
+										<md-option value="immediately">Immediately </md-option>
+										<md-option value="daily">Daily </md-option>
+										<md-option value="weekly">weekly</md-option>
+										<md-option value="monthly">Monthly</md-option>
+										<md-option value="noalert">No Alert</md-option>
+									</md-select>  	
+								</div>
+								<div class="col-sm-6 specifiedemials">to  <strong>{{user.email}}</strong>	</div>
+							</div>		
+
+							<div class="clearfix tac">
+								<div class="width130 inlineblk">
+									<md-button type="submit"  class="btngreenComn font15 md-raised md-primary btn100">Subscribe</md-button>
+								</div>
+								<div class="width130 inlineblk marleft10"> 
+									<md-button ng-click="goBack()" class="btngrayComn font15 md-raised md-primary btn100">cancel</md-button>  
+								</div>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section> 
+	<!--End Feature Property-->
+</div>
+<!--End middle Part--> 

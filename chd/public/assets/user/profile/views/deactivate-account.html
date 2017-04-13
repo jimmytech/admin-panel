@@ -1,0 +1,59 @@
+<!--Start middle Part-->
+<div class="midllepart"> 
+	<!--Start top serch -->
+    <section class="bluebg section pad-t-0">  
+        <div class="container">            
+            <div class="col-lg-12 boxshadowcommon">                                    
+                <div class=" mycherrysection clearfix">
+                 	<div class="row">
+                            <div class="col-lg-12">
+                                <div class="mainHd textupper tac">My CherryDoor</div>
+                                <div class="smallHd tac">Lorem ipsum dolor sit amet, consectetur adipiscing elit. </div>
+                                <div class="tac headingimg"><img src="images/headingimg.png"></div>
+                            </div>
+                      </div>
+                     <div class="row">
+                         <div class="col-lg-12">
+                            <div class="pad5">
+                                <!--Start tab Part-->      
+                                <div class="exploretab mycherrtdashtab marbot30" profile-menu="list"> </div>
+                                <!--End tab Part-->  
+                                <!--Start inner pages tab Part-->  
+                                <div class="my_updatepro" my-detail="menu"> </div>   
+                                <!--Start inner pages tab Part--> 
+                                <!--Start inner update Part--> 
+                                <div class="my_formupdate">
+                                <form name="deacUserForm" ng-submit="deactivateUserAccount($event, deacUserForm.$valid)" novalidate>
+                                    <div class="my_update_form clearfix">
+                                        <div class="font18 textupper opensemibold my_update_form-full">We are sorry to see you go!</div>
+                                        <div class="my_update_form-full clearfix">
+                                            <p class="deactive_acctxt marbot10">Your account has been deactivated and we hope to see you soon, if you wish to re-join CherryDoor, please re-register your details and we will open a new account for you. If you have any comments or feedback that would improve your experience, please <a  ng-click="showcontact()" class="linkur textupper colorblue" > contact us </a></p>
+                                            <p class="deactive_acctxt">Please confirm your password for {{user.email}} to close your CherryDoor account.</p>
+                                        </div>
+                                        <div class="my_update_form-L ">
+                                            <label class="opensemibold textupper">Confirm Password</label>
+                                            <input type="password" name="password" class="traderstopserchselect" placeholder="Your Password" 
+                                            ng-model="deUser.password"
+                                            ng-class="{ 'errorborder': deacUserForm.password.$touched && deacUserForm.password.$invalid || deacUserForm.password.$invalid &&  deacUserForm.$submitted }" 
+                                            required>
+                                            <div ng-messages="deacUserForm.password.$error" class="error_tag"  ng-show="deacUserForm.password.$touched || deacUserForm.$submitted">   
+                                                <p ng-message="required">Password is required.</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="my_update_form-full clearfix">
+                                            <md-button type="submit" class="traderstopsercbtn textlower fr font15 md-raised md-primary btnComn" >Deactivated Account</md-button>
+                                    </div>
+                                </form>
+                                </div>
+                                <!--End inner update Part--> 
+                            </div> 
+                         </div>
+                     </div>       
+                </div>
+            </div>
+        </div>             
+    </section>     
+    <!--Start top serch -->
+</div>
+<!--End middle Part--> 

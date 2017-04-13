@@ -1,0 +1,4 @@
+<md-button ng-click="active2=!active2" class="md-raised mycherrtdashtopmenu">My Details Menu <md-icon>keyboard_arrow_down</md-icon></md-button>
+<ul ng-class="{'active': active2}">
+    <li ng-repeat="item in menu"> <a set-url="{{item.url}}" ng-class="{'active': item.url == path}">{{activetopmenu}}{{item.text}}</a></li>
+</ul>

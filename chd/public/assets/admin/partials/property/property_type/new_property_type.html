@@ -1,0 +1,123 @@
+<section>
+   <div class="page-header" ng-init = selectDiv(); >
+      <h1>
+         <i class="md md-input"></i>
+         {{pageHeader}}
+      </h1>
+   </div>
+   <div class="row  m-b-40">
+      <div class="col-md-3 col-md-push-9">
+         <h5>Validating elements</h5>
+         <p>
+            Push the submit button to check all the validations at once.
+            Resetting will handle resetting the validation messages.
+         </p>
+      </div>
+      <div class="col-md-8 col-md-pull-3">
+         <div class="row white pad-20 " ng-if = "pageHeader == 'New Rent/Sale Type'" >
+            <form name="exclusionform" class="form-floating" novalidate="novalidate" ng-submit="(exclusionform.additional_exclusion.$modelValue.length>0 && exclusionform.$valid) &&  addNewType('property_type');">
+               <div class="form-group">
+                  <label  ng-class ="{'invalid-form' : exclusionform.$submitted && exclusionform.additional_exclusion.$modelValue.length==0}" >Rent/Sale type (Press enter after type)*</label> 
+                  <md-chips  name = 'additional_exclusion' placeholder= "+Rent/Sale type"  
+                     " secondary-placeholder="+Rent/Sale type" ng-model="type.name" md-separator-keys="type.customKeys" md-removable="removable" md-min-chips="1" ></md-chips>
+               </div>
+               <md-input-container class = "wid100full">
+                  <label>For sale/rent</label>
+                  <md-select name="category" ng-model="type.option_type" required>
+                     <md-option ng-repeat="cat in categoryLst" ng-value="cat.id"  >{{cat.name}}</md-option>
+                  </md-select>
+               </md-input-container>                
+               <button ng-disabled = "service-form.$invalid" type="submit" ng-click = "(exclusionform.$invalid || exclusionform.additional_exclusion.$modelValue.length==0) && validate(exclusionform);" class="btn btn-primary">Submit</button>
+               <button ng-click = "back();" class="btn btn-default">Cancel</button>                       
+            </form>
+         </div>
+
+
+
+
+         <div class="row white pad-20 " ng-if = "pageHeader == 'New Heating Type'">
+            <form name="exclusionform" class="form-floating" novalidate="novalidate" ng-submit="(exclusionform.additional_exclusion.$modelValue.length>0 && exclusionform.$valid) &&  addNewType('heating');">
+               <div class="form-group">
+                  <label  ng-class ="{'invalid-form' : exclusionform.$submitted && exclusionform.additional_exclusion.$modelValue.length==0}" >Heating option (Press enter after type)*</label> 
+                  <md-chips  name = 'additional_exclusion' placeholder= "+Heating option"  
+                     " secondary-placeholder="+Heating option" ng-model="type.name" md-separator-keys="type.customKeys" md-removable="removable" md-min-chips="1" ></md-chips>
+               </div>
+               <button ng-disabled = "service-form.$invalid" type="submit" ng-click = "exclusionform.additional_exclusion.$modelValue.length==0 && validate(exclusionform);" class="btn btn-primary">Submit</button>
+               <button ng-click = "back();" class="btn btn-default">Cancel</button>                       
+            </form>
+         </div>
+
+
+
+         <div class="row white pad-20 " ng-if = "pageHeader == 'New Location'" >
+            <form name="exclusionform" class="form-floating" novalidate="novalidate" ng-submit="(exclusionform.additional_exclusion.$modelValue.length>0 && exclusionform.$valid) &&  addNewType('location');">
+               <div class="form-group">
+                  <label  ng-class ="{'invalid-form' : exclusionform.$submitted && exclusionform.additional_exclusion.$modelValue.length==0}" >Location (Press enter after type)*</label> 
+                  <md-chips  name = 'additional_exclusion' placeholder= "+Location"  
+                     " secondary-placeholder="+Location" ng-model="type.name" md-separator-keys="type.customKeys" md-removable="removable" md-min-chips="1" ></md-chips>
+               </div>
+               <button ng-disabled = "service-form.$invalid" type="submit" ng-click = "exclusionform.additional_exclusion.$modelValue.length==0 && validate(exclusionform);" class="btn btn-primary">Submit</button>
+               <button ng-click = "back();" class="btn btn-default">Cancel</button>                       
+            </form>
+         </div>
+
+
+
+         <div class="row white pad-20 " ng-if = "pageHeader == 'New Local Authority'">
+            <form name="exclusionform" class="form-floating" novalidate="novalidate" ng-submit="(exclusionform.additional_exclusion.$modelValue.length>0 && exclusionform.$valid) &&  addNewType('authority');">
+               <div class="form-group">
+                  <label  ng-class ="{'invalid-form' : exclusionform.$submitted && exclusionform.additional_exclusion.$modelValue.length==0}" >Local authority (Press enter after type)*</label> 
+                  <md-chips  name = 'additional_exclusion' placeholder= "+Local authority"  
+                     " secondary-placeholder="+Local authority" ng-model="type.name" md-separator-keys="type.customKeys" md-removable="removable" md-min-chips="1" ></md-chips>
+               </div>
+               <button ng-disabled = "service-form.$invalid" type="submit" ng-click = "exclusionform.additional_exclusion.$modelValue.length==0 && validate(exclusionform);" class="btn btn-primary">Submit</button>
+               <button ng-click = "back();" class="btn btn-default">Cancel</button>                       
+            </form>
+         </div>
+
+
+
+         <div class="row white pad-20 " ng-if = "pageHeader == 'New Property Age'">
+            <form name="exclusionform" class="form-floating" novalidate="novalidate" ng-submit="(exclusionform.additional_exclusion.$modelValue.length>0 && exclusionform.$valid) &&  addNewType('age');">
+               <div class="form-group">
+                  <label  ng-class ="{'invalid-form' : exclusionform.$submitted && exclusionform.additional_exclusion.$modelValue.length==0}" >Property age (Press enter after type)*</label> 
+                  <md-chips  name = 'additional_exclusion' placeholder= "+Property age"  
+                     " secondary-placeholder="+Property age" ng-model="type.name" md-separator-keys="type.customKeys" md-removable="removable" md-min-chips="1" ></md-chips>
+               </div>
+               <button ng-disabled = "service-form.$invalid" type="submit" ng-click = "exclusionform.additional_exclusion.$modelValue.length==0 && validate(exclusionform);" class="btn btn-primary">Submit</button>
+               <button ng-click = "back();" class="btn btn-default">Cancel</button>                       
+            </form>
+         </div>
+
+
+
+         <div class="row white pad-20 " ng-if = "pageHeader == 'New Property Style'">
+            <form name="exclusionform" class="form-floating" novalidate="novalidate" ng-submit="(exclusionform.additional_exclusion.$modelValue.length>0 && exclusionform.$valid) &&  addNewType('style');">
+               <div class="form-group">
+                  <label  ng-class ="{'invalid-form' : exclusionform.$submitted && exclusionform.additional_exclusion.$modelValue.length==0}" >Property style (Press enter after type)*</label> 
+                  <md-chips  name = 'additional_exclusion' placeholder= "+Property style"  
+                     " secondary-placeholder="+Property style" ng-model="type.name" md-separator-keys="type.customKeys" md-removable="removable" md-min-chips="1" ></md-chips>
+               </div>
+               <button ng-disabled = "service-form.$invalid" type="submit" ng-click = "exclusionform.additional_exclusion.$modelValue.length==0 && validate(exclusionform);" class="btn btn-primary">Submit</button>
+               <button ng-click = "back();" class="btn btn-default">Cancel</button>                       
+            </form>
+         </div>
+
+         <div class="row white pad-20 " ng-if = "pageHeader == 'Add Parking Option'">
+            <form name="exclusionform" class="form-floating" novalidate="novalidate" ng-submit="(exclusionform.additional_exclusion.$modelValue.length>0 && exclusionform.$valid) &&  addNewType('parking');">
+               <div class="form-group">
+                  <label  ng-class ="{'invalid-form' : exclusionform.$submitted && exclusionform.additional_exclusion.$modelValue.length==0}" >Parking (Press enter after type)*</label> 
+                  <md-chips  name = 'additional_exclusion' placeholder= "Add New Parking Options"  
+                     " secondary-placeholder="Add New Parking Options" ng-model="type.name" md-separator-keys="type.customKeys" md-removable="removable" md-min-chips="1" ></md-chips>
+               </div>
+               <button ng-disabled = "service-form.$invalid" type="submit" ng-click = "exclusionform.additional_exclusion.$modelValue.length==0 && validate(exclusionform);" class="btn btn-primary">Submit</button>
+               <button ng-click = "back();" class="btn btn-default">Cancel</button>                       
+            </form>
+         </div>
+
+
+
+      </div>
+   </div>
+</section>
+

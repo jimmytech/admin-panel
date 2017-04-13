@@ -1,0 +1,243 @@
+<section class="cards" ng-init = "getRequestDetail();">
+   <div class="page-header">
+      <h1>
+         <i class="md md-photo"></i>
+        Edit Request
+      </h1>
+   </div>
+   <div class="row m-b-60 admintheme"  >
+      <div class="col-md-12">
+         <div class="card bordered" >
+            <div class="card-header frachissdetals">
+               <form name="updateRequestForm" class="form-floating" novalidate="novalidate" ng-submit="updateRequestForm.$valid && updateFranchiseeRequest()">
+               <div class="row" >
+                  <div class="col-md-12 col-sm-12" ">
+                     <div class="row ">
+                       <div class="col-md-6 col-sm-6 col-xs-12 " > 
+                           <md-input-container class="width100">
+                            <label>First Name:</label>
+                            <input requiredname="Firstname" ng-model = "requestDetail.firstname">
+                            <div ng-messages="updateRequestForm.clientName.$error">
+                              <div ng-message="required">This is required.</div>
+                            </div>
+                          </md-input-container>
+                            
+                        </div>
+                        <div class="col-md-6 col-sm-6 col-xs-12 " > 
+                           <md-input-container class="width100">
+                            <label>Last Name</label>
+                            <input requiredname="Firstname" ng-model = "requestDetail.firstname">
+                            <div ng-messages="updateRequestForm.clientName.$error">
+                              <div ng-message="required">This is required.</div>
+                            </div>
+                          </md-input-container>
+                            
+                        </div>
+                     </div>
+                     <div class="row ">
+                       <div class="col-md-6 col-sm-6 col-xs-12 " > 
+                           <md-input-container class="width100">
+                            <label>Phone</label>
+                            <input requiredname="Firstname" ng-model = "requestDetail.firstname">
+                            <div ng-messages="updateRequestForm.clientName.$error">
+                              <div ng-message="required">This is required.</div>
+                            </div>
+                          </md-input-container>
+                            
+                        </div>
+                        <div class="col-md-6 col-sm-6 col-xs-12 " > 
+                           <md-input-container class="width100">
+                            <label>Company</label>
+                            <input requiredname="Firstname" ng-model = "requestDetail.firstname">
+                            <div ng-messages="updateRequestForm.clientName.$error">
+                              <div ng-message="required">This is required.</div>
+                            </div>
+                          </md-input-container>
+                            
+                        </div>
+                     </div>
+                     <div class="row ">
+                       <div class="col-md-6 col-sm-6 col-xs-12 " > 
+                           <md-input-container class="width100">
+                            <label>Email</label>
+                            <input requiredname="Firstname" ng-model = "requestDetail.firstname">
+                            <div ng-messages="updateRequestForm.clientName.$error">
+                              <div ng-message="required">This is required.</div>
+                            </div>
+                          </md-input-container>
+                            
+                        </div>
+                        <div class="col-md-6 col-sm-6 col-xs-12 " > 
+                           <md-input-container class="width100">
+                            <label>Request Time</label>
+                            <input requiredname="Firstname" ng-model = "requestDetail.firstname">
+                            <div ng-messages="updateRequestForm.clientName.$error">
+                              <div ng-message="required">This is required.</div>
+                            </div>
+                          </md-input-container>
+                            
+                        </div>
+                     </div>
+                     <div class="row ">
+                       <div class="col-md-6 col-sm-6 col-xs-12 " > 
+                           <md-input-container class="width100">
+                            <label>Address</label>
+                            <textarea ng-model="user.biography" md-maxlength="150" rows="5" md-select-on-focus></textarea>
+                            <div ng-messages="updateRequestForm.clientName.$error">
+                              <div ng-message="required">This is required.</div>
+                            </div>
+                          </md-input-container>
+                            
+                        </div>
+                        <div class="col-md-6 col-sm-6 col-xs-12 " > 
+                           <md-input-container class="width100">
+                            <label>Requested Post Code/Area</label>
+                            <textarea ng-model="user.biography" md-maxlength="150" rows="5" md-select-on-focus></textarea>
+                            <div ng-messages="updateRequestForm.clientName.$error">
+                              <div ng-message="required">This is required.</div>
+                            </div>
+                          </md-input-container>
+                            
+                        </div>
+                     </div>
+                     <div class="row ">
+                       <div class="col-md-12 col-sm-12 col-xs-12 " > 
+                           <md-input-container class="width100">
+                            <label>Notes</label>
+                            <textarea ng-model="user.biography" md-maxlength="150" rows="5" md-select-on-focus></textarea>
+                            <div ng-messages="updateRequestForm.clientName.$error">
+                              <div ng-message="required">This is required.</div>
+                            </div>
+                          </md-input-container>
+                        </div>
+                     </div>
+                  </div>
+               </div>                          
+               <div class="form-group clearfix" style="margin-top: 20px;">
+                  <button ng-click = "!updateRequestForm.$valid && validate()" type="submit" class="btn btn-primary pull-right mar-right10">Save</button>
+               </div>
+               </form>
+            </div>
+         </div>
+      </div>
+   </div>
+   <!-- <div class="row m-b-60"  >
+      <div class="col-md-12">
+         <div class="card bordered" >
+            <div class="card-header frachissdetals">
+               <form name="updateRequestForm" class="form-floating" novalidate="novalidate" ng-submit="updateRequestForm.$valid && updateFranchiseeRequest()">            
+               <div class="row" >
+                  <div class="col-md-12 col-sm-12" ">
+                     <div class="row ">
+                        <div class="col-md-4 col-sm-4 col-xs-12 marbot15">
+                           <label class="hd">First Name:</label>
+                        </div>
+                        <div class="col-md-6 col-sm-6 col-xs-12 marbot15" > 
+                           <input placeholder="firstname" required type="text" class="width100" name="Firstname" ng-model = "requestDetail.firstname">
+                        </div>
+                     </div>
+                     <div class="row ">
+                        <div class="col-md-4 col-sm-4 col-xs-12 marbot15">
+                           <label class="hd">Last Name:</label>
+                        </div>
+                        <div class="col-md-6 col-sm-6 col-xs-12 marbot15" > 
+                           <input placeholder="Lastname" required  type="text" class="width100" ng-model = "requestDetail.lastname">
+                        </div>
+                     </div>
+                  </div>
+               </div>
+               <div class="row">
+                  <div class="col-md-12 col-sm-12">
+                     <div class="row " >
+                        <div class="col-md-4 col-sm-4 col-xs-12 marbot15">
+                           <label class="hd">Phone:</label>
+                        </div>
+                        <div class="col-md-6 col-sm-6 col-xs-12 marbot15" > 
+                           <input placeholder="Phone" required type="text" class="width100" ng-model = "requestDetail.phone.telephone">
+                        </div>
+                     </div>
+                  </div>
+               </div>
+               <div class="row">
+                  <div class="col-md-12 col-sm-12"  >
+                     <div class="row " >
+                        <div class="col-md-4 col-sm-4 col-xs-12 marbot15">
+                           <label class="hd">Company:</label>
+                        </div>
+                        <div class="col-md-6 col-sm-6 col-xs-12 marbot15" > 
+                           <input placeholder="Company" required type="text" class="width100" ng-model = "requestDetail.company">
+                        </div>
+                     </div>
+                  </div>
+               </div>
+               <div class="row" >
+                  <div class="col-md-12 col-sm-12"  >
+                     <div class="row " >
+                        <div class="col-md-4 col-sm-4 col-xs-12 marbot15">
+                           <label class="hd">Email:</label>
+                        </div>
+
+                        <div class="col-md-6 col-sm-6 col-xs-12 marbot15" > 
+                           <input placeholder="Email" required type="text" class="width100" ng-model = "requestDetail.email">
+                        </div>                        
+                     </div>
+                  </div>
+               </div>
+               <div class="row">
+                  <div class="col-md-12 col-sm-12"  >
+                     <div class="row ">
+                        <div class="col-md-4 col-sm-4 col-xs-12 marbot15">
+                           <label class="hd">Request Time:</label>
+                        </div>
+                        <div class="col-md-8 col-sm-8 col-xs-12 marbot15" > 
+                           <label> {{ requestDetail.created | date:'MMM d, y h:mm:ss a'}} </label>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+               <div class="row" >
+                  <div class="col-md-12 col-sm-12"  >
+                     <div class="row " >
+                        <div class="col-md-4 col-sm-4 col-xs-12 marbot15">
+                           <label class="hd">Address:</label>
+                        </div>
+                        <div class="col-md-6 col-sm-6 col-xs-12 marbot15" > 
+                           <textarea placeholder="Address" required type="text" rows="3" cols="40" class="width100" ng-model = "requestDetail.address"></textarea>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+               <div class="row ">
+                  <div class="col-md-12 ">
+                     <div class="row">
+                        <div class="col-md-4 col-sm-4 col-xs-12 marbot15">
+                           <label class="hd">Requested Post Code/Area:</label>
+                        </div>
+                        <div class="col-md-6 col-sm-6 col-xs-12 marbot15" > 
+                           <textarea placeholder="Intrested Postcode" required type="text" rows="3" cols="40" class="width100" ng-model = "requestDetail.intrested_zip">  </textarea>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+               <div class="row marbot15">
+                  <div class="col-md-12 ">
+                     <div class="row ">
+                        <div class="col-md-4 col-sm-4 col-xs-12 marbot15">
+                           <label class="hd">Notes:</label>
+                        </div>
+                        <div class="col-md-6 col-sm-6 col-xs-12 marbot15" > 
+                           <textarea placeholder="Notes" type="text" rows="3" cols="40"  class="width100" ng-model = "requestDetail.notes"></textarea>
+                        </div>
+                     </div>
+                  </div>
+               </div>               
+               <div class="form-group clearfix" style="margin-top: 20px;">
+                  <button ng-click = "!updateRequestForm.$valid && validate()" type="submit" class="btn btn-primary pull-right mar-right10">Save</button>
+               </div>
+               </form>
+            </div>
+         </div>
+      </div>
+   </div> -->
+</section>
+

@@ -1,0 +1,6 @@
+<md-button ng-click="active=!active" class="md-raised mycherrtdashtopmenu">My CherryDoor Menu <md-icon>keyboard_arrow_down</md-icon></md-button> 
+<ul  ng-class="{'active': active}">
+	<li ng-repeat="item in list" > 
+		<a ng-class="{'active': item.url === profileMenu }" set-url="{{item.url}}"><md-icon>{{item.icon}}</md-icon>{{item.text}}</a>
+	</li>
+</ul>

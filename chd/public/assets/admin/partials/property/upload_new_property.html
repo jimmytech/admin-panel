@@ -1,0 +1,508 @@
+<section class="forms-validation" ng-init = "viewUserDetail('data')">
+   <div class="page-header">
+      <h1> Add property </h1>
+   </div>
+   <div class="row  m-b-40">
+
+<!-- start form  -->
+<form name="propertyupload" class="form-floating" novalidate="novalidate" ng-submit="propertyupload.additionalfeatures.$modelValue.length>0 && propertyupload.$valid && uploadProperty(property)">
+   <fieldset>
+   <!-- select property owner -->
+      <div class="col-md-12">
+         <div class="whown marbot15">
+            <span class="land_owntxt mar-right20 " ng-class ="{'invalid-form' : propertyupload.$submitted && propertyupload.owns.$invalid}"  >Who owns this Property ?
+            </span>
+            <div class="positiorel displayinline">
+               <md-radio-group ng-required="true" name="owns" ng-model="property.owner">
+                  <md-radio-button value="user_property" class="displayinline vlign mar-right20 mar0">You
+                  </md-radio-button>
+                  <md-radio-button  value="company_property" class="displayinline vlign mar-right20 mar0"> This is company property </md-radio-button>
+               </md-radio-group>
+            </div>
+         </div>
+      </div>
+
+
+<!-- property detail -->
+
+<div class="col-md-12 steponelist">
+   <div class="well white clearfix">
+      <div class="row">
+         <div class="col-md-12 stepadmintitle">1. Property / Room Details</div>
+         <div class="col-md-6 ">
+            <div  id="forms-validation-container">
+                     <div class="form-group">
+                        <div class="lookupdiv">
+                           <label for="inputEmail " class="control-label "  ng-class ="{'invalid-form' : propertyupload.$submitted && propertyupload.zip.$invalid}" >Postcode*</label>
+                           <input name="zip" type="text" class="form-control" ng-model="property.address.postcode" required disable-validation-message="">
+                           <button type="button" class="btn btn-primary lookupdivbtn" ng-click = "findByPostcode(property.postcode)">LOOKUP</button>
+                        </div>
+                     </div>
+                     <div class="form-group">
+                        <label for="inputEmail" class="control-label" ng-class ="{'invalid-form' : propertyupload.$submitted && propertyupload.housenumber.$invalid}">Flat or House Number (kept private) &amp; First Line of Address*</label>
+                        <input type="text" name="housenumber" ng-model = "property.address.house_number" class="form-control" required disable-validation-message="">
+                     </div>
+                     <md-input-container class = "wid100full">
+
+                        <md-select name="address1" placeholder="Address Line 1*"
+                           ng-model="property.address.address1"
+                           md-no-asterisk
+                           required>
+                           <md-option ng-click="getIndex($index)" ng-repeat="address in postcodeResults" ng-if="address.line_1 !== ''" ng-value="address.line_1">{{address.line_1}}
+                           </md-option>
+                        </md-select>
+                     </md-input-container>
+                     <md-input-container class = "wid100full">
+                        <label>Address Line 2 (optional)</label>
+                        <md-select name="favoriteColor" ng-model="property.address.address2">
+                           <md-option ng-repeat="address in postcodeResults | unique : 'line_2'" ng-if="address.line_2 !== ''" ng-value="address.line_2">{{address.line_2}}</md-option>
+                        </md-select>
+                     </md-input-container>
+                     <md-input-container class = "wid100full">
+                        <label>County</label>
+                        <md-select name="favoriteColor" ng-model="property.address.county" required>
+                           <md-option ng-repeat="address in postcodeResults | unique : 'county'" ng-value="address.county">{{address.county}}</md-option>
+                        </md-select>
+                     </md-input-container>
+                     <md-input-container class = "wid100full">
+                        <label> Town</label>
+                        <md-select name="favoriteColor" ng-model="property.address.town" required>
+                           <md-option ng-repeat="address in postcodeResults | unique : 'post_town'" ng-value="address.post_town">{{address.post_town}}</md-option>
+                        </md-select>
+                     </md-input-container>
+
+                     <md-input-container class = "wid100full">
+                     <label >Heating Options</label>
+                     <md-select name="heating" placeholder="Please select heating option"
+                     md-no-asterisk
+                     ng-model="step1.heating"
+                     ng-class="{ 'errorborder': propertyListForm.heating.$touched && propertyListForm.heating.$invalid || propertyListForm.heating.$invalid && propertyListForm.$submitted}"
+                     ng-required="false"
+                     ng-model-options="{trackBy: '$value._id'}">
+                        <md-option ng-repeat="h in heating" ng-value="h">{{h.name}}</md-option>
+                     </md-select>
+                  </md-input-container>
+
+                  <md-input-container class = "wid100full">
+                  <label >Local Authority</label>
+
+                  <md-select name="local_authority" placeholder="Please select local authority"
+                  md-no-asterisk
+                  ng-model="step1.local_authority"
+                  ng-class="{ 'errorborder': propertyListForm.local_authority.$touched && propertyListForm.local_authority.$invalid || propertyListForm.local_authority.$invalid && propertyListForm.$submitted}"
+                  ng-required="false"
+                  ng-model-options="{trackBy: '$value._id'}">
+                     <md-option ng-repeat="aX in authority" ng-value="aX">{{aX.name}}</md-option>
+                  </md-select>
+
+               </md-input-container>
+                  <md-input-container class = "wid100full">
+               <label >Property Style</label>
+               <md-select name="style" placeholder="Please select property style"
+               md-no-asterisk
+               ng-model="step1.style"
+               ng-class="{ 'errorborder': propertyListForm.style.$touched && propertyListForm.style.$invalid || propertyListForm.style.$invalid && propertyListForm.$submitted}"
+               ng-required="false"
+               ng-model-options="{trackBy: '$value._id'}">
+                  <md-option ng-repeat="s in style" ng-value="s">{{s.name}}</md-option>
+               </md-select>
+
+            </md-input-container>
+
+            </div>
+         </div>
+         {{property|json}}
+         <div class="col-md-6"   >
+            <div id="forms-validation-container" style="margin-top: 28px;">
+               <div class="marbot15" >
+                  <span class="land_owntxt mar-right20 " ng-class ="{'invalid-form' : propertyupload.$submitted && propertyupload.propertyfor.$invalid}">Property For ?</span>
+                  <div class="positiorel displayinline">
+
+                     <md-radio-group
+                      name="propertyfor"
+                      ng-init="property.property_for='sale';propertyFor(property.property_for);"
+                       ng-model="property.property_for" ng-required="true" ng-change = propertyFor(property.property_for);>
+                        <md-radio-button value="sale"
+                         class="displayinline vlign mar-right20 mar0" >Sale </md-radio-button>
+                        <md-radio-button value="rent" class="displayinline vlign mar-right20 mar0">Rent</md-radio-button>
+                     </md-radio-group>
+                  </div>
+               </div>
+               <md-input-container class = "wid100full">
+                  <label> Property Type</label>
+                  <md-select name="favoriteColor" ng-model="property.type" required>
+                     <md-option ng-repeat="type in property_rental" value="{{$index+1}}">{{type}}</md-option>
+                  </md-select>
+               </md-input-container>
+               <md-input-container class = "wid100full">
+                  <label>Number of Bedooms in Property</label>
+                  <md-select name="favoriteColor" ng-model="property.beds" required>
+                     <md-option ng-repeat="bed in bedroomBathroomDropdown" value="{{bed}}">{{bed}}</md-option>
+                  </md-select>
+               </md-input-container>
+               <md-input-container class = "wid100full">
+                  <label>Number of Bathrooms in Property</label>
+                  <md-select name="favoriteColor" ng-model="property.bathroom" required>
+                     <md-option ng-repeat="bath in bedroomBathroomDropdown" value="{{bath}}">{{bath}}</md-option>
+                  </md-select>
+               </md-input-container>
+
+            <md-input-container class = "wid100full">
+               <label >Parking Options</label>
+               <md-select name="parking" placeholder="Please select parking option"
+               md-no-asterisk
+               ng-model="step1.parking"
+               ng-class="{ 'errorborder': propertyListForm.parking.$touched && propertyListForm.parking.$invalid || propertyListForm.parking.$invalid && propertyListForm.$submitted}"
+               ng-required="true"
+               ng-model-options="{trackBy: '$value._id'}">
+                  <md-option ng-repeat="parking in parkingOptions" ng-value="parking">{{parking.name}}</md-option>
+               </md-select>
+               <div ng-messages="propertyListForm.parking.$error" class="error_tag"
+               ng-show="propertyListForm.parking.$touched || propertyListForm.$submitted">
+                   <p ng-message="required">Please select parking options</p>
+               </div>
+            </md-input-container>
+
+               <md-input-container class = "wid100full">
+                  <label>Furnishing Options</label>
+                  <md-select name="favoriteColor" ng-model="property.furnished" required>
+                     <md-option value="furnished">Furnished</md-option>
+                     <md-option value="unfurnished">Unfurnished</md-option>
+                     <md-option value="partially-furnished">Part-furnished</md-option>
+                  </md-select>
+               </md-input-container>
+
+            <md-input-container class = "wid100full">
+               <label>Location Options</label>
+
+            <md-select name="location"
+            placeholder="Please select location option"
+            md-no-asterisk
+            ng-model="step1.location"
+            ng-class="{ 'errorborder': propertyListForm.location.$touched && propertyListForm.location.$invalid || propertyListForm.location.$invalid && propertyListForm.$submitted}"
+            ng-required="false"
+            ng-model-options="{trackBy: '$value._id'}">
+               <md-option ng-repeat="l in location" ng-value="l">{{l.name}}</md-option>
+            </md-select>
+         </md-input-container>
+
+         <md-input-container class = "wid100full">
+         <label >Property Age</label>
+         <md-select name="age" placeholder="Please select property age"
+               md-no-asterisk
+               ng-model="step1.age"
+               ng-class="{ 'errorborder': propertyListForm.age.$touched &&  propertyListForm.age.$invalid || propertyListForm.age.$invalid && propertyListForm.$submitted}"
+               ng-required="false"
+               ng-model-options="{trackBy: '$value._id'}">
+            <md-option ng-repeat="a in age" ng-value="a">{{a.name}}</md-option>
+         </md-select>
+
+         </md-input-container>
+
+               <md-input-container class = "wid100full">
+                  <label>EPC Rating</label>
+                  <md-select name="favoriteColor" ng-model="property.epc_rating" required>
+                     <md-option ng-repeat="epc in epcRating" value="{{epc}}">{{epc}}</md-option>
+                  </md-select>
+               </md-input-container>
+            </div>
+         </div>
+
+         <div class="col-md-12 ">
+            <md-input-container class = "wid100full">
+            <label >Additonal Features</label>
+            <md-select ng-model="step1.features" placeholder="Select Additonal Features"
+            md-on-close="clearSearchTerm()"
+            ng-model-options="{trackBy: '$value._id'}" multiple>
+               <md-select-header >
+                     <i class="fa fa-filter"></i>
+                     <input ng-keydown="keyDownEvent($event)" ng-model="searchTerm"
+                     type="search"
+                     placeholder="Search for a features.."
+                     class="traderstopserchselect selectFilter">
+                  </md-select-header>
+                  <md-optgroup label="vegetables">
+                     <md-option ng-value="feature" ng-repeat="feature in featuresX | filter:searchTerm">{{feature.name}}</md-option>
+                  </md-optgroup>
+             </md-select>
+
+            </md-input-container>
+
+               <div class="form-group">
+                  <label class="control-label" ng-class ="{'invalid-form' : propertyupload.$submitted && propertyupload.description.$invalid}" >Description*</label>
+                  <textarea minlength="600" class="form-control vertical" name="description" rows="3" ng-model="property.description" required=""></textarea>
+               </div>
+
+            <div class="form-group">
+               <ul class="form_list">
+                  <li>1. An overview of the condition of the property</li>
+                  <li>2. Details of local shops, restaurants, transport links, school and entertainments.</li>
+                  <li>3. Any other details you feel would be of interest to prospective tenants about your neighbourhood. Try to write at least 100 words, more is better. </li>
+               </ul>
+            </div>
+         </div>
+      </div>
+   </div>
+</div>
+
+<!-- end property detail  -->
+
+
+
+<!-- start tenance detail -->
+
+<div class="col-md-12 steptwolist" ng-if = "propertyType=='rent'">
+   <div class="well white clearfix">
+      <div class="row">
+         <div class="col-md-12 stepadmintitle">2. Tenancy Details, Restrictions &amp; Features</div>
+         <div class="col-md-6 ">
+            <div  id="forms-validation-container">
+               <div class="form-group">
+                  <div flex-gt-xs class="my_update_form-full univercal">
+                     <p  ng-class ="{'invalid-form' : propertyupload.$submitted && propertyupload.earliestmove.$invalid}" >Earliest Move In Date*</p>
+                     <md-datepicker name = "earliestmove" class="traderstopserchselect serchinput pad7" md-open-on-focus=""  md-hide-icons="triangle"  ng-model="property.available_date" md-placeholder="mm/dd/yyyy"
+                        md-min-date="minDate" md-max-date="maxDate" ng-class="{'placeholder': Price == 'Price Color'}" required></md-datepicker>
+                  </div>
+               </div>
+               <div class="form-group">
+                  <div flex-gt-xs class="my_update_form-full univercal">
+                     <p  ng-class ="{'invalid-form' : propertyupload.$submitted && propertyupload.availabilitydate.$invalid}" >Availability for Viewing*</p>
+                     <md-datepicker name = "availabilitydate" class="traderstopserchselect serchinput pad7" md-open-on-focus=""  md-hide-icons="triangle" ng-model="property.viewing_date" md-placeholder="mm/dd/yyyy"
+                        md-min-date="minDate" md-max-date="maxDate" required></md-datepicker>
+                  </div>
+               </div>
+               <div class="form-group">
+                  <label for="inputEmail" class="control-label"  ng-class ="{'invalid-form' : propertyupload.$submitted && propertyupload.monthlyrent.$invalid}" >Monthly Rent For Entire Property (£)*</label>
+                  <input ng-pattern="/^[1-9]\d*([.]\d+)?$/" name="monthlyrent" type="text" ng-model = "property.monthly_rent" class="form-control" required disable-validation-message="">
+               </div>
+               <div class="form-group">
+                  <label for="inputEmail" class="control-label" ng-class ="{'invalid-form' : propertyupload.$submitted && propertyupload.weeklyrent.$invalid}" >Weekly Rent For Entire Property (£)*</label>
+                  <input ng-pattern="/^[1-9]\d*([.]\d+)?$/" type="text" name="weeklyrent" ng-model = "property.weekly_rent" class="form-control" required disable-validation-message="" >
+               </div>
+               <div class="form-group">
+                  <label for="inputEmail" class="control-label" ng-class ="{'invalid-form' : propertyupload.$submitted && propertyupload.depositamount.$invalid}">Deposit Amount(£)*</label>
+                  <input type="text" ng-pattern="/^[1-9]\d*([.]\d+)?$/" name="depositamount" ng-model = "property.deposit_amount" class="form-control" required disable-validation-message="">
+               </div>
+               <div class="form-group">
+                  <label for="inputEmail" class="control-label" ng-class ="{'invalid-form' : propertyupload.$submitted && propertyupload.maxtenlength.$invalid}"> Minimum Tenancy Length (Months)*</label>
+                  <input type="text" ng-pattern="/^[1-9]\d*([.]\d+)?$/" name="maxtenlength" ng-model = "property.maximum_tenant_length" class="form-control" required disable-validation-message="">
+               </div>
+               <div class="form-group">
+                  <label for="inputEmail" class="control-label"
+                     ng-class ="{'invalid-form' : propertyupload.$submitted && propertyupload.mintenlength.$invalid}">
+                     Tenancy Agreement Length*
+                  </label>
+                  <input type="text" ng-pattern="/^[1-9]\d*([.]\d+)?$/" name="mintenlength" ng-model = "property.maximum_no_of_tenant" class="form-control" required disable-validation-message="">
+               </div>
+               <div class="my_update_form-full positiorel mar0 clearfix">
+                  <md-checkbox ng-model="property.let_agreed" class="mar0 md-primary" aria-label="Checkbox 1">Let Agreed </md-checkbox>
+               </div>
+            </div>
+         </div>
+         <div class="col-md-6 ">
+            <div id="forms-validation-container">
+               <div >
+                  <h5>Please tell us about any additional exclusion / additions to be placed
+                     on your advert.
+                  </h5>
+               </div>
+               <div class="clearfix" ng-repeat="x in exclusion">
+                  <div >
+                     <label class="opensemibold ">{{x.text}} </label>
+                  </div>
+                  <div >
+                     <md-switch ng-model="property.additional_exclusion[x.name]" class="mar0 pull-right" aria-label="Switch 1"  ng-false-value="'No'" ng-true-value="'Yes'" >
+                        {{ property.additional_exclusion[x.name] || x.value }}
+                     </md-switch>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+   </div>
+</div>
+
+<!-- end tenance detail -->
+
+<!-- srart info message to select property for option -->
+
+<div class="col-md-12 steptwolist" ng-if = "propertyType!='rent' && propertyType!='sale'">
+   <div class="well white clearfix">
+      <div class="row">
+         <div class="col-md-12 stepadmintitle">2. Property Sale Details and Features/Tenancy Details, Restrictions &amp; Features</div>
+      </div>
+      <div class="form-group" style="margin: 10px 0 20px;">
+         <ul class="form_list">
+            <li>
+               Select purpose before upload property. You need to choose (Property for ?) option.
+            </li>
+         </ul>
+      </div>
+   </div>
+</div>
+
+<!-- end info message to select property for option -->
+
+
+<!-- start property sale detail -->
+
+
+
+<div class="col-md-12 steptwolist" ng-if = "propertyType=='sale'">
+   <div class="well white clearfix">
+      <div class="row">
+         <div class="col-md-12 stepadmintitle">2. Property Sale Details and Features</div>
+
+            <div  id="forms-validation-container">
+            <div class="col-sm-5">
+               <div class="form-group">
+                  <div class="my_update_form-full univercal">
+                     <p  ng-class ="{'invalid-form' : propertyupload.$submitted && propertyupload.availabledate.$invalid}" >Available Date*</p>
+                     <md-datepicker name="availabledate" class="traderstopserchselect serchinput pad7" md-open-on-focus=""  md-hide-icons="triangle"  ng-model="property.available_date" md-placeholder="mm/dd/yyyy"
+                        md-min-date="minDate" md-max-date="maxDate" ng-required="true" ></md-datepicker>
+                  </div>
+               </div>
+
+            </div>
+               <div class="col-sm-2"></div>
+               <div class="col-sm-5">
+               <div style="height:30px"></div>
+               <div class="form-group filled" >
+                  <label  class="control-label "
+                     ng-class ="{'invalid-form' : propertyupload.$submitted && propertyupload.sale_price.$invalid}"
+                   >Sale Price (£) </label>
+                  <input type="text" name="sale_price"
+                  class="form-control"
+                     ng-model="property.sale_price"
+                     ng-pattern="/^[1-9]\d*([.]\d+)?$/"
+                     >
+                  <div class="error_tag"
+                   ng-messages="propertySaleForm.sale_price.$error"
+                   ng-show="propertySaleForm.sale_price.$touched || propertySaleForm.$submitted">
+                      <p ng-message="required">Sale Price is required.</p>
+                      <p ng-message="pattern">Please enter a valid amount.</p>
+                  </div>
+               </div>
+            </div>
+            <div class="clearfix"></div>
+            <div class="col-sm-12">
+               <div class="my_update_form clearfix">
+                  <ul class="addbasket_list">
+                     <h5>Property status</h5>
+                     <div class="fl positiorel add_check">
+                        <md-checkbox ng-model="property.under_offer"  class="mar0 textupper font15 lineheight35 md-primary"  aria-label="Checkbox">Under Offer</md-checkbox>
+                     </div>
+                     <div class="fl positiorel add_check">
+                        <md-checkbox ng-model="property.sold_stc" class="mar0 textupper font15 lineheight35 md-primary" aria-label="Checkbox1">Sold (STC)</md-checkbox>
+                     </div>
+                     <div class="fl positiorel add_check">
+                        <md-checkbox ng-model="property.reserved" class="mar0 textupper font15 lineheight35 md-primary" aria-label="Checkbox2">Reserved</md-checkbox>
+                     </div>
+                  </ul>
+               </div>
+            </div>
+            </div>
+         </div>
+         <!-- <div class="col-md-6 ">
+            <div id="forms-validation-container">
+               <div class="">
+                  <div class="">
+                     <h5>Please tell us about any additional exclusion / additions to be placed
+                        on your advert.
+                     </h5>
+                  </div>
+                  <div class="clearfix" ng-if="x.sale" ng-repeat="x in exclusion">
+                     <div class="fl lineheight25">
+                        <label class="opensemibold ">{{x.text}} </label>
+                     </div>
+                     <div class="fr ">
+                        <md-switch ng-model="property.additional_exclusion[x.name]" class="mar0 pull-right" aria-label="Switch 1" ng-true-value="'Yes'" ng-false-value="'No'">
+                           {{ property.additional_exclusion[x.name] || x.value }}
+                        </md-switch>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div> -->
+      </div>
+   </div>
+</div>
+
+<!-- end property sale detail -->
+
+
+
+
+<!-- start media section -->
+
+
+
+<div class="col-md-12 steptwolist">
+   <div class="well white clearfix">
+      <div class="row">
+         <div class="col-md-12 stepadmintitle">3. Photos, Videos and Other Media</div>
+         <div class="col-md-12">
+            <p>Have your own photos ? Please select the photos you would like to display on your listing page.</p>
+            <div class="col-md-9 col-sm-12 dropzone dragtxt_div" getDropzone="dropInstance(dropzone)" dropzone="dropzoneConfig" id="dropzone">
+               <div class="dz-default dz-message" style="margin-top: 90px;">
+                  Drag and drop images here or click to upload
+               </div>
+            </div>
+         </div>
+         <div class="col-md-6 ">
+            <div class="form-group">
+               <label for="inputEmail" class="control-label"> Optional : Add PhotoSvnth Share address ( what is this ? )</label>
+               <input type="text" ng-model = "property.external_photo_url" class="form-control">
+            </div>
+         </div>
+         <div class="col-md-6 ">
+            <div class="form-group">
+               <label for="inputEmail" class="control-label"> Optional : Add Youtube share address</label>
+               <input type="text" ng-model = "property.youtube_url" class="form-control">
+            </div>
+         </div>
+         <div class="col-md-12 termadmin">
+            <p class="termadminstrong" ng-class ="{'invalid-form' : propertyupload.$submitted && propertyupload.agree.$invalid}">Tick Here to agree to the CherryDoor terms:</p>
+            <p class="font13 martop10">
+               <md-checkbox ng-model="step3.agree_terms" name="agreeTerms"  class="mar0 opensemibold textupper colorblack font15" aria-label="Checkbox 1" required>Tick Here to agree to the CherryDoor terms.</md-checkbox>
+               <a download href="files/cherrydoor-terms.pdf"><md-icon><md-tooltip md-direction="bottom"> <strong>Click here to download terms &amp; conditions document</strong> </md-tooltip>picture_as_pdf</md-icon></a>
+            </p>
+         </div>
+         <div class="col-md-12">
+            <div class="prouploadforminner  clearfix">
+               <div class="my_update_form-full paidserve">
+                  <h5 class=" marbot20">ADDITIONAL SERVICES</h5>
+                  <div class="my_update_form clearfix">
+                     <ul class="addbasket_list">
+                        <div flex="50" ng-repeat="item in paidService">
+                           <md-checkbox ng-checked="exists(item, selected)" ng-click="toggle(item, selected)" class = "md-primary">
+                              {{ item }}
+                           </md-checkbox>
+                        </div>
+                     </ul>
+                  </div>
+               </div>
+            </div>
+         </div>
+         <div class="col-md-12 ">
+            <div class="form-group">
+               <button ng-click = "(propertyupload.additionalfeatures.$modelValue.length==0 ||  propertyupload.$invalid) && validate();" type="submit" class="btn btn-primary btn-lg">SUBMIT</button>
+            </div>
+         </div>
+      </div>
+   </div>
+</div>
+
+<!-- end media section -->
+
+      </fieldset>
+      </form>
+<!-- end form  -->
+   </div>
+</section>
+
+<style type="text/css">
+.help-block {
+      margin-bottom: 0!important;
+}
+</style>

@@ -1,0 +1,128 @@
+<!--Start middle Part-->
+<div class="midllepart"> 
+
+    <!--Start Feature Property-->
+    <section class="section bluebg lofinpagebg">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="mainHd textupper tac">Welcome to cherry Door</div>
+                    <div class="smallHd tac">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod a lacus in sollicitudin. </div> 
+                </div>  
+            </div> 
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="clearfix loginpart">
+                        <div class="toploginav" ng-show="!result">
+                            <ul class="toploginavlist">
+                                <li>
+                                    <a set-url="/login" >Sign In </a>
+                                </li>
+                                <li>
+                                    <a set-url="/register" class="active">Create an Account</a>
+                                </li>
+                            </ul>
+                        </div>            
+                        <div class="loginformdiv" ng-show="!result">   
+                            <form name="userRegistrationForm" ng-submit="register(userRegistrationForm.$valid)" novalidate>
+                                <div class="positiorel">
+                                    <input type="text" name="firstname" class="logininput" placeholder="First Name" 
+                                        ng-model="user.firstname"
+                                        ng-maxlength="20" 
+                                        ng-class="{ 'errorborder': userRegistrationForm.firstname.$touched && userRegistrationForm.firstname.$invalid || userRegistrationForm.firstname.$invalid && userRegistrationForm.$submitted }" 
+                                        required >
+                                        <span class="input_icon user_icon"></span>
+                                    <div ng-messages="userRegistrationForm.firstname.$error" class="error_tag"  ng-show="userRegistrationForm.firstname.$touched || userRegistrationForm.$submitted">
+                                        <p ng-message="required">First Name is required.</p>
+                                        <p ng-message="maxlength">Firstname cannot be more then 20 characters.</p>
+                                    </div>
+                                </div>
+
+                                <div class="positiorel">
+                                    <input type="text" class="logininput" placeholder="Last Name" name="lastname" 
+                                        ng-model="user.lastname"
+                                        ng-maxlength="20" 
+                                        ng-class="{ 'errorborder': userRegistrationForm.lastname.$touched && userRegistrationForm.lastname.$invalid || userRegistrationForm.lastname.$invalid && userRegistrationForm.$submitted }" >
+                                        <span class="input_icon user_icon"></span>
+                                    <div ng-messages="userRegistrationForm.lastname.$error" class="error_tag"  ng-show="userRegistrationForm.lastname.$touched || userRegistrationForm.$submitted">
+                                        <!-- <p ng-message="required">Last Name is required.</p> -->
+                                        <p ng-message="maxlength">Lastname cannot be more then 20 characters.</p>
+                                    </div>
+                                </div>
+                                <div class="positiorel">
+                                    <input type="email" name="email" placeholder="Email Address" class="logininput" 
+                                    ng-model="user.email"
+                                    ng-pattern="/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/"
+                                    ng-class="{ 'errorborder': userRegistrationForm.email.$touched && userRegistrationForm.email.$invalid }" 
+                                    required />
+                                    <span class="input_icon ms_icon"></span>
+                                    <div ng-messages="userRegistrationForm.email.$error" class="error_tag"  ng-show="userRegistrationForm.email.$touched">
+                                        <p ng-message="required">Email Address is required.</p>
+                                        <p ng-message="email">Your email address is invalid</p>
+                                        <p ng-message="pattern">Your email address is invalid</p>
+                                    </div>
+                                </div>
+                                <div class="positiorel">
+                                    <input type="password" name="password" placeholder="Password" class="logininput" 
+                                    ng-class="{ 'errorborder': userRegistrationForm.password.$touched && userRegistrationForm.password.$invalid }" 
+                                    ng-model="user.password"
+                                    ng-pattern="/^\S*$/"
+                                    ng-minlength="6" 
+                                    required/>
+                                    <span class="input_icon ps_icon"></span>
+                                    <div ng-messages="userRegistrationForm.password.$error" class="error_tag"  ng-show="userRegistrationForm.password.$touched">
+                                        <p ng-message="minlength">Password must be atleast 6 characters long.</p>
+                                        <p ng-message="pattern">Password cannot contains whitespace characters.</p>
+                                        <p ng-message="required">Password is required.</p>
+                                    </div>
+                                </div>
+                                
+                                <div class="positiorel">                       
+
+                                    <!-- Latest angular material select box -->
+                                    <md-select name="role" md-no-asterisk placeholder="Select a role" class="logininput selectlogin m-t-0 md-no-underline" 
+                                    ng-class="{ 'errorborder': userRegistrationForm.role.$touched && userRegistrationForm.role.$invalid }" 
+                                    ng-model="user.role"
+                                    required>
+                                        <md-option ng-repeat="role in roles" ng-value="role.value">{{role.text}}</md-option>
+                                    </md-select>
+                                    <span class="input_icon user_icon"></span>
+                                    <div ng-messages="userRegistrationForm.role.$error" class="error_tag" ng-show="userRegistrationForm.role.$touched">
+                                        <p ng-message="required">Role is required.</p>
+                                    </div>
+                                </div> 
+                                <div class="positiorel clearfix">
+                                    <div class="inlineblk">
+                                        <md-button type="submit" ng-disabled="userRegistrationForm.$invalid"  class="btngreenComn font15 md-raised md-primary btn100">Create Account</md-button>
+                                    </div>
+                                    <div class="width130 inlineblk marleft10"> 
+                                        <md-button href set-url="/" class="btngrayComn font15 md-raised md-primary btn100">cancel</md-button>
+                                    </div>    
+                                </div>
+                            </form>
+                            <div class="positiorel martop20">
+                               <p>Already have an account ?  <a set-url="/login" class="linkur textupper" >Sign in</a></p>
+                           </div>
+                        </div>
+                        <!-- success div -->
+                        <div class="successformdiv" ng-show="result"> 
+                            <div class="positiorel forgottxt">
+                                <h3 class="font18 textupper marbot10 opensemibold">Thanks for registering with us.</h3>
+                                <p class="marbot5">Please activate your account using the verification link sent to your email address.</p>                    
+
+                                <p>Once your email address is confirmed, you can start exploring Cherrydoor.</p>
+                            </div>
+                            <div class="positiorel clearfix">
+                                <div class=" inlineblk">
+                                    <md-button href set-url="/login"  class="btngreenComn font15 md-raised md-primary btn100">Done</md-button>
+                                </div>
+                            </div>
+                        </div>       
+                    </div>
+                </div>
+            </div>        
+        </div>
+    </section> 
+<!--End Feature Property-->
+</div>
+<!--End middle Part--> 
