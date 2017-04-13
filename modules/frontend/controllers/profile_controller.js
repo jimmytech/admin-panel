@@ -1,131 +1,182 @@
-const fs		=	require('fs'),
-	path		= 	require('path'),
-	jwt			=	require('jsonwebtoken'),
-	msg			=	require(path.resolve('./config/libs/message')),
-	key         = 	require(path.resolve(`./config/env/${process.env.NODE_ENV}`));
-	userModel	= 	require(path.resolve('./modules/frontend/models/user_model'));
+const fs = require('fs'),
+    path = require('path'),
+    jwt = require('jsonwebtoken'),
+    decodeJwt = require(path.resolve('./config/libs/verify_jwt')),
+    msg = require(path.resolve('./config/libs/message')),
+    env = require(path.resolve(`./config/env/${process.env.NODE_ENV}`));
+    userModel = require(path.resolve('./modules/frontend/models/user_model'));
 
 
 exports.changePassword = (req, res) => {
 
-	let data  = req.body;
+    let data = req.body;
 
-	userModel.findOne({
+    userModel.findOne({
 
-		"_id": data._id
+        "_id": data._id
 
-	}, {
+    }, {
 
-		password:1,
-		_id:0
+        password: 1,
+        _id: 0
 
-	}, (err, result) => {
+    }, (err, result) => {
 
-		if (result) {
+        if (result) {
 
-			if (result.matchPassword(data.p)) {
+            if (result.matchPassword(data.p)) {
 
-				let encryptedPassword = result.encryptPassword(data.np);
-				let obj = {
-					password: encryptedPassword
-				};
+                let encryptedPassword = result.encryptPassword(data.np);
+                let obj = {
+                    password: encryptedPassword
+                };
 
-				userModel.update({
-					"_id": data._id
-				}, obj, (err, update) => {
+                userModel.update({
+                    "_id": data._id
+                }, obj, (err, update) => {
 
-					if (update.nModified == "1") {
-						res.json({
-							success: true,
-							message: msg.passwordChanged
-						});							
-					}else{
-						res.json({
-							success: false,
-							message: msg.tryAgain
-						});						
-					}
-				});
+                    if (update.nModified == "1") {
+                        res.json({
+                            success: true,
+                            message: msg.passwordChanged
+                        });
+                    } else {
+                        res.json({
+                            success: false,
+                            message: msg.tryAgain
+                        });
+                    }
+                });
 
-			}else{
+            } else {
 
-				res.json({
-					success: false,
-					message: msg.invalidCurrentPassword
-				});	
+                res.json({
+                    success: false,
+                    message: msg.invalidCurrentPassword
+                });
 
-			}
+            }
 
-		}else{
+        } else {
 
-			res.json({
-				success: false,
-				message: msg.invalidRequest
-			});			
-		}
-	});
+            res.json({
+                success: false,
+                message: msg.invalidRequest
+            });
+        }
+    });
 };
 
 
 exports.activeInactive = (req, res) => {
 
-	userModel.update({
-		"_id": req.body._id
-	}, {
-		"$set": {
-			isActive: req.body.isActive
-		}
-	}, (err, result) => {
+    userModel.update({
+        "_id": req.body._id
+    }, {
+        "$set": {
+            isActive: req.body.isActive
+        }
+    }, (err, result) => {
 
-		if (result.nModified == "1") {
-			
-				let message = !req.body.isActive ? msg.accountDeactivated : msg.accountActivated;
+        if (result.nModified == "1") {
 
-				res.json({
-					success: true,
-					message: message
-				});	
+            let message = !req.body.isActive ? msg.accountDeactivated : msg.accountActivated;
 
-		}else{
+            res.json({
+                success: true,
+                message: message
+            });
 
-				res.json({
-					success: false,
-					message: msg.tryAgain
-				});	
+        } else {
 
-		}
+            res.json({
+                success: false,
+                message: msg.tryAgain
+            });
 
-	});
-};	
+        }
+
+    });
+};
 
 exports.activeInactiveNotification = (req, res) => {
 
-	userModel.update({
-		"_id": req.body._id
-	}, {
-		"$set": {
-			enableNotification: req.body.enableNotification
-		}
-	}, (err, result) => {
+    userModel.update({
+        "_id": req.body._id
+    }, {
+        "$set": {
+            enableNotification: req.body.enableNotification
+        }
+    }, (err, result) => {
 
-		if (result.nModified == "1") {
-			
-				let message = !req.body.enableNotification ? msg.disableNotification : msg.enabledNotification;
+        if (result.nModified == "1") {
 
-				res.json({
-					success: true,
-					message: message
-				});	
+            let message = !req.body.enableNotification ? msg.disableNotification : msg.enabledNotification;
 
-		}else{
+            res.json({
+                success: true,
+                message: message
+            });
 
-				res.json({
-					success: false,
-					message: msg.tryAgain
-				});	
+        } else {
 
-		}
+            res.json({
+                success: false,
+                message: msg.tryAgain
+            });
 
-	});	
+        }
 
+    });
+
+};
+
+exports.updateProfileImage = (req, res) => {
+
+    let secret = env.secret;
+
+    decodeJwt.run(req, secret, (data) => {
+
+        if (Array.isArray(req.files)) {
+
+            let path = req.files[0].path.replace("public/", "");
+            
+            userModel.update({
+
+                "_id": data._id
+
+            }, {
+
+                "$set": {
+                    "image": path
+                }
+
+            }, (err, result) => {
+
+                if (result.nModified == "1") {
+
+                    res.json({
+                        success: true,
+                        message: msg.profilePicUpdated,
+                        url: path
+                    });
+
+                } else {
+
+                    res.json({
+                        success: false,
+                        message: msg.tryAgain
+                    });
+
+                }
+
+            });
+        } else {
+            res.json({
+                success: false,
+                message: msg.tryAgain
+            });
+        }
+
+    });
 };

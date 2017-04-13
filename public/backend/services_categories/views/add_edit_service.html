@@ -1,0 +1,61 @@
+   <section class="content-header">
+      <h1>
+         {{serviceHeader}}
+      </h1>
+   </section>
+   <section class="content paddingfotter">
+      <div class="row">
+         <div class="col-md-8 martop10">
+            <div class="box box-shadow">            
+               <form name="loginForm " class="labelform" ng-submit="loginForm.$valid && insertUpdateService(ev)" novalidate="">
+                  <md-input-container class="md-icon-float md-block">
+                     <label class="colorlabel">Title</label>
+                     <input name="title" ng-model="service.title" required/>
+                     <div ng-messages="loginForm.title.$error" ng-show='loginForm.title.$dirty || loginForm.title.$invalid'>
+                        <div ng-message="required">This is required.</div>
+                     </div>
+                  </md-input-container>
+                  <md-input-container ng-if = "slugInput" class="md-icon-float md-block">
+                     <label class="colorlabel">Slug</label>
+                     <input name="meta_tittle" ng-model="service.slug" required/>
+                     <div ng-messages="loginForm.meta_tittle.$error" ng-show='loginForm.meta_tittle.$dirty || loginForm.meta_tittle.$invalid'>
+                        <div ng-message="required">This is required.</div>
+                     </div>
+                  </md-input-container>                  
+
+                  <md-input-container class="md-icon-float md-block">
+                     <label class="colorlabel">Description</label>
+                     <input name="description" ng-model="service.description" required/>
+                     <div ng-messages="loginForm.description.$error" ng-show='loginForm.description.$dirty || loginForm.description.$invalid'>
+                        <div ng-message="required">This is required.</div>
+                     </div>
+                  </md-input-container>
+                  <md-input-container class="md-icon-float md-block">
+                     <label class="colorlabel">Order(Number Only)</label>
+                     <input  name="order" ng-model="service.order" numbers-Only required/>
+                     <div ng-messages="loginForm.order.$error" ng-show='loginForm.order.$dirty || loginForm.order.$invalid'>
+                        <div ng-message="required">This is required.</div>
+                     </div>
+                  </md-input-container>                                                
+                  <md-input-container  flex="100"  style = "width: 100%;">
+                     <label class="colorlabel">Status</label>
+                     <md-select name="favoriteColor" ng-model="service.status" required>
+                        <md-option value="true">Active</md-option>
+                        <md-option value="false">In Active</md-option>
+                     </md-select>
+                     <div class="errors" ng-messages="loginForm.favoriteColor.$error">
+                        <div ng-message="required">This is required.</div>
+                     </div>
+                  </md-input-container>
+                              
+                  <div class="row">
+                     <div class="col-xs-12 pull-left" style="margin-top: 20px;">
+                        <button type="submit" class="btn btn-primary">Update</button>
+                        <button type = "button" back-button  class="btn btn-primary">Cancel</button>
+                     </div>
+                  </div>
+               </form>
+            </div>
+         </div>
+      </div>
+   </section>

@@ -1,0 +1,24 @@
+<div class="myprofileBg">
+   <div class="settingBg">
+      <div class="passwordBx dashservic">
+         <form name="addCategoryForm" ng-submit = " addCategoryForm.$valid && addCategory()" novalidate="">
+            <div class="dashSerInnBx">
+               <!-- <div class="myserviceHd">Hello Kat66! Let's get you started</div> -->
+               <div class="categoryHd">Select category which you like to add</div>
+               <div class="categoryList sp-catList">
+                  <span role="button" ng-repeat = "item in dataArray.category" ng-click = "selectCategory(item.title, $index)" class="temp-class{{$index}}">
+                  <i><img ng-src="{{item.image}}">
+                  <span><i class="material-icons">done</i></span>
+                  </i>
+                  <small>{{item.title}}</small>
+                  </span>
+               </div>
+               <div class="travelInfoFrm">
+                  <md-button type = "submit" class="md-raised saveBtn signinBtn">Next</md-button>
+                  <!-- <md-button class="md-raised backBtn signinBtn">Back</md-button> -->
+               </div>
+            </div>
+         </form>
+      </div>
+   </div>
+</div>

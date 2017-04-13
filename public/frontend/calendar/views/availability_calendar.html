@@ -1,0 +1,105 @@
+<div class="myprofileBg">
+  <div class="settingBg">
+  <form name = "availabilityCalendarForm" ng-submit = " availabilityCalendarForm.$valid && setAvailabity()">
+    <div class="dashservic">
+      <div class="startdateBx">
+      	<div class="clearfix">
+      		<div class="startdate-L">Start Date</div>
+      		<div class="startdate-R">
+                  
+      			<md-datepicker   ng-model="calendar.start_date" class="dashInput profileCalc" md-min-date="minDate" md-placeholder="Enter date" required ></md-datepicker>
+      		</div>
+      	</div>
+      	<div class="clearfix">
+      		<div class="startdate-L">Start Time</div>
+      		<div class="startdate-R">
+      			<div class="time-L">
+      				<md-input-container>
+      				  <label>HH</label>
+			          <md-select required ng-model="calendar.start_time.hh" class="dashInput">
+	                             <md-option ng-value="h" ng-repeat="h in hh">{{h}}</md-option>
+			          </md-select>
+			        </md-input-container>
+      			</div>
+      			<div class="time-R">
+      				<md-input-container>
+      				  <label>MM</label>
+                            <md-select required ng-model="calendar.start_time.mm" class="dashInput">
+                                   <md-option ng-value="m" ng-repeat="m in mm">{{m}}</md-option>
+                            </md-select>
+			        </md-input-container>
+      			</div>
+      		</div>
+      	</div>
+      </div>
+      <div class="startdateBx">
+      	<div class="clearfix">
+      		<div class="startdate-L">End Date</div>
+      		<div class="startdate-R">
+      			<md-datepicker   ng-model="calendar.end_date" class="dashInput profileCalc" md-placeholder="Enter date" md-min-date="minDate" required ></md-datepicker>
+      		</div>
+      	</div>
+      	<div class="clearfix">
+      		<div class="startdate-L">End Time</div>
+      		<div class="startdate-R">
+      			<div class="time-L">
+      				<md-input-container>
+      				  <label>HH</label>
+                            <md-select required ng-model="calendar.end_time.hh" class="dashInput">
+                                   <md-option ng-value="h" ng-repeat="h in hh">{{h}}</md-option>
+                            </md-select>
+			        </md-input-container>
+      			</div>
+      			<div class="time-R">
+      				<md-input-container>
+      				  <label>MM</label>
+                            <md-select required ng-model="calendar.end_time.mm" class="dashInput">
+                                   <md-option ng-value="m" ng-repeat="m in mm">{{m}}</md-option>
+                            </md-select>
+			        </md-input-container>
+      			</div>
+      		</div>
+      </div>
+      </div>
+      <div class="startdateBx nobot">
+      	<div class="weekndradBx">
+	      	<md-radio-group ng-model="calendar.day" required>
+		      <span>
+		      	<md-radio-button value="2">Set availability for weekends </md-radio-button>
+		      	<i class="fa fa-info-circle" aria-hidden="true">
+                              <md-tooltip md-direction="top">I am only available on weekends (2 Days)</md-tooltip>               
+                        </i>
+			  </span>
+		      <span>
+		      	<md-radio-button value="5">Set availability for week days</md-radio-button>
+		      	<i class="fa fa-info-circle" aria-hidden="true">
+                               <md-tooltip md-direction="top">I am only available on week days (5 Days)</md-tooltip>                    
+                        </i>
+		  	  </span>
+		      <span>
+		      	<md-radio-button value="7">Set availability for all days </md-radio-button>
+		      	<i class="fa fa-info-circle" aria-hidden="true">
+                               <md-tooltip md-direction="top">I am  available every day (7 Days)</md-tooltip>                    
+                        </i>
+		  	  </span>
+		    </md-radio-group>  
+	    </div>  	
+      </div>
+      <div class="calslideBx">
+<!--       	<div class="slideradioBx">
+      		<md-radio-group ng-model="data.group2">
+		      <span><md-radio-button value="daily">Daily </md-radio-button></span>
+		      <span><md-radio-button value="weekly">Weekly</md-radio-button></span>
+		      <span><md-radio-button value="monthly">Monthly</md-radio-button></span>
+		    </md-radio-group>
+      	</div> -->
+      	<div class="calcSlider">
+      		<img src="assets/img/frontend/calander-img.png">
+      	</div>
+      	<md-button type = "submit" class="md-raised saveBtn signinBtn">Update Availability</md-button>
+      </div>
+    </div>
+    </form>
+  </div>
+</div>     
+

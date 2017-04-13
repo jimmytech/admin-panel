@@ -1,11 +1,13 @@
 app
-.factory('loginSignupPopup', ['$mdDialog', function ($mdDialog) {
+.factory('loginSignupPopup', ['$mdDialog', 
+	 function ($mdDialog) {
 	return {
 
 		login: function(ev){
+
 		    $mdDialog.show({
 		      controller: "loginSignupCtrl",
-		      templateUrl: 'frontend/popup/login.html',
+		      templateUrl: 'frontend/popup/views/login.html',
 		      parent: angular.element(document.body),
 		      targetEvent: ev,
 		      clickOutsideToClose:true
@@ -20,7 +22,7 @@ app
 		signup: function(ev){
 			$mdDialog.show({
 			  controller: "loginSignupCtrl",
-		      templateUrl: 'frontend/popup/sign_up.html',
+		      templateUrl: 'frontend/popup/views/sign_up.html',
 		      parent: angular.element(document.body),
 		      targetEvent: ev,
 		      clickOutsideToClose:true

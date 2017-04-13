@@ -1,4 +1,5 @@
 <div class="mainCon">
+
 	<section class="homeBannerBx">
     	<div id="myCarousel" class="carousel slide Mainbanner" data-ride="carousel">
         	<div class="carousel-inner" role="listbox">
@@ -21,13 +22,185 @@
                 <span class="sr-only">Next</span>
               </a>
         </div>
-        <div class="home-Logo"><a href="#"><img src="assets/img/frontend/peach-logo.png" alt=""></a></div>
-        <div class="homeContact"><small>Please Contact :</small>  +90-8585896</div>
-        <div class="homeLogin">
-        	<a ng-click = "loginPopup($event)" class="loginBtn transition pointer">Log In</a>
-            <a ng-click = "signUpPopup($event)" class="signupBtn transition pointer">Sign Up</a>
+        <div ng-controller = "includesCtrl" ng-include = "'frontend/includes/views/home_page.html'"></div>
+        <div class="listingSrchBx">
+          <div class="container">
+            <div class="listing-srchTop clearfix">
+              <div class="listing-Location">
+                  <md-input-container class="locatBx">
+                      <label>Location</label>
+                      <input required name="clientName" ng-model="project.clientName" class="HomefrmInp">
+                      <div ng-messages="projectForm.clientName.$error">
+                        <div ng-message="required">This is required.</div>
+                      </div>
+                    </md-input-container>
+              </div>
+              <div class="listing-gender">
+                <md-input-container class="locatBx">
+                  <label>Gender</label>
+                  <md-select name="type" ng-model="project.type" class="HomefrmInp">
+                    <md-option value="app">Male</md-option>
+                    <md-option value="web">Female</md-option>
+                  </md-select>
+                </md-input-container>
+              </div>
+              <div class="listing-startdate">
+                <md-input-container  class="locatBx">
+                    <label>Start Date</label>
+                    <md-datepicker ng-model="user.submissionDate" focus></md-datepicker>
+                </md-input-container>
+              </div>
+              <div class="listing-time">
+                <label>Time</label>
+                <div class="clearfix">
+                <md-input-container class="locatBx timelist-L">
+                  <label>HH</label>
+                  <md-select name="type" ng-model="timeHH" class="HomefrmInp">
+                    <md-option value="timeHH1">10</md-option>
+                    <md-option value="timeHH2">11</md-option>
+                    <md-option value="timeHH3">12</md-option>
+                  </md-select>
+                </md-input-container>
+                <md-input-container class="locatBx  timelist-R">
+                  <label>MM</label>
+                  <md-select name="type" ng-model="timeMM" class="HomefrmInp">
+                    <md-option value="timeMM1">10</md-option>
+                    <md-option value="timeMM2"20</md-option>
+                    <md-option value="timeMM3">30</md-option>
+                  </md-select>
+                </md-input-container>
+                </div>
+              </div>
+              <div class="listing-duration">
+                <md-input-container class="locatBx">
+                  <label>Duration</label>
+                  <md-select name="type" ng-model="duration" class="HomefrmInp">
+                    <md-option value="app">2 hrs</md-option>
+                    <md-option value="app1">4 hrs</md-option>
+                    <md-option value="app2">6 hrs</md-option>
+                  </md-select>
+                </md-input-container>
+              </div>
+              <div class="listing-goBtn"><md-button class="md-raised goHome-btn">Go</md-button></div>
+              <div class="listing-collepsIcon">
+                 <a ng-click = "toggleAdvanceSearch()" class="pointer"><i></i><i></i><i></i></a>
+              </div>
+            </div>
+            <div class="advancesrchBx">
+              <div class="advanceGend">
+                <md-radio-group ng-model="data.group1">
+                  <span><md-radio-button value="female">Female</md-radio-button></span>
+                  <span><md-radio-button value="male">Male</md-radio-button></span>
+                </md-radio-group>
+              </div>
+              <div class="advsrchBx clearfix">
+                <div class="advLocBx">
+                  <label>Location</label>
+                  <md-input-container class="md-block">
+                    <input ng-model="user.location" class="srchInput" placeholder="location">
+                  </md-input-container>
+                </div>
+                <div class="advdatBx">
+                  <label>Start Date</label>
+                  <md-datepicker   ng-model="user.dob" class="srchInput profileCalc" md-placeholder="Start Date date" md-max-date="dobMaxDate" required ></md-datepicker>
+                </div>
+                <div class="advtimeBx">
+                  <label>Time</label>
+                  <div class="clearfix">
+                    <div class="advtime-L">
+                      <md-input-container class="">
+                        <label>HH</label>
+                        <md-select name="type" ng-model="timeHH" class="srchInput">
+                          <md-option value="starthh1">10</md-option>
+                          <md-option value="starthh2">11</md-option>
+                          <md-option value="starthh3">12</md-option>
+                        </md-select>
+                      </md-input-container>
+                    </div>
+                    <div class="advtime-R">
+                      <md-input-container class="">
+                        <label>MM</label>
+                        <md-select name="type" ng-model="timeHH" class="srchInput">
+                          <md-option value="startmm1">10</md-option>
+                          <md-option value="startmm2">11</md-option>
+                        </md-select>
+                      </md-input-container>
+                    </div>
+                  </div>
+                </div>
+                <div class="advenddateBx">
+                  <label>End Date</label>
+                  <md-datepicker   ng-model="user.enddate" class="srchInput profileCalc" md-placeholder="Start Date date" md-max-date="dobMaxDate" required ></md-datepicker>
+                </div>
+                <div class="advendtimeBx">
+                  <label>Time</label>
+                  <div class="clearfix">
+                    <div class="advtime-L">
+                      <md-input-container class="">
+                        <label>HH</label>
+                        <md-select name="type" ng-model="EndtimeHH" class="srchInput">
+                          <md-option value="hh1">10</md-option>
+                          <md-option value="hh2">11</md-option>
+                          <md-option value="hh3">12</md-option>
+                        </md-select>
+                    </div>
+                    <div class="advtime-R">
+                      <md-input-container class="">
+                        <label>MM</label>
+                        <md-select name="type" ng-model="EndtimeHH" class="srchInput">
+                          <md-option value="mm1">10</md-option>
+                          <md-option value="mm2">11</md-option>
+                        </md-select>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="waitringBx clearfix">
+                <div class="waitring-L">
+                  <md-input-container class="">
+                    <label>Waiteressing</label>
+                    <md-select name="type" ng-model="Waiteressing" class="srchInput">
+                      <md-option value="Waiteressing1">10</md-option>
+                      <md-option value="Waiteressing2">11</md-option>
+                    </md-select>
+                  </md-input-container>
+                </div>
+                <div class="waitring-R">
+                  <md-radio-group ng-model="data.group2">
+                    <span><md-radio-button value="standard">Standard</md-radio-button></span>
+                    <span><md-radio-button value="bikini">Bikini</md-radio-button></span>
+                    <span><md-radio-button value="topless">Topless</md-radio-button></span>
+                    <span><md-radio-button value="nude">Nude</md-radio-button></span>
+                  </md-radio-group>
+                </div>
+              </div>
+              <div class="keywordmainBx clearfix">
+                <div class="keyword_Left">
+                  <md-input-container class="md-block">
+                    <input ng-model="user.keyword" class="srchInput" placeholder="Keyword Search">
+                  </md-input-container>
+                </div>
+                <div class="keyword_Mid">
+                    <div class="sortby-L">Sort By</div>
+                    <div class="sortby-R">
+                      <md-input-container class="">
+                          <label>Rating</label>
+                          <md-select name="type" ng-model="Waiteressing" class="srchInput">
+                            <md-option value="Waiteressing1">1</md-option>
+                            <md-option value="Waiteressing2">2</md-option>
+                          </md-select>
+                      </md-input-container>
+                    </div>
+                </div>
+              <div class="keyword_Right">
+                    <md-button type="submit" class="md-raised saveBtn signinBtn">search</md-button>
+                    <md-button type="submit"  ng-click = "hideAdvanceSearch()" class="md-raised backBtn signinBtn">Back</md-button>
+              </div>
+            </div>
+          </div>
+          </div>
         </div>
-        <div class="filterFrmBx">
+        <!-- <div class="filterFrmBx">
         	<div class="frmLocatBx">
                 <md-input-container class="locatBx">
                   <label>Location</label>
@@ -65,7 +238,7 @@
             <div class="frmGoBx">
                 <md-button class="md-raised goHome-btn">Go</md-button>
             </div>
-        </div>
+        </div> -->
     </section>   
 	<section class="whypeachBg">
     	<div class="col-sm-12"><div class="whypeachHd">Why PeachE?</div></div>
@@ -107,8 +280,8 @@
                 <md-tabs md-dynamic-height md-border-bottom>
                   <md-tab label="For Customer">
                     <md-content class="md-padding">
-                      <div class="row">
-                        <div class="col-sm-12 col-xs-12">
+                      <div class="col-sm-12 col-xs-12">
+                        <div class="row">
                         <div class="col-sm-3 col-xs-6">
                             <div class="CustomerBx">
                                 <i><img src="assets/img/frontend/register-icon.png" alt="" class="transition">
@@ -190,3 +363,4 @@
             </div>
     </section>    
 </div>
+

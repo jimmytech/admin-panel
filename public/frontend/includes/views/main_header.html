@@ -14,9 +14,9 @@
 			<i class="material-icons">notifications</i>
 
 		</div>
-		<div class="userBx">
-			<span><img src="assets/img/frontend/peachlist-1.jpg"></span>
-			{{profileInfo.first_name }} {{profileInfo.last_name}}
+		<div class="userBx" role="button" ng-click = "toPage('/my-profile')">
+			<span><img src="{{imagePath}}"></span>
+			{{ profileInfo.first_name}}
 		</div>
 	</div>
 </div>

@@ -30,11 +30,15 @@ fs.readdirSync(path.resolve('./modules/frontend/controllers')).forEach(file => {
 
 
 /*routes authencation by using express routes*/
+
 router.use(expressJWT({
     secret: new Buffer(key.secret).toString('base64'),
 }).unless({
     path: [
-        '/admin/login'
+        '/admin/login',
+        '/user-login',
+        '/user-signup',
+        '/favicon.ico'
     ]
 }));
 
@@ -96,13 +100,17 @@ router.delete('/delete-post/:id', adminCtrls.post_controller.deletePost);
 
 /*category routes*/
 router.get('/category-list', adminCtrls.category_controller.categortList);
-router.post('/add-update-category', adminCtrls.category_controller.insertUpdateCategory);
+router.post('/add-update-category', multer.saveImage(), adminCtrls.category_controller.insertUpdateCategory);
 router.get('/category-info/:id', adminCtrls.category_controller.categoryInfo);
 router.delete('/delete-category/:id', adminCtrls.category_controller.deleteCategory);
-router.get('/category-drop-down-list', adminCtrls.category_controller.dropDownList);
 
 
+/*service routes*/
 
+router.get('/service-list',  adminCtrls.service_controller.serviceList);
+router.get('/service-info/:id',  adminCtrls.service_controller.serviceInfo);
+router.post('/insert-update-service',  adminCtrls.service_controller.insertUpdateService);
+router.delete('/delete-service/:id',  adminCtrls.service_controller.trash);
 
 
 
@@ -114,14 +122,22 @@ router.get('/category-drop-down-list', adminCtrls.category_controller.dropDownLi
 
 router.post('/user-signup', userCtrls.user_controller.signup);
 router.post('/user-login', userCtrls.user_controller.login);
-router.post('/update-profile', userCtrls.user_controller.updateProfile);
+router.post('/update-user-profile', userCtrls.user_controller.updateProfile);
 router.post('/change-password', userCtrls.profile_controller.changePassword);
 router.post('/is-active', userCtrls.profile_controller.activeInactive);
 router.post('/notification-setting', userCtrls.profile_controller.activeInactiveNotification);
 router.get('/refer-to-friend/:email', userCtrls.refer_controller.referToFriend);
 
+router.post('/update-user-profile-image', multer.saveImage(), userCtrls.profile_controller.updateProfileImage);
 
+router.get('/get-suburb-list', adminCtrls.suburb_controller.suburbList);
+
+/*get category service list*/
+router.get('/category-service-list', userCtrls.category_service_controller.categoryServiceList);
+router.post('/save-category-data', userCtrls.category_service_controller.saveCategoryInfo);
 /*end category routes*/
+
+
 module.exports = {
     router: router
 };

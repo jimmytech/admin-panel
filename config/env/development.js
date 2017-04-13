@@ -2,7 +2,7 @@
 
 module.exports = {
 	db: {
-		URL: "mongodb://localhost/peachDB",
+		URL: "mongodb://100.100.7.60/peachDB",
 		options: {
 			user: '',
 			pass: ''

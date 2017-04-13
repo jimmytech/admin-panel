@@ -22,7 +22,7 @@ app
 
             });
             $rootScope.$on('$routeChangeStart', function() {
-                var links = ['/how-it-works', '/about-us'];
+                var links = ['/how-it-works', '/about-us', '/search-listing', '/search-listing-detail', '/help-and-faq', '/privacy-policy', '/terms-of-use','/detail-exotic-dancing', '/sign-up', '/login'];
                 if ($location.path() == '/' || links.indexOf($location.path()) >= 0) {
                     $rootScope.homePage = true;
                 } else {
@@ -48,9 +48,9 @@ app
 
     .config(['toastyConfigProvider', function(toastyConfigProvider) {
         toastyConfigProvider.setConfig({
-            sound: true,
+            // sound: true,
             shake: false,
-            position: 'top-right'
+            position: 'top-center'
         });
     }])
     
@@ -60,7 +60,7 @@ app
             return {
                 'request': function(config) {
                     config.headers = config.headers || {};
-                    var token = localStorage.getItem("token");
+                    var token = localStorage.getItem("userToken");
                     if (token) {
                         config.headers.Authorization = 'Bearer ' + token;
                     }

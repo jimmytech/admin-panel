@@ -1,14 +1,18 @@
 const fs		=	require('fs'),
 	path		= 	require('path'),
 	jwt			=	require('jsonwebtoken'),
+	crypto		=   require('crypto'),
 	msg			=	require(path.resolve('./config/libs/message')),
 	key         = 	require(path.resolve(`./config/env/${process.env.NODE_ENV}`));
 	userModel	= 	require(path.resolve('./modules/frontend/models/user_model'));
 
 
+
 exports.signup = (req, res) =>{
-	
-	let data = new userModel(req.body);
+	let userInfo = req.body;
+		userInfo.promotional_code = `${userInfo.display_name.substring(0,6)}${crypto.randomBytes(3).toString('hex')}`;
+
+	let data = new userModel(userInfo);
 
 	data.save((err, result)=>{
 		if (result) {
@@ -37,7 +41,7 @@ exports.login = (req, res) => {
 
 		if (result){
 
-			let token = jwt.sign(result, new Buffer(key.secret).toString('base64'), { expiresIn: '5h' });
+			let token = jwt.sign(result, new Buffer(key.secret).toString('base64'));
 			res.json({
 				success: true,
 				message: "",

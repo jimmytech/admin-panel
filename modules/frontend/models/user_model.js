@@ -21,6 +21,8 @@ var userSchema = new schema({
     promotional_code: String,
 
     address: String,
+    
+    location: String,
 
     image: String, 
 
@@ -42,6 +44,10 @@ var userSchema = new schema({
 
     biography: String, 
 
+    travel_distance: String,
+
+    categories: Array,
+
     isActive: {
         type: Boolean,
         default: true
@@ -51,6 +57,8 @@ var userSchema = new schema({
         type: Boolean,
         default: true
     },
+    
+    availability_calendar: Object,
 
     trash: {
         type: Boolean,

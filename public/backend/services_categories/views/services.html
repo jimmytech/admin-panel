@@ -1,0 +1,104 @@
+<section class="content-header">
+   <h1 class="page_title"> Services  <span><button class="btn btn-primary" type="button" ng-click = "addNew('/admin/services/new-service')" >Add New</button></span></h1>
+</section>
+<section class="content">
+   <div class="row" ng-if = "data.success">
+      <div class="col-xs-12">
+         <div class="box">
+            <div class="box-header">
+               <form name  = "searchForm" novalidate="">
+                  <div class="input-group input-group-sm pull-right serch_div">
+                     <input name="searchInput" ng-model = "searchFor" type="text" name="table_search" class="form-control pull-right" placeholder="Search">
+                     <div class="input-group-btn">
+                        <button type="submit" class="btn btn-default btn-flat"><i class="fa fa-search"></i></button>
+                     </div>
+                  </div>
+               </form>
+            </div>
+            <div class="box-body no-padding table-responsive">
+               <table class="table table-hover table-custom">
+                  <tbody>
+                     <tr>
+                        <th width="20%">
+                           Title
+                           <a class="sort" >
+                              <i ng-click = "sort(searchFor, 'title', $event)" ng-class = "alphaAsc"  aria-hidden="true">
+                              </i>
+                              <md-tooltip md-direction="top">Sort by title</md-tooltip>
+                           </a>
+                        </th>
+                        <th width="40%">
+                           Description
+                           <a class="sort">
+                              <i ng-click = "sort(searchFor, 'author',  $event)" ng-class = "alphaAsc" aria-hidden="true">
+                              </i>
+                              <md-tooltip md-direction="top">Sort by top</md-tooltip>
+                           </a>
+                        </th>
+                        <th width="10%">
+                           Order
+                           <a class="sort">
+                              <i ng-click = "sort(searchFor, 'author',  $event)" ng-class = "alphaAsc" aria-hidden="true">
+                              </i>
+                              <md-tooltip md-direction="top">Sort by order</md-tooltip>
+                           </a>
+                        </th>
+                        <th  width="10%">
+                           Status 
+                           <a class="sort"  >
+                              <i ng-click = "sort(searchFor, 
+                                 'status',  $event)" ng-class = "alphaAsc" aria-hidden="true">
+                              </i>
+                              <md-tooltip md-direction="top">Sort by status</md-tooltip>
+                           </a>
+                        </th>
+                        <th  width="20%">Action</th>
+                     </tr>
+                     <tr ng-repeat="l in result = (data.result | filter: searchFor) ">
+                        <td>                        
+                           {{l.title }}
+                        </td>
+                        <td>
+                           {{l.description | limitTo: 100}}
+                           <span ng-if="l.description.length>100">
+                              <i ng-click = "redirectTo('/admin/service/detail/', l._id);" class="material-icons pointer">more_horiz</i>
+                              <md-tooltip md-direction = "bottom">Read more...
+                              </md-tooltip>
+                           </span>
+                        </td>
+                        <td>
+                           {{l.order}}
+                        </td>
+                        <td>
+                           <span ng-if="l.status==true">Active</span>
+                           <span ng-if="l.status==false">In-Active</span>
+                        </td>
+                        <td>
+                           <a ng-click = "redirectTo('/admin/service/', l._id)">
+                              <md-tooltip md-direction="bottom">Click to edit</md-tooltip>
+                              <i class="material-icons edit">mode_edit</i>
+                           </a>
+                           <a ng-click = "redirectTo('/admin/service/detail/', l._id);" >
+                              <md-tooltip md-direction="bottom">Click to view</md-tooltip>
+                              <i class="material-icons view">remove_red_eye</i> 
+                           </a>
+                           <a ng-click = "trash(l._id, $index, $event)">
+                              <md-tooltip md-direction="bottom">Click to delete</md-tooltip>
+                              <i class="material-icons color-red">delete</i>
+                           </a>
+                        </td>
+                     </tr>
+                     <tr ng-if = "searchFor.length>0 && result==0" >
+                        <td colspan="6">
+                           <p style="margin-top: 50px; margin-bottom: 50px;" class="text-center"> Your search - <b>{{searchFor}}</b> - did not match any record</p>
+                        </td>
+                     </tr>
+                  </tbody>
+               </table>
+            </div>
+         </div>
+      </div>
+   </div>
+   <div ng-if="!data.success || data.result == 0" ng-include="'backend/includes/views/no-result.html'">
+   </div>
+</section>

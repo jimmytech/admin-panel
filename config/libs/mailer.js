@@ -32,3 +32,7 @@ exports.sendEmail = (emailId, template, subject, cb) =>{
     });      
 
 };
+
+
+
+

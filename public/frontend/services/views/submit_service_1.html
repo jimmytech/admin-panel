@@ -1,0 +1,184 @@
+<div class="myprofileBg">
+   <div class="settingBg">
+      <div class="passwordBx dashservic">
+         <form name="addCategoryForm" ng-submit = "addCategoryForm.$valid && submitData()" novalidate="">
+            <div class="dashSerInnBx">
+               <div ng-if = "SELECTDIV.WAITRESS" class="categoryHd">Please add your waitress service information</div>
+               <div ng-if = "SELECTDIV.WAITRESS" class="waitressTble">
+                  <div class="serviceTbleBx">
+                     <table class="table table-striped serviceTble">
+                        <tr>
+                           <th width="33.33%">Waitressing</th>
+                           <th width="33.33%">Price</th>
+                           <th width="33.33%" style="text-align:right;">Minimum Duration </th>
+                        </tr>
+                        <tr ng-repeat = "item in dataArray.service" >
+                           <td>
+
+                              <md-checkbox name = "waitress_service{{$index}}" ng-model="waitress[item.title].type" aria-label="Checkbox 1" ng-true-value = "1" ng-false-value = "0" class="md-primary" ng-change = "checkWaitressSelection(item.title)" >
+                                 {{item.title}}
+                              </md-checkbox>
+                           </td>
+                           <td>
+                              <md-input-container class="md-block serviceInp" flex-gt-sm>
+                                 <label>Amount</label>
+                                 <input name="waitress_amount{{$index}}" numbers-only ng-model="waitress[item.title].amount"  ng-required="waitress[item.title].type =='1'">
+                                 
+                                 <div ng-messages="addCategoryForm['waitress_amount'+$index].$error" ng-show="addCategoryForm['waitress_amount'+$index].$dirty || addCategoryForm['waitress_amount'+$index].$invalid" class="poker_errorBx">
+                                    
+                                    <div ng-message="required" class="errorImg">fill amount</div>
+                                    
+                                 </div>                                                                                  
+                              </md-input-container>
+                           </td>
+                           <td align="right">
+                              <md-input-container>
+                                 <label>Hour</label>
+                                 <md-select name = "waitress_hour{{$index}}" ng-model="waitress[item.title].hour" class="serviceInp" ng-required="waitress[item.title].type =='1'">
+                                    <md-option value = "1">1 Hour</md-option>
+                                    <md-option value = "2">2 Hours</md-option>
+                                    <md-option value = "3">3 Hours</md-option>
+                                    <md-option value = "4">4 Hours</md-option>
+                                 </md-select>
+                                 <div ng-messages="addCategoryForm['waitress_hour'+$index].$error" ng-show="addCategoryForm['waitress_hour'+$index].$dirty || addCategoryForm['waitress_hour'+$index].$invalid" class="poker_errorBx">
+                                    
+                                    <div ng-message="required" class="errorImg">Select hour</div>
+                                    
+                                 </div>                                 
+                              </md-input-container>
+                           </td>
+                        </tr>
+                     </table>
+                  </div>
+               </div>
+
+
+               <div ng-if = "SELECTDIV.POKER" class="categoryHd">Please add your poker dealing information</div>
+               <div ng-if = "SELECTDIV.POKER" class="waitressTble">
+                  <div class="serviceTbleBx">
+                     <table class="table table-striped serviceTble">
+                        <tr>
+                           <th width="33.33%">Poker Dealing</th>
+                           <th width="33.33%">Price</th>
+                           <th width="33.33%" style="text-align:right;">Minimum Duration </th>
+                        </tr>
+                        <tr ng-repeat = "item in dataArray.service" >
+                           <td>
+                              <md-checkbox ng-model="poker[item.title].type" aria-label="Checkbox 1" ng-true-value = "1" ng-false-value = "0" class="md-primary" ng-change = "checkPokerSelection(item.title)">
+                                 {{item.title}}
+                              </md-checkbox>
+                           </td>
+                           <td>
+                              <md-input-container class="md-block serviceInp" flex-gt-sm>
+                                 <label>Amount</label>
+                                 <input name="poker_amount{{$index}}" numbers-only ng-model="poker[item.title].amount"  ng-required="poker[item.title].type =='1'">
+                                 
+                                 <div ng-messages="addCategoryForm['poker_amount'+$index].$error" ng-show="addCategoryForm['poker_amount'+$index].$dirty || addCategoryForm['poker_amount'+$index].$invalid" class="poker_errorBx">
+                                    
+                                    <div ng-message="required" class="errorImg">Fill amount</div>
+                                    
+                                 </div>                                                   
+                              </md-input-container>
+                           </td>
+                           <td align="right">
+                              <md-input-container>
+                                 <label>Hour</label>
+                                 <md-select name="poker_hour{{$index}}" ng-model="poker[item.title].hour" class="serviceInp" ng-required="poker[item.title].type =='1'">
+                                    <md-option value = "1">1 Hour</md-option>
+                                    <md-option value = "2">2 Hours</md-option>
+                                    <md-option value = "3">3 Hours</md-option>
+                                    <md-option value = "4">4 Hours</md-option>
+                                 </md-select>
+                                 
+                                 <div ng-messages="addCategoryForm['poker_hour'+$index].$error" ng-show="addCategoryForm['poker_hour'+$index].$dirty || addCategoryForm['poker_hour'+$index].$invalid" class="poker_errorBx">
+                                    
+                                    <div ng-message="required" class="errorImg">Select hour</div>
+                                    
+                                 </div>                                 
+                              </md-input-container>
+                           </td>
+                        </tr>
+                     </table>
+                  </div>
+               </div>     
+               
+
+               <div ng-if = "SELECTDIV.EXOTIC" class="categoryHd">Please add your Exotic Dancing service information</div>
+               <div ng-if = "SELECTDIV.EXOTIC" class="waitressTble">
+                  <div class="serviceTbleBx">
+                     <table class="table table-striped serviceTble">
+                        <tr>
+                           <th width="20%">Exotic Dancing </th>
+                           <th width="40%">Description</th>
+                           <th width="15%">Price</th>
+                           <th width="15%">Duration</th>
+                           <th width="10%" style="text-align:center;" >
+                              <md-icon  ng-click="addNewChoice()" md-menu-origin class="material-icons color-green">add</md-icon>
+                           </th>
+                        </tr>
+                        <tr ng-repeat = "item in exotics">
+                           <td>
+                              <md-input-container class="md-block serviceInp exoticInp" flex-gt-sm>
+                                 <label>Service Name{{}}</label>
+                                 <input name="servicename{{$index}}" ng-model="item.service_name" required="">
+                                 <div ng-messages="addCategoryForm['servicename'+$index].$error" ng-show="addCategoryForm['servicename'+$index].$dirty || addCategoryForm['servicename'+$index].$invalid" class="exotic_errorBx">
+                                    <div ng-message="required" class="errorImg">Fill service name</div>
+                                 </div>
+                              </md-input-container>
+                           </td>
+                           <td>
+                              <md-input-container class="md-block serviceInp2 exoticInp" flex-gt-sm>
+                                 <label>Description</label>
+                                 <textarea  name="description{{$index}}" ng-model="item.description" required=""></textarea>
+                                 <div ng-messages="addCategoryForm['description'+$index].$error" ng-show="addCategoryForm['description'+$index].$dirty || addCategoryForm['description'+$index].$invalid" class="exotic_errorBx">
+                                    <div ng-message="required" class="errorImg">Fill description</div>
+                                 </div>
+                              </md-input-container>
+                           </td>
+                           <td>
+                              <md-input-container class="md-block serviceInp" flex-gt-sm>
+                                 <label>Amount</label>
+                                 <input numbers-only name="amount{{$index}}" ng-model="item.amount" required="">
+                                 <div ng-messages="addCategoryForm['amount'+$index].$error" ng-show="addCategoryForm['amount'+$index].$dirty || addCategoryForm['amount'+$index].$invalid" class="exotic_errorBx">
+                                    <div ng-message="required" class="errorImg">Fill amount</div>
+                                 </div>
+                              </md-input-container>
+                           </td>
+                           <td>
+                              <md-input-container class="md-block serviceInp" flex-gt-sm>
+                                 <label>Duration(H)</label>
+                                 <input numbers-only name="duration{{$index}}" ng-model="item.duration" ng-required="true">
+                                 <div ng-messages="addCategoryForm['duration'+$index].$error" ng-show="addCategoryForm['duration'+$index].$dirty || addCategoryForm['duration'+$index].$invalid" class="exotic_errorBx">
+                                    <div ng-message="required" class="errorImg">Fill duration</div>
+                                 </div>
+                              </md-input-container>
+                           </td>
+                           <td valign="middle" align="center">
+                              <md-icon  ng-if = "exotics.length>1" ng-click="removeChoice($index)" md-menu-origin class="material-icons color-red pad10">delete</md-icon>
+                           </td>
+                        </tr>
+                        {{choices}}
+                     </table>
+                  </div>
+               </div>                         
+               <div class="categoryHd">Please add your Travel information</div>
+               <div class="travelInfoFrm">
+                  <div class="TranInfoBx">
+                     <span>Distance willing to travel (in kms)</span>
+                     <md-input-container class="md-block distanceInp" flex-gt-sm>
+                        <label>Distance in kms</label>
+                        <input numbers-only name="distance" ng-model="travel_distance" required="">
+                        <div ng-messages="addCategoryForm.distance.$error" ng-show="addCategoryForm.distance.$dirty || addCategoryForm.distance.$invalid" class="errormainBx">
+                           <div ng-message="required" class="errorImg">Fill Distance</div>
+                        </div>
+                     </md-input-container>
+                  </div>
+                  {{tempData}}
+                  <md-button type = "submit" class="md-raised saveBtn signinBtn">Next</md-button>
+                  <md-button class="md-raised backBtn signinBtn">Back</md-button>
+               </div>
+            </div>
+         </form>
+      </div>
+   </div>
+</div>

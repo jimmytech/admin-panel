@@ -6,6 +6,17 @@
 	cursor: pointer!important;
 }
 
-/*md-input-container .md-input:invalid {
-	box-shadow: rgba(0, 0, 0, 0.1) 0 0 2px 1px !important;
-}*/
+.cropArea {
+  background: #E4E4E4;
+  overflow: hidden;
+  width:500px;
+  height:350px;
+}
+
+.startdateBx:first-child,.nobot {
+    border-bottom: none;
+}
+
+.mrgntop20{
+	margin-top: 20px;
+}

@@ -14,7 +14,8 @@ const crypto            = require('crypto'),
     cmsModel            = require(path.resolve('./modules/backend/models/cms_model')),
     faqModel            = require(path.resolve('./modules/backend/models/faq_model')),
     categoryModel       = require(path.resolve('./modules/backend/models/category_model')),
-    key                 = require(path.resolve(`./config/env/${process.env.NODE_ENV}`));
+    serviceModel        = require(path.resolve('./modules/backend/models/service_model')),
+    env                 = require(path.resolve(`./config/env/${process.env.NODE_ENV}`));
 
 
 exports.login = (req, res) => {
@@ -49,7 +50,7 @@ exports.login = (req, res) => {
                 user.auth = undefined;
                 user.created = undefined;
 
-                let token = jwt.sign(user, new Buffer(key.secret).toString('base64'));
+                let token = jwt.sign(user, new Buffer(env.secret).toString('base64'));
                 
                 res.json({
                     user: user,
@@ -67,12 +68,12 @@ exports.login = (req, res) => {
 
 exports.profileInfo = (req, res) => {
 
-   let secret = key.secret;
+   let secret = env.secret;
 
-   decodeJwt.run(req, secret, (id) => {
+   decodeJwt.run(req, secret, (data) => {
 
         adminModel.findOne({
-            "_id": id
+            "_id": data._id
         }, {
             first_name: 1,
             last_name: 1,
@@ -95,7 +96,7 @@ exports.profileInfo = (req, res) => {
 
 exports.updateProfile = (req, res) => {
 
-   let secret = key.secret;
+   let secret = env.secret;
 
    decodeJwt.run(req, secret, (id) => {
 
@@ -187,7 +188,7 @@ exports.getCount = (req, res) => {
 
             totalBlog: (cb) => {
 
-                blogModel.count((err, count)=>{
+                blogModel.count({"trash": false}, (err, count)=>{
                     cb(null, count);
                 });
 
@@ -195,7 +196,15 @@ exports.getCount = (req, res) => {
 
             totalCategory: (cb) => {
 
-                categoryModel.count((err, count) => {
+                categoryModel.count({"trash": false}, (err, count) => {
+                    cb(null, count);
+                });
+
+            },            
+
+            totalService: (cb) => {
+
+                serviceModel.count({"trash": false}, (err, count) => {
                     cb(null, count);
                 });
 
@@ -203,7 +212,7 @@ exports.getCount = (req, res) => {
 
             totalPages: (cb) => {
 
-                cmsModel.count((err, count)=>{
+                cmsModel.count({"trash": false},(err, count)=>{
                     cb(null, count);
                 });
 
@@ -211,7 +220,7 @@ exports.getCount = (req, res) => {
 
             totalFaq: (cb) => {
 
-                faqModel.count((err, count)=>{
+                faqModel.count({"trash": false},(err, count)=>{
                     cb(null, count);
                 });
 

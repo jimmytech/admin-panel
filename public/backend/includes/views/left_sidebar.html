@@ -17,6 +17,13 @@
               <small class="label pull-right bg-blue">{{totalCategory}}</small>
             </span>
          </a>
+         </li>          
+
+         <li class="treeview service" ng-click = "selectMainMenu($event); hideSubmenu(); toPage('/admin/service');"><a> <i class="fa fa-th"></i> <span>Services</span>
+             <span class="pull-right-container">              
+              <small class="label pull-right bg-blue">{{totalService}}</small>
+            </span>
+         </a>
          </li>         
          <li class="treeview blog" ng-click = "selectMainMenu($event); hideSubmenu(); toPage('/admin/posts');"><a><i class="fa fa-rss "></i> <span>Blogs</span>
              <span class="pull-right-container">              

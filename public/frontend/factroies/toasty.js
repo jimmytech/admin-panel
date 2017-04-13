@@ -33,10 +33,11 @@ app.factory('toastyService', ['toasty', function(toasty) {
                     msg: "You'have successfully logged out",
                     showClose: true,
                     clickToClose: true,
-                    timeout: 6000,
+                    timeout: 5000,
                     html: true,
                     theme: "bootstrap"
-                });            
+                });  
+
         }
     };
     

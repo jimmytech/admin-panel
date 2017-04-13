@@ -7,10 +7,7 @@
  		description: String,
  		slug: String,
  		order: Number,
- 		sub_category:[{ 		 			
-					title: String,
- 		 			description: String		
- 		 		}],
+ 		image: String,
  		status: Boolean,
  		trash: {
  			type: Boolean,

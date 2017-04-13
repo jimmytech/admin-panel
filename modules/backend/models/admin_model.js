@@ -4,6 +4,7 @@ const mongoose          =   require('mongoose'),
     crypto              =   require('crypto'),
     schema              =   mongoose.Schema;
 
+    
 var adminSchema = new schema({
     first_name: String,
     last_name: String,

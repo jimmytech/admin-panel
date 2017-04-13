@@ -2,10 +2,10 @@
 
 app.factory('timeout', ['$timeout', function ($timeout) {
 	return {
-		fiveHundredMiliSecond: function(cb){
+		sixHundredMiliSecond: function(cb){
 					$timeout(function(){
 						cb();
-					}, 500);
+					}, 600);
 		}
 	}
 }]);

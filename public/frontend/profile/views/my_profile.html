@@ -1,143 +1,205 @@
 <div class="myprofileBg">
-	<div class="profileInnBx">
-		<div class="profileDetBx">
-			<form name="profileForm" ng-submit = " profileForm.$valid && updateProfile()" novalidate="">
-			<div class="profInnBx profMrgn">
-				<div class="profBx-L">Image </div>
-				<div class="profImgBx"><img src="assets/img/frontend/camra-icon.png">
-					<input type="file" name="file" class="browseImg">
-				</div>
-			</div>
-			<div class="profInnBx">
-				<div class="profBx-L">Display Name </div>
-				<md-input-container class="md-block">
-			        <input required="" ng-model="user.display_name" class="dashInput" aria-label = "displayName" >
-			        <!-- <span class="errorImg"><img src="assets/img/frontend/error-icon.png"></span> -->
-			    </md-input-container>
+   <div class="profileInnBx">
+      <div class="profileDetBx">
+         <form name="profileForm" ng-submit = " profileForm.$valid && updateProfile()" novalidate="">
+            <div class="profInnBx profMrgn">
+               <div class="profBx-L">Profile Image </div>
+               <div class="profImgBx">
+                  <img  ng-src="{{myImage ? myCroppedImage : imagePath}}"/>
+                  <span>
+                     <md-icon class="transition material-icons">camera_alt</md-icon>
+                     Select Image
+                  </span>
+                  <input type="file" ngf-select="selectFile($file, true)" class="uploadpic" accept="image/*">
+               </div>
+            </div>
+            <!-- <a href="">change to default image</a> -->
+            <div class="profInnBx">
+               <div class="profBx-L">Display Name </div>
+               <md-input-container class="md-block">
+                  <input required="" name="displayName" ng-model="user.display_name" class="dashInput" aria-label = "displayName" >
+                  <div ng-messages="profileForm.displayName.$error" >
+                     <div ng-message="required" class="errorImg">Please provide display name</div>
+                  </div>
+               </md-input-container>
+            </div>
+            <div class="profInnBx">
+               <div class="profBx-L">First Name</div>
+               <div class="clearfix">
+                  <div class="profname-L margBot10Mob">
+                     <md-input-container class="md-block">
+                        <input name="firstName" required="" ng-model="user.first_name" class="dashInput" aria-label = "firstName">
+                        <div ng-messages="profileForm.firstName.$error" >
+                           <div ng-message="required" class="errorImg">Please provide first name</div>
+                        </div>
+                     </md-input-container>
+                  </div>
+                  <div class="profname-R">
+                     <md-input-container class="md-block">
+                        <input name="lastName" required="" ng-model="user.last_name" class="dashInput" aria-label = "lastName">
+                        <div ng-messages="profileForm.lastName.$error" >
+                           <div ng-message="required" class="errorImg">Please provide last name</div>
+                        </div>                        
+                     </md-input-container>
+                  </div>
+               </div>
+            </div>
+            <div class="profInnBx profmrgn15web">
+               <div class="profBx-L">Gender</div>
+               <div class="clearfix">
+                  <div class="profname-L">
+                     <md-input-container>
+                        <!-- <label>Gender</label> -->
+                        <md-select name = "Gender" required ng-model="user.gender" class="dashInput" aria-label = "Gender">
+                           <md-option value = "Male" >Male</md-option>
+                           <md-option value = "Female" >Female</md-option>
+                        </md-select>                         
+                     </md-input-container>
+                  </div>
+               </div>
+            </div>
+            <div class="profInnBx">
+               <div class="profBx-L">Date Of Birth</div>
+               <div class="clearfix">
+                  <div class="profname-L">
+                     <md-datepicker   ng-model="user.dob" class="dashInput profileCalc" md-placeholder="Enter date" md-max-date="dobMaxDate" required ></md-datepicker>
+                  </div>
+               </div>
+            </div>
+            <div class="profInnBx">
+               <div class="profBx-L">Email</div>
+               <div class="clearfix">
+                  <div class="profname-L">
+                     <md-input-container class="md-block">
+                        <input name="myEmail" ng-pattern = "/^[a-z]+[a-z0-9._]+@[a-z]+\.[a-z.]{2,5}$/"  required ng-model="user.email" class="dashInput" aria-label = "Email" >
+                        <div ng-messages="profileForm.myEmail.$error" >
+                           <div ng-message="required" class="errorImg">Please provide email</div>
+                           <div ng-message="pattern" class="errorImg">Please provide valid email</div>
+                        </div>                        
+                     </md-input-container>
+                  </div>
+               </div>
+            </div>
 
-			</div>
-			<div class="profInnBx">
-				<div class="profBx-L">First Name</div>
-				<div class="clearfix">
-					<div class="profname-L margBot10Mob">
-						<md-input-container class="md-block">
-					        <input required="" ng-model="user.first_name" class="dashInput" aria-label = "firstName">
-					        <!-- <span class="errorImg"><img src="assets/img/frontend/error-icon.png"></span> -->
-					    </md-input-container>
-					</div>
-				    <div class="profname-R">
-				    	<md-input-container class="md-block">
-					        <input required="" ng-model="user.last_name" class="dashInput" aria-label = "lastName">
-					        
-					    </md-input-container>
-				    </div>
-			    </div>
-			</div>
-			<div class="profInnBx profmrgn15web">
-				<div class="profBx-L">Gender</div>
-				<div class="clearfix">
-					<div class="profname-L">
-						<md-input-container>
-				          <!-- <label>Gender</label> -->
-				          <md-select required ng-model="user.gender" class="dashInput" aria-label = "Gender">
-				            <md-option value = "Male" >Male</md-option>
-				            <md-option value = "Female" >Female</md-option>
-				          </md-select>
-				        </md-input-container>
-					</div>
-			    </div>
-			</div>
-			<div class="profInnBx">
-				<div class="profBx-L">Date Of Birth</div>
+            <div class="profInnBx">
+               <div class="profBx-L">Mobile</div>
+               <div class="clearfix">
+                  <div class="profname-L">
+                     <md-input-container class="md-block" flex-gt-sm>
+                        <input name="mobile" numbers-only required ng-model="user.mobile_number" class="dashInput" aria-label = "Number">
+                        <div ng-messages="profileForm.mobile.$error" >
+                           <div ng-message="required" class="errorImg">Please provide mobile number</div>
+                        </div>                        
+                     </md-input-container>
+                  </div>
+               </div>
+            </div>
 
-				<div class="clearfix">
-					<div class="profname-L">
-					    <md-datepicker   ng-model="user.dob" class="dashInput profileCalc" md-placeholder="Enter date" md-max-date="dobMaxDate" required ></md-datepicker>
-					</div>
-			    </div>
-			</div>
-			<div class="profInnBx">
-				<div class="profBx-L">Email Address</div>
-				<div class="clearfix">
-					<div class="profname-L">
-						<md-input-container class="md-block">
-					        <input required ng-model="user.email" class="dashInput" aria-label = "Email" >
-					    </md-input-container>
-					</div>
-			    </div>
-			</div>
-			<div class="profInnBx">
-				<div class="profBx-L">Mobile Number</div>
-				<div class="clearfix">
-					<div class="profname-L">
-						<md-input-container class="md-block" flex-gt-sm>
-					        <input required ng-model="user.mobile_number" class="dashInput" aria-label = "Number">
-					    </md-input-container>
-					</div>
-			    </div>
-			</div>
-			<div class="profInnBx">
-				<div class="profBx-L">Your Location</div>
-				<div class="clearfix margBot10Mob">
-				<md-input-container class="md-block" flex-gt-sm>
-				    <input required ng-model="user.address" class="dashInput" aria-label = "Loc" >
-				</md-input-container>
-			</div>
-			</div>
-			<div class="profInnBx">
-				<div class="profBx-L profbxBlank">&nbsp;</div>
-				<div class="clearfix">
-				<div class="profname-L margBot10">
-				  	<md-input-container class="md-block">
-				  		<!-- <label>Maiden</label> -->
-				        <md-select required ng-model="user.country" class="dashInput" aria-label = "Country">
-				          <md-option value = "Australia">Australia</md-option>
-				        </md-select>
-				    </md-input-container>
-				</div>				
-				<div class="profname-R margBot10">
-					<md-input-container class="md-block">
-						<!-- <label>Unicef</label> -->
-				        <md-select required ng-model="user.state" class="dashInput" aria-label = "State">
-				           <md-option value = "State">State</md-option>
-				        </md-select>
-				    </md-input-container>				
+  
+            <div class="profInnBx ">
+               <div class="profBx-L">Location</div>
+               <div class="clearfix margBot10Mob">
+                  <md-input-container class="md-block" flex-gt-sm>
+                    <input name="location" places-auto-complete name="tmploc" ng-model = "user.location" required=""  class="dashInput" aria-label = "lastName" type="text" component-restrictions="{country:'aus'}" types="['establishment']" >
+                        <div ng-messages="profileForm.location.$error" >
+                           <div ng-message="required" class="errorImg">Please provide location</div>
+                          
+                        </div>                     
+                  </md-input-container>
+               </div>
+            </div>
+            <div class="profInnBx">
+               <div class="profBx-L">State</div>
+               <div class="clearfix margBot10Mob">
+                     <md-input-container class="md-block">
+                        <md-select required ng-model="user.state" class="dashInput" aria-label = "State" ng-change = "stateChanged()">
+                           <md-option ng-repeat="state in statesArray" ng-value="state.Value">
+                              {{state.name}}
+                           </md-option>
+                        </md-select>
+                     </md-input-container>
+               </div>
+            </div>                                  
+             <div class="profInnBx mrgntop20">
+               <div class="profBx-L">Address</div>
+               <div class="clearfix margBot10Mob">
+                  <md-input-container class="md-block" flex-gt-sm>
+                     <input name="add" required ng-model="user.address" class="dashInput" aria-label = "Loc" >
+                        <div ng-messages="profileForm.add.$error" >
+                           <div ng-message="required" class="errorImg">Please provide address</div>
+                        </div>                     
+                  </md-input-container>
+               </div>
+            </div>            
 
-				</div>
+            <div class="profInnBx">
+               <div class="profBx-L">Zip Code</div>
+               <div class="clearfix margBot10Mob">
+                  <md-input-container class="md-block" flex-gt-sm>
+                     <input name="zip" required ng-model="user.zip_code" class="dashInput" aria-label = "Loc" >
+                        <div ng-messages="profileForm.zip.$error" >
+                           <div ng-message="required" class="errorImg">Please provide zip code</div>
+                        </div>                      
+                  </md-input-container>
+               </div>
+            </div>           
+             <div class="profInnBx">
+               <div class="profBx-L">Subrub</div>
+               <div class="clearfix margBot10Mob">
+                  <md-input-container class="md-block" flex-gt-sm>
+                     <input name="subrub" required ng-model="user.subrub" class="dashInput" aria-label = "Loc" >
+                        <div ng-messages="profileForm.subrub.$error" >
+                           <div ng-message="required" class="errorImg">Please provide subrub</div>
+                        </div>                       
+                  </md-input-container>
+               </div>
+            </div>
 
-			</div>
-			</div>
-			<div class="profInnBx">
-				<div class="profBx-L profbxBlank">&nbsp;</div>
-				<div class="clearfix">
-				<div class="profname-L margBot10">
-					<md-input-container class="md-block">
-
-				        <md-select required ng-model="user.subrub" class="dashInput" aria-label = "Suburb">
-				            <md-option value = "Suburb">Suburb</md-option>
-				        </md-select>
-				    </md-input-container>
-				</div>
-				<div class="profname-R">
-
-					<md-input-container class="md-block" flex-gt-sm>
-				    	<input ng-model="user.zip_code" class="dashInput" aria-label = "Zip">
-					</md-input-container>				    				
-				</div>
-			</div>
-			</div>
-			<div class="profInnBx">
-				<div class="profBx-L">About Me</div>
-				<md-input-container class="md-block">
-		          <textarea ng-model="user.biography" class="dashTxtarea" md-select-on-focus aria-label = "Aboutme"></textarea>
-		        </md-input-container>
-			</div>
-			<div class="profInnBx">
-				<div class="profBx-L"></div>
-				<md-button type = "submit" class="md-raised saveBtn signinBtn">Save</md-button>
-				<!-- <md-button class="md-raised canclBtn">Cancel</md-button> -->
-			</div>
-		</form>
-		</div>
-	</div>
+            <div class="profInnBx">
+               <div class="profBx-L">About Me</div>
+               <md-input-container class="md-block">
+                  <textarea ng-model="user.biography" class="dashTxtarea" md-select-on-focus aria-label = "Aboutme"></textarea>
+               </md-input-container>
+            </div>
+            <div class="profInnBx">
+               <div class="profBx-L"></div>
+               <md-button type = "submit" class="md-raised saveBtn signinBtn">Save</md-button>
+               <!-- <md-button class="md-raised canclBtn">Cancel</md-button> -->
+            </div>
+         </form>
+      </div>
+   </div>
 </div>
+<div class="" style="visibility: hidden">
+   <div class="md-dialog-container cropImgBx" id="imageDialog">
+      <md-dialog   aria-label="Image dialog">
+         <md-toolbar class="height50">
+            <div class="orangeBg md-toolbar-tools height50">
+               <h2>Crop Profile image</h2>
+               <span flex></span>
+               <md-button class="md-icon-button" ng-click="closeImageDialog()">
+                  <md-icon aria-label="Close dialog">close</md-icon>
+               </md-button>
+            </div>
+         </md-toolbar>
+         <md-dialog-content layout-padding>
+            <div >
+               <div class="cropArea">
+                  <img-crop image="myImage" result-image="myCroppedImage"></img-crop>
+               </div>
+            </div>
+         </md-dialog-content>
+         <md-dialog-actions layout="row">
+            <span class="positiorel changeupload">
+            <a class="upoadpro">choose another image </a>
+            <input type="file" class="uploadpic" ngf-select="selectFile($file, false)" accept="image/*">
+            </span>
+            <md-button type="button" ng-click="uploadProfileImage(myCroppedImage,myImage.name)" class="exploremapsearchgraybtn martop10 md-raised md-primary orangeBg btnComn isLoading" aria-label="upload" ng-disabled="spinner">
+               <span>Upload</span>
+            </md-button>
+         </md-dialog-actions>
+      </md-dialog>
+   </div>
+</div>
+
+<!-- <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDuieRZKkDUZG01JMtPGZ5532OVRfStjzw&libraries=places&callback=initAutocomplete" async defer></script> -->

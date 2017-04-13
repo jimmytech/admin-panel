@@ -5,12 +5,24 @@
    <ul class="select-left-option">
       <li>
             <a ng-class = "{active: setClass('my-profile')}" ng-click = "toPage('/my-profile')" ng-class = "{active: setClass()}" ><i><img src="assets/img/frontend/left-nav-icon.png"></i> My Profile</a>
-      </li>
+      </li>      
+      <li>
+            <a ng-class = "{active: setClass('add-services', '/add-service/service-info/complete')}" ng-click = "toPage('/add-services')" ng-class = "{active: setClass()}" >
+            <i class="fa fa-plus-circle"></i> ADD SERVICE</a>
+      </li>       
+
+      <li>
+            <a ng-class = "{active: setClass('service-list')}" ng-click = "toPage('/service-list')" ng-class = "{active: setClass()}" ><i class="fa fa-calendar"></i>SERVICE LIST</a>
+      </li>       
+      <li>
+            <a ng-class = "{active: setClass('availability-calendar')}" ng-click = "toPage('/availability-calendar')" ng-class = "{active: setClass()}" ><i class="fa fa-list"></i>CALENDAR</a>
+      </li> 
       <li>
             <a ng-class = "{active: setClass('my-booking')}" ng-click = "toPage('/my-booking')"><i><img src="assets/img/frontend/left-nav-icon1.png"></i> My BOOKINGS</a>
       </li>
-      <li>
-            <a ng-class = "{active: setClass()}" ng-click = "toPage('/my-booking')" ><i><img src="assets/img/frontend/left-nav-icon2.png"></i> Payment Preferences</a></li>
+<!--       <li>
+            <a ng-class = "{active: setClass('my-payment-preferences')}" ng-click = "toPage('/my-payment-preferences')" ><i><img src="assets/img/frontend/left-nav-icon2.png"></i> Payment Preferences</a>
+      </li> -->
       <li>
             <a ng-class = "{active: setClass('messages')}" ng-click = "toPage('/messages')" ><i><img src="assets/img/frontend/left-nav-icon3.png"></i> Messages</a>
       </li>

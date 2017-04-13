@@ -5,7 +5,7 @@ app.factory('localData', [function () {
 	return {
 
 		token: function(){
-			var token = localStorage.getItem('t');
+			var token = localStorage.getItem('userToken');
 			return token;
 
 		}, 

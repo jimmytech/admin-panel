@@ -1,0 +1,44 @@
+<div ng-scrollbars  ng-if="showscrollbar">
+
+<br><br>dfgfd
+<br><br>dfgfd
+<br><br>dfgfd
+<br><br>dfgfd<br><br>dfgfd<br><br>dfgfd<br><br>dfgfd<br><br>dfgfd<br><br>dfgfd
+<br><br>dfgfd<br><br>dfgfd<br><br>dfgfd<br><br>dfgfd<br><br>dfgfd
+<br><br>dfgfd<br><br>dfgfd<br><br>dfgfd
+
+ </div>
+ 
+<div class="logPopBg">
+	<div class="popIcon" ng-click = "closeMe()" ><i class="material-icons">highlight_off</i></div>
+	<div class="loginFb">
+		<a href="#"><i class="fa fa-facebook"></i> Log in with Facebook</a>
+	</div>
+	<div class="login_gplus">
+		<a href="#"><i class="fa fa-google-plus"></i>Log in with Google+</a>
+	</div>
+	<div class="orBx"><i>or</i></div>
+	<form name = "loginForm" ng-submit = "loginForm.$valid && login()" novalidate="">
+	<div class="loginBx">
+		<md-input-container class="md-block" flex-gt-sm>
+
+	        <input required="" ng-model="userLogin.email" class="usericonInp registerInp loginInp" placeholder="Email Address">
+	    </md-input-container>
+	    <md-input-container class="md-block" flex-gt-sm>
+	        <label>Password</label>
+	        <input required="" type="password" ng-model="userLogin.password" class="passiconInp registerInp loginInp">
+
+	    </md-input-container>
+    </div>
+
+    <div class="rembBx">
+		<md-checkbox ng-change = "rememberMe()" md-no-ink aria-label="Checkbox No Ink" ng-model="rememberMeStatus" class="md-primary">
+            Remember me
+        </md-checkbox>
+        <md-button md-no-ink class="md-primary">Forgot Password?</md-button>
+    </div>
+    
+    <md-button type = "submit" class="md-raised signinBtn">Login</md-button>
+    <div class="needaccount">Need an Account?  <md-button type = "button" ng-click = "loginSignup($event, 'signup')" class="md-primary">Sign Up Now</md-button> </div>
+</form>
+</div>

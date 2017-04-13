@@ -1,24 +1,27 @@
 <div class="myprofileBg">
-	<div class="settingBg">
-		<div class="passwordBx">
-			<div class="PassHd">Start Referring Now and earn $800 For You and A Friend!</div>
-			<form name="referForm" ng-submit = "referForm.$valid && referToFriend()" novalidate="">
-				<div class="changepassBx clearfix">
-					<div class="changepass-L">Emai Address</div>
-					<div class="changepass-R">
-						<md-input-container class="md-block">
-						    <input type="email" ng-model="friend.email" class="dashInput" ng-pattern = "/^[a-z]+[a-z0-9._]+@[a-z]+\.[a-z.]{2,5}$/" aria-label = "ref" required="">
-						</md-input-container>
-					</div>
-				</div>
-				<div class="changepassBx clearfix">
-					<div class="changepass-L profbxBlank">&nbsp;</div>
-					<div class="changepass-R">
-						<md-button type = "submit" ng-disabled = "buttonStatus" class="md-raised saveBtn signinBtn">Send</md-button>
-					</div>
-				</div>				
-			</form>
-		</div>
-		
-	</div>
+   <div class="settingBg">
+      <div class="passwordBx">
+         <div class="PassHd">Start Referring Now and earn $800 For You and A Friend!</div>
+         <form name="referringForm" ng-submit = "referringForm.$valid && referToFriend()" novalidate="" style="margin-top: 30px;">
+            <div class="changepassBx clearfix">
+               <div class="changepass-L">Emai Address</div>
+               <div class="changepass-R">
+                  <md-input-container class="md-block">
+                     <input name="myEmail" type="email" ng-model="friend.email" class="dashInput" ng-pattern = "/^[a-z]+[a-z0-9._]+@[a-z]+\.[a-z.]{2,5}$/" aria-label = "ref" required="">
+                     <div ng-messages="referringForm.myEmail.$error" >
+                        <div ng-message="required" class="errorImg">Please provide an email</div>
+                        <div ng-message="pattern" class="errorImg">Please provide an valid email</div>
+                     </div>
+                  </md-input-container>
+               </div>
+            </div>
+            <div class="changepassBx clearfix">
+               <div class="changepass-L profbxBlank">&nbsp;</div>
+               <div class="changepass-R">
+                  <md-button type = "submit" ng-disabled = "buttonStatus" class="md-raised saveBtn signinBtn">Send</md-button>
+               </div>
+            </div>
+         </form>
+      </div>
+   </div>
 </div>

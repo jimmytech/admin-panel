@@ -3,6 +3,7 @@
 .bookingdatetimeBx span {font-size: 14px; margin-right: 10px;}
 .bookingdatetimeBx span small{ color: #666;}
 .booksumm_Tble td{ padding: 15px 10px !important;}
+.listing-srchTop{ margin-top: 100px;}
 }
 @media(max-width:1599px){
 .booksumm_Tble td {padding: 15px 7px !important;}
@@ -15,6 +16,14 @@
 .booksumm_Tble td {padding: 10px 7px !important;}
 .bookingdatetimeBx span{ padding-bottom: 10px;}
 table.proceddTble td{ font-size: 18px;}
+.advanceGend {padding-bottom: 0;}
+.keyword_Left md-input-container {margin: 10px 0 0;}
+.keyword_Right md-input-container, .keyword_Mid md-input-container {margin: 10px 0 0;}
+.sortby-L{ padding-top: 10px;}
+.keyword_Right{ padding-top: 10px;}
+.advLocBx md-input-container .md-errors-spacer{ min-height: 15px;}
+.srch-listingHd{ padding-top: 20px;}
+.listing-srchTop{ margin-top: 20px;}
 }
 @media( max-width:1169px){
 .booking-Left{float: none; width: 100%; padding-left: 190px; min-height: 160px;}
@@ -24,6 +33,15 @@ table.proceddTble td{ font-size: 18px;}
 .bookingdatetimeBx span small{ font-size: 13px;}
 .procedcheckoutBx i{ float: none;}
 .procedcheckoutBx span{ float: none; width: 100%; margin-bottom: 15px;}
+.listing-Location{ width: 32%; padding: 25px 5px 10px;}
+.listing-gender{ width: 12%; padding: 20px 5px 10px;}
+.listing-duration{ width: 12%; padding: 20px 5px 10px;}
+.listing-time{ width: 13%; padding: 20px 5px 10px;}
+.listing-collepsIcon{ width: 7%; padding: 30px 5px 10px;}
+.listing-startdate{ width: 14%; padding: 20px 5px 10px;}
+.listdetTop {padding: 30px 35px 35px 390px;}
+.listDetImg{ width: 330px;}
+.listing-srchTop{ margin-top: 80px;}
 }
 
 @media( max-width:1023px){
@@ -78,7 +96,52 @@ table.proceddTble td{ font-size: 18px;}
 .howitpadd {padding: 0px 280px 0px 0 !important;}
 .howitList li{ min-height: 260px; margin-bottom: 70px; padding: 0 0 0 280px;}
 .howit_Left1{ width: 260px;}
-
+.listingSrchBx{ top: 180px;}
+.advanceGend {padding-bottom: 0;}
+.advancesrchBx {padding: 10px 15px 0;}
+.listing-Location {width: 28%;}
+.listing-time { width: 15%;}
+.listing-startdate .md-datepicker-input{ min-width: 0px;}
+.md-select-value .md-select-icon{ width: 10px;}
+.listing-time .md-select-value .md-select-icon::after {right: 20px;}
+.listing-duration {width: 14%;}
+.performBot span small{ font-size: 18px;}
+.performBot > i{ font-size: 17px;}
+.performBot strong{ font-size: 18px;}
+.performImg {border: 5px solid #fff;}
+.alsofoundedList li span small{ font-size: 18px;}
+.alsofoundedList li p{ font-size: 16px;}
+.alsofoundedList li small{ font-size: 15px;}
+.alsofoundedList li strong{ font-size: 18px;}
+.alsofoundedList li{ padding: 7px 7px 15px;}
+.listdetTop {padding: 30px 35px 35px 290px;}
+.listDetImg {left: 20px; width: 250px; border:5px solid #fff;}
+.listDet-Right strong{ font-size: 24px;}
+.listDet-Right > span {font-size: 18px; padding-bottom: 5px;}
+.listDet-Right > i{ padding-bottom: 5px;}
+.listDet-Right p{ line-height: 20px;}
+.eventTopBx strong{ font-size: 24px; padding-bottom: 10px;}
+.eventTopBx p {font-size: 14px; line-height: 22px; padding-bottom: 20px;}
+.eventTble th{ padding: 20px 10px !important; height: auto; font-size: 20px;}
+.eventTble td{ padding: 20px 10px !important; height: auto; font-size: 16px;}
+.reviewsList li small{ padding-bottom: 10px;}
+.reviewsList li p {font-size: 14px; line-height: 20px;}
+.listbookingbtn{ margin: 0 0 5px 0;}
+.listingDet{ vertical-align: top;}
+.help-Left{ width: 48%;}
+.help-Right{ width: 48%;}
+.privacypolicyBx:after{ background-size: 100%; height: 90px; bottom: -90px;}
+.privacypolicyBx h2 {font-size: 26px; padding-bottom: 10px;}
+.privacypolicyBx {margin-bottom: 60px;}
+.privacypolicyBx p{ line-height: 20px;}
+.sp-Hdser { font-size: 16px; padding:15px; font-weight: 600;}
+.sp-ser-tble th{ font-size: 14px; padding: 12px 10px !important; line-height:20px !important;}
+.sp-ser-tble td{ padding: 10px !important;}
+.spser-viewedit i{ padding: 15px 6px 14px;}
+.hdrfixed {background: rgba(255, 255, 255, 0.8) !important; height: 65px !important;width: 100%;}
+.home-Logo {left: 5px !important; right: auto; top: 5px; width: 58px !important;}
+.homeLogin {right: 10px; top: 13px;}
+.listing-srchTop {margin-top: 132px;}
 }
 
 @media(max-width:767px){
@@ -139,7 +202,59 @@ md-input-container .md-errors-spacer{ min-height: 0;}
 .aboutusDesc h2{ font-size: 32px; padding-bottom: 20px;}
 .ourstoriesBg {padding: 35px 0 20px;}
 .storiesTxt p { font-size: 14px; line-height: 22px; padding-bottom: 15px;}
-
+.howitList li{ padding: 0;}
+.howitpadd{ padding: 0 !important;}
+.howit_Right {margin: 0 auto; position: relative; width: 280px;}
+.howit_Left {font-size: 14px; line-height: 20px; padding-bottom: 20px; text-align: center;}
+.howit_Left strong{ font-size: 24px; padding-bottom: 5px; padding-top: 10px;}
+.howit_Left1 {margin: 0 auto; position: relative; width: 280px;}
+.howit_Right1 {color: #fff; font-size: 14px; line-height: 20px; padding-bottom: 20px; text-align: center;}
+.howit_Right1 strong { font-size: 24px;  padding-bottom: 5px; padding-top: 10px;}
+.howitList {padding: 50px 0 0;}
+.performListing{ padding: 0;}
+.performListing ul{ padding: 0; margin:0;}
+.listing-srchTop{ height: 158px;}
+.listing-Location {border-bottom: 1px solid rgb(255, 255, 255, 0.6); width: 50%;}
+.listing-gender { width: 25%; border-bottom: rgba(255, 255, 255, 0.6) solid 1px;}
+.listing-startdate {width: 25%; border-right: 0; border-bottom: rgba(255, 255, 255, 0.6) solid 1px;}
+.listing-time {position: relative; width: 33%;}
+.listing-duration {width: 30%;}
+.listing-goBtn{ width: 25%;}
+.listing-collepsIcon{ width: 12%;}
+.waitring-R span{ font-size: 16px; margin-right: 15px;}
+.keyword_Left{ width: 31%;}
+.keyword_Right{ width: 32%;}
+.advancesrchBx {padding: 10px;}
+.keyword_Right .saveBtn{ padding: 0;}
+.listingSrchBx {top: 200px;}
+.listdetTop {padding: 20px;}
+.listDetImg {left: 0; margin: 0 auto; position: relative; width: 250px;}
+.listDet-Right {padding: 10px 0 0; text-align: center;}
+.eventDetBx{ padding: 20px; text-align: center;}
+.eventTble th{ font-size: 18px;}
+.eventTble td{ font-size: 14px;}
+.reviewsHd {font-size: 24px; padding-bottom: 16px; text-align: center;}
+.reviewsList li {border-bottom: 1px solid #eee; margin-bottom: 15px; padding: 0 0 15px; position: relative;
+  text-align: center;}
+.reviewsList li:last-child{ border-bottom: 0;}
+.reviewsList i {border: 1px solid #b08c7b; display: block; left: 0; margin: 0 auto 10px; position: relative;
+  top: 0; width: 110px;}
+.eventTopBx > span {float: left; width: 49%; text-align: left;}
+.eventTopBx > span:nth-child(2n){float:right; width: 49%; text-align: left;}
+.help-Left {float: none; padding: 20px 0 0 0; width: 100%;}
+.help-Right{float: none; width: 100%;}
+.helpList li{ line-height: 20px; padding-bottom: 10px;}
+.helpHd{ top: -20px; line-height: 20px;}
+.canreqBx .leaveTxtarea { margin-bottom: 15px;}
+.exotictbleBx{ overflow: auto;}
+.exotictbleBx .exoticTble{width:800px; max-width: 800px;}
+.srchlistingBanBx {height: 510px;}
+.advLocBx > label{ font-size: 16px;}
+.advdatBx > label{ font-size: 16px;}
+.advtimeBx > label{ font-size: 16px;}
+.advenddateBx > label{ font-size: 16px;}
+.advendtimeBx > label{ font-size: 16px;}
+.advanceGend span{ font-size: 16px;}
 }
 
 @media(max-width:639px){
@@ -148,7 +263,7 @@ md-input-container .md-errors-spacer{ min-height: 0;}
 .footLeft {float: none; text-align: center; width: 100%;}
 .footRight {float: none; width: 100%;}
 .footnav li {width: 49%; padding:5px 0;}
-.regPopBg{ min-width: 0;}
+.regPopBg{ min-width: 0; width:95%;}
 .profBx-L {width: 100%; position: relative;text-align: left;}
 .profInnBx {padding-left: 0;}
 .profname-R {float: none; width: 100%;}
@@ -166,6 +281,51 @@ md-input-container .md-errors-spacer{ min-height: 0;}
 .booking-Left {padding-left: 0; text-align: center;}
 .booksumm_Tble td{ font-size: 13px;}
 .bookingSumList li{ padding:10px;}
+.performListing li{margin-bottom:20px; margin-right: 4%; width: 48%;}
+.performListing li:nth-child(2n){ margin-right:0 !important;}
+.performListing li:nth-child(3n){ margin-right:4%;}
+.aboutpeachBg{ padding: 30px 0;}
+.alsofoundedList li{margin-bottom:20px; margin-right: 4%; width: 48%;}
+.alsofoundedList li:nth-child(2n){ margin-right:0 !important;}
+.alsofoundedList li:nth-child(3n){ margin-right:4%;}
+.helpHd{ width: 100%;}
+.excotTotl-R {float: left; font-size: 15px; text-align: left; padding-bottom: 10px;}
+.excotTotl-L{float: left; }
+.excotTotl-R strong span {font-size: 20px;padding-left: 0; padding-right: 14px;}
+.bookingPopImgBx i img {vertical-align: top; width: 100%;}
+.logPopBg{min-width: 0;}
+.spserviceTble{ overflow: auto;}
+.spserviceTble .sp-ser-tble{ width: 640px; max-width: 640px;}
+.spser-viewedit { background: #eab49a none repeat scroll 0 0; color: #fff; height: 40px; left: 555px;
+  position: absolute; right: auto; top: 0; width: 86px;}
+.sp-Hdser{ line-height: 22px;}
+.messageDetBx{ padding: 10px;}
+.msgdetTop{ padding-left: 70px;}
+.msgdetTop > span{ padding-top: 0; font-size: 13px; padding-bottom: 5px; line-height: 18px;}
+.msgdetTop > span small{ float: none;display: block;}
+.msgDesc {color: #545454; font-size: 13px; line-height: 20px; padding: 0;}
+
+.advLocBx {width: 100%; margin-right: 0; height: 105px;}
+.advdatBx {height: 105px; margin-bottom: 0; width: 48%;}
+.advtimeBx {height: 105px; margin-bottom: 0; margin-left: 2%; margin-right: 0; width: 48%;}
+.advenddateBx {height: 110px; width: 48%;}
+.advendtimeBx {margin-left: 2%; margin-right: 0; width: 48%;}
+.waitring-L {width: 33%;}
+.waitring-R {width: 65%; padding-top: 5px;}
+.waitring-R span {font-size: 14px; height: 30px; margin-right: 0; width: 49%;}
+.keyword_Left {margin-right: 2%; width: 48%; height: 75px;}
+.keyword_Mid {margin-left: 2%; margin-right: 0; width: 48%; height: 75px;}
+.keyword_Right {width: 100%;}
+.listingSrchBx {top: 130px;}
+.listing-srchTop {margin-top: 190px; margin-left: 10px; margin-right: 10px;}
+.advLocBx > label{ font-size: 15px;}
+.advdatBx > label{ font-size: 15px;}
+.advtimeBx > label{ font-size: 15px;}
+.advenddateBx > label{ font-size: 15px;}
+.advendtimeBx > label{ font-size: 15px;}
+.advanceGend span{ font-size: 15px;}
+.Mainbanner .item {height: 800px;}
+.srchlistingBanBx {height: 720px; background-position: center 0 !important; }
 
 }
 @media(max-width:479px){
@@ -194,22 +354,23 @@ md-input-container .md-errors-spacer{ min-height: 0;}
 .whypeachList{min-height: 215px;}
 .whypeachList i {height: 130px; width: 130px;}
 .whypeachList span { font-size: 14px;}
-.Mainbanner .item {height: 500px;}
+.Mainbanner .item {height: 780px;}
 .md-tab{border: 1px solid #fff; border-radius:3px; font-size: 13px; margin:0 2px; padding: 0 10px;}
 md-dialog {min-width: 300px; max-width: 95%; max-height: 90%;}
-.logPopBg{ min-width: 0; padding: 20px 10px 10px 10px;}
-.orBx > i{ border: 5px solid #cfcece; width: 47px; height: 47px; top: -23px;}
+.logPopBg{ min-width: 0; padding:10px; width:90%;}
+.orBx{ margin-top: 30px;}
+.orBx > i{ border: 5px solid #eee; width: 47px; height: 47px; top: -23px;}
 .loginInp{ height: 45px !important; line-height: 43px !important;}
-.loginBx md-input-container label:not(.md-container-ignore) { bottom: 73%; left: 10px;  top: auto;
+.loginBx md-input-container label:not(.md-container-ignore) { bottom:60% !important; left: 10px;  top: auto;
     line-height: 45px;}
- .loginFb > a{ padding: 7px 15px;}
- .login_gplus > a{ padding: 7px 15px;}
- .signinBtn{ height: 50px;}
-
+.loginFb > a{ padding: 7px 15px; font-size: 15px;}
+.login_gplus > a{ padding: 7px 15px; font-size: 15px;}
+.signinBtn{ height: 50px;}
+.regfrmBx md-input-container label{ bottom: 67%; font-weight: 400;}
 .clm-lft {float: none; width: 100%;}
 .clm-rgt {float: none; width: 100%;}
-.regFbBx .clm-lft {float: none; width: 100%; padding-bottom: 15px;}
-.regPopBg{ padding:	25px 12px 12px; }
+.regFbBx .clm-lft {float: none; width: 100%; padding-bottom: 10px;}
+.regPopBg{ padding:12px; }
 .dashHdr-L{ font-size: 13px; font-weight: 600;}
 .dashHdr-L i{ font-size: 20px;}
 .mailnoti {font-size: 18px; width: 36px; line-height: 32px;}
@@ -233,7 +394,7 @@ md-dialog {min-width: 300px; max-width: 95%; max-height: 90%;}
 .reviewList li span img{ height: 13px;}
 .messageList li strong{ font-size: 14px;}
 .messageList li strong img{ height: 14px;}
-.leacerevhd{ font-size: 22px;}
+.leacerevhd{ font-size: 20px;}
 .leaverev-Star span{ padding-bottom: 15px;}
 .leaverev-Star span i{ margin-top: 5px;}
 .leaverev-Star md-input-container{ margin-bottom: 10px;}
@@ -245,10 +406,95 @@ md-dialog {min-width: 300px; max-width: 95%; max-height: 90%;}
 .bookingTbleBx table {width:400px; max-width: 400px;}
 .procedcheckoutBx span { overflow: auto; display: block;}
 .procedcheckoutBx span table {width:400px; max-width: 400px;}
-.aboutBannerInn {height: 300px;}
+.aboutBannerInn {height: 340px;}
 .aboutusDesc p {font-size: 14px; line-height: 20px;}
 .aboutusDesc h2{ font-size: 26px; padding-bottom:10px;}
 .ourstoriesBg {padding:25px 0 10px;}
 .storiesTxt p { font-size: 14px; line-height: 20px; padding-bottom: 15px;}
 .aboutpeachBg{ padding: 25px 0 0 0;}
+.performBot span img{ width: 70px;}
+.performBot span small {font-size: 14px;}
+.performBot > span {padding-bottom: 8px; line-height: 14px;}
+.performBot > i {font-size: 14px;}
+.performBot strong {font-size: 15px;}
+.alsofoundedList li {padding: 5px 5px 15px;}
+.alsofoundedList li span img {vertical-align: middle; width: 65px;}
+.alsofoundedList li span { line-height: 14px; padding-bottom: 10px;}
+.alsofoundedList li span small{ font-size: 14px;}
+.alsofoundedList li p {font-size: 13px;}
+.alsofoundedList li small {font-size: 13px;}
+.alsofoundedList li strong {font-size: 14px;}
+.howitHd {font-size: 22px; padding-bottom: 20px;}
+.listing-srchTop {height: 176px;}
+.listing-Location {border-bottom: 1px solid rgb(255, 255, 255, 0.6);padding: 15px 5px 10px; height: 58px; width: 58%;}
+.listing-gender {border-bottom: 1px solid rgba(255, 255, 255, 0.6); border-right: 0 none; height: 58px;
+  width: 42%;padding: 10px 5px;}
+.listing-startdate {border-bottom: 1px solid rgba(255, 255, 255, 0.6); border-right: 1px solid rgba(255, 255, 255, 0.6);
+  height: 58px; width: 50%;padding: 10px 5px;}
+.listing-time {border-bottom: 1px solid rgba(255, 255, 255, 0.6);padding: 10px 5px; border-right: 0 none; height: 58px; position: relative;width: 50%;}
+.listing-duration {height: 58px; width:40%;padding: 10px 5px;}
+.listing-goBtn {height: 58px; width:40%;padding: 7px 10px;}
+.listing-collepsIcon {padding: 17px 5px 10px; width: 20%;}
+.listingSrchBx {top: 120px;}
+.listing-time > label{ top: 0;}
+.listing-startdate .md-datepicker-input-container{ width: 100%;}
+.listing-startdate .md-datepicker-triangle-button.md-button.md-icon-button{ right: 0;}
+.listing-duration md-input-container.md-input-has-value label {bottom: 81% !important; left: 0 !important;}
+.listing-startdate ._md-datepicker-floating-label._md-datepicker-has-calendar-icon > label:not(.md-no-float):not(.md-container-ignore) {
+  bottom: 78% !important;}
+.eventTble th {font-size: 13px; padding: 10px 5px !important; text-align: center;}
+.eventTble td{font-size: 12px; padding: 10px 5px !important; text-align: center;}
+.eventDetBx{ padding: 10px;}
+.listDetImg{ width: 200px;}
+.listDet-Right strong {font-size: 20px;}
+.listDet-Right > span {font-size: 16px;}
+.listdetTop {padding: 10px;}
+.eventTopBx > span {float: none; width:100%; text-align: left;}
+.eventTopBx > span:nth-child(2n){float:none; width: 100%; text-align: left;}
+.listingDet {border-radius: 3px; font-size: 15px; font-weight: 700; height: 46px !important;  padding: 0 15px;
+  width: auto;}
+.helpHd strong{ font-size: 24px;}
+.helpList strong{ font-size: 16px;}
+.privacypolicyBx h2 {font-size: 20px; padding-bottom: 5px;}
+.privacypolicyBx::after { bottom: -72px;height: 70px;}
+.privacypolicyBx {margin-bottom: 30px; padding-bottom:1px;}
+.canreqBx{ padding: 10px 0;}
+.startdate-L{ line-height: normal;}
+.startdateBx{ padding:15px;}
+.weekndradBx span{ font-size: 14px;}
+.slideradioBx span { display: block; font-size: 14px; padding-right: 0;}
+.msgdetTop > i{ width: 45px; height: 45px;}
+.msgdetTop { padding-left: 55px;}
+.msgdetTop strong {display: block;}
+.msgDesc > ul {margin: 0; padding: 0 20px 15px;}
+.msgDesc ul li{ line-height: 20px;}
+.forwordBx{ height: 130px;}
+.waitring-L {margin-right: 0; width: 100%;}
+.waitring-R {padding-top: 5px; width: 100%; margin-top: 10px;}
+.keyword_Left {height: 75px; margin-right: 0; width: 100%;}
+.keyword_Mid {margin-left: 0; margin-right: 0; width: 100%;}
+.advLocBx > label{ font-size: 14px;}
+.advdatBx > label{ font-size: 14px;}
+.advtimeBx > label{ font-size: 14px;}
+.advenddateBx > label{ font-size: 14px;}
+.advendtimeBx > label{ font-size: 14px;}
+.advanceGend span{ font-size: 14px;}
+.Mainbanner .item{ background-position: center 0 !important;}
+.advancesrchBx .srchInput{ height: 40px !important; line-height: 40px !important;}
+.advancesrchBx .md-datepicker-triangle-button.md-icon-button.md-button {top: 0;}
+.advLocBx{ height: 85px;}
+.advdatBx{ height: 85px;}
+.advtimeBx{ height: 85px;}
+.advenddateBx{ height: 88px;}
+.keyword_Left{ height: 55px;}
+.keyword_Mid{ height: 60px;}
+.aboutBannerInn {height: 730px;}
+.loginBx md-input-container {margin: 0; position: relative; margin-bottom: 20px;}
+.rembBx .md-button{ font-size: 12px;}
+.regFb > a{ font-size: 15px;}
+.reg_gplus > a{ font-size: 15px;}
+.advancesrchBx{ margin-top: -20px;}
+.sortby-L{ font-size: 16px; line-height: 52px;}
+.listing-srchTop {margin-top: 182px; margin-left: 10px; margin-right: 10px;}
 }
+

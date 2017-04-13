@@ -1,0 +1,172 @@
+<div class="login_pageBg">
+	<div class="logintransBg">
+	<div class="regPopBg">
+		<div class="loginLogo"><a ng-click = "topage(/)"><img src="assets/img/frontend/peach-logo.png" alt=""></a></div>
+		<div class="regFbBx clearfix">
+				<div class="clm-lft">
+					<div class="regFb">
+						<a href="#"><i class="fa fa-facebook"></i> Log in with Facebook</a>
+					</div>
+				</div>
+				<div class="clm-rgt">
+					<div class="reg_gplus">
+						<a href="#"><i class="fa fa-google-plus"></i>Log in with Google+</a>
+					</div>
+				</div>
+		</div>
+		<div class="orBx"><i>or</i></div>
+		<form name = "signupform" ng-submit = " signupform.$valid && signUp()" novalidate="">
+		<div class="clearfix">
+			<div class="clm-lft">
+				<div class="regfrmBx">
+					<md-input-container class="md-block" flex-gt-sm>
+			        	<label>First name</label>
+			            <input required ng-model="userSignInfo.first_name" class="registerInp">
+			        </md-input-container>
+		        </div>
+			</div>
+			<div class="clm-rgt">
+				<div class="regfrmBx">
+					<md-input-container class="md-block" flex-gt-sm>
+			        	<label>Last Name</label>
+			            <input required ng-model="userSignInfo.last_name" class="registerInp">
+			        </md-input-container>
+		        </div>
+			</div>
+			<div class="clm-lft">
+				<div class="regfrmBx">
+					<md-input-container class="md-block" flex-gt-sm>
+			        	<label>Display Name</label>
+			            <input required ng-model="userSignInfo.display_name" class="registerInp">
+			        </md-input-container>
+			        <i class="material-icons">info</i>
+		        </div>
+			</div>
+			<div class="clm-rgt">
+				<div class="regfrmBx clearfix">
+						<div class="mobile-Lft">
+							<md-input-container class="md-block " flex-gt-sm>
+						        <input required ng-model="userSignInfo.country_code" class="registerInp" ng-readonly = "true" aria-label="country_code">
+						    </md-input-container>
+						</div>
+						<div class="mobile-Rgt">
+							<div class="regmobile">
+								<md-input-container class="md-block" flex-gt-sm>
+						        	<label>Mobile Number</label>
+						            <input required ng-model="userSignInfo.mobile_number" ng-maxlength = "9" ng-minlength = "9" class="registerInp">
+						        </md-input-container>
+						        <i class="material-icons">info</i>
+							</div>
+						</div>			
+		        </div>
+			</div>
+		</div>
+			<div class="clearfix">
+				<div class="regfrmBx">
+					<md-input-container class="md-block" flex-gt-sm>
+			        	<label>Email Adress</label>
+			            <input required ng-model="userSignInfo.email" class="registerInp">
+			        </md-input-container>
+		        </div>
+			</div>
+		<div class="regpopupHd">Date of Birth <i class="material-icons">info</i></div>
+		<div class="clearfix">
+			<div class="clm-lft">
+				<div class="regfrmBx">
+			        <md-input-container>
+			            <label>DD/MM/YYYY</label>
+			            <md-datepicker required ng-model="userSignInfo.dob" md-max-date="dobMaxDate"  class="registerInp"></md-datepicker>
+			        </md-input-container>
+		        </div>
+			</div>
+			<div class="clm-rgt">
+				<div class="regfrmBx">
+					<md-input-container>
+			          <label>Gender</label>
+			          <md-select required ng-model="userSignInfo.gender" class="registerInp" >
+			            <md-option value = "Male">Male</md-option>
+			            <md-option value = "Female" >Female</md-option>
+			          </md-select>
+			        </md-input-container>
+		        </div>
+			</div>
+		</div>
+
+		<div class="regfrmBx">
+					<md-input-container class="md-block" flex-gt-sm>
+			        	<label>Address</label>
+			            <input required ng-model="userSignInfo.address" class="registerInp">
+			        </md-input-container>
+		        </div>
+		<div class="clearfix">       
+			
+
+			<div class="clm-rgt">
+				<div class="regfrmBx">
+					<md-input-container>
+			          <label>State</label>
+			          <md-select required ng-model="userSignInfo.state" class="registerInp">
+			            <md-option value = "State">State</md-option>
+			          </md-select>
+			        </md-input-container>
+		        </div>
+			</div>
+				
+			<div class="clm-lft">
+				<div class="regfrmBx">
+					<md-input-container>
+			          <label>Suburb</label>
+			          <md-select required ng-model="userSignInfo.subrub" class="registerInp">
+			            <md-option value = "Suburb">Suburb</md-option>
+			          </md-select>
+			        </md-input-container>
+		        </div>
+			</div>
+			</div>
+		<div class="clearfix">	
+	<div class="regfrmBx mCustomScrollbar">
+					<md-input-container class="md-block" flex-gt-sm>
+			        	<label>Zip Code</label>
+			            <input required="" ng-model="userSignInfo.zip_code" class="registerInp">
+			        </md-input-container>
+			        <!-- <i class="material-icons">info</i> -->
+		</div>
+
+		</div>
+
+		<div class="clearfix">
+			<div class="clm-lft">
+				<div class="regfrmBx">
+					<md-input-container class="md-block" flex-gt-sm>
+			        	<label>Password</label>
+			            <input  type="password" required ng-model="userSignInfo.password" class="registerInp">
+			        </md-input-container>
+		        </div>
+			</div>
+			<div class="clm-rgt">
+				<div class="regfrmBx">
+					<md-input-container class="md-block" flex-gt-sm>
+			        	<label>Confirm Password</label>
+			            <input type="password"  required ng-model="userSignInfo.cpassword" class="registerInp">
+			        </md-input-container>
+		        </div>
+			</div>
+		</div> 
+		<div class="regfrmBx mCustomScrollbar">
+					<md-input-container class="md-block" flex-gt-sm>
+			        	<label>Promotional Code (Optional)</label>
+			            <input ng-model="userSignInfo.promotional_code" class="registerInp">
+			        </md-input-container>
+			        <i class="material-icons">info</i>
+		</div>
+		<div class="rembBx">
+			<md-checkbox md-no-ink aria-label="Checkbox No Ink" ng-model="userSignInfo.is_agree" class="md-primary"> Agree with Terms and Conditions 
+	        </md-checkbox>
+	    </div>
+	    <md-button type = "submit"  class="md-raised signinBtn">SIGN UP</md-button>
+	    <div class="needaccount">Already have a Account?  
+	    <md-button type = "button"  class="md-primary"  ng-click = "topage(/login)">Sign in Here</md-button> </div>
+	</form>
+	</div>
+</div>
+</div>

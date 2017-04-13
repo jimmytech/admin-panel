@@ -1,0 +1,140 @@
+<div class="mainCon">
+	<section class="aboutBannerBx">
+		<div class="aboutBannerInn" style="background:url(assets/img/frontend/home-banner.jpg) 0 0 no-repeat; background-size:cover;">
+	    	<div class="bannertrans"><i></i></div>
+        </div>
+        <div class="home-Logo"><a href="#"><img src="assets/img/frontend/peach-logo.png" alt=""></a></div>
+        <div class="homeContact"><small>Please Contact :</small>  +90-8585896</div>
+        <div class="homeLogin">
+        	<a ng-click = "loginPopup($event)" class="loginBtn transition pointer">Log In</a>
+            <a ng-click = "signUpPopup($event)" class="signupBtn transition pointer">Sign Up</a>
+        </div>
+	</section>
+	<section class="aboutDescBx">
+		<div class="container">
+        <div class="listdetTop">
+            <div class="listDetImg"><img src="assets/img/frontend/listdet-img.jpg" alt=""></div>
+            <div class="listDet-Right">
+              <strong>Rachel Lecorda</strong>
+              <span> Nude Topless Bikini</span>
+              <i><img src="assets/img/frontend/star4.png" alt=""></i>
+              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis pulvinar, neque at blandit ornare, enim dolor imperdiet mauris, at rhoncus urna nulla vitae velit rdiet mauris, at rho amet, consectetur adipiscing elit. Duis pulvinar, neque at blandit ornare, enim dolor imperdiet mauris, at rhoncus urna. im dolor imperdiet mauris, at rhoncus urna nulla vitae velit rdiet mauris, at rho amet, consectetur adipiscin,dit ornare, enim dolor imperdiet mauris, at rhoncus urna nulla vitae velit rdiet mauris. auris, at rhoncus urna nulla vitae velit rdiet mauris, at rho amet, consectetur adipiscing elit. Duis pulvinar, neque at blandit ornare, enim dolor.olor imperdiet mauris, at rhoncus urna nulla vitae velit rdiet mauris, at rho amet, consectetur adipiscing elit. Duis pulvinar, neque at blandit ornare, enim dolor imperdiet .</p>
+              <div class="bookingBtnBx">
+                <md-button type="submit" ng-click = "addBookingPopup($event)" class="md-raised listingDet listbookingbtn">add to booking</md-button>
+                <md-button type="submit" ng-click = "cancelRequestPopup($event)" class="md-raised listingDet signinBtn">Cancel</md-button>
+              </div>
+            </div>
+        </div>
+        <div class="eventDetBx">
+          <div class="eventTopBx clearfix">
+            <strong>Location For Booking</strong>
+            <span>
+              <md-input-container class="md-block">
+                  <input ng-model="user.street" class="srchInput" placeholder="Street Number">
+              </md-input-container>
+            </span>
+            <span>
+              <md-input-container class="md-block">
+                  <input ng-model="user.street2" class="srchInput" placeholder="Street2">
+              </md-input-container>
+            </span>
+            <span>
+              <md-input-container class="md-block">
+                  <input ng-model="user.streetnumb" class="srchInput" placeholder="15">
+              </md-input-container>
+            </span>
+            <span>
+              <md-input-container class="md-block">
+                  <input ng-model="user.unit" class="srchInput" placeholder="Unit">
+              </md-input-container>
+            </span>
+            <span>
+              <md-input-container class="md-block">
+                  <input ng-model="user.boardbeach" class="srchInput" placeholder="Broadbeach">
+              </md-input-container>
+            </span>
+            <span>
+              <md-input-container class="md-block">
+                  <input ng-model="user.qld" class="srchInput" placeholder="QLD">
+              </md-input-container>
+            </span>
+          </div>
+          <div class="exotictbleBx">
+            <table class="table table-striped exoticTble">
+              <tr>
+                <th width="25%">Exotic Dancing</th>
+                <th width="45%">Description</th>
+                <th width="15%">Price</th>
+                <th width="15%">Duration</th>
+              </tr>
+              <tr>
+                <td class="exoticCheck">
+                  <md-checkbox ng-model="data.cb1" aria-label="Checkbox 1">Catergory 1</md-checkbox>
+                </td>
+                <td>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla quam velit, vulputate eu pharetra nec, mattis ac neque. Duis vulputate commodo lectus, ac blandit elit tincidunt id. Sed rhoncus, tortor sed eleifend tristique,
+                </td>
+                <td class="exoticPriceTd">$500</td>
+                <td class="exoticPriceTd">30 minute</td>
+              </tr>
+              <tr>
+                <td class="exoticCheck">
+                  <md-checkbox ng-model="data.cb2" aria-label="Checkbox 2">Catergory 2</md-checkbox>
+                </td>
+                <td>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla quam velit, vulputate eu pharetra nec, mattis ac neque. Duis vulputate commodo lectus, ac blandit elit tincidunt id. Sed rhoncus, tortor sed eleifend tristique,
+                </td>
+                <td class="exoticPriceTd">$1500</td>
+                <td class="exoticPriceTd">30 minute</td>
+              </tr>
+              <tr>
+                <td class="exoticCheck">
+                  <md-checkbox ng-model="data.cb3" aria-label="Checkbox 3">Catergory 3</md-checkbox>
+                </td>
+                <td>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla quam velit, vulputate eu pharetra nec, mattis ac neque. Duis vulputate commodo lectus, ac blandit elit tincidunt id. Sed rhoncus, tortor sed eleifend tristique,
+                </td>
+                <td class="exoticPriceTd">$1000</td>
+                <td class="exoticPriceTd">1.5 Hrs</td>
+              </tr>
+            </table>
+          </div>
+          <div class="totalExotBx clearfix">
+            <div class="excotTotl-R">
+              <small>Time exceeds available booking time</small>
+              <strong><span>Total</span>  <span>$2000</span> <span>1Hr</span></strong>
+            </div>
+            <div class="excotTotl-L">
+              <div class="reqPopBtn">
+                <md-button type="submit" class="md-raised listingDet signinBtn">Confirm</md-button>
+              </div>
+            </div>
+          </div>
+          </div>
+          <div class="reviewlistBx">
+            <div class="reviewsHd">Reviews <img src="assets/img/frontend/star4.png" alt=""></div>
+            <div class="reviewsList">
+              <ul>
+                <li>
+                  <i><img src="assets/img/frontend/reviews-img.jpg" alt=""></i>
+                  <strong>Vulputate commodo lectus, ac blandit elit tincidunt id. </strong>
+                  <small>By <a href="#">G.Joseph </a> on May 8 , 2016</small>
+                  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis pulvinar, neque at blandit ornare, enim dolor imperdiet mauris, at rhoncus urna nulla vitae velit rdiet mauris, at rho amet, consectetur adipiscing elit. Duis pulvinar, neque at blandit ornare, enim dolor imperdiet mauris, at rhoncus urna. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla quam velit, vulputate eu pharetra nec, mattis ac neque. Duis </p>
+                </li>
+                <li>
+                  <i><img src="assets/img/frontend/reviews-img2.jpg" alt=""></i>
+                  <strong>Vulputate commodo lectus, ac blandit elit tincidunt id. </strong>
+                  <small>By <a href="#">G.Joseph </a> on May 8 , 2016</small>
+                  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis pulvinar, neque at blandit ornare, enim dolor imperdiet mauris, at rhoncus urna nulla vitae velit rdiet mauris, at rho amet, consectetur adipiscing elit. Duis pulvinar, neque at blandit ornare, enim dolor imperdiet mauris, at rhoncus urna. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla quam velit, vulputate eu pharetra nec, mattis ac neque. Duis </p>
+                </li>
+              </ul>
+            </div>
+            <div class="morerevBtnBx">
+             <md-button type="submit" class="md-raised listingDet signinBtn">MORE REVIEWS</md-button>
+            </div>
+          </div>
+
+        </div>
+		</div>
+	</section>
+</div>

@@ -27,7 +27,11 @@ module.exports = {
 
 	enabledNotification: "Turned on notification",
 
-	disableNotification: "Turned off notification"
+	disableNotification: "Turned off notification",
+
+	sent: "sent successfully",
+
+	profilePicUpdated: "Profile picture updated successfully"
 
 
 };

@@ -106,29 +106,57 @@ app.config(['$routeProvider', '$locationProvider', function($routeProvider, $loc
                 }
             })            
             .when('/admin/Categories', {
-                templateUrl: 'backend/Categories/views/categories.html',
+                templateUrl: 'backend/services_categories/views/categories.html',
                 controller: 'categoryController',
+                resolve: {
+                    validate: required
+                }
+            })              
+            .when('/admin/service', {
+                templateUrl: 'backend/services_categories/views/services.html',
+                controller: 'serviceCtrl',
                 resolve: {
                     validate: required
                 }
             })            
             .when('/admin/categories/new-category', {
-                templateUrl: 'backend/Categories/views/add_edit_category.html',
+                templateUrl: 'backend/services_categories/views/add_edit_category.html',
                 controller: 'addEditCategoryController',
+                resolve: {
+                    validate: required
+                }
+            })           
+             .when('/admin/services/new-service', {
+                templateUrl: 'backend/services_categories/views/add_edit_service.html',
+                controller: 'addEditServiceCtrl',
                 resolve: {
                     validate: required
                 }
             })             
             .when('/admin/category/:id', {
-                templateUrl: 'backend/Categories/views/add_edit_category.html',
+                templateUrl: 'backend/services_categories/views/add_edit_category.html',
                 controller: 'addEditCategoryController',
+                resolve: {
+                    validate: required
+                }
+            })            
+            .when('/admin/service/:id', {
+                templateUrl: 'backend/services_categories/views/add_edit_service.html',
+                controller: 'addEditServiceCtrl',
                 resolve: {
                     validate: required
                 }
             })               
             .when('/admin/category/detail/:id', {
-                templateUrl: 'backend/Categories/views/preview_category.html',
+                templateUrl: 'backend/services_categories/views/preview_category.html',
                 controller: 'addEditCategoryController',
+                resolve: {
+                    validate: required
+                }
+            })             
+             .when('/admin/service/detail/:id', {
+                templateUrl: 'backend/services_categories/views/preview_service.html',
+                controller: 'addEditServiceCtrl',
                 resolve: {
                     validate: required
                 }

@@ -7,13 +7,23 @@ const multer			= require('multer'),
 
 exports.saveImage = (data) => {
 
-	return multer({    
+	
+
+	return multer({  
+
+
 	    storage: multer.diskStorage({
+
 	    	destination: "public/assets/img/uploads",
+
 	    	filename:  (req, file, cb)=> {
+
 	    		cb(null, `${Date.now()}${crypto.randomBytes(6).toString('hex')}${conf.image_extensions[file.mimetype]}`);
+	  		
 	  		}
-	    })    
+
+	    })  
+
 	}).any();
 	
 };

@@ -1,8 +1,16 @@
 'use strict';
 
-app.controller('loginSignupCtrl', ['http', 'toastyService', 'loginSignupPopup', '$mdDialog', '$scope', '$location', '$rootScope', '$http',
-	function(http, toastyService, loginSignupPopup, $mdDialog, $scope, $location, $rootScope, $http) {
+app.controller('loginSignupCtrl', ['$cookies', 'http', 'toastyService', 'loginSignupPopup', '$mdDialog', '$scope', '$location', '$rootScope', '$http',
+	function($cookies, http, toastyService, loginSignupPopup, $mdDialog, $scope, $location, $rootScope, $http) {
 
+		(function(){
+
+			if ($cookies.get('userLoginCredentials')) {
+				$scope.userLogin = JSON.parse($cookies.get('userLoginCredentials'));
+				$scope.rememberMeStatus = true;
+			}
+
+		}());
 
 
 		$scope.userSignInfo = {"country_code": "+61"};
@@ -40,7 +48,7 @@ app.controller('loginSignupCtrl', ['http', 'toastyService', 'loginSignupPopup', 
 				
 				if (response.result === true) {
 
-					localStorage.setItem('t', response.token);
+					localStorage.setItem('userToken', response.token);
 					localStorage.setItem('user', JSON.stringify(response.user));
 					
 					$scope.closeMe();
@@ -51,6 +59,7 @@ app.controller('loginSignupCtrl', ['http', 'toastyService', 'loginSignupPopup', 
 				}
 
 			});
+			
 		};
 
 
@@ -58,6 +67,17 @@ app.controller('loginSignupCtrl', ['http', 'toastyService', 'loginSignupPopup', 
 		/*close dialog*/
 		$scope.closeMe = function(){
 			$mdDialog.hide();
-		};			
+		};	
+
+
+		$scope.rememberMe = function(){
+
+			if ($scope.rememberMeStatus) {
+				$cookies.put("userLoginCredentials", JSON.stringify($scope.userLogin));
+			}else{
+				$cookies.remove('userLoginCredentials');
+			}
+
+		};		
 	
 }]);
